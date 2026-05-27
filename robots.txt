@@ -1,0 +1,35 @@
+# robots.txt — AsigurăriCraiova.ro
+# https://asiguraricraiova.ro/robots.txt
+
+User-agent: *
+Allow: /
+
+# Blochează fișiere interne inutile pentru indexare
+Disallow: /assets/
+Disallow: /*.json$
+
+# Sitemap
+Sitemap: https://asiguraricraiova.ro/sitemap.xml
+
+# Google
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 2
+
+# Bing
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 5
+
+# Blocăm crawlere agresive sau spam
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
