@@ -1500,9 +1500,43 @@ function showPage(id) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   const t = document.getElementById('page-' + id);
   if (t) { t.classList.add('active'); window.scrollTo({top:0,behavior:'smooth'}); }
-  // close mobile nav
   document.getElementById('mainNav').classList.remove('open');
+  // Actualizează URL fără reload
+  const urlMap = {
+    'home':'/', 'despre':'/despre', 'rca':'/rca', 'casco':'/casco',
+    'transport':'/transport-cmr-rotr', 'pad':'/asigurare-locuinta-pad',
+    'locuinta':'/locuinta-facultativa', 'calatorie':'/asigurare-calatorie',
+    'sanatate':'/asigurare-sanatate', 'accident':'/accidente-persoane',
+    'viata':'/asigurare-viata', 'malpraxis':'/malpraxis',
+    'civile':'/raspundere-civila', 'pensie':'/pensie-privata-pilon-3',
+    'economisire':'/economisire-copii', 'unitlinked':'/unit-linked',
+    'fotovoltaice':'/asigurare-panouri-fotovoltaice', 'imm':'/asigurari-imm-firme',
+    'bike':'/asigurare-biciclete', 'persoane-fizice':'/persoane-fizice',
+    'firme':'/firme', 'blog':'/blog', 'contact':'/contact'
+  };
+  if (urlMap[id]) history.pushState({page:id}, '', urlMap[id]);
 }
+
+// La încărcarea paginii — citește parametrul ?page= sau URL-ul curent
+window.addEventListener('DOMContentLoaded', function() {
+  const params = new URLSearchParams(window.location.search);
+  const pageParam = params.get('page');
+  const pathMap = {
+    '/rca':'rca', '/casco':'casco', '/transport-cmr-rotr':'transport',
+    '/asigurare-locuinta-pad':'pad', '/locuinta-facultativa':'locuinta',
+    '/asigurare-calatorie':'calatorie', '/asigurare-sanatate':'sanatate',
+    '/accidente-persoane':'accident', '/asigurare-viata':'viata',
+    '/malpraxis':'malpraxis', '/raspundere-civila':'civile',
+    '/pensie-privata-pilon-3':'pensie', '/economisire-copii':'economisire',
+    '/unit-linked':'unitlinked', '/asigurare-panouri-fotovoltaice':'fotovoltaice',
+    '/asigurari-imm-firme':'imm', '/asigurare-biciclete':'bike',
+    '/despre':'despre', '/persoane-fizice':'persoane-fizice',
+    '/firme':'firme', '/blog':'blog', '/contact':'contact'
+  };
+  const pathPage = pathMap[window.location.pathname];
+  const startPage = pageParam || pathPage || 'home';
+  if (startPage !== 'home') showPage(startPage);
+});
 
 function toggleNav() {
   document.getElementById('mainNav').classList.toggle('open');

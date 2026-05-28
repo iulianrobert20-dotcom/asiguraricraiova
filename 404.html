@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AsigurăriCraiova.ro</title>
+<script>
+  // GitHub Pages SPA redirect
+  // Salvează URL-ul curent și redirecționează la index.html
+  var path = window.location.pathname;
+  var search = window.location.search;
+  var hash = window.location.hash;
+  
+  // Map URL paths to page IDs
+  var pageMap = {
+    '/rca': 'rca',
+    '/casco': 'casco',
+    '/transport-cmr-rotr': 'transport',
+    '/asigurare-locuinta-pad': 'pad',
+    '/locuinta-facultativa': 'locuinta',
+    '/asigurare-calatorie': 'calatorie',
+    '/asigurare-sanatate': 'sanatate',
+    '/accidente-persoane': 'accident',
+    '/asigurare-viata': 'viata',
+    '/malpraxis': 'malpraxis',
+    '/raspundere-civila': 'civile',
+    '/pensie-privata-pilon-3': 'pensie',
+    '/economisire-copii': 'economisire',
+    '/unit-linked': 'unitlinked',
+    '/asigurare-panouri-fotovoltaice': 'fotovoltaice',
+    '/asigurari-imm-firme': 'imm',
+    '/asigurare-biciclete': 'bike',
+    '/despre': 'despre',
+    '/persoane-fizice': 'persoane-fizice',
+    '/firme': 'firme',
+    '/blog': 'blog',
+    '/contact': 'contact'
+  };
+
+  var pageId = pageMap[path] || 'home';
+  
+  // Redirecționează la homepage cu parametru de pagină
+  window.location.replace('/?page=' + pageId);
+</script>
+<meta http-equiv="refresh" content="0;url=/">
+</head>
+<body>
+<p>Se redirecționează...</p>
+</body>
+</html>
