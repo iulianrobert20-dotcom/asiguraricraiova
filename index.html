@@ -354,14 +354,19 @@ footer{background:var(--navy3);color:rgba(255,255,255,.6);padding:48px 24px 24px
 .fcopy{font-size:.7rem;text-align:right}
 
 /* ── FLOATING WA ── */
-.fwa{position:fixed;bottom:26px;right:26px;background:#25d366;width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.5);cursor:pointer;z-index:500;transition:.25s;text-decoration:none}
-.fwa::before{content:'';position:absolute;inset:-4px;border-radius:50%;border:3px solid rgba(37,211,102,.4);animation:wapulse 2s ease-out infinite}
-.fwa::after{content:'';position:absolute;inset:-8px;border-radius:50%;border:2px solid rgba(37,211,102,.2);animation:wapulse 2s ease-out .4s infinite}
-@keyframes wapulse{0%{transform:scale(1);opacity:1}100%{transform:scale(1.5);opacity:0}}
-.fwa:hover{transform:scale(1.1);box-shadow:0 8px 32px rgba(37,211,102,.6)}
-.fwa-lbl{position:absolute;right:70px;background:#fff;color:var(--navy);font-size:.78rem;font-weight:700;padding:8px 14px;border-radius:20px;white-space:nowrap;box-shadow:0 4px 16px rgba(0,0,0,.15);opacity:0;transform:translateX(8px);transition:.25s;pointer-events:none}
-.fwa-lbl::after{content:'';position:absolute;right:-6px;top:50%;transform:translateY(-50%);width:0;height:0;border-left:6px solid #fff;border-top:5px solid transparent;border-bottom:5px solid transparent}
-.fwa:hover .fwa-lbl{opacity:1;transform:translateX(0)}
+.fwa-wrap{position:fixed;bottom:28px;right:28px;z-index:500;display:flex;align-items:center;gap:12px}
+.fwa-lbl{position:relative;background:#fff;color:#111;font-size:.8rem;font-weight:700;padding:9px 16px;border-radius:24px;white-space:nowrap;box-shadow:0 4px 20px rgba(0,0,0,.18);opacity:0;transform:translateX(12px);transition:all .3s cubic-bezier(.34,1.56,.64,1);pointer-events:none}
+.fwa-lbl::after{content:'';position:absolute;right:-7px;top:50%;transform:translateY(-50%);border:7px solid transparent;border-left-color:#fff;border-right:0}
+.fwa-wrap:hover .fwa-lbl{opacity:1;transform:translateX(0)}
+.fwa{position:relative;background:linear-gradient(145deg,#25d366,#128c7e);width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 28px rgba(37,211,102,.55),0 2px 8px rgba(0,0,0,.15);cursor:pointer;text-decoration:none;transition:all .25s cubic-bezier(.34,1.56,.64,1);flex-shrink:0}
+.fwa:hover{transform:scale(1.12);box-shadow:0 10px 36px rgba(37,211,102,.65)}
+.fwa-ring{position:absolute;inset:0;border-radius:50%;animation:waring 2.4s ease-out infinite;pointer-events:none}
+.fwa-ring:nth-child(2){animation-delay:.8s}
+.fwa-ring:nth-child(3){animation-delay:1.6s}
+@keyframes waring{0%{box-shadow:0 0 0 0 rgba(37,211,102,.7);opacity:1}70%{box-shadow:0 0 0 24px rgba(37,211,102,0);opacity:0}100%{opacity:0}}
+.fwa-dot{position:absolute;top:3px;right:3px;width:15px;height:15px;background:#ff3b30;border-radius:50%;border:2.5px solid #fff;animation:wabounce 1.8s ease-in-out infinite;z-index:2}
+@keyframes wabounce{0%,100%{transform:scale(1)}50%{transform:scale(1.3)}}
+.fwa-online{position:absolute;bottom:3px;right:3px;width:14px;height:14px;background:#4ade80;border-radius:50%;border:2.5px solid #fff;z-index:2}
 
 /* ── MOBILE ── */
 @media(max-width:860px){
@@ -1473,15 +1478,22 @@ nav.open .nav-menu .drop-menu{position:static;box-shadow:none;border:none;backgr
   </div>
 </footer>
 
-<!-- Floating WhatsApp — realistic -->
-<a href="https://wa.me/40774171971?text=Bună%20ziua!%20Am%20vizitat%20asiguraricraiova.ro%20și%20aș%20dori%20o%20ofertă." target="_blank" rel="noopener" class="fwa" aria-label="Contactează-ne pe WhatsApp">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="30" height="30" fill="none">
-    <path fill="#fff" d="M24 4C13 4 4 13 4 24c0 3.6 1 7 2.7 9.9L4 44l10.4-2.7C17 43 20.4 44 24 44c11 0 20-9 20-20S35 4 24 4z"/>
-    <path fill="#25d366" d="M24 6.5C14.3 6.5 6.5 14.3 6.5 24c0 3.3.9 6.4 2.5 9.1L6.5 41.5l8.7-2.5c2.6 1.4 5.6 2.2 8.8 2.2 9.7 0 17.5-7.8 17.5-17.5S33.7 6.5 24 6.5z"/>
-    <path fill="#fff" d="M32.8 28.4c-.5-.2-2.8-1.4-3.2-1.5-.4-.2-.7-.2-1 .2-.3.5-1.2 1.5-1.5 1.8-.3.3-.5.4-1 .1-.5-.2-2-. 7-3.8-2.3-1.4-1.3-2.3-2.8-2.6-3.3-.3-.5 0-.7.2-1 .2-.2.5-.5.7-.8.2-.3.3-.5.5-.8.2-.3.1-.6 0-.8-.1-.2-1-2.4-1.4-3.3-.4-.9-.7-.7-1-.7h-.9c-.3 0-.8.1-1.2.6-.4.5-1.6 1.6-1.6 3.8 0 2.2 1.6 4.4 1.9 4.7.2.3 3.2 4.9 7.7 6.8 1.1.5 1.9.7 2.6.9 1.1.3 2.1.3 2.9.2.9-.1 2.8-1.1 3.2-2.3.4-1.1.4-2.1.3-2.3-.1-.3-.4-.4-.9-.6z"/>
-  </svg>
-  <span class="fwa-lbl">Scrie pe WhatsApp</span>
-</a>
+<!-- WhatsApp Floating Button — Realistic -->
+<div class="fwa-wrap">
+  <span class="fwa-lbl">Scrie-ne pe WhatsApp</span>
+  <a href="https://wa.me/40774171971?text=Bună%20ziua!%20Am%20vizitat%20asiguraricraiova.ro%20și%20aș%20dori%20o%20ofertă." target="_blank" rel="noopener" class="fwa" aria-label="WhatsApp">
+    <div class="fwa-ring"></div>
+    <div class="fwa-ring"></div>
+    <div class="fwa-ring"></div>
+    <div class="fwa-dot"></div>
+    <div class="fwa-online"></div>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="34" height="34">
+      <path fill="#fff" d="M4.9 43.3l2.7-9.8C5.5 30.7 4.5 27.4 4.5 24 4.5 13.2 13.2 4.5 24 4.5S43.5 13.2 43.5 24 34.8 43.5 24 43.5c-3.3 0-6.4-.9-9.1-2.4L4.9 43.3z"/>
+      <path fill="#fff" fill-opacity=".1" d="M4.9 43.8c-.1 0-.3-.1-.4-.2-.1-.2-.1-.4 0-.5l2.7-9.7C5.1 30.6 4.1 27.3 4.1 24 4.1 13 13 4.1 24 4.1S43.9 13 43.9 24 35 43.9 24 43.9c-3.3 0-6.5-.9-9.3-2.5l-9.8 2.4z"/>
+      <path fill="#fff" d="M33.5 28.6c-.5-.2-2.8-1.4-3.2-1.6-.4-.1-.7-.2-1 .2-.3.5-1.1 1.4-1.4 1.7-.3.3-.5.3-.9.1-.5-.2-2-.7-3.8-2.3-1.4-1.2-2.4-2.8-2.6-3.2-.3-.5 0-.7.2-.9.2-.2.5-.5.7-.8.2-.3.3-.5.4-.8.1-.3.1-.6-.1-.8-.2-.3-.9-2.3-1.3-3.1-.4-.8-.7-.7-1-.7h-.8c-.3 0-.7.1-1.1.5-.4.4-1.4 1.4-1.4 3.4s1.5 3.9 1.7 4.2c.2.3 2.9 4.5 7.1 6.3 1 .4 1.8.7 2.4.9 1 .3 2 .3 2.7.2.8-.1 2.5-1 2.9-2 .3-.9.3-1.8.2-2-.2-.2-.4-.3-.9-.5z"/>
+    </svg>
+  </a>
+</div>
 
 <script>
 function showPage(id) {
@@ -1496,10 +1508,47 @@ function toggleNav() {
   document.getElementById('mainNav').classList.toggle('open');
 }
 
-function submitForm(btn) {
-  btn.textContent = '✅ Cerere trimisă! Te contactez în curând.';
-  btn.style.background = '#065f46';
+async function submitForm(btn) {
+  const form = btn.closest('.cform');
+  const allInputs = form.querySelectorAll('input, select, textarea');
+
+  // Validare bază
+  const name = form.querySelector('input[type="text"]') ? form.querySelector('input[type="text"]').value.trim() : '';
+  const phone = form.querySelector('input[type="tel"]') ? form.querySelector('input[type="tel"]').value.trim() : '';
+  if (!name || !phone) {
+    alert('Te rugăm completează cel puțin numele și telefonul.');
+    return;
+  }
+
+  btn.textContent = '⏳ Se trimite...';
   btn.disabled = true;
+
+  const labels = ['Nume', 'Telefon', 'Email', 'Tip_client', 'Localitate', 'Tip_asigurare', 'Mesaj'];
+  const formData = {};
+  allInputs.forEach((inp, i) => {
+    if (labels[i]) formData[labels[i]] = inp.value;
+  });
+
+  try {
+    const res = await fetch('https://formspree.io/f/xnjrwnvg', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData)
+    });
+    if (res.ok) {
+      btn.textContent = '✅ Cerere trimisă! Te contactez în curând.';
+      btn.style.background = '#065f46';
+      allInputs.forEach(inp => { inp.value = ''; });
+    } else {
+      btn.textContent = '❌ Eroare — scrie pe WhatsApp: 0774 171 971';
+      btn.style.background = '#dc2626';
+      btn.disabled = false;
+    }
+  } catch(e) {
+    btn.textContent = '❌ Eroare — scrie pe WhatsApp: 0774 171 971';
+    btn.style.background = '#dc2626';
+    btn.disabled = false;
+  }
 }
 
 // Close dropdowns on mobile when clicking links
