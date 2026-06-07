@@ -1719,9 +1719,18 @@ nav.open .nav-menu .drop-menu{position:static;box-shadow:none;border:none;backgr
 
 <script>
 function showPage(id) {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  // Ascunde toate paginile explicit
+  document.querySelectorAll('.page').forEach(p => {
+    p.classList.remove('active');
+    p.style.display = 'none';
+  });
+  // Afișează pagina corectă
   const t = document.getElementById('page-' + id);
-  if (t) { t.classList.add('active'); window.scrollTo({top:0,behavior:'smooth'}); }
+  if (t) {
+    t.classList.add('active');
+    t.style.display = 'block';
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
   document.getElementById('mainNav').classList.remove('open');
   // Actualizează URL fără reload
   const urlMap = {
@@ -1741,6 +1750,12 @@ function showPage(id) {
 
 // La încărcarea paginii — citește parametrul ?page= sau URL-ul curent
 window.addEventListener('DOMContentLoaded', function() {
+  // Ascunde TOATE paginile la start
+  document.querySelectorAll('.page').forEach(p => {
+    p.style.display = 'none';
+    p.classList.remove('active');
+  });
+
   const params = new URLSearchParams(window.location.search);
   const pageParam = params.get('page');
   const pathMap = {
@@ -1757,7 +1772,17 @@ window.addEventListener('DOMContentLoaded', function() {
   };
   const pathPage = pathMap[window.location.pathname];
   const startPage = pageParam || pathPage || 'home';
-  if (startPage !== 'home') showPage(startPage);
+  
+  // Afișează pagina corectă
+  const target = document.getElementById('page-' + startPage);
+  if (target) {
+    target.classList.add('active');
+    target.style.display = 'block';
+  } else {
+    // Fallback la homepage
+    const home = document.getElementById('page-home');
+    if (home) { home.classList.add('active'); home.style.display = 'block'; }
+  }
 });
 
 function toggleNav() {
