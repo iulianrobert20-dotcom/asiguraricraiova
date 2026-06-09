@@ -67,50 +67,57 @@ footer a{color:var(--gold)}
 @media(max-width:500px){.compare-grid{grid-template-columns:1fr}.rl-g{grid-template-columns:1fr}}
 </style>
 
+
+
+
 <style id="shared-nav-css">
 :root{--navy:#0d1f3c;--gold:#c9a84c;--gold2:#e8c97a}
-.snav{background:var(--navy);position:sticky;top:0;z-index:1000;box-shadow:0 2px 16px rgba(0,0,0,.3)}
+/* ── Shared Nav — iOS/Android/Windows compatible ── */
+.snav{background:var(--navy);position:sticky;top:0;z-index:1000;box-shadow:0 2px 16px rgba(0,0,0,.3);-webkit-tap-highlight-color:transparent}
 .snav-inner{max-width:1400px;margin:0 auto;padding:0 20px;height:62px;display:flex;align-items:center;justify-content:space-between;gap:16px}
-.snav-logo{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.15rem;font-weight:700;color:#fff;text-decoration:none;line-height:1.1;flex-shrink:0}
+.snav-logo{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.15rem;font-weight:700;color:#fff;text-decoration:none;line-height:1.1;flex-shrink:0;-webkit-tap-highlight-color:transparent}
 .snav-logo span{color:var(--gold);font-size:.58rem;display:block;letter-spacing:.1em;text-transform:uppercase;font-family:'DM Sans',sans-serif}
-.snav-menu{display:flex;align-items:center;gap:2px;list-style:none;flex-wrap:nowrap}
+/* Desktop menu */
+.snav-menu{display:flex;align-items:center;gap:2px;list-style:none;padding:0;margin:0}
 .snav-menu > li{position:relative}
-.snav-menu > li > a{color:rgba(255,255,255,.82);font-size:.78rem;font-family:'DM Sans',sans-serif;padding:8px 10px;border-radius:6px;cursor:pointer;white-space:nowrap;display:block;text-decoration:none;transition:.2s}
-.snav-menu > li > a:hover{color:#fff;background:rgba(255,255,255,.1)}
+.snav-menu > li > a{color:rgba(255,255,255,.82);font-size:.78rem;font-family:'DM Sans',sans-serif;padding:8px 10px;border-radius:6px;cursor:pointer;white-space:nowrap;display:block;text-decoration:none;transition:.2s;-webkit-tap-highlight-color:transparent;touch-action:manipulation;user-select:none;-webkit-user-select:none}
+.snav-menu > li > a:hover,.snav-menu > li > a:focus{color:#fff;background:rgba(255,255,255,.1);outline:none}
 .snav-menu > li > a.cta-nav{background:var(--gold);color:var(--navy)!important;font-weight:700;padding:8px 16px}
 .snav-menu > li > a.cta-nav:hover{background:var(--gold2)}
 .snav-menu > li > a.calc-nav{color:var(--gold)!important;font-weight:600}
+/* Dropdown desktop */
 .snav-drop{display:none;position:absolute;top:calc(100% + 4px);left:0;background:#fff;border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,.18);min-width:220px;padding:8px;z-index:2000;border:1px solid #e8ecf3}
 .snav-menu > li:hover .snav-drop{display:block}
-.snav-drop a{display:block;padding:8px 12px;font-size:.82rem;font-family:'DM Sans',sans-serif;color:#1a2035;border-radius:6px;text-decoration:none;transition:.15s;white-space:nowrap}
-.snav-drop a:hover{background:#f1f3f7;color:var(--navy)}
+.snav-drop a{display:block;padding:8px 12px;font-size:.82rem;font-family:'DM Sans',sans-serif;color:#1a2035;border-radius:6px;text-decoration:none;transition:.15s;white-space:nowrap;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+.snav-drop a:hover,.snav-drop a:active{background:#f1f3f7;color:var(--navy)}
 .snav-drop .dlbl{font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#9ca3af;padding:8px 12px 4px;display:block}
-.snav-ham{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;border:none;background:none}
-.snav-ham span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:.3s}
+/* Hamburger button */
+.snav-ham{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:10px;border:none;background:none;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+.snav-ham span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:.3s;pointer-events:none}
+/* Mobile */
 @media(max-width:900px){
-  .snav-menu{display:none;position:fixed;top:62px;left:0;right:0;bottom:0;background:var(--navy);flex-direction:column;align-items:stretch;padding:16px;overflow-y:auto;gap:2px}
+  .snav-menu{display:none;position:fixed;top:62px;left:0;right:0;bottom:0;background:var(--navy);flex-direction:column;align-items:stretch;padding:12px 16px 32px;overflow-y:auto;gap:2px;-webkit-overflow-scrolling:touch}
   .snav-menu.open{display:flex}
-  .snav-menu > li > a{padding:12px 16px;font-size:.9rem}
+  .snav-menu > li > a{padding:13px 16px;font-size:.92rem;border-bottom:1px solid rgba(255,255,255,.06)}
+  .snav-menu > li:last-child > a{border-bottom:none}
   .snav-drop{display:none!important;position:static;box-shadow:none;border:none;background:rgba(255,255,255,.06);border-radius:8px;margin:4px 0 4px 12px;padding:4px}
-  .snav-menu > li.open .snav-drop{display:block!important}
-  .snav-drop a{color:rgba(255,255,255,.8);padding:8px 12px}
-  .snav-drop a:hover{background:rgba(255,255,255,.1);color:#fff}
-  .snav-drop .dlbl{color:rgba(255,255,255,.4)}
+  .snav-menu > li.mob-open .snav-drop{display:block!important}
+  .snav-drop a{color:rgba(255,255,255,.82);padding:10px 12px;border-bottom:none;font-size:.88rem}
+  .snav-drop a:active{background:rgba(255,255,255,.1);color:#fff}
+  .snav-drop .dlbl{color:rgba(255,255,255,.35)}
   .snav-ham{display:flex}
 }
 </style>
-
 </head>
 <body>
-
-<nav class="snav">
+<nav class="snav" id="snavMain">
   <div class="snav-inner">
     <a href="/" class="snav-logo">AsigurăriCraiova.ro<span>Intermediar Autorizat ISF</span></a>
     <ul class="snav-menu" id="snavMenu">
       <li><a href="/">Acasă</a></li>
       <li><a href="/despre.html">Despre</a></li>
       <li>
-        <a onclick="this.parentElement.classList.toggle('open')">Auto ▾</a>
+        <a href="javascript:void(0)" class="drop-trigger">Auto ▾</a>
         <div class="snav-drop">
           <a href="/rca.html">🚗 RCA</a>
           <a href="/casco.html">🛡️ CASCO</a>
@@ -118,13 +125,13 @@ footer a{color:var(--gold)}
         </div>
       </li>
       <li>
-        <a onclick="this.parentElement.classList.toggle('open')">Locuință ▾</a>
+        <a href="javascript:void(0)" class="drop-trigger">Locuință ▾</a>
         <div class="snav-drop">
           <a href="/locuinta.html">🏠 Locuință + PAD</a>
         </div>
       </li>
       <li>
-        <a onclick="this.parentElement.classList.toggle('open')">Protecție ▾</a>
+        <a href="javascript:void(0)" class="drop-trigger">Protecție ▾</a>
         <div class="snav-drop">
           <span class="dlbl">Persoane</span>
           <a href="/calatorie.html">✈️ Călătorie / Travel</a>
@@ -137,7 +144,7 @@ footer a{color:var(--gold)}
         </div>
       </li>
       <li>
-        <a onclick="this.parentElement.classList.toggle('open')">Investiție ▾</a>
+        <a href="javascript:void(0)" class="drop-trigger">Investiție ▾</a>
         <div class="snav-drop">
           <a href="/pensie.html">💰 Pensie Privată Pilon III</a>
           <a href="/economisire.html">🎓 Economisire Copii</a>
@@ -145,7 +152,7 @@ footer a{color:var(--gold)}
         </div>
       </li>
       <li>
-        <a onclick="this.parentElement.classList.toggle('open')">Altele ▾</a>
+        <a href="javascript:void(0)" class="drop-trigger">Altele ▾</a>
         <div class="snav-drop">
           <a href="/fotovoltaice.html">☀️ Fotovoltaice</a>
           <a href="/imm.html">🏢 IMM / Firme</a>
@@ -157,17 +164,60 @@ footer a{color:var(--gold)}
       <li><a href="/calculator-rca.html" class="calc-nav">🧮 Calculator RCA</a></li>
       <li><a href="/contact.html" class="cta-nav">📞 Contact</a></li>
     </ul>
-    <button class="snav-ham" onclick="document.getElementById('snavMenu').classList.toggle('open')" aria-label="Meniu">
+    <button class="snav-ham" id="snavHam" aria-label="Meniu">
       <span></span><span></span><span></span>
     </button>
   </div>
 </nav>
 <script>
-// Close mobile nav when clicking a direct link
-document.querySelectorAll('.snav-menu > li > a[href]').forEach(a => {
-  a.addEventListener('click', () => document.getElementById('snavMenu').classList.remove('open'));
-});
+(function(){
+  var ham = document.getElementById('snavHam');
+  var menu = document.getElementById('snavMenu');
+  if(!ham || !menu) return;
+
+  // Hamburger toggle
+  ham.addEventListener('click', function(e){
+    e.stopPropagation();
+    menu.classList.toggle('open');
+  });
+
+  // Mobile dropdown toggles — works on iOS, Android, Windows
+  var triggers = document.querySelectorAll('.drop-trigger');
+  triggers.forEach(function(trigger){
+    trigger.addEventListener('click', function(e){
+      if(window.innerWidth <= 900){
+        e.preventDefault();
+        e.stopPropagation();
+        var li = this.parentElement;
+        var isOpen = li.classList.contains('mob-open');
+        // Close all others
+        document.querySelectorAll('.snav-menu > li').forEach(function(l){ l.classList.remove('mob-open'); });
+        if(!isOpen) li.classList.add('mob-open');
+      }
+    });
+  });
+
+  // Close menu on nav link click (mobile)
+  document.querySelectorAll('.snav-menu a[href]:not(.drop-trigger)').forEach(function(a){
+    a.addEventListener('click', function(){
+      menu.classList.remove('open');
+      document.querySelectorAll('.snav-menu > li').forEach(function(l){ l.classList.remove('mob-open'); });
+    });
+  });
+
+  // Close menu when clicking outside
+  document.addEventListener('click', function(e){
+    if(!e.target.closest('.snav')){
+      menu.classList.remove('open');
+    }
+  });
+})();
 </script>
+
+
+
+
+
 
 <div class="ah">
   <div class="ahi">
