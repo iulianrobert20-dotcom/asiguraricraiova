@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Politică de Confidențialitate GDPR | AsigurăriCraiova.ro</title>
+<meta name="description" content="Politica de confidențialitate și protecția datelor personale — AsigurăriCraiova.ro, Robert Iulian Stoica, intermediar autorizat în asigurări Craiova.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://asiguraricraiova.ro/gdpr.html">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Q023X256PZ"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-Q023X256PZ');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0d1f3c;--navy2:#162d52;--navy3:#081629;
+  --gold:#c9a84c;--gold2:#e8c97a;
+  --gray:#6b7280;--gray2:#f1f3f7;--cream:#f8f6f1;
+  --white:#fff;--text:#1a2035;
+  --r:12px;--shadow:0 4px 24px rgba(13,31,60,.10);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'DM Sans',sans-serif;color:var(--text);background:var(--white);line-height:1.7}
+h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:700}
+a{color:var(--gold);text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* NAV */
+nav{background:var(--navy);padding:0 24px;height:62px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 2px 16px rgba(0,0,0,.3)}
+.logo{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:700;color:#fff;text-decoration:none}
+.logo span{color:var(--gold);font-size:.62rem;display:block;letter-spacing:.1em;text-transform:uppercase;font-family:'DM Sans',sans-serif}
+.nav-back{color:rgba(255,255,255,.75);font-size:.82rem;display:flex;align-items:center;gap:6px;text-decoration:none;transition:.2s}
+.nav-back:hover{color:#fff;text-decoration:none}
+
+/* HEADER */
+.page-header{background:linear-gradient(135deg,var(--navy3),var(--navy));padding:52px 24px 40px;text-align:center}
+.page-header h1{font-size:2.4rem;color:#fff;margin-bottom:10px}
+.page-header p{color:rgba(255,255,255,.6);font-size:.92rem;max-width:580px;margin:0 auto}
+.updated-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(201,168,76,.15);border:1px solid rgba(201,168,76,.3);color:var(--gold);font-size:.7rem;font-weight:600;padding:5px 12px;border-radius:100px;margin-top:14px}
+
+/* MAIN */
+.main{max-width:800px;margin:0 auto;padding:40px 24px 80px}
+
+/* TOC */
+.toc{background:var(--cream);border-radius:var(--r);padding:24px 28px;margin-bottom:36px;border-left:4px solid var(--gold)}
+.toc h3{font-size:1rem;color:var(--navy);margin-bottom:14px}
+.toc ol{padding-left:18px}
+.toc li{font-size:.83rem;color:var(--gray);margin-bottom:6px}
+.toc li a{color:var(--navy);font-weight:500}
+.toc li a:hover{color:var(--gold)}
+
+/* SECTIONS */
+.gdpr-section{margin-bottom:40px;padding-top:8px}
+.gdpr-section h2{font-size:1.45rem;color:var(--navy);margin-bottom:16px;padding-bottom:8px;border-bottom:2px solid var(--gray2);display:flex;align-items:center;gap:10px}
+.gdpr-section h3{font-size:1.05rem;color:var(--navy);margin:20px 0 10px;font-family:'DM Sans',sans-serif;font-weight:600}
+.gdpr-section p{color:var(--gray);font-size:.88rem;margin-bottom:12px;line-height:1.8}
+.gdpr-section ul,.gdpr-section ol{color:var(--gray);font-size:.88rem;padding-left:20px;margin-bottom:12px}
+.gdpr-section li{margin-bottom:6px;line-height:1.7}
+.gdpr-section strong{color:var(--text)}
+
+/* INFO BOX */
+.info-box{background:var(--cream);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;padding:14px 18px;margin:16px 0;font-size:.85rem;color:var(--text)}
+.info-box strong{color:var(--navy)}
+
+/* TABLE */
+.data-table{width:100%;border-collapse:collapse;margin:16px 0;font-size:.84rem}
+.data-table th{background:var(--navy);color:#fff;padding:10px 14px;text-align:left;font-weight:600;font-family:'DM Sans',sans-serif;font-size:.78rem;letter-spacing:.04em}
+.data-table td{padding:10px 14px;border-bottom:1px solid #e8ecf3;color:var(--gray);vertical-align:top}
+.data-table tr:hover td{background:var(--cream)}
+
+/* CONTACT BOX */
+.contact-box{background:linear-gradient(135deg,var(--navy3),var(--navy));border-radius:var(--r);padding:28px;text-align:center;margin-top:32px}
+.contact-box h3{font-size:1.3rem;color:#fff;margin-bottom:10px}
+.contact-box p{color:rgba(255,255,255,.6);font-size:.85rem;margin-bottom:20px}
+.contact-links{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.contact-link{display:inline-flex;align-items:center;gap:7px;padding:10px 18px;border-radius:8px;font-size:.85rem;font-weight:600;text-decoration:none;transition:.2s}
+.contact-link:hover{text-decoration:none;transform:translateY(-1px)}
+.cl-wa{background:#25d366;color:#fff}
+.cl-email{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.2)}
+
+/* FOOTER */
+footer{background:var(--navy3);color:rgba(255,255,255,.5);padding:24px;text-align:center;font-size:.75rem;line-height:1.7}
+footer strong{color:rgba(255,255,255,.75)}
+footer a{color:var(--gold)}
+
+/* FLOATING WA */
+.fwa-wrap{position:fixed;bottom:24px;right:24px;z-index:200;display:flex;align-items:center;gap:10px}
+.fwa-lbl{position:relative;background:#fff;color:var(--navy);font-size:.78rem;font-weight:700;padding:7px 13px;border-radius:20px;box-shadow:0 4px 16px rgba(0,0,0,.15);opacity:0;transform:translateX(10px);transition:.3s;pointer-events:none;white-space:nowrap}
+.fwa-lbl::after{content:'';position:absolute;right:-6px;top:50%;transform:translateY(-50%);border:6px solid transparent;border-left-color:#fff;border-right:0}
+.fwa-wrap:hover .fwa-lbl{opacity:1;transform:translateX(0)}
+.fwa{position:relative;background:linear-gradient(145deg,#25d366,#128c7e);width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 24px rgba(37,211,102,.5);text-decoration:none;transition:.25s;flex-shrink:0}
+.fwa:hover{transform:scale(1.1);text-decoration:none}
+.fwa-ring{position:absolute;inset:0;border-radius:50%;animation:ring 2.4s ease-out infinite}
+.fwa-ring:nth-child(2){animation-delay:.8s}
+.fwa-ring:nth-child(3){animation-delay:1.6s}
+@keyframes ring{0%{box-shadow:0 0 0 0 rgba(37,211,102,.7)}70%{box-shadow:0 0 0 18px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+
+@media(max-width:640px){.page-header h1{font-size:1.8rem}.data-table{font-size:.78rem}}
+</style>
+
+<style id="shared-nav-css">
+:root{--navy:#0d1f3c;--gold:#c9a84c;--gold2:#e8c97a}
+.snav{background:var(--navy);position:sticky;top:0;z-index:1000;box-shadow:0 2px 16px rgba(0,0,0,.3)}
+.snav-inner{max-width:1400px;margin:0 auto;padding:0 20px;height:62px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.snav-logo{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.15rem;font-weight:700;color:#fff;text-decoration:none;line-height:1.1;flex-shrink:0}
+.snav-logo span{color:var(--gold);font-size:.58rem;display:block;letter-spacing:.1em;text-transform:uppercase;font-family:'DM Sans',sans-serif}
+.snav-menu{display:flex;align-items:center;gap:2px;list-style:none;flex-wrap:nowrap}
+.snav-menu > li{position:relative}
+.snav-menu > li > a{color:rgba(255,255,255,.82);font-size:.78rem;font-family:'DM Sans',sans-serif;padding:8px 10px;border-radius:6px;cursor:pointer;white-space:nowrap;display:block;text-decoration:none;transition:.2s}
+.snav-menu > li > a:hover{color:#fff;background:rgba(255,255,255,.1)}
+.snav-menu > li > a.cta-nav{background:var(--gold);color:var(--navy)!important;font-weight:700;padding:8px 16px}
+.snav-menu > li > a.cta-nav:hover{background:var(--gold2)}
+.snav-menu > li > a.calc-nav{color:var(--gold)!important;font-weight:600}
+.snav-drop{display:none;position:absolute;top:calc(100% + 4px);left:0;background:#fff;border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,.18);min-width:220px;padding:8px;z-index:2000;border:1px solid #e8ecf3}
+.snav-menu > li:hover .snav-drop{display:block}
+.snav-drop a{display:block;padding:8px 12px;font-size:.82rem;font-family:'DM Sans',sans-serif;color:#1a2035;border-radius:6px;text-decoration:none;transition:.15s;white-space:nowrap}
+.snav-drop a:hover{background:#f1f3f7;color:var(--navy)}
+.snav-drop .dlbl{font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#9ca3af;padding:8px 12px 4px;display:block}
+.snav-ham{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;border:none;background:none}
+.snav-ham span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:.3s}
+@media(max-width:900px){
+  .snav-menu{display:none;position:fixed;top:62px;left:0;right:0;bottom:0;background:var(--navy);flex-direction:column;align-items:stretch;padding:16px;overflow-y:auto;gap:2px}
+  .snav-menu.open{display:flex}
+  .snav-menu > li > a{padding:12px 16px;font-size:.9rem}
+  .snav-drop{display:none!important;position:static;box-shadow:none;border:none;background:rgba(255,255,255,.06);border-radius:8px;margin:4px 0 4px 12px;padding:4px}
+  .snav-menu > li.open .snav-drop{display:block!important}
+  .snav-drop a{color:rgba(255,255,255,.8);padding:8px 12px}
+  .snav-drop a:hover{background:rgba(255,255,255,.1);color:#fff}
+  .snav-drop .dlbl{color:rgba(255,255,255,.4)}
+  .snav-ham{display:flex}
+}
+</style>
+
+</head>
+<body>
+
+<nav class="snav">
+  <div class="snav-inner">
+    <a href="/" class="snav-logo">AsigurăriCraiova.ro<span>Intermediar Autorizat ISF</span></a>
+    <ul class="snav-menu" id="snavMenu">
+      <li><a href="/">Acasă</a></li>
+      <li><a href="/despre.html">Despre</a></li>
+      <li>
+        <a onclick="this.parentElement.classList.toggle('open')">Auto ▾</a>
+        <div class="snav-drop">
+          <a href="/rca.html">🚗 RCA</a>
+          <a href="/casco.html">🛡️ CASCO</a>
+          <a href="/transport.html">🚛 Transport CMR / ROTR</a>
+        </div>
+      </li>
+      <li>
+        <a onclick="this.parentElement.classList.toggle('open')">Locuință ▾</a>
+        <div class="snav-drop">
+          <a href="/locuinta.html">🏠 Locuință + PAD</a>
+        </div>
+      </li>
+      <li>
+        <a onclick="this.parentElement.classList.toggle('open')">Protecție ▾</a>
+        <div class="snav-drop">
+          <span class="dlbl">Persoane</span>
+          <a href="/calatorie.html">✈️ Călătorie / Travel</a>
+          <a href="/sanatate.html">💊 Sănătate</a>
+          <a href="/accident.html">⚡ Accidente Persoane</a>
+          <a href="/viata.html">❤️ Viață</a>
+          <a href="/malpraxis.html">🏥 Malpraxis</a>
+          <span class="dlbl">Răspundere Civilă</span>
+          <a href="/civile.html">⚖️ Civile & Profesionale</a>
+        </div>
+      </li>
+      <li>
+        <a onclick="this.parentElement.classList.toggle('open')">Investiție ▾</a>
+        <div class="snav-drop">
+          <a href="/pensie.html">💰 Pensie Privată Pilon III</a>
+          <a href="/economisire.html">🎓 Economisire Copii</a>
+          <a href="/unitlinked.html">📈 Unit-Linked</a>
+        </div>
+      </li>
+      <li>
+        <a onclick="this.parentElement.classList.toggle('open')">Altele ▾</a>
+        <div class="snav-drop">
+          <a href="/fotovoltaice.html">☀️ Fotovoltaice</a>
+          <a href="/imm.html">🏢 IMM / Firme</a>
+          <a href="/bike.html">🚲 Biciclete</a>
+          <a href="/firme.html">🏢 Asigurări Firme</a>
+        </div>
+      </li>
+      <li><a href="/blog.html">Blog</a></li>
+      <li><a href="/calculator-rca.html" class="calc-nav">🧮 Calculator RCA</a></li>
+      <li><a href="/contact.html" class="cta-nav">📞 Contact</a></li>
+    </ul>
+    <button class="snav-ham" onclick="document.getElementById('snavMenu').classList.toggle('open')" aria-label="Meniu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<script>
+// Close mobile nav when clicking a direct link
+document.querySelectorAll('.snav-menu > li > a[href]').forEach(a => {
+  a.addEventListener('click', () => document.getElementById('snavMenu').classList.remove('open'));
+});
+</script>
+
+
+<div class="page-header">
+  <h1>Politică de Confidențialitate</h1>
+  <p>Cum colectăm, folosim și protejăm datele tale personale</p>
+  <div class="updated-badge">📅 Ultima actualizare: Iunie 2026</div>
+</div>
+
+<div class="main">
+
+  <!-- TOC -->
+  <div class="toc">
+    <h3>📋 Cuprins</h3>
+    <ol>
+      <li><a href="#operator">Identitatea operatorului de date</a></li>
+      <li><a href="#date-colectate">Ce date personale colectăm</a></li>
+      <li><a href="#scopuri">Scopurile și temeiul legal al prelucrării</a></li>
+      <li><a href="#destinatari">Cui transmitem datele tale</a></li>
+      <li><a href="#retentie">Cât timp păstrăm datele</a></li>
+      <li><a href="#drepturi">Drepturile tale</a></li>
+      <li><a href="#cookies">Cookie-uri și analytics</a></li>
+      <li><a href="#securitate">Securitatea datelor</a></li>
+      <li><a href="#contact-gdpr">Contact pentru solicitări GDPR</a></li>
+    </ol>
+  </div>
+
+  <!-- 1. OPERATOR -->
+  <div class="gdpr-section" id="operator">
+    <h2>1. Identitatea operatorului de date</h2>
+    <div class="info-box">
+      <strong>Operator:</strong> Robert Iulian Stoica<br>
+      <strong>Calitate:</strong> Intermediar în asigurări și/sau reasigurări<br>
+      <strong>Certificat ISF:</strong> Seria PPIi NR: 256558 (valabil 31.03.2026–31.03.2029)<br>
+      <strong>Partener autorizat:</strong> Destine Broker de Asigurare, înscris în Registrul ASF<br>
+      <strong>Locație:</strong> Craiova, Dolj, România<br>
+      <strong>Email:</strong> contact@asiguraricraiova.ro<br>
+      <strong>Telefon:</strong> 0774 171 971<br>
+      <strong>Site web:</strong> https://asiguraricraiova.ro
+    </div>
+    <p>Activitatea de prelucrare a datelor personale se desfășoară în conformitate cu <strong>Regulamentul (UE) 2016/679</strong> (GDPR), <strong>Legea nr. 190/2018</strong> privind măsuri de punere în aplicare a GDPR în România și <strong>Legea nr. 236/2018</strong> privind distribuția de asigurări.</p>
+  </div>
+
+  <!-- 2. DATE COLECTATE -->
+  <div class="gdpr-section" id="date-colectate">
+    <h2>2. Ce date personale colectăm</h2>
+    <p>Colectăm doar datele strict necesare pentru furnizarea serviciilor de intermediere în asigurări:</p>
+
+    <h3>2.1 Date furnizate direct de tine</h3>
+    <ul>
+      <li><strong>Date de identificare:</strong> nume, prenume</li>
+      <li><strong>Date de contact:</strong> număr de telefon, adresă de email</li>
+      <li><strong>Date despre vehicul</strong> (pentru RCA/CASCO): marcă, model, an fabricație, putere motor, număr înmatriculare</li>
+      <li><strong>Date despre locuință</strong> (pentru PAD/Facultativă): adresă, tip construcție, suprafață</li>
+      <li><strong>Date profesionale</strong> (pentru Malpraxis): specialitate, loc de muncă</li>
+      <li><strong>Date financiare</strong> (pentru Pensie Pilon III/Unit-Linked): venituri aproximative, obiective financiare</li>
+      <li><strong>Clasa bonus-malus</strong> (pentru RCA): din polița anterioară</li>
+    </ul>
+
+    <h3>2.2 Date colectate automat</h3>
+    <ul>
+      <li><strong>Date tehnice:</strong> adresa IP, tipul browserului, sistemul de operare</li>
+      <li><strong>Date de navigare:</strong> paginile vizitate, durata sesiunii (prin Google Analytics)</li>
+      <li><strong>Cookie-uri:</strong> detaliate în secțiunea 7</li>
+    </ul>
+
+    <div class="info-box">
+      ⚠️ <strong>Nu colectăm</strong> date speciale (sănătate, origine etnică, convingeri religioase sau politice) decât în cazul în care sunt strict necesare pentru un produs de asigurare specific și cu consimțământul tău explicit.
+    </div>
+  </div>
+
+  <!-- 3. SCOPURI -->
+  <div class="gdpr-section" id="scopuri">
+    <h2>3. Scopurile și temeiul legal al prelucrării</h2>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Scop</th>
+          <th>Temei legal (GDPR)</th>
+          <th>Detalii</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Furnizarea ofertelor de asigurare solicitate</td>
+          <td>Art. 6(1)(b) — executarea unui contract</td>
+          <td>Necesar pentru a-ți prezenta oferte comparative</td>
+        </tr>
+        <tr>
+          <td>Emiterea polițelor de asigurare</td>
+          <td>Art. 6(1)(b) — executarea unui contract</td>
+          <td>Obligatoriu pentru încheierea poliței</td>
+        </tr>
+        <tr>
+          <td>Transmiterea datelor către asigurători parteneri</td>
+          <td>Art. 6(1)(b) — executarea unui contract</td>
+          <td>Necesară pentru emiterea poliței</td>
+        </tr>
+        <tr>
+          <td>Respectarea obligațiilor legale (ASF, ANAF)</td>
+          <td>Art. 6(1)(c) — obligație legală</td>
+          <td>Arhivare documente, raportări</td>
+        </tr>
+        <tr>
+          <td>Contactarea ta la solicitarea unei oferte</td>
+          <td>Art. 6(1)(a) — consimțământ</td>
+          <td>Prin formularul de contact sau WhatsApp</td>
+        </tr>
+        <tr>
+          <td>Reminder reînnoire poliță</td>
+          <td>Art. 6(1)(f) — interes legitim</td>
+          <td>Cu opțiunea de dezabonare</td>
+        </tr>
+        <tr>
+          <td>Statistici și îmbunătățirea site-ului</td>
+          <td>Art. 6(1)(a) — consimțământ</td>
+          <td>Google Analytics — anonim</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 4. DESTINATARI -->
+  <div class="gdpr-section" id="destinatari">
+    <h2>4. Cui transmitem datele tale</h2>
+    <p>Datele tale personale pot fi transmise exclusiv către:</p>
+    <ul>
+      <li><strong>Destine Broker de Asigurare</strong> — partenerul autorizat ASF prin care emitem polițele</li>
+      <li><strong>Societățile de asigurare</strong> (Allianz, Generali, Signal Iduna, Omniasig, Grawe, Uniqa etc.) — pentru emiterea poliței solicitate</li>
+      <li><strong>Formspree Inc.</strong> — procesator de formulare online (date transmise prin formularul de contact)</li>
+      <li><strong>Google LLC</strong> — Analytics (date anonimizate de navigare)</li>
+      <li><strong>Autoritatea de Supraveghere Financiară (ASF)</strong> — în cazul solicitărilor legale</li>
+    </ul>
+    <div class="info-box">
+      <strong>Nu vindem, nu închiriem și nu transmitem</strong> datele tale unor terți în scop comercial sau de marketing fără consimțământul tău explicit.
+    </div>
+    <p>Transferurile de date în afara UE (Google Analytics — SUA) se realizează în baza <strong>Clauzelor Contractuale Standard</strong> aprobate de Comisia Europeană.</p>
+  </div>
+
+  <!-- 5. RETENTIE -->
+  <div class="gdpr-section" id="retentie">
+    <h2>5. Cât timp păstrăm datele</h2>
+    <table class="data-table">
+      <thead>
+        <tr><th>Categoria de date</th><th>Perioadă de retenție</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Date din formularul de contact (fără poliță emisă)</td><td>12 luni de la ultima interacțiune</td></tr>
+        <tr><td>Date aferente polițelor emise</td><td>10 ani (obligație legală ASF)</td></tr>
+        <tr><td>Corespondență WhatsApp / email</td><td>3 ani de la ultimul contact</td></tr>
+        <tr><td>Date Google Analytics</td><td>14 luni (configurare standard GA4)</td></tr>
+        <tr><td>Date de facturare (dacă aplicabil)</td><td>10 ani (obligație fiscală)</td></tr>
+      </tbody>
+    </table>
+    <p>La expirarea perioadei de retenție, datele sunt șterse sau anonimizate ireversibil.</p>
+  </div>
+
+  <!-- 6. DREPTURI -->
+  <div class="gdpr-section" id="drepturi">
+    <h2>6. Drepturile tale</h2>
+    <p>Conform GDPR, ai următoarele drepturi cu privire la datele tale personale:</p>
+    <ul>
+      <li><strong>Dreptul de acces (Art. 15)</strong> — poți solicita o copie a datelor pe care le deținem despre tine</li>
+      <li><strong>Dreptul la rectificare (Art. 16)</strong> — poți cere corectarea datelor inexacte sau incomplete</li>
+      <li><strong>Dreptul la ștergere (Art. 17)</strong> — poți cere ștergerea datelor, în limitele obligațiilor legale</li>
+      <li><strong>Dreptul la restricționarea prelucrării (Art. 18)</strong> — poți cere limitarea prelucrării în anumite condiții</li>
+      <li><strong>Dreptul la portabilitate (Art. 20)</strong> — poți primi datele în format structurat, utilizabil</li>
+      <li><strong>Dreptul de opoziție (Art. 21)</strong> — poți te opune prelucrării bazate pe interes legitim</li>
+      <li><strong>Dreptul de retragere a consimțământului</strong> — oricând, fără a afecta legalitatea prelucrărilor anterioare</li>
+    </ul>
+
+    <div class="info-box">
+      📧 <strong>Cum îți exerciți drepturile:</strong> Trimite o solicitare scrisă la <strong>contact@asiguraricraiova.ro</strong> sau pe <strong>WhatsApp: 0774 171 971</strong>. Răspundem în maximum <strong>30 de zile</strong> calendaristice.
+    </div>
+
+    <h3>Dreptul de a depune o plângere</h3>
+    <p>Dacă consideri că drepturile tale au fost încălcate, poți depune o plângere la:</p>
+    <div class="info-box">
+      <strong>Autoritatea Națională de Supraveghere a Prelucrării Datelor cu Caracter Personal (ANSPDCP)</strong><br>
+      Adresă: B-dul G-ral. Gheorghe Magheru 28-30, sector 1, București<br>
+      Email: anspdcp@dataprotection.ro<br>
+      Web: <a href="https://www.dataprotection.ro" target="_blank">www.dataprotection.ro</a>
+    </div>
+  </div>
+
+  <!-- 7. COOKIES -->
+  <div class="gdpr-section" id="cookies">
+    <h2>7. Cookie-uri și Analytics</h2>
+    <h3>Google Analytics (GA4)</h3>
+    <p>Folosim Google Analytics 4 pentru a înțelege cum este utilizat site-ul (pagini vizitate, surse de trafic, dispozitive). Datele sunt anonimizate și nu permit identificarea directă a persoanelor.</p>
+    <table class="data-table">
+      <thead><tr><th>Cookie</th><th>Furnizor</th><th>Scop</th><th>Durată</th></tr></thead>
+      <tbody>
+        <tr><td>_ga</td><td>Google Analytics</td><td>Identificare sesiuni unice</td><td>2 ani</td></tr>
+        <tr><td>_ga_*</td><td>Google Analytics</td><td>Sesiune GA4</td><td>2 ani</td></tr>
+        <tr><td>_gid</td><td>Google Analytics</td><td>Distincție utilizatori</td><td>24 ore</td></tr>
+      </tbody>
+    </table>
+    <p>Poți dezactiva colectarea datelor Google Analytics prin <a href="https://tools.google.com/dlpage/gaoptout" target="_blank">Google Analytics Opt-out Browser Add-on</a>.</p>
+
+    <h3>Cookie-uri esențiale</h3>
+    <p>Site-ul folosește cookie-uri strict necesare pentru funcționarea corectă (sesiune, securitate). Acestea nu pot fi dezactivate.</p>
+  </div>
+
+  <!-- 8. SECURITATE -->
+  <div class="gdpr-section" id="securitate">
+    <h2>8. Securitatea datelor</h2>
+    <p>Implementăm măsuri tehnice și organizatorice adecvate pentru protejarea datelor tale:</p>
+    <ul>
+      <li><strong>HTTPS</strong> — toate comunicațiile sunt criptate (SSL/TLS)</li>
+      <li><strong>Cloudflare</strong> — protecție DDoS, WAF (Web Application Firewall)</li>
+      <li><strong>Formspree</strong> — procesare securizată a formularelor, fără stocare locală</li>
+      <li><strong>Acces restricționat</strong> — datele sunt accesibile doar persoanelor autorizate</li>
+      <li><strong>WhatsApp Business</strong> — comunicații criptate end-to-end</li>
+    </ul>
+    <p>În caz de incident de securitate care afectează datele tale, vei fi notificat conform procedurilor GDPR în maximum 72 de ore de la constatare.</p>
+  </div>
+
+  <!-- 9. CONTACT GDPR -->
+  <div class="gdpr-section" id="contact-gdpr">
+    <h2>9. Contact pentru solicitări GDPR</h2>
+    <p>Pentru orice întrebare sau solicitare legată de prelucrarea datelor tale personale, ne poți contacta prin:</p>
+
+    <div class="contact-box">
+      <h3>Contactează-ne pentru GDPR</h3>
+      <p>Răspundem la orice solicitare în maximum 30 de zile calendaristice</p>
+      <div class="contact-links">
+        <a href="mailto:contact@asiguraricraiova.ro" class="contact-link cl-email">✉️ contact@asiguraricraiova.ro</a>
+        <a href="https://wa.me/40774171971?text=Bună ziua! Am o solicitare GDPR." target="_blank" class="contact-link cl-wa">💬 WhatsApp 0774 171 971</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ACTUALIZARI -->
+  <div class="gdpr-section">
+    <h2>10. Modificări ale Politicii</h2>
+    <p>Ne rezervăm dreptul de a actualiza această politică pentru a reflecta modificări legislative sau operaționale. Data ultimei actualizări este afișată în antetul documentului. Versiunea curentă este întotdeauna disponibilă la adresa <a href="https://asiguraricraiova.ro/gdpr.html">asiguraricraiova.ro/gdpr.html</a>.</p>
+    <p>Continuarea utilizării site-ului după publicarea modificărilor constituie acceptarea noii versiuni a politicii.</p>
+  </div>
+
+</div><!-- /main -->
+
+<footer>
+  <strong>AsigurăriCraiova.ro — Robert Iulian Stoica</strong><br>
+  Intermediar în asigurări, Certificat ISF PPIi NR: 256558 · Agent autorizat Destine Broker de Asigurare (ASF)<br>
+  Activitate conform Legii nr. 236/2018 · contact@asiguraricraiova.ro · 0774 171 971<br><br>
+  <a href="https://asiguraricraiova.ro/">Acasă</a> ·
+  <a href="https://asiguraricraiova.ro/contact.html">Contact</a> ·
+  <a href="https://asiguraricraiova.ro/gdpr.html">Politică Confidențialitate</a>
+</footer>
+
+<!-- Floating WhatsApp -->
+<div class="fwa-wrap">
+  <span class="fwa-lbl">Întrebări GDPR?</span>
+  <a href="https://wa.me/40774171971?text=Bună ziua! Am o întrebare despre politica de confidențialitate." target="_blank" class="fwa" rel="noopener">
+    <div class="fwa-ring"></div><div class="fwa-ring"></div><div class="fwa-ring"></div>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="30" height="30">
+      <path fill="#fff" d="M4.9 43.3l2.7-9.8C5.5 30.7 4.5 27.4 4.5 24 4.5 13.2 13.2 4.5 24 4.5S43.5 13.2 43.5 24 34.8 43.5 24 43.5c-3.3 0-6.4-.9-9.1-2.4L4.9 43.3z"/>
+      <path fill="#fff" d="M33.5 28.6c-.5-.2-2.8-1.4-3.2-1.6-.4-.1-.7-.2-1 .2-.3.5-1.1 1.4-1.4 1.7-.3.3-.5.3-.9.1-.5-.2-2-.7-3.8-2.3-1.4-1.2-2.4-2.8-2.6-3.2-.3-.5 0-.7.2-.9.2-.2.5-.5.7-.8.2-.3.3-.5.4-.8.1-.3.1-.6-.1-.8-.2-.3-.9-2.3-1.3-3.1-.4-.8-.7-.7-1-.7h-.8c-.3 0-.7.1-1.1.5-.4.4-1.4 1.4-1.4 3.4s1.5 3.9 1.7 4.2c.2.3 2.9 4.5 7.1 6.3 1 .4 1.8.7 2.4.9 1 .3 2 .3 2.7.2.8-.1 2.5-1 2.9-2 .3-.9.3-1.8.2-2-.2-.2-.4-.3-.9-.5z"/>
+    </svg>
+  </a>
+</div>
+
+</body>
+</html>
