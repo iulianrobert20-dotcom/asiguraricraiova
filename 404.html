@@ -37,10 +37,34 @@
     '/contact': 'contact'
   };
 
-  var pageId = pageMap[path] || 'home';
-  
-  // Redirecționează la homepage cu parametru de pagină
-  window.location.replace('/?page=' + pageId);
+  // Redirecturi directe către pagini standalone (evită SPA)
+  var directRedirects = {
+    '/blog/asigurare-calatorie-schengen': '/calatorie.html',
+    '/blog/asigurare-calatorie': '/calatorie.html',
+    '/blog/rca': '/rca.html',
+    '/blog/malpraxis': '/malpraxis.html',
+    '/blog/pad': '/locuinta.html',
+    '/blog/pensie': '/pensie.html',
+    '/asigurare-rca': '/rca.html',
+    '/asigurare-malpraxis': '/malpraxis.html',
+    '/asigurare-casco': '/casco.html',
+    '/asigurare-calatorie': '/calatorie.html',
+    '/asigurare-sanatate': '/sanatate.html',
+    '/asigurare-viata': '/viata.html',
+    '/asigurare-biciclete': '/bike.html',
+    '/asigurare-pensie': '/pensie.html',
+    '/rca-craiova': '/rca.html',
+    '/malpraxis-craiova': '/malpraxis.html',
+    '/casco-craiova': '/casco.html'
+  };
+
+  // Verifică mai întâi redirecturile directe
+  if (directRedirects[path]) {
+    window.location.replace(directRedirects[path]);
+  } else {
+    var pageId = pageMap[path] || 'home';
+    window.location.replace('/?page=' + pageId);
+  }
 </script>
 <meta http-equiv="refresh" content="0;url=/">
 
