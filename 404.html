@@ -12,58 +12,59 @@
   var hash = window.location.hash;
   
   // Map URL paths to page IDs
-  var pageMap = {
-    '/rca': 'rca',
-    '/casco': 'casco',
-    '/transport-cmr-rotr': 'transport',
-    '/asigurare-locuinta-pad': 'pad',
-    '/locuinta-facultativa': 'locuinta',
-    '/asigurare-calatorie': 'calatorie',
-    '/asigurare-sanatate': 'sanatate',
-    '/accidente-persoane': 'accident',
-    '/asigurare-viata': 'viata',
-    '/malpraxis': 'malpraxis',
-    '/raspundere-civila': 'civile',
-    '/pensie-privata-pilon-3': 'pensie',
-    '/economisire-copii': 'economisire',
-    '/unit-linked': 'unitlinked',
-    '/asigurare-panouri-fotovoltaice': 'fotovoltaice',
-    '/asigurari-imm-firme': 'imm',
-    '/asigurare-biciclete': 'bike',
-    '/despre': 'despre',
-    '/persoane-fizice': 'persoane-fizice',
-    '/firme': 'firme',
-    '/blog': 'blog',
-    '/contact': 'contact'
-  };
-
-  // Redirecturi directe către pagini standalone (evită SPA)
+  // Toate redirecturile directe catre paginile .html corecte
   var directRedirects = {
+    // URL-uri vechi SPA fara .html -> pagini standalone corecte
+    '/rca': '/rca.html',
+    '/casco': '/casco.html',
+    '/malpraxis': '/malpraxis.html',
+    '/contact': '/contact.html',
+    '/firme': '/firme.html',
+    '/blog': '/blog.html',
+    '/despre': '/despre.html',
+    '/transport-cmr-rotr': '/transport.html',
+    '/asigurare-locuinta-pad': '/locuinta.html',
+    '/locuinta-facultativa': '/locuinta.html',
+    '/asigurare-calatorie': '/calatorie.html',
+    '/asigurare-sanatate': '/sanatate.html',
+    '/accidente-persoane': '/accident.html',
+    '/asigurare-viata': '/viata.html',
+    '/raspundere-civila': '/civile.html',
+    '/pensie-privata-pilon-3': '/pensie.html',
+    '/economisire-copii': '/economisire.html',
+    '/unit-linked': '/unitlinked.html',
+    '/asigurare-panouri-fotovoltaice': '/fotovoltaice.html',
+    '/asigurari-imm-firme': '/imm.html',
+    '/asigurare-biciclete': '/bike.html',
+    '/persoane-fizice': '/',
+    // URL-uri blog vechi
     '/blog/asigurare-calatorie-schengen': '/calatorie.html',
     '/blog/asigurare-calatorie': '/calatorie.html',
     '/blog/rca': '/rca.html',
     '/blog/malpraxis': '/malpraxis.html',
     '/blog/pad': '/locuinta.html',
     '/blog/pensie': '/pensie.html',
+    // URL-uri cu cuvinte cheie
     '/asigurare-rca': '/rca.html',
     '/asigurare-malpraxis': '/malpraxis.html',
     '/asigurare-casco': '/casco.html',
-    '/asigurare-calatorie': '/calatorie.html',
-    '/asigurare-sanatate': '/sanatate.html',
     '/asigurare-viata': '/viata.html',
     '/asigurare-biciclete': '/bike.html',
     '/asigurare-pensie': '/pensie.html',
     '/rca-craiova': '/rca.html',
     '/malpraxis-craiova': '/malpraxis.html',
-    '/casco-craiova': '/casco.html'
+    '/casco-craiova': '/casco.html',
+    // Pagina animale de companie
+    '/animale': '/animale.html',
+    '/asigurare-animale': '/animale.html',
+    '/pet-protect': '/animale.html'
   };
 
-  // Verifică mai întâi redirecturile directe
   if (directRedirects[path]) {
     window.location.replace(directRedirects[path]);
   } else {
-    var pageId = pageMap[path] || 'home';
-    window.location.replace('/?page=' + pageId);
+    // Fallback - trimite la homepage
+    window.location.replace('/');
   }
 </script>
 <meta http-equiv="refresh" content="0;url=/">
