@@ -11,6 +11,7 @@
   gtag('config', 'G-Q023X256PZ');
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
 
 <!-- ── PRIMARY SEO ── -->
 <title>Asigurări Craiova | RCA, CASCO, Locuință, Viață, Malpraxis — Robert Stoica</title>
@@ -401,6 +402,9 @@ nav.open .nav-menu .drop-menu{position:static;box-shadow:none;border:none;backgr
 .nav-right a:hover{color:#fff;background:rgba(255,255,255,.1)}
 .nav-right a.cta{background:var(--gold);color:var(--navy)!important;font-weight:700;padding:7px 14px}
 .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:12px;height:62px;padding:0 20px}
+
+/* iOS: previne zoom automat la focus pe campuri (font >=16px) */
+@media (max-width:768px){input,select,textarea{font-size:16px !important}}
 </style>
 
 
@@ -1840,20 +1844,8 @@ function showPage(id) {
     window.scrollTo({top:0, behavior:'smooth'});
   }
   document.getElementById('mainNav').classList.remove('open');
-  // Actualizează URL fără reload
-  const urlMap = {
-    'home':'/', 'despre':'/despre', 'rca':'/rca', 'casco':'/casco',
-    'transport':'/transport-cmr-rotr', 'pad':'/asigurare-locuinta-pad',
-    'locuinta':'/locuinta-facultativa', 'calatorie':'/asigurare-calatorie',
-    'sanatate':'/asigurare-sanatate', 'accident':'/accidente-persoane',
-    'viata':'/asigurare-viata', 'malpraxis':'/malpraxis',
-    'civile':'/raspundere-civila', 'pensie':'/pensie-privata-pilon-3',
-    'economisire':'/economisire-copii', 'unitlinked':'/unit-linked',
-    'fotovoltaice':'/asigurare-panouri-fotovoltaice', 'imm':'/asigurari-imm-firme',
-    'bike':'/asigurare-biciclete', 'persoane-fizice':'/persoane-fizice',
-    'firme':'/firme', 'blog':'/blog', 'contact':'/contact'
-  };
-  if (urlMap[id]) history.pushState({page:id}, '', urlMap[id]);
+  // NOTĂ: Nu mai modificăm URL-ul (fără pushState). Paginile reale sunt
+  // fișiere standalone .html, accesate prin <a href="pagina.html">.
 }
 
 // La încărcarea paginii — citește parametrul ?page= sau URL-ul curent
@@ -1866,20 +1858,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
   const params = new URLSearchParams(window.location.search);
   const pageParam = params.get('page');
-  const pathMap = {
-    '/rca':'rca', '/casco':'casco', '/transport-cmr-rotr':'transport',
-    '/asigurare-locuinta-pad':'pad', '/locuinta-facultativa':'locuinta',
-    '/asigurare-calatorie':'calatorie', '/asigurare-sanatate':'sanatate',
-    '/accidente-persoane':'accident', '/asigurare-viata':'viata',
-    '/malpraxis':'malpraxis', '/raspundere-civila':'civile',
-    '/pensie-privata-pilon-3':'pensie', '/economisire-copii':'economisire',
-    '/unit-linked':'unitlinked', '/asigurare-panouri-fotovoltaice':'fotovoltaice',
-    '/asigurari-imm-firme':'imm', '/asigurare-biciclete':'bike',
-    '/despre':'despre', '/persoane-fizice':'persoane-fizice',
-    '/firme':'firme', '/blog':'blog', '/contact':'contact'
-  };
-  const pathPage = pathMap[window.location.pathname];
-  const startPage = pageParam || pathPage || 'home';
+  const startPage = pageParam || 'home';
   
   // Afișează pagina corectă
   const target = document.getElementById('page-' + startPage);

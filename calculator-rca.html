@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q023X256PZ"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-Q023X256PZ');</script>
@@ -171,6 +172,9 @@ footer strong{color:rgba(255,255,255,.75)}
 .field-error{font-size:.72rem;color:var(--red);margin-top:4px;display:none}
 .field-error.show{display:block}
 .has-error select,.has-error input{border-color:var(--red)!important}
+
+/* iOS: previne zoom automat la focus pe campuri (font >=16px) */
+@media (max-width:768px){input,select,textarea{font-size:16px !important}}
 </style>
 
 
