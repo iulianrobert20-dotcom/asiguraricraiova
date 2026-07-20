@@ -7,8 +7,12 @@
 <title>Asigurare CASCO Craiova 2026 | AsigurăriCraiova.ro</title>
 <meta name="description" content="CASCO în Craiova la cel mai bun preț. Compar ofertele tuturor companiilor și-ți explic ce acoperă fiecare. Consultanță gratuită: 0774 171 971.">
 <meta name="robots" content="index, follow">
+<meta name="geo.region" content="RO-DJ">
+<meta name="geo.placename" content="Craiova">
+<meta name="geo.position" content="44.3167;23.8103">
+<meta name="ICBM" content="44.3167, 23.8103">
 <link rel="canonical" href="https://asiguraricraiova.ro/casco.html">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"Asigurare CASCO Craiova","provider":{"@type":"LocalBusiness","name":"AsigurăriCraiova.ro","telephone":"+40774171971","address":{"@type":"PostalAddress","addressLocality":"Craiova","addressCountry":"RO"}},"areaServed":"Craiova","url":"https://asiguraricraiova.ro/casco.html"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"Asigurare CASCO Craiova","provider":{"@type":"LocalBusiness","name":"AsigurăriCraiova.ro","telephone":"+40774171971","address":{"@type":"PostalAddress","streetAddress":"Strada Înfrățirii","addressLocality":"Craiova","postalCode":"200526","addressRegion":"Dolj","addressCountry":"RO"}},"areaServed":"Craiova","url":"https://asiguraricraiova.ro/casco.html"}</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q023X256PZ"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-Q023X256PZ');</script>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -119,6 +123,7 @@ footer a{color:var(--gold)}
           <a href="/rca.html">🚗 RCA</a>
           <a href="/casco.html">🛡️ CASCO</a>
           <a href="/transport.html">🚛 Transport CMR / ROTR</a>
+          <a href="/despagubiri-accidente.html">🚑 Despăgubiri Accidente</a>
         </div>
       </li>
       <li>
@@ -265,5 +270,15 @@ footer a{color:var(--gold)}
     <path fill="#fff" d="M33.5 28.6c-.5-.2-2.8-1.4-3.2-1.6-.4-.1-.7-.2-1 .2-.3.5-1.1 1.4-1.4 1.7-.3.3-.5.3-.9.1-.5-.2-2-.7-3.8-2.3-1.4-1.2-2.4-2.8-2.6-3.2-.3-.5 0-.7.2-.9.2-.2.5-.5.7-.8.2-.3.3-.5.4-.8.1-.3.1-.6-.1-.8-.2-.3-.9-2.3-1.3-3.1-.4-.8-.7-.7-1-.7h-.8c-.3 0-.7.1-1.1.5-.4.4-1.4 1.4-1.4 3.4s1.5 3.9 1.7 4.2c.2.3 2.9 4.5 7.1 6.3 1 .4 1.8.7 2.4.9 1 .3 2 .3 2.7.2.8-.1 2.5-1 2.9-2 .3-.9.3-1.8.2-2-.2-.2-.4-.3-.9-.5z"/>
   </svg>
 </a>
+<script>
+/* GA4 tracking pentru click-uri WhatsApp și telefon */
+document.addEventListener('click', function(e){
+  if (typeof gtag !== 'function') return;
+  var wa = e.target.closest('a[href*="wa.me/"]');
+  if (wa) { gtag('event','whatsapp_click',{event_category:'Contact',event_label:(document.title||'').slice(0,90)}); return; }
+  var tel = e.target.closest('a[href^="tel:"]');
+  if (tel) { gtag('event','phone_click',{event_category:'Contact',event_label:(document.title||'').slice(0,90)}); }
+}, true);
+</script>
 </body>
 </html>

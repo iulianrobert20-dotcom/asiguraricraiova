@@ -7,6 +7,10 @@
 <title>Politică de Confidențialitate GDPR | AsigurăriCraiova.ro</title>
 <meta name="description" content="Politica de confidențialitate și protecția datelor personale — AsigurăriCraiova.ro, Robert Iulian Stoica, intermediar autorizat în asigurări Craiova.">
 <meta name="robots" content="index, follow">
+<meta name="geo.region" content="RO-DJ">
+<meta name="geo.placename" content="Craiova">
+<meta name="geo.position" content="44.3167;23.8103">
+<meta name="ICBM" content="44.3167, 23.8103">
 <link rel="canonical" href="https://asiguraricraiova.ro/gdpr.html">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q023X256PZ"></script>
@@ -155,6 +159,7 @@ footer a{color:var(--gold)}
           <a href="/rca.html">🚗 RCA</a>
           <a href="/casco.html">🛡️ CASCO</a>
           <a href="/transport.html">🚛 Transport CMR / ROTR</a>
+          <a href="/despagubiri-accidente.html">🚑 Despăgubiri Accidente</a>
         </div>
       </li>
       <li>
@@ -513,5 +518,15 @@ footer a{color:var(--gold)}
   </a>
 </div>
 
+<script>
+/* GA4 tracking pentru click-uri WhatsApp și telefon */
+document.addEventListener('click', function(e){
+  if (typeof gtag !== 'function') return;
+  var wa = e.target.closest('a[href*="wa.me/"]');
+  if (wa) { gtag('event','whatsapp_click',{event_category:'Contact',event_label:(document.title||'').slice(0,90)}); return; }
+  var tel = e.target.closest('a[href^="tel:"]');
+  if (tel) { gtag('event','phone_click',{event_category:'Contact',event_label:(document.title||'').slice(0,90)}); }
+}, true);
+</script>
 </body>
 </html>

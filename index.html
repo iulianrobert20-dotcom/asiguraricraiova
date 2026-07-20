@@ -22,8 +22,8 @@
 <meta name="language" content="Romanian">
 <meta name="geo.region" content="RO-DJ">
 <meta name="geo.placename" content="Craiova">
-<meta name="geo.position" content="44.3302;23.7949">
-<meta name="ICBM" content="44.3302, 23.7949">
+<meta name="geo.position" content="44.3167;23.8103">
+<meta name="ICBM" content="44.3167, 23.8103">
 <link rel="canonical" href="https://asiguraricraiova.ro/">
 
 <!-- ── OPEN GRAPH (Facebook, LinkedIn) ── -->
@@ -55,7 +55,9 @@
       "email": "contact@asiguraricraiova.ro",
       "address": {
         "@type": "PostalAddress",
+        "streetAddress": "Strada Înfrățirii",
         "addressLocality": "Craiova",
+        "postalCode": "200526",
         "addressRegion": "Dolj",
         "addressCountry": "RO"
       },
@@ -461,6 +463,7 @@ nav.open .nav-menu .drop-menu{position:static;box-shadow:none;border:none;backgr
           <a href="/rca.html">🚗 RCA</a>
           <a href="/casco.html">🛡️ CASCO</a>
           <a href="/transport.html">🚛 Transport CMR / ROTR</a>
+          <a href="/despagubiri-accidente.html">🚑 Despăgubiri Accidente</a>
         </div>
       </li>
       <li>
@@ -1924,6 +1927,16 @@ document.querySelectorAll('.drop-menu a').forEach(a => {
     document.getElementById('mainNav').classList.remove('open');
   });
 });
+</script>
+<script>
+/* GA4 tracking pentru click-uri WhatsApp și telefon */
+document.addEventListener('click', function(e){
+  if (typeof gtag !== 'function') return;
+  var wa = e.target.closest('a[href*="wa.me/"]');
+  if (wa) { gtag('event','whatsapp_click',{event_category:'Contact',event_label:(document.title||'').slice(0,90)}); return; }
+  var tel = e.target.closest('a[href^="tel:"]');
+  if (tel) { gtag('event','phone_click',{event_category:'Contact',event_label:(document.title||'').slice(0,90)}); }
+}, true);
 </script>
 </body>
 </html>

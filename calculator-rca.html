@@ -10,6 +10,10 @@
 <title>Calculator RCA 2026 — Tarif Referință ASF + Verificare BAAR | AsigurăriCraiova.ro</title>
 <meta name="description" content="Calculator RCA gratuit bazat pe tarifele oficiale ASF mai 2026. Verifică dacă te califici pentru BAAR (risc ridicat) și primește ofertă personalizată în Craiova.">
 <meta name="robots" content="index, follow">
+<meta name="geo.region" content="RO-DJ">
+<meta name="geo.placename" content="Craiova">
+<meta name="geo.position" content="44.3167;23.8103">
+<meta name="ICBM" content="44.3167, 23.8103">
 <link rel="canonical" href="https://asiguraricraiova.ro/calculator-rca.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -232,6 +236,7 @@ footer strong{color:rgba(255,255,255,.75)}
           <a href="/rca.html">🚗 RCA</a>
           <a href="/casco.html">🛡️ CASCO</a>
           <a href="/transport.html">🚛 Transport CMR / ROTR</a>
+          <a href="/despagubiri-accidente.html">🚑 Despăgubiri Accidente</a>
         </div>
       </li>
       <li>
@@ -561,7 +566,7 @@ footer strong{color:rgba(255,255,255,.75)}
   <!-- INFO SECTION -->
   <div class="card" style="margin-top:32px">
     <h3 style="font-size:1.1rem;color:var(--navy);margin-bottom:12px">ℹ️ Cum funcționează sistemul Bonus-Malus?</h3>
-    <p style="font-size:.84rem;color:var(--gray);line-height:1.75;margin-bottom:12px">Sistemul Bonus-Malus recompensează șoferii fără daune cu reduceri la RCA și penalizează șoferii care au produs accidente cu majorări ale primei. Clasa se modifică anual.</p>
+    <p style="font-size:.84rem;color:var(--gray);line-height:1.75;margin-bottom:12px">Sistemul Bonus-Malus recompensează șoferii fără daune cu reduceri la RCA și penalizează șoferii care au produs accidente cu majorări ale primei. Clasa se modifică anual. Vezi explicația completă și ce documente îți trebuie pe pagina <a href="rca.html" style="color:#c9a84c;font-weight:600">asigurare auto RCA Craiova</a>.</p>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
       <div style="background:#dcfce7;border-radius:8px;padding:12px;font-size:.8rem">
         <strong style="color:#166534">🟢 BONUS (reducere)</strong><br>
@@ -946,6 +951,16 @@ async function submitLead() {
 // INIT
 buildBMScale();
 showStep(1);
+</script>
+<script>
+/* GA4 tracking pentru click-uri WhatsApp și telefon */
+document.addEventListener('click', function(e){
+  if (typeof gtag !== 'function') return;
+  var wa = e.target.closest('a[href*="wa.me/"]');
+  if (wa) { gtag('event','whatsapp_click',{event_category:'Contact',event_label:(document.title||'').slice(0,90)}); return; }
+  var tel = e.target.closest('a[href^="tel:"]');
+  if (tel) { gtag('event','phone_click',{event_category:'Contact',event_label:(document.title||'').slice(0,90)}); }
+}, true);
 </script>
 </body>
 </html>

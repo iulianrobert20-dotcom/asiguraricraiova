@@ -4,9 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="light">
-<title>Asigurare Câini și Pisici Craiova 2026 — Ghid Complet PET Protect | AsigurăriCraiova.ro</title>
-<meta name="description" content="Ghid complet asigurare animale de companie Craiova 2026. PET Protect Asirom: pachete de la 325 RON/an, riscuri acoperite, exemple despăgubire, condiții eligibilitate. Broker autorizat ISF.">
+<title>PET Protect Asirom — Ghid Complet Asigurare Câini și Pisici 2026 | AsigurăriCraiova.ro</title>
+<meta name="description" content="Ghid complet PET Protect Asirom: pachete de la 325 RON/an, riscuri acoperite, exemple de despăgubire și condiții de eligibilitate. Poliță online în toată România, pe WhatsApp.">
 <meta name="robots" content="index, follow">
+<meta name="geo.region" content="RO-DJ">
+<meta name="geo.placename" content="Craiova">
+<meta name="geo.position" content="44.3167;23.8103">
+<meta name="ICBM" content="44.3167, 23.8103">
 <link rel="canonical" href="https://asiguraricraiova.ro/blog-animale-companie.html">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Asigurare câini și pisici Craiova 2026 — Ghid complet PET Protect","description":"Tot ce trebuie să știi despre asigurarea animalelor de companie în Craiova: pachete, prețuri, riscuri acoperite și exemple reale","author":{"@type":"Person","name":"Robert Iulian Stoica"},"publisher":{"@type":"Organization","name":"AsigurăriCraiova.ro"},"datePublished":"2026-06-26","dateModified":"2026-06-26","url":"https://asiguraricraiova.ro/blog-animale-companie.html"}</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q023X256PZ"></script>
@@ -99,6 +103,7 @@ footer a{color:var(--gold)}
           <a href="/rca.html">🚗 RCA</a>
           <a href="/casco.html">🛡️ CASCO</a>
           <a href="/transport.html">🚛 Transport CMR / ROTR</a>
+          <a href="/despagubiri-accidente.html">🚑 Despăgubiri Accidente</a>
         </div>
       </li>
       <li>
@@ -363,5 +368,15 @@ footer a{color:var(--gold)}
   </svg>
 </a>
 
+<script>
+/* GA4 tracking pentru click-uri WhatsApp și telefon */
+document.addEventListener('click', function(e){
+  if (typeof gtag !== 'function') return;
+  var wa = e.target.closest('a[href*="wa.me/"]');
+  if (wa) { gtag('event','whatsapp_click',{event_category:'Contact',event_label:(document.title||'').slice(0,90)}); return; }
+  var tel = e.target.closest('a[href^="tel:"]');
+  if (tel) { gtag('event','phone_click',{event_category:'Contact',event_label:(document.title||'').slice(0,90)}); }
+}, true);
+</script>
 </body>
 </html>

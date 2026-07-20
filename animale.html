@@ -4,11 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="light">
-<title>Asigurare Câini și Pisici Craiova 2026 | PET Protect Asirom — de la 325 RON/an</title>
-<meta name="description" content="Asigurare animale de companie Craiova — câini și pisici. PET Protect Asirom: pachete Silver, Gold, Platinum de la 325 RON/an. Acoperire accident și îmbolnăvire. Broker autorizat ISF: 0774 171 971.">
+<title>PET Protect Asirom — Asigurare Câini și Pisici Online 2026 | de la 325 RON/an</title>
+<meta name="description" content="Asigurare pentru câini și pisici PET Protect de la Asirom, de la 325 RON/an — pachete Silver, Gold, Platinum. Poliță online, pe WhatsApp, oriunde în România. Broker autorizat ISF: 0774 171 971.">
 <meta name="robots" content="index, follow">
+<meta name="geo.region" content="RO-DJ">
+<meta name="geo.placename" content="Craiova">
+<meta name="geo.position" content="44.3167;23.8103">
+<meta name="ICBM" content="44.3167, 23.8103">
 <link rel="canonical" href="https://asiguraricraiova.ro/animale.html">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"Asigurare Animale de Companie Craiova","provider":{"@type":"LocalBusiness","name":"AsigurăriCraiova.ro","telephone":"+40774171971","address":{"@type":"PostalAddress","addressLocality":"Craiova","addressCountry":"RO"}},"areaServed":"Craiova","description":"Asigurare câini și pisici PET Protect de la Asirom — pachete Silver, Gold, Platinum pentru accident și îmbolnăvire","url":"https://asiguraricraiova.ro/animale.html"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"Asigurare Animale de Companie Craiova","provider":{"@type":"LocalBusiness","name":"AsigurăriCraiova.ro","telephone":"+40774171971","address":{"@type":"PostalAddress","streetAddress":"Strada Înfrățirii","addressLocality":"Craiova","postalCode":"200526","addressRegion":"Dolj","addressCountry":"RO"}},"areaServed":"Craiova","description":"Asigurare câini și pisici PET Protect de la Asirom — pachete Silver, Gold, Platinum pentru accident și îmbolnăvire","url":"https://asiguraricraiova.ro/animale.html"}</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q023X256PZ"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-Q023X256PZ');</script>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -191,6 +195,7 @@ footer a{color:var(--gold)}
           <a href="/rca.html">🚗 RCA</a>
           <a href="/casco.html">🛡️ CASCO</a>
           <a href="/transport.html">🚛 Transport CMR / ROTR</a>
+          <a href="/despagubiri-accidente.html">🚑 Despăgubiri Accidente</a>
         </div>
       </li>
       <li>
@@ -272,7 +277,7 @@ footer a{color:var(--gold)}
     <div class="bc"><a href="/">Acasă</a> › <span style="color:var(--gold)">Asigurare Animale de Companie</span></div>
     <div class="cat">🐾 Câini & Pisici · PET Protect Asirom</div>
     <h1>🐾 Asigurare Câini și Pisici Craiova 2026</h1>
-    <p>Protecție în caz de accident sau îmbolnăvire pentru câinele sau pisica ta. Pachete Silver, Gold și Platinum de la 325 RON/an — intermediar autorizat ISF, consultanță gratuită.</p>
+    <p>Protecție în caz de accident sau îmbolnăvire pentru câinele sau pisica ta. Pachete Silver, Gold și Platinum de la 325 RON/an — intermediar autorizat ISF, consultanță gratuită. <strong>Poliță emisă 100% online, pe WhatsApp, oriunde te afli în România.</strong></p>
     <div class="badge-row">
       <div class="badge">🏆 Asirom Vienna Insurance Group</div>
       <div class="badge">✅ Câini & pisici orice rasă</div>
@@ -628,5 +633,15 @@ document.querySelectorAll('.faq-q').forEach(function(q){
 });
 </script>
 
+<script>
+/* GA4 tracking pentru click-uri WhatsApp și telefon */
+document.addEventListener('click', function(e){
+  if (typeof gtag !== 'function') return;
+  var wa = e.target.closest('a[href*="wa.me/"]');
+  if (wa) { gtag('event','whatsapp_click',{event_category:'Contact',event_label:(document.title||'').slice(0,90)}); return; }
+  var tel = e.target.closest('a[href^="tel:"]');
+  if (tel) { gtag('event','phone_click',{event_category:'Contact',event_label:(document.title||'').slice(0,90)}); }
+}, true);
+</script>
 </body>
 </html>

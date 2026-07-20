@@ -8,6 +8,10 @@
 <title>Restituire RCA și Rovinieta la Vânzarea Mașinii 2026 | AsigurăriCraiova.ro</title>
 <meta name="description" content="Cum recuperezi banii pentru RCA și rovinieta după ce ți-ai vândut mașina. Ghid complet cu documente necesare, termene și proceduri — intermediar autorizat Craiova.">
 <meta name="robots" content="index, follow">
+<meta name="geo.region" content="RO-DJ">
+<meta name="geo.placename" content="Craiova">
+<meta name="geo.position" content="44.3167;23.8103">
+<meta name="ICBM" content="44.3167, 23.8103">
 <link rel="canonical" href="https://asiguraricraiova.ro/blog-restituire-rca-rovinieta.html">
 <script type="application/ld+json">
 {
@@ -143,6 +147,7 @@ footer a{color:var(--gold)}
           <a href="/rca.html">🚗 RCA</a>
           <a href="/casco.html">🛡️ CASCO</a>
           <a href="/transport.html">🚛 Transport CMR / ROTR</a>
+          <a href="/despagubiri-accidente.html">🚑 Despăgubiri Accidente</a>
         </div>
       </li>
       <li>
@@ -255,7 +260,7 @@ footer a{color:var(--gold)}
 
 <div class="body">
 
-  <p>Mulți șoferi nu știu că atunci când vând sau radiază un vehicul au dreptul legal să recupereze banii plătiți în avans pentru <strong>rovinieta</strong> și <strong>asigurarea RCA</strong> — proporțional cu perioada rămasă neutilizată. Sunt bani care îți aparțin și pe care îi poți recupera printr-o simplă cerere.</p>
+  <p>Mulți șoferi nu știu că atunci când vând sau radiază un vehicul au dreptul legal să recupereze banii plătiți în avans pentru <strong>rovinieta</strong> și <strong><a href="rca.html" style="color:inherit;text-decoration:underline">asigurarea RCA</a></strong> — proporțional cu perioada rămasă neutilizată. Sunt bani care îți aparțin și pe care îi poți recupera printr-o simplă cerere.</p>
 
   <div class="ob">✅ <strong>Pe scurt:</strong> Dacă ai vândut sau radiat mașina și mai ai rovinieta sau RCA valabile, poți cere restituirea sumei aferente perioadei rămase. Ai nevoie de documente doveditoare și o cerere scrisă.</div>
 
@@ -419,5 +424,15 @@ footer a{color:var(--gold)}
   </svg>
 </a>
 
+<script>
+/* GA4 tracking pentru click-uri WhatsApp și telefon */
+document.addEventListener('click', function(e){
+  if (typeof gtag !== 'function') return;
+  var wa = e.target.closest('a[href*="wa.me/"]');
+  if (wa) { gtag('event','whatsapp_click',{event_category:'Contact',event_label:(document.title||'').slice(0,90)}); return; }
+  var tel = e.target.closest('a[href^="tel:"]');
+  if (tel) { gtag('event','phone_click',{event_category:'Contact',event_label:(document.title||'').slice(0,90)}); }
+}, true);
+</script>
 </body>
 </html>
