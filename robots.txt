@@ -4,22 +4,11 @@
 User-agent: *
 Allow: /
 
-# Blochează fișiere interne inutile pentru indexare
-Disallow: /assets/
+# Fișiere interne care nu trebuie indexate
 Disallow: /*.json$
 
 # Sitemap
 Sitemap: https://asiguraricraiova.ro/sitemap.xml
-
-# Google
-User-agent: Googlebot
-Allow: /
-Crawl-delay: 2
-
-# Bing
-User-agent: Bingbot
-Allow: /
-Crawl-delay: 5
 
 # Blocăm crawlere agresive sau spam
 User-agent: AhrefsBot
