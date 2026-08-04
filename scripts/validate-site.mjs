@@ -25,7 +25,6 @@ function localPathFromUrl(value) {
 
 const sitemap = fs.readFileSync(path.join(root, 'sitemap.xml'), 'utf8');
 const sitemapUrls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
-if (sitemapUrls.length !== 31) fail('sitemap.xml', `sunt ${sitemapUrls.length} URL-uri, așteptat 31`);
 if ([...sitemap.matchAll(/<lastmod>([^<]+)<\/lastmod>/g)].some((match) => match[1] !== '2026-08-04')) {
   fail('sitemap.xml', 'lastmod nu reflectă actualizarea curentă');
 }
@@ -76,6 +75,12 @@ const canonicalValues = canonicalPages.map((entry) => entry.canonical);
 for (const duplicate of canonicalValues.filter((value, index) => canonicalValues.indexOf(value) !== index)) {
   fail('canonical', `valoare duplicată: ${duplicate}`);
 }
+for (const canonical of canonicalValues) {
+  if (!sitemapUrls.includes(canonical)) fail('sitemap.xml', `lipsește pagina canonică ${canonical}`);
+}
+for (const url of sitemapUrls) {
+  if (!canonicalValues.includes(url)) fail('sitemap.xml', `URL fără canonical corespondent: ${url}`);
+}
 
 const index = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
 if (/page-despre|function showPage/i.test(index)) fail('index.html', 'conține încă paginile SPA ascunse');
@@ -105,7 +110,7 @@ if (!/<form\b[^>]*id="contactForm"/i.test(contact)) fail('contact.html', 'formul
 if (!/name="acord_contact"[^>]*required/i.test(contact)) fail('contact.html', 'consimțământul de contact lipsește');
 if (/<iframe\b[^>]*src=/i.test(contact)) fail('contact.html', 'Google Maps se încarcă înainte de acțiunea utilizatorului');
 
-for (const asset of ['site.js', 'site.css', 'home.css', 'favicon.svg', 'favicon.ico', 'apple-touch-icon.png', 'og-image.png']) {
+for (const asset of ['site.js', 'site.css', 'home.css', 'products.css', 'hero-asigurari-craiova.webp', 'favicon.svg', 'favicon.ico', 'apple-touch-icon.png', 'og-image.png']) {
   const assetPath = path.join(root, asset);
   if (!fs.existsSync(assetPath) || fs.statSync(assetPath).size === 0) fail(asset, 'activ absent sau gol');
 }

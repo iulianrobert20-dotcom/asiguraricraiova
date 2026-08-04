@@ -109,6 +109,7 @@
   }
 
   function addSkipLink() {
+    if (document.querySelector('.skip-link')) return;
     var main = document.querySelector('main, [role="main"]');
     if (!main) return;
     if (!main.id) main.id = 'continut-principal';
@@ -148,8 +149,8 @@
   }
 
   function enableHomeMenu() {
-    var toggle = document.querySelector('[data-home-menu-toggle]');
-    var menu = document.querySelector('[data-home-menu]');
+    var toggle = document.querySelector('[data-home-menu-toggle], .home-menu-toggle');
+    var menu = document.querySelector('[data-home-menu], .home-menu');
     if (!toggle || !menu) return;
 
     function setOpen(open) {
