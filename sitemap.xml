@@ -3,24 +3,35 @@
 
   <!-- Homepage + Calculator -->
   <url><loc>https://asiguraricraiova.ro/</loc><lastmod>2026-08-04</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://asiguraricraiova.ro/asigurari.html</loc><lastmod>2026-08-04</lastmod><changefreq>monthly</changefreq><priority>0.95</priority></url>
   <url><loc>https://asiguraricraiova.ro/calculator-rca.html</loc><lastmod>2026-08-04</lastmod><changefreq>monthly</changefreq><priority>0.95</priority></url>
 
   <!-- Auto -->
   <url><loc>https://asiguraricraiova.ro/rca.html</loc><lastmod>2026-08-04</lastmod><changefreq>weekly</changefreq><priority>0.95</priority></url>
   <url><loc>https://asiguraricraiova.ro/casco.html</loc><lastmod>2026-08-04</lastmod><changefreq>monthly</changefreq><priority>0.88</priority></url>
+  <url><loc>https://asiguraricraiova.ro/asistenta-rutiera.html</loc><lastmod>2026-08-04</lastmod><changefreq>monthly</changefreq><priority>0.78</priority></url>
+  <url><loc>https://asiguraricraiova.ro/gap.html</loc><lastmod>2026-08-04</lastmod><changefreq>monthly</changefreq><priority>0.76</priority></url>
   <url><loc>https://asiguraricraiova.ro/transport.html</loc><lastmod>2026-08-04</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://asiguraricraiova.ro/cmr.html</loc><lastmod>2026-08-04</lastmod><changefreq>monthly</changefreq><priority>0.82</priority></url>
+  <url><loc>https://asiguraricraiova.ro/rotr.html</loc><lastmod>2026-08-04</lastmod><changefreq>monthly</changefreq><priority>0.82</priority></url>
   <url><loc>https://asiguraricraiova.ro/despagubiri-accidente.html</loc><lastmod>2026-08-04</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
 
   <!-- Locuință -->
   <url><loc>https://asiguraricraiova.ro/locuinta.html</loc><lastmod>2026-08-04</lastmod><changefreq>monthly</changefreq><priority>0.90</priority></url>
+  <url><loc>https://asiguraricraiova.ro/asistenta-domiciliu.html</loc><lastmod>2026-08-04</lastmod><changefreq>monthly</changefreq><priority>0.74</priority></url>
 
   <!-- Protecție -->
   <url><loc>https://asiguraricraiova.ro/calatorie.html</loc><lastmod>2026-08-04</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://asiguraricraiova.ro/multitravel.html</loc><lastmod>2026-08-04</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://asiguraricraiova.ro/storno.html</loc><lastmod>2026-08-04</lastmod><changefreq>monthly</changefreq><priority>0.84</priority></url>
   <url><loc>https://asiguraricraiova.ro/sanatate.html</loc><lastmod>2026-08-04</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
   <url><loc>https://asiguraricraiova.ro/accident.html</loc><lastmod>2026-08-04</lastmod><changefreq>monthly</changefreq><priority>0.78</priority></url>
   <url><loc>https://asiguraricraiova.ro/viata.html</loc><lastmod>2026-08-04</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
   <url><loc>https://asiguraricraiova.ro/malpraxis.html</loc><lastmod>2026-08-04</lastmod><changefreq>monthly</changefreq><priority>0.92</priority></url>
   <url><loc>https://asiguraricraiova.ro/civile.html</loc><lastmod>2026-08-04</lastmod><changefreq>monthly</changefreq><priority>0.78</priority></url>
+  <url><loc>https://asiguraricraiova.ro/raspundere-civila-generala.html</loc><lastmod>2026-08-04</lastmod><changefreq>monthly</changefreq><priority>0.82</priority></url>
+  <url><loc>https://asiguraricraiova.ro/raspundere-civila-profesionala.html</loc><lastmod>2026-08-04</lastmod><changefreq>monthly</changefreq><priority>0.86</priority></url>
+  <url><loc>https://asiguraricraiova.ro/raspundere-civila-familie.html</loc><lastmod>2026-08-04</lastmod><changefreq>monthly</changefreq><priority>0.76</priority></url>
 
   <!-- Investiție -->
   <url><loc>https://asiguraricraiova.ro/pensie.html</loc><lastmod>2026-08-04</lastmod><changefreq>monthly</changefreq><priority>0.88</priority></url>

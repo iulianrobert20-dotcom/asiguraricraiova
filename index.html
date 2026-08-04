@@ -36,7 +36,7 @@
   <link rel="preload" as="image" href="/hero-asigurari-craiova.webp" type="image/webp" fetchpriority="high">
   <link rel="stylesheet" href="/site.css">
   <link rel="stylesheet" href="/home.css">
-  <script defer src="/site.js"></script>
+  <script defer src="/site.js?v=20260804-2"></script>
 
   <script type="application/ld+json">
   {
@@ -142,7 +142,7 @@
         </button>
 
         <nav class="home-menu" id="home-menu" aria-label="Navigație principală" data-home-menu>
-          <a href="#asigurari">Asigurări</a>
+          <a href="/asigurari.html">Asigurări</a>
           <a href="#cum-functioneaza">Cum funcționează</a>
           <a href="/calculator-rca.html">Calculator RCA</a>
           <a href="/despre.html">Despre</a>
@@ -183,14 +183,41 @@
               <label for="quoteProduct">Tipul asigurării</label>
               <select id="quoteProduct" name="product" required>
                 <option value="">Alege asigurarea</option>
-                <option>RCA</option>
-                <option>CASCO</option>
-                <option>Locuință și PAD</option>
-                <option>Călătorie</option>
-                <option>Sănătate sau viață</option>
-                <option>Malpraxis</option>
-                <option>Firmă sau răspundere profesională</option>
-                <option>Pensie Pilon III</option>
+                <optgroup label="Auto și mobilitate">
+                  <option>RCA</option>
+                  <option>CASCO</option>
+                  <option>Asistență rutieră</option>
+                  <option>GAP</option>
+                  <option>Bicicletă</option>
+                </optgroup>
+                <optgroup label="Călătorii">
+                  <option>Călătorie</option>
+                  <option>MultiTravel</option>
+                  <option>Storno</option>
+                </optgroup>
+                <optgroup label="Casă și familie">
+                  <option>Locuință și PAD</option>
+                  <option>Asistență la domiciliu</option>
+                  <option>Sănătate</option>
+                  <option>Viață</option>
+                  <option>Accidente persoane</option>
+                  <option>Răspundere civilă familie</option>
+                  <option>Animale de companie</option>
+                </optgroup>
+                <optgroup label="Profesii și firme">
+                  <option>Malpraxis</option>
+                  <option>Răspundere civilă generală</option>
+                  <option>Răspundere profesională</option>
+                  <option>AMM / IMM / Firmă</option>
+                  <option>CMR</option>
+                  <option>ROTR</option>
+                  <option>Fotovoltaice</option>
+                </optgroup>
+                <optgroup label="Viitor financiar">
+                  <option>Pensie Pilon III</option>
+                  <option>Economisire pentru copii</option>
+                  <option>Unit-linked</option>
+                </optgroup>
                 <option>Alt tip de asigurare</option>
               </select>
             </div>
@@ -301,11 +328,11 @@
           <span>Alte soluții:</span>
           <a href="/sanatate.html">Sănătate</a>
           <a href="/malpraxis.html">Malpraxis</a>
-          <a href="/transport.html">Transport</a>
-          <a href="/civile.html">Răspunderi civile</a>
+          <a href="/storno.html">Storno</a>
+          <a href="/cmr.html">CMR</a>
+          <a href="/asistenta-rutiera.html">Asistență rutieră</a>
           <a href="/pensie.html">Pensie Pilon III</a>
-          <a href="/fotovoltaice.html">Fotovoltaice</a>
-          <a href="/animale.html">Animale</a>
+          <a href="/asigurari.html"><strong>Vezi toate asigurările →</strong></a>
         </div>
       </div>
     </section>
