@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title description">
+  <title id="title">AsigurăriCraiova.ro</title>
+  <desc id="description">Consultanță în asigurări cu Robert Iulian Stoica</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#081629"/>
+      <stop offset="0.58" stop-color="#0d1f3c"/>
+      <stop offset="1" stop-color="#162d52"/>
+    </linearGradient>
+    <pattern id="pattern" width="56" height="56" patternUnits="userSpaceOnUse">
+      <path d="M28 0v56M0 28h56" stroke="#e8c97a" stroke-opacity=".045"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="url(#background)"/>
+  <rect width="1200" height="630" fill="url(#pattern)"/>
+  <circle cx="1030" cy="90" r="270" fill="#c9a84c" opacity=".07"/>
+  <circle cx="1100" cy="560" r="310" fill="#fff" opacity=".025"/>
+
+  <g transform="translate(82 92)">
+    <path d="M130 0 244 42v86c0 78-45 139-114 170C61 267 16 206 16 128V42Z" fill="#c9a84c" opacity=".12"/>
+    <path d="M130 18 226 53v75c0 66-37 118-96 147-59-29-96-81-96-147V53Z" fill="none" stroke="#e8c97a" stroke-width="10"/>
+    <path d="m78 140 36 36 72-89" fill="none" stroke="#fff" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <g transform="translate(386 130)">
+    <text x="0" y="70" fill="#fff" font-family="Georgia, 'Times New Roman', serif" font-size="70" font-weight="700">AsigurăriCraiova.ro</text>
+    <rect x="0" y="104" width="640" height="4" rx="2" fill="#c9a84c"/>
+    <text x="0" y="166" fill="#e8c97a" font-family="Arial, sans-serif" font-size="27" font-weight="700" letter-spacing="2">INTERMEDIAR AUTORIZAT ISF</text>
+    <text x="0" y="235" fill="#fff" font-family="Arial, sans-serif" font-size="36" font-weight="600">Robert Iulian Stoica</text>
+    <text x="0" y="289" fill="#d5dbea" font-family="Arial, sans-serif" font-size="25">RCA · CASCO · Locuință · Viață · Malpraxis</text>
+    <g transform="translate(0 335)">
+      <rect width="520" height="66" rx="33" fill="#c9a84c"/>
+      <text x="260" y="44" text-anchor="middle" fill="#0d1f3c" font-family="Arial, sans-serif" font-size="27" font-weight="700">0774 171 971 · Craiova</text>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,10 @@
+{
+  "name": "asiguraricraiova",
+  "private": true,
+  "scripts": {
+    "test": "node --check site.js && node --check scripts/validate-site.mjs && node scripts/validate-site.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
