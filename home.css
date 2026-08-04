@@ -124,16 +124,15 @@ body textarea { font: inherit; }
   position: relative;
   overflow: hidden;
   background:
-    radial-gradient(circle at 15% 20%, rgba(214, 184, 92, .15), transparent 30%),
-    radial-gradient(circle at 85% 70%, rgba(57, 115, 173, .22), transparent 28%),
-    linear-gradient(135deg, var(--home-navy-deep), var(--home-navy) 58%, var(--home-navy-soft));
+    linear-gradient(90deg, rgba(5, 18, 39, .89) 0%, rgba(8, 27, 55, .81) 38%, rgba(9, 30, 59, .59) 67%, rgba(6, 19, 40, .46) 100%),
+    linear-gradient(0deg, rgba(4, 15, 32, .34), transparent 46%),
+    url('/hero-asigurari-craiova.webp') 62% center / cover no-repeat;
   color: #fff;
 }
 .home-hero::after {
   position: absolute;
   inset: 0;
-  background-image: linear-gradient(rgba(255,255,255,.022) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.022) 1px, transparent 1px);
-  background-size: 34px 34px;
+  background: radial-gradient(circle at 82% 48%, rgba(214, 184, 92, .08), transparent 26%);
   content: "";
   pointer-events: none;
 }
@@ -369,6 +368,11 @@ body textarea { font: inherit; }
   .home-header { position: relative; }
   .home-topbar { display: none; }
   .home-navbar__inner { min-height: 68px; }
+  .home-hero {
+    background:
+      linear-gradient(180deg, rgba(5, 18, 39, .86) 0%, rgba(6, 22, 47, .76) 36%, rgba(5, 18, 39, .91) 100%),
+      url('/hero-asigurari-craiova.webp') 72% center / cover no-repeat;
+  }
   .home-hero__grid { grid-template-columns: 1fr; gap: 38px; padding-block: 55px; }
   .home-hero__copy { text-align: center; }
   .home-hero h1,
