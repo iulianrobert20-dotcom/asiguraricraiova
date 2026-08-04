@@ -127,6 +127,22 @@ for (const file of fs.readdirSync(root).filter((name) => name.endsWith('.html'))
   for (const pattern of forbiddenClaims) if (pattern.test(source)) fail(file, `afirmație comercială/juridică nepermisă: ${pattern}`);
 }
 
+for (const file of ['unitlinked.html', 'leu-forte.html', 'leu-dinamic.html']) {
+  const source = fs.readFileSync(path.join(root, file), 'utf8');
+  if (!/allianztiriac\.ro\/ro_RO\/documente-utile\.html/i.test(source)) {
+    fail(file, 'lipsește legătura către documentele oficiale curente');
+  }
+  if (!/mai puțin decât/i.test(source)) {
+    fail(file, 'lipsește avertizarea privind posibilitatea pierderii');
+  }
+  if (!/performanț/i.test(source) || !/(?:nu garantează|nu sunt o garanție)/i.test(source)) {
+    fail(file, 'lipsește avertizarea privind performanța istorică');
+  }
+  if (/randament (?:sigur|garantat)|profit garantat|capital garantat|fără risc/i.test(source)) {
+    fail(file, 'conține o promisiune investițională nepermisă');
+  }
+}
+
 if (errors.length) {
   console.error(`Validarea a eșuat (${errors.length} probleme):\n- ${errors.join('\n- ')}`);
   process.exit(1);
