@@ -147,6 +147,72 @@
     });
   }
 
+  function enableHomeMenu() {
+    var toggle = document.querySelector('[data-home-menu-toggle]');
+    var menu = document.querySelector('[data-home-menu]');
+    if (!toggle || !menu) return;
+
+    function setOpen(open) {
+      menu.classList.toggle('is-open', open);
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+
+    toggle.addEventListener('click', function () {
+      setOpen(!menu.classList.contains('is-open'));
+    });
+
+    menu.addEventListener('click', function (event) {
+      if (event.target.closest('a')) setOpen(false);
+    });
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape' && menu.classList.contains('is-open')) {
+        setOpen(false);
+        toggle.focus();
+      }
+    });
+  }
+
+  function enableQuickQuote() {
+    var form = document.getElementById('quickQuoteForm');
+    if (!form) return;
+
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      var product = document.getElementById('quoteProduct').value;
+      var profile = document.getElementById('quoteProfile').value;
+      var when = document.getElementById('quoteWhen').value;
+      var details = document.getElementById('quoteDetails').value.trim();
+      var lines = [
+        'Bună ziua! Doresc o ofertă de asigurare.',
+        '',
+        'Tip: ' + product,
+        'Pentru: ' + profile,
+        'Când am nevoie: ' + when
+      ];
+
+      if (details) lines.push('Detalii: ' + details);
+      lines.push('', 'Mesaj trimis din formularul AsigurăriCraiova.ro.');
+
+      if (window.__analyticsAllowed && typeof window.gtag === 'function') {
+        window.gtag('event', 'quick_quote_whatsapp', {
+          event_category: 'Contact',
+          event_label: product.slice(0, 60)
+        });
+      }
+
+      var url = 'https://wa.me/40774171971?text=' + encodeURIComponent(lines.join('\n'));
+      var link = document.createElement('a');
+      link.href = url;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+    });
+  }
+
   function trackContactClicks() {
     document.addEventListener('click', function (event) {
       if (!window.__analyticsAllowed || typeof window.gtag !== 'function') return;
@@ -162,6 +228,8 @@
     enhanceNavigation();
     enhanceAccessibleNames();
     enableMaps();
+    enableHomeMenu();
+    enableQuickQuote();
     addPrivacyControl();
     trackContactClicks();
 

@@ -79,7 +79,9 @@ for (const duplicate of canonicalValues.filter((value, index) => canonicalValues
 
 const index = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
 if (/page-despre|function showPage/i.test(index)) fail('index.html', 'conține încă paginile SPA ascunse');
-if (count(index, /class="[^"]*click-card-link[^"]*"/g) < 20) fail('index.html', 'cardurile principale nu au fost convertite în linkuri');
+if (!/<form\b[^>]*id="quickQuoteForm"/i.test(index)) fail('index.html', 'formularul rapid de ofertă lipsește');
+if (!/id="quoteConsent"[^>]*required/i.test(index)) fail('index.html', 'acordul pentru trimiterea cererii rapide lipsește');
+if (count(index, /class="insurance-card"/g) < 6) fail('index.html', 'alegerile principale de asigurare sunt incomplete');
 if (/SearchAction|"sameAs"\s*:\s*\[\]|"geo"\s*:/i.test(index)) fail('index.html', 'schema conține semnale nevalidate sau nefuncționale');
 
 const calculator = fs.readFileSync(path.join(root, 'calculator-rca.html'), 'utf8');
@@ -103,7 +105,7 @@ if (!/<form\b[^>]*id="contactForm"/i.test(contact)) fail('contact.html', 'formul
 if (!/name="acord_contact"[^>]*required/i.test(contact)) fail('contact.html', 'consimțământul de contact lipsește');
 if (/<iframe\b[^>]*src=/i.test(contact)) fail('contact.html', 'Google Maps se încarcă înainte de acțiunea utilizatorului');
 
-for (const asset of ['site.js', 'site.css', 'favicon.svg', 'favicon.ico', 'apple-touch-icon.png', 'og-image.png']) {
+for (const asset of ['site.js', 'site.css', 'home.css', 'favicon.svg', 'favicon.ico', 'apple-touch-icon.png', 'og-image.png']) {
   const assetPath = path.join(root, asset);
   if (!fs.existsSync(assetPath) || fs.statSync(assetPath).size === 0) fail(asset, 'activ absent sau gol');
 }
