@@ -25,8 +25,13 @@ function localPathFromUrl(value) {
 
 const sitemap = fs.readFileSync(path.join(root, 'sitemap.xml'), 'utf8');
 const sitemapUrls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
-if ([...sitemap.matchAll(/<lastmod>([^<]+)<\/lastmod>/g)].some((match) => match[1] !== '2026-08-04')) {
-  fail('sitemap.xml', 'lastmod nu reflectă actualizarea curentă');
+const sitemapLastmods = [...sitemap.matchAll(/<lastmod>([^<]+)<\/lastmod>/g)].map((match) => match[1]);
+const today = new Date().toISOString().slice(0, 10);
+if (sitemapLastmods.length !== sitemapUrls.length) {
+  fail('sitemap.xml', 'fiecare URL trebuie să aibă lastmod');
+}
+if (sitemapLastmods.some((value) => !/^\d{4}-\d{2}-\d{2}$/.test(value) || value > today)) {
+  fail('sitemap.xml', 'lastmod trebuie să fie o dată ISO validă, care nu este în viitor');
 }
 
 for (const url of sitemapUrls) {
