@@ -56,6 +56,10 @@ nav{background:var(--navy);height:62px;display:flex;align-items:center;justify-c
 .cat{display:inline-flex;align-items:center;gap:6px;background:rgba(201,168,76,.15);border:1px solid rgba(201,168,76,.3);color:var(--gold);font-size:.7rem;font-weight:600;padding:4px 12px;border-radius:100px;margin-bottom:14px;letter-spacing:.08em;text-transform:uppercase}
 .ph h1{font-size:2.4rem;color:#fff;line-height:1.15;margin-bottom:12px}
 .ph p{color:rgba(255,255,255,.65);font-size:.97rem;max-width:600px}
+.hero-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:20px}
+.hero-actions .btn-wa,.hero-actions .btn-g{padding:12px 18px;justify-content:center}
+.hero-actions .btn-g{display:inline-flex;align-items:center}
+.hero-note{display:block;color:rgba(255,255,255,.58);font-size:.75rem;margin-top:10px}
 .law{display:inline-flex;align-items:center;gap:6px;background:rgba(201,168,76,.15);border:1px solid rgba(201,168,76,.3);color:var(--gold);font-size:.72rem;font-weight:600;padding:5px 12px;border-radius:6px;margin-top:14px}
 .bc{font-size:.73rem;color:rgba(255,255,255,.45);margin-bottom:12px}
 .bc a{color:rgba(255,255,255,.45)}
@@ -84,7 +88,7 @@ footer strong{color:rgba(255,255,255,.75)}
 footer a{color:var(--gold)}
 .fwa{position:fixed;bottom:24px;right:24px;background:linear-gradient(145deg,#25d366,#128c7e);width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 24px rgba(37,211,102,.5);text-decoration:none;z-index:200;animation:pulse 2s infinite}
 @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,.6)}70%{box-shadow:0 0 0 16px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
-@media(max-width:640px){.grid{grid-template-columns:1fr}.ph h1{font-size:1.8rem}.nav-right{gap:3px}}
+@media(max-width:640px){.grid{grid-template-columns:1fr}.ph h1{font-size:1.8rem}.nav-right{gap:3px}.hero-actions{align-items:stretch;flex-direction:column}.hero-actions a{width:100%}}
 /* CONTENT SECTIONS */
 .main h2{font-size:1.55rem;color:var(--navy);margin:36px 0 12px}
 .main h2:first-of-type{margin-top:8px}
@@ -281,6 +285,11 @@ footer a{color:var(--gold)}
     <div class="cat">🚗 Auto · Obligatoriu</div>
     <h1>🚗 Asigurare Auto RCA în Craiova, cu Plată în Rate</h1>
     <p>Compar ofertele RCA disponibile. Poți solicita finanțare prin TBI Bank sau poți plăti online prin link și verifica ratele oferite de cardul tău de credit.</p>
+    <div class="hero-actions">
+      <a class="btn-wa" href="https://wa.me/40774171971?text=Buna%20ziua!%20Doresc%20o%20oferta%20RCA%20in%20Craiova%20si%20vreau%20sa%20aflu%20optiunile%20de%20plata%20integrala%20sau%20in%20rate." target="_blank" rel="noopener noreferrer">💬 Cere oferta pe WhatsApp</a>
+      <a class="btn-g" href="tel:+40774171971">📞 Sună: 0774 171 971</a>
+    </div>
+    <span class="hero-note">Răspund L–V, 9:00–18:00 · fără obligația de cumpărare.</span>
     <div class="law">⚖️ Legea nr. 132/2017</div>
   </div>
 </div>
