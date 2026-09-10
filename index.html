@@ -174,9 +174,15 @@
         </div>
 
         <aside class="quote-panel" id="oferta-rapida" aria-labelledby="quote-title">
-          <p class="quote-panel__kicker">Cerere personalizată</p>
+          <p class="quote-panel__kicker">Asistent de ofertare · 3 pași</p>
           <h2 id="quote-title">Ce vrei să asiguri?</h2>
-          <p>Completezi în mai puțin de un minut, apoi cererea se deschide direct în WhatsApp.</p>
+          <p>Alegi polița, răspunzi la două întrebări utile, iar cererea pregătită se deschide în WhatsApp.</p>
+
+          <ol class="quote-progress" aria-label="Pașii cererii de ofertă">
+            <li><span>1</span>Alegi</li>
+            <li><span>2</span>Personalizezi</li>
+            <li><span>3</span>Trimiți</li>
+          </ol>
 
           <form id="quickQuoteForm" class="quote-form">
             <div class="quote-field">
@@ -224,6 +230,11 @@
               </select>
             </div>
 
+            <div id="quoteAssistant" class="quote-assistant" hidden aria-live="polite">
+              <p id="quoteAssistantIntro"></p>
+              <div id="quoteAssistantFields" class="quote-form__row"></div>
+            </div>
+
             <div class="quote-form__row">
               <div class="quote-field">
                 <label for="quoteProfile">Pentru cine?</label>
@@ -255,8 +266,8 @@
               <span>Confirm că doresc să trimit aceste informații prin WhatsApp pentru pregătirea unei oferte. Am citit <a href="/gdpr.html">politica de confidențialitate</a>.</span>
             </label>
 
-            <button class="home-btn home-btn--submit" type="submit">Trimite cererea pe WhatsApp</button>
-            <p class="quote-form__note">Formularul nu trimite date către un server propriu.</p>
+            <button class="home-btn home-btn--submit" type="submit">Continuă cu cererea pe WhatsApp</button>
+            <p class="quote-form__note">Nu cerem CNP sau documente aici. Formularul nu trimite date către un server propriu.</p>
           </form>
         </aside>
       </div>

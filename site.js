@@ -178,6 +178,107 @@
     var form = document.getElementById('quickQuoteForm');
     if (!form) return;
 
+    var productSelect = document.getElementById('quoteProduct');
+    var assistant = document.getElementById('quoteAssistant');
+    var assistantIntro = document.getElementById('quoteAssistantIntro');
+    var assistantFields = document.getElementById('quoteAssistantFields');
+    var detailsField = document.getElementById('quoteDetails');
+    var presets = {
+      'RCA': {
+        intro: 'Pentru RCA, aceste răspunsuri mă ajută să pregătesc cererea și opțiunea de plată potrivită.',
+        placeholder: 'Ex.: marca și modelul, data expirării poliței actuale...',
+        fields: [
+          { id: 'quoteVehicle', label: 'Tip vehicul', message: 'Vehicul', options: ['Autoturism', 'Autoutilitară', 'Motocicletă / scuter', 'Alt tip'] },
+          { id: 'quotePayment', label: 'Cum vrei să plătești?', message: 'Plată preferată', options: ['Integral', 'În rate prin TBI Bank', 'În rate cu un card de credit', 'Vreau să aflu opțiunile'] }
+        ]
+      },
+      'Călătorie': {
+        intro: 'Pentru călătorie, destinația și numărul de persoane influențează ofertele care pot fi comparate.',
+        placeholder: 'Ex.: perioada călătoriei, vârstele, sporturi sau alte activități...',
+        fields: [
+          { id: 'quoteDestination', label: 'Destinația', message: 'Destinație', options: ['Europa', 'Turcia / Egipt', 'SUA / Canada', 'Lume întreagă', 'Încă nu este stabilită'] },
+          { id: 'quoteTravelers', label: 'Cine călătorește?', message: 'Călători', options: ['1 persoană', '2 persoane', 'Familie / 3+ persoane', 'Grup'] }
+        ]
+      },
+      'Locuință și PAD': {
+        intro: 'Pentru locuință, tipul proprietății și protecția dorită sunt suficiente pentru primul răspuns.',
+        placeholder: 'Ex.: localitatea, anul construcției sau ce bunuri vrei să protejezi...',
+        fields: [
+          { id: 'quoteHomeType', label: 'Tipul proprietății', message: 'Proprietate', options: ['Apartament', 'Casă', 'Casă de vacanță', 'Alt tip'] },
+          { id: 'quoteHomeCover', label: 'Ce dorești?', message: 'Protecție dorită', options: ['PAD obligatorie', 'Asigurare facultativă', 'PAD + facultativă', 'Vreau o recomandare'] }
+        ]
+      },
+      'Malpraxis': {
+        intro: 'Pentru malpraxis, profesia și situația cererii ajută la identificarea rapidă a unei polițe potrivite.',
+        placeholder: 'Ex.: specialitatea, suma asigurată cerută sau o condiție din contract...',
+        fields: [
+          { id: 'quoteProfession', label: 'Profesia', message: 'Profesie', options: ['Medic', 'Asistent medical', 'Medic stomatolog', 'Farmacist', 'Altă profesie'] },
+          { id: 'quoteMalpracticeNeed', label: 'Pentru ce ai nevoie?', message: 'Situație', options: ['Poliță nouă', 'Reînnoire', 'Angajare / contract', 'Vreau o recomandare'] }
+        ]
+      }
+    };
+
+    function renderAssistant(product) {
+      var preset = presets[product];
+      assistantFields.replaceChildren();
+      assistant.hidden = !preset;
+      detailsField.placeholder = preset ? preset.placeholder : 'Ex.: mașină nouă, apartament, destinația călătoriei...';
+      if (!preset) return;
+
+      assistantIntro.textContent = preset.intro;
+      preset.fields.forEach(function (field) {
+        var wrapper = document.createElement('div');
+        wrapper.className = 'quote-field';
+
+        var label = document.createElement('label');
+        label.htmlFor = field.id;
+        label.textContent = field.label;
+
+        var select = document.createElement('select');
+        select.id = field.id;
+        select.name = field.id;
+        select.required = true;
+        select.dataset.quoteExtra = '';
+        select.dataset.messageLabel = field.message;
+
+        var emptyOption = document.createElement('option');
+        emptyOption.value = '';
+        emptyOption.textContent = 'Alege';
+        select.appendChild(emptyOption);
+        field.options.forEach(function (optionText) {
+          var option = document.createElement('option');
+          option.textContent = optionText;
+          select.appendChild(option);
+        });
+
+        wrapper.appendChild(label);
+        wrapper.appendChild(select);
+        assistantFields.appendChild(wrapper);
+      });
+    }
+
+    productSelect.addEventListener('change', function () {
+      renderAssistant(productSelect.value);
+      if (productSelect.value && window.__analyticsAllowed && typeof window.gtag === 'function') {
+        window.gtag('event', 'quote_product_select', {
+          product: productSelect.value.slice(0, 60),
+          quote_variant: 'smart_assistant_v1'
+        });
+      }
+    });
+
+    var requestedProduct = new URLSearchParams(window.location.search).get('asigurare');
+    var requestedProducts = {
+      rca: 'RCA',
+      calatorie: 'Călătorie',
+      locuinta: 'Locuință și PAD',
+      malpraxis: 'Malpraxis'
+    };
+    if (requestedProduct && requestedProducts[requestedProduct.toLowerCase()]) {
+      productSelect.value = requestedProducts[requestedProduct.toLowerCase()];
+    }
+    renderAssistant(productSelect.value);
+
     form.addEventListener('submit', function (event) {
       event.preventDefault();
 
@@ -193,13 +294,18 @@
         'Când am nevoie: ' + when
       ];
 
-      if (details) lines.push('Detalii: ' + details);
+      form.querySelectorAll('[data-quote-extra]').forEach(function (field) {
+        if (field.value) lines.push(field.dataset.messageLabel + ': ' + field.value);
+      });
+      if (details) lines.push('Alte detalii: ' + details);
       lines.push('', 'Mesaj trimis din formularul AsigurăriCraiova.ro.');
 
       if (window.__analyticsAllowed && typeof window.gtag === 'function') {
         window.gtag('event', 'quick_quote_whatsapp', {
           event_category: 'Contact',
-          event_label: product.slice(0, 60)
+          event_label: product.slice(0, 60),
+          product: product.slice(0, 60),
+          quote_variant: 'smart_assistant_v1'
         });
       }
 

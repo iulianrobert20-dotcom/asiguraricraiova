@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   <!-- Homepage + Calculator -->
-  <url><loc>https://asiguraricraiova.ro/</loc><lastmod>2026-09-05</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://asiguraricraiova.ro/</loc><lastmod>2026-09-10</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
   <url><loc>https://asiguraricraiova.ro/asigurari.html</loc><lastmod>2026-09-05</lastmod><changefreq>monthly</changefreq><priority>0.95</priority></url>
   <url><loc>https://asiguraricraiova.ro/calculator-rca.html</loc><lastmod>2026-09-02</lastmod><changefreq>monthly</changefreq><priority>0.95</priority></url>
 
@@ -21,7 +21,7 @@
   <url><loc>https://asiguraricraiova.ro/asistenta-domiciliu.html</loc><lastmod>2026-08-04</lastmod><changefreq>monthly</changefreq><priority>0.74</priority></url>
 
   <!-- Protecție -->
-  <url><loc>https://asiguraricraiova.ro/calatorie.html</loc><lastmod>2026-09-02</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://asiguraricraiova.ro/calatorie.html</loc><lastmod>2026-09-10</lastmod><changefreq>weekly</changefreq><priority>0.90</priority></url>
   <url><loc>https://asiguraricraiova.ro/multitravel.html</loc><lastmod>2026-08-04</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
   <url><loc>https://asiguraricraiova.ro/storno.html</loc><lastmod>2026-08-04</lastmod><changefreq>monthly</changefreq><priority>0.84</priority></url>
   <url><loc>https://asiguraricraiova.ro/sanatate.html</loc><lastmod>2026-09-01</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
