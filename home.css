@@ -191,12 +191,20 @@ body textarea { font: inherit; }
 .quote-panel { padding: 31px; border: 1px solid rgba(255,255,255,.55); border-radius: 24px; background: #fff; color: var(--home-ink); box-shadow: 0 30px 80px rgba(0,0,0,.28); }
 .quote-panel h2 { margin-bottom: 8px; color: var(--home-navy); font-size: 2rem; }
 .quote-panel > p:not(.quote-panel__kicker) { margin-bottom: 23px; color: var(--home-muted); font-size: .88rem; }
+.quote-progress { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: -9px 0 19px; padding: 0; list-style: none; color: var(--home-muted); font-size: .67rem; font-weight: 800; text-align: center; }
+.quote-progress li { position: relative; display: grid; gap: 4px; justify-items: center; }
+.quote-progress li:not(:last-child)::after { position: absolute; top: 13px; left: calc(50% + 18px); width: calc(100% - 28px); height: 1px; background: #d9dee6; content: ''; }
+.quote-progress span { position: relative; z-index: 1; display: grid; width: 27px; height: 27px; place-items: center; border-radius: 50%; background: #eef4fb; color: var(--home-navy); }
 .quote-form { display: grid; gap: 14px; }
 .quote-form__row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.quote-assistant { display: grid; gap: 11px; padding: 13px; border: 1px solid #dce7f3; border-radius: 12px; background: #f5f9fd; }
+.quote-assistant[hidden] { display: none; }
+.quote-assistant > p { margin: 0; color: #40526a; font-size: .76rem; line-height: 1.5; }
 .quote-field { display: grid; gap: 6px; }
 .quote-field label { color: #2f3d52; font-size: .76rem; font-weight: 800; }
 .quote-field label span { color: var(--home-muted); font-weight: 500; }
 .quote-field select,
+.quote-field input,
 .quote-field textarea {
   width: 100%;
   border: 1px solid #cdd5df;
@@ -206,8 +214,10 @@ body textarea { font: inherit; }
   outline: 0;
 }
 .quote-field select { min-height: 46px; padding: 8px 36px 8px 11px; }
+.quote-field input { min-height: 46px; padding: 8px 11px; }
 .quote-field textarea { min-height: 78px; padding: 10px 11px; resize: vertical; }
 .quote-field select:focus,
+.quote-field input:focus,
 .quote-field textarea:focus { border-color: #8f731e; box-shadow: 0 0 0 3px rgba(214, 184, 92, .22); }
 .quote-consent { display: grid; grid-template-columns: 18px 1fr; align-items: start; gap: 9px; color: var(--home-muted); font-size: .71rem; line-height: 1.5; cursor: pointer; }
 .quote-consent input { width: 17px; height: 17px; margin: 2px 0 0; accent-color: var(--home-green); }
