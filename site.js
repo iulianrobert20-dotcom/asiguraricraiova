@@ -215,6 +215,14 @@
           { id: 'quoteProfession', label: 'Profesia', message: 'Profesie', options: ['Medic', 'Asistent medical', 'Medic stomatolog', 'Farmacist', 'Altă profesie'] },
           { id: 'quoteMalpracticeNeed', label: 'Pentru ce ai nevoie?', message: 'Situație', options: ['Poliță nouă', 'Reînnoire', 'Angajare / contract', 'Vreau o recomandare'] }
         ]
+      },
+      'Sănătate pentru expați': {
+        intro: 'Pentru expați, scopul și numărul persoanelor ajută la identificarea pachetului care trebuie verificat.',
+        placeholder: 'Ex.: vârsta, data de început și perioada pentru care ai nevoie de poliță...',
+        fields: [
+          { id: 'quoteExpatPurpose', label: 'Scopul asigurării', message: 'Scop', options: ['VISA / urgențe medicale', 'Permis de ședere / rezidență', 'Protecție medicală pe durata șederii', 'Vreau o recomandare'] },
+          { id: 'quoteExpatPeople', label: 'Pentru cine?', message: 'Persoane', options: ['1 persoană', 'Cuplu / familie', 'Mai mulți angajați', 'Studenți / grup'] }
+        ]
       }
     };
 
@@ -272,7 +280,8 @@
       rca: 'RCA',
       calatorie: 'Călătorie',
       locuinta: 'Locuință și PAD',
-      malpraxis: 'Malpraxis'
+      malpraxis: 'Malpraxis',
+      expati: 'Sănătate pentru expați'
     };
     if (requestedProduct && requestedProducts[requestedProduct.toLowerCase()]) {
       productSelect.value = requestedProducts[requestedProduct.toLowerCase()];
