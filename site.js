@@ -330,12 +330,33 @@
   }
 
   function trackContactClicks() {
+    function getLinkLocation(link) {
+      if (link.dataset.analyticsLocation) return link.dataset.analyticsLocation;
+      if (link.closest('.home-hero, .ph')) return 'hero';
+      if (link.closest('.cta-box, .home-cta')) return 'final_cta';
+      if (link.closest('footer')) return 'footer';
+      if (link.classList.contains('fwa')) return 'floating_button';
+      if (link.closest('nav')) return 'navigation';
+      return 'content';
+    }
+
+    function getContactParameters(link, method) {
+      return {
+        event_category: 'Contact',
+        event_label: document.title.slice(0, 90),
+        contact_method: method,
+        link_location: getLinkLocation(link),
+        link_text: (link.textContent || link.getAttribute('aria-label') || '').trim().slice(0, 90),
+        page_path: window.location.pathname
+      };
+    }
+
     document.addEventListener('click', function (event) {
       if (!window.__analyticsAllowed || typeof window.gtag !== 'function') return;
       var whatsapp = event.target.closest('a[href*="wa.me/"]');
       var phone = event.target.closest('a[href^="tel:"]');
-      if (whatsapp) window.gtag('event', 'whatsapp_click', { event_category: 'Contact', event_label: document.title.slice(0, 90) });
-      if (phone) window.gtag('event', 'phone_click', { event_category: 'Contact', event_label: document.title.slice(0, 90) });
+      if (whatsapp) window.gtag('event', 'whatsapp_click', getContactParameters(whatsapp, 'whatsapp'));
+      if (phone) window.gtag('event', 'phone_click', getContactParameters(phone, 'phone'));
     }, true);
   }
 
