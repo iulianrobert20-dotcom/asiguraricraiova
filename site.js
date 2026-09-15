@@ -329,6 +329,50 @@
     });
   }
 
+  function enableTravelQuote() {
+    var form = document.getElementById('travelQuoteForm');
+    if (!form) return;
+
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      var destination = document.getElementById('travelDestination').value;
+      var period = document.getElementById('travelPeriod').value;
+      var people = document.getElementById('travelPeople').value;
+      var need = document.getElementById('travelNeed').value;
+      var details = document.getElementById('travelDetails').value.trim();
+      var lines = [
+        'Bună ziua! Doresc o ofertă de asigurare de călătorie.',
+        '',
+        'Destinație: ' + destination,
+        'Perioada: ' + period,
+        'Călători: ' + people,
+        'Interes: ' + need
+      ];
+
+      if (details) lines.push('Detalii: ' + details);
+      lines.push('', 'Mesaj trimis din formularul de călătorie AsigurăriCraiova.ro.');
+
+      if (window.__analyticsAllowed && typeof window.gtag === 'function') {
+        window.gtag('event', 'travel_quote_whatsapp', {
+          event_category: 'Contact',
+          event_label: 'Călătorie',
+          product: 'Călătorie',
+          quote_variant: 'travel_page_v1'
+        });
+      }
+
+      var url = 'https://wa.me/40774171971?text=' + encodeURIComponent(lines.join('\n'));
+      var link = document.createElement('a');
+      link.href = url;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+    });
+  }
+
   function trackContactClicks() {
     function getLinkLocation(link) {
       if (link.dataset.analyticsLocation) return link.dataset.analyticsLocation;
@@ -367,6 +411,7 @@
     enableMaps();
     enableHomeMenu();
     enableQuickQuote();
+    enableTravelQuote();
     addPrivacyControl();
     trackContactClicks();
 
