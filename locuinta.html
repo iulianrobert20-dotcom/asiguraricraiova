@@ -30,6 +30,7 @@
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" as="image" href="/locuinta-hero-family-v1.webp" fetchpriority="high">
 <link rel="stylesheet" href="/site.css">
 <script defer src="/site.js"></script>
 
@@ -123,19 +124,20 @@ nav{background:var(--navy);height:62px;display:flex;align-items:center;justify-c
 .nav-right a{color:rgba(255,255,255,.8);font-size:.75rem;padding:5px 9px;border-radius:6px;white-space:nowrap;transition:.2s;text-decoration:none}
 .nav-right a:hover{color:#fff;background:rgba(255,255,255,.1);text-decoration:none}
 .nav-right a.cta{background:var(--gold);color:var(--navy)!important;font-weight:700;padding:7px 14px}
-/* HEADER */
-.ph{background:linear-gradient(135deg,#065f46,#065f46cc);padding:52px 24px 40px}
-.phi{max-width:900px;margin:0 auto}
-.cat{display:inline-flex;align-items:center;gap:6px;background:rgba(201,168,76,.15);border:1px solid rgba(201,168,76,.3);color:var(--gold);font-size:.7rem;font-weight:600;padding:4px 12px;border-radius:100px;margin-bottom:14px;letter-spacing:.08em;text-transform:uppercase}
-.ph h1{font-size:2.4rem;color:#fff;line-height:1.15;margin-bottom:12px}
-.ph p{color:rgba(255,255,255,.65);font-size:.97rem;max-width:600px}
-.hero-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:20px}
-.hero-actions .btn-wa,.hero-actions .btn-g{padding:12px 18px;justify-content:center}
-.hero-actions .btn-g{display:inline-flex;align-items:center}
-.hero-note{display:block;color:rgba(255,255,255,.58);font-size:.75rem;margin-top:10px}
-.law{display:inline-flex;align-items:center;gap:6px;background:rgba(201,168,76,.15);border:1px solid rgba(201,168,76,.3);color:var(--gold);font-size:.72rem;font-weight:600;padding:5px 12px;border-radius:6px;margin-top:14px}
-.bc{font-size:.73rem;color:rgba(255,255,255,.45);margin-bottom:12px}
-.bc a{color:rgba(255,255,255,.45)}
+/* HERO */
+.ph{position:relative;isolation:isolate;min-height:570px;display:flex;align-items:center;padding:70px 24px;background:#0d1f3c url('/locuinta-hero-family-v1.webp') center/cover no-repeat;color:#fff}
+.ph::before{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(7,20,40,.96) 0%,rgba(7,20,40,.87) 38%,rgba(7,20,40,.38) 68%,rgba(7,20,40,.12) 100%)}
+.phi{width:min(1120px,100%);margin:0 auto}
+.cat{display:inline-flex;align-items:center;gap:6px;background:rgba(201,168,76,.16);border:1px solid rgba(232,201,122,.4);color:#f1d990;font-size:.68rem;font-weight:700;padding:5px 11px;border-radius:100px;margin-bottom:17px;letter-spacing:.1em;text-transform:uppercase}
+.ph h1{max-width:650px;font-size:clamp(2.5rem,4.4vw,4.3rem);color:#fff;line-height:1.04;margin-bottom:19px;letter-spacing:-.025em}
+.ph p{max-width:580px;color:rgba(255,255,255,.8);font-size:1.02rem;line-height:1.7}
+.hero-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:28px}
+.hero-actions .btn-wa,.hero-actions .btn-g{padding:13px 20px;justify-content:center}
+.hero-actions .btn-g{display:inline-flex;background:#fff;color:var(--navy)}
+.hero-note{display:block;color:rgba(255,255,255,.65);font-size:.76rem;margin-top:16px}
+.law{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.82);font-size:.72rem;font-weight:600;padding:5px 12px;border-radius:6px;margin-top:18px}
+.bc{position:static;height:auto;display:block;padding:0;background:transparent;box-shadow:none;font-size:.73rem;color:rgba(255,255,255,.62);margin-bottom:16px}
+.bc a{color:rgba(255,255,255,.72)}
 /* MAIN */
 .main{max-width:900px;margin:0 auto;padding:40px 24px 60px}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:32px}
@@ -173,6 +175,23 @@ nav{background:var(--navy);height:62px;display:flex;align-items:center;justify-c
 .decision-card p{font-size:.86rem;color:var(--gray);line-height:1.6;margin-bottom:15px}
 .decision-card a{display:inline-flex;align-items:center;color:#047857;font-size:.84rem;font-weight:700;text-decoration:none}
 .decision-card a:hover{color:#065f46;text-decoration:underline}
+.home-benefits{max-width:1050px;margin:-42px auto 38px;padding:0 24px;position:relative;z-index:2}
+.benefit-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;border-radius:15px;overflow:hidden;background:#dbe2ea;box-shadow:0 18px 40px rgba(13,31,60,.14)}
+.benefit-row article{padding:21px 19px;background:#fff}
+.benefit-row strong{display:block;margin:8px 0 4px;color:var(--navy);font-size:.87rem}
+.benefit-row p{color:var(--gray);font-size:.76rem;line-height:1.5}
+.benefit-icon{font-size:1.45rem}
+.home-quote{padding:34px;border:1px solid #dae3ee;border-radius:18px;background:linear-gradient(135deg,#f6f9fc,#fff);box-shadow:0 14px 35px rgba(13,31,60,.08);margin:0 0 38px}
+.home-quote__heading{display:flex;justify-content:space-between;gap:22px;align-items:end;margin-bottom:21px}
+.home-quote h2{font-size:1.9rem;color:var(--navy);line-height:1.12}
+.home-quote p{color:var(--gray);font-size:.85rem;max-width:530px}
+.home-quote form{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.home-quote label{display:grid;gap:6px;color:#334155;font-size:.76rem;font-weight:700}
+.home-quote select,.home-quote input{min-height:47px;padding:10px 11px;border:1px solid #ccd8e5;border-radius:8px;background:#fff;color:#1a2035;font:inherit;font-size:.88rem}
+.home-quote select:focus,.home-quote input:focus{outline:3px solid rgba(201,168,76,.25);border-color:#a8852c}
+.home-quote .home-quote__action{display:flex;align-items:end}
+.home-quote button{width:100%;border:0;cursor:pointer}
+.home-quote__note{grid-column:1/-1;margin:0!important;font-size:.74rem!important;color:#667085!important}
 .quote-checklist{background:#eff6ff;border-left:4px solid #2563eb;border-radius:0 12px 12px 0;padding:20px;margin:0 0 28px}
 .quote-checklist h2{font-size:1.45rem;color:#17365d;margin-bottom:8px}
 .quote-checklist p{font-size:.87rem;color:#334155;line-height:1.65}
@@ -188,7 +207,7 @@ footer strong{color:rgba(255,255,255,.75)}
 footer a{color:var(--gold)}
 .fwa{position:fixed;bottom:24px;right:24px;background:linear-gradient(145deg,#25d366,#128c7e);width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 24px rgba(37,211,102,.5);text-decoration:none;z-index:200;animation:pulse 2s infinite}
 @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,.6)}70%{box-shadow:0 0 0 16px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
-@media(max-width:640px){.grid,.steps,.price-grid,.decision-grid,.quote-checklist ul{grid-template-columns:1fr}.ph h1{font-size:1.8rem}.nav-right{gap:3px}.hero-actions{align-items:stretch;flex-direction:column}.hero-actions a{width:100%}}
+@media(max-width:760px){.grid,.steps,.price-grid,.decision-grid,.quote-checklist ul,.benefit-row,.home-quote form{grid-template-columns:1fr}.ph{min-height:630px;padding-block:58px;background-position:63% center}.ph::before{background:linear-gradient(90deg,rgba(7,20,40,.94),rgba(7,20,40,.66))}.ph h1{font-size:2.55rem}.home-benefits{margin-top:-24px}.home-quote{padding:24px}.home-quote__heading{display:block}.home-quote__heading p{margin-top:10px}.nav-right{gap:3px}.hero-actions{align-items:stretch;flex-direction:column}.hero-actions a{width:100%}}
 </style>
 
 
@@ -348,16 +367,24 @@ footer a{color:var(--gold)}
   <div class="phi">
     <nav class="bc" aria-label="Căi de navigare"><a href="/">Acasă</a> › <span style="color:var(--gold)">Asigurare Locuință + PAD</span></nav>
     <div class="cat">🏠 Locuință · PAD și facultativă</div>
-    <h1>🏠 Asigurare locuință în Craiova și Dolj: PAD + facultativă</h1>
-    <p>Primești ajutor pentru PAD, asigurarea facultativă a casei sau apartamentului și alegerea acoperirilor potrivite înainte de emitere.</p>
+    <h1>Protejează locul pe care îl numești acasă.</h1>
+    <p>PAD pentru riscurile obligatorii și protecție facultativă pentru casă, apartament, bunuri și răspunderea față de vecini.</p>
     <div class="hero-actions">
-      <a class="btn-wa" data-analytics-location="hero" href="https://wa.me/40774171971?text=Buna%20ziua!%20Doresc%20o%20oferta%20pentru%20asigurarea%20locuintei%20in%20Craiova%20sau%20Dolj.%20Ma%20intereseaza%20PAD%20si%2Fsau%20asigurarea%20facultativa." target="_blank" rel="noopener noreferrer">💬 Cere oferta pe WhatsApp</a>
+      <a class="btn-wa" data-analytics-location="hero" href="#oferta-locuinte">Obține oferta pentru locuință</a>
       <a class="btn-g" data-analytics-location="hero" href="tel:+40774171971">📞 Sună: 0774 171 971</a>
     </div>
-    <span class="hero-note">Solicitare online · răspund L–V, 9:00–16:00 · întâlniri la birou numai cu programare · fără obligația de cumpărare.</span>
+    <span class="hero-note">Solicitare online · răspund L–V, 9:00–16:00 · întâlniri la birou numai cu programare.</span>
     <div class="law">⚖️ Legea nr. 260/2008 (PAD) + Legea 236/2018</div>
   </div>
 </div>
+<section class="home-benefits" aria-label="Ce poate include protecția locuinței">
+  <div class="benefit-row">
+    <article><span class="benefit-icon" aria-hidden="true">🏠</span><strong>Casa sau apartamentul</strong><p>Protecție pentru clădire, în limitele poliței alese.</p></article>
+    <article><span class="benefit-icon" aria-hidden="true">🛋️</span><strong>Bunuri din locuință</strong><p>Mobilier și echipamente, dacă sunt incluse în ofertă.</p></article>
+    <article><span class="benefit-icon" aria-hidden="true">🔧</span><strong>Avarii și instalații</strong><p>Opțiuni pentru riscurile cotidiene, în funcție de produs.</p></article>
+    <article><span class="benefit-icon" aria-hidden="true">🤝</span><strong>Răspundere față de vecini</strong><p>Poate fi inclusă pentru prejudicii accidentale.</p></article>
+  </div>
+</section>
 <div class="main" role="main">
   <p class="lead">Ai nevoie de <strong>PAD în Craiova</strong>, de o <strong>asigurare facultativă pentru apartament</strong> sau de protecție pentru o <strong>casă în Dolj</strong>? Îți prezint opțiunile disponibile prin partenerii din portofoliu și acoperirile care contează pentru locuința ta.</p>
 
@@ -367,17 +394,17 @@ footer a{color:var(--gold)}
       <article class="decision-card">
         <h3>Am nevoie de PAD</h3>
         <p>Polița obligatorie pentru riscurile naturale prevăzute de lege. Verificăm tipul corect al locuinței și emiterea.</p>
-        <a data-analytics-location="decision_pad" href="https://wa.me/40774171971?text=Buna%20ziua!%20Doresc%20doar%20o%20polita%20PAD%20pentru%20locuinta%20mea." target="_blank" rel="noopener noreferrer">Solicită PAD →</a>
+        <a data-home-cover="PAD" href="#oferta-locuinte">Solicită PAD →</a>
       </article>
       <article class="decision-card">
         <h3>Vreau protecție facultativă</h3>
         <p>Pentru incendiu, avarii la instalații, furt, bunuri și răspundere față de vecini, în limitele poliței alese.</p>
-        <a data-analytics-location="decision_facultative" href="https://wa.me/40774171971?text=Buna%20ziua!%20Doresc%20o%20oferta%20pentru%20asigurare%20facultativa%20de%20locuinta." target="_blank" rel="noopener noreferrer">Cere oferta facultativă →</a>
+        <a data-home-cover="Facultativă" href="#oferta-locuinte">Cere oferta facultativă →</a>
       </article>
       <article class="decision-card">
         <h3>Nu știu ce îmi trebuie</h3>
         <p>Spune-mi dacă este casă sau apartament și îți explic simplu diferența dintre PAD, facultativă sau ambele.</p>
-        <a data-analytics-location="decision_guidance" href="https://wa.me/40774171971?text=Buna%20ziua!%20Am%20nevoie%20de%20ajutor%20sa%20aleg%20asigurarea%20pentru%20locuinta." target="_blank" rel="noopener noreferrer">Vorbește cu mine →</a>
+        <a data-home-cover="Nu sunt sigur(ă)" href="#oferta-locuinte">Alege cu ajutor →</a>
       </article>
     </div>
   </section>
@@ -389,17 +416,30 @@ footer a{color:var(--gold)}
   </div>
   <p class="note">Sumele asigurate prin PAD sunt 100.000 lei pentru tip A și 50.000 lei pentru tip B. Tarifele sunt stabilite pentru PAD și nu reprezintă prețul unei polițe facultative.</p>
 
-  <section class="quote-checklist" aria-labelledby="date-oferta">
-    <h2 id="date-oferta">Pentru o ofertă de asigurare facultativă</h2>
-    <p>Trimite datele de mai jos pe WhatsApp sau telefon. Îți spun ce informații mai sunt necesare înainte de emitere; prețul și condițiile se confirmă numai în oferta asigurătorului.</p>
-    <ul>
-      <li>adresa sau localitatea locuinței</li>
-      <li>casă ori apartament</li>
-      <li>anul și structura construcției</li>
-      <li>suprafața și valoarea estimată</li>
-      <li>acoperiri dorite și bunuri importante</li>
-      <li>existența unui credit sau leasing imobiliar</li>
-    </ul>
+  <section class="home-quote" id="oferta-locuinte" aria-labelledby="date-oferta">
+    <div class="home-quote__heading">
+      <div><p class="cat" style="color:#856719;background:#fbf5e7;border-color:#ead9a5">CERERE ÎN 3 PAȘI</p><h2 id="date-oferta">Pregătește cererea pentru locuința ta</h2></div>
+      <p>Completezi câteva detalii de bază. Cererea se deschide apoi în WhatsApp către mine; prețul și condițiile se confirmă numai în oferta asigurătorului.</p>
+    </div>
+    <form id="homeInsuranceQuoteForm">
+      <label>Ce te interesează?
+        <select id="homeQuoteCover" required><option value="">Alege</option><option>Doar PAD</option><option>Asigurare facultativă</option><option>PAD + asigurare facultativă</option><option>Nu sunt sigur(ă)</option></select>
+      </label>
+      <label>Tipul locuinței
+        <select id="homeQuoteType" required><option value="">Alege</option><option>Apartament</option><option>Casă</option><option>Casă de vacanță</option><option>Alt tip</option></select>
+      </label>
+      <label>Localitate / județ
+        <input id="homeQuoteLocation" type="text" autocomplete="address-level2" placeholder="Ex.: Craiova, Dolj" required>
+      </label>
+      <label>Anul construcției
+        <input id="homeQuoteYear" type="number" min="1800" max="2026" placeholder="Ex.: 2012">
+      </label>
+      <label>Suprafața aproximativă (m²)
+        <input id="homeQuoteArea" type="number" min="1" max="5000" placeholder="Ex.: 68">
+      </label>
+      <div class="home-quote__action"><button class="btn-wa" type="submit">Continuă pe WhatsApp</button></div>
+      <p class="home-quote__note">Nu cere CNP, acte sau adresa completă aici. Acestea se comunică numai dacă sunt necesare pentru oferta aleasă.</p>
+    </form>
   </section>
 
   <div class="grid">
