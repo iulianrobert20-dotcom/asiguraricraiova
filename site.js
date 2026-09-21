@@ -310,11 +310,18 @@
       lines.push('', 'Mesaj trimis din formularul AsigurăriCraiova.ro.');
 
       if (window.__analyticsAllowed && typeof window.gtag === 'function') {
-        window.gtag('event', 'quick_quote_whatsapp', {
+        var quickQuoteParameters = {
           event_category: 'Contact',
           event_label: product.slice(0, 60),
           product: product.slice(0, 60),
           quote_variant: 'smart_assistant_v1'
+        };
+        window.gtag('event', 'quick_quote_whatsapp', quickQuoteParameters);
+        window.gtag('event', 'generate_lead', {
+          lead_source: 'website',
+          contact_method: 'whatsapp',
+          product: product.slice(0, 60),
+          form_name: 'smart_assistant_v1'
         });
       }
 
@@ -323,6 +330,7 @@
       link.href = url;
       link.target = '_blank';
       link.rel = 'noopener noreferrer';
+      link.dataset.analyticsSkipContact = 'true';
       document.body.appendChild(link);
       link.click();
       link.remove();
@@ -354,11 +362,18 @@
       lines.push('', 'Mesaj trimis din formularul de călătorie AsigurăriCraiova.ro.');
 
       if (window.__analyticsAllowed && typeof window.gtag === 'function') {
-        window.gtag('event', 'travel_quote_whatsapp', {
+        var travelQuoteParameters = {
           event_category: 'Contact',
           event_label: 'Călătorie',
           product: 'Călătorie',
           quote_variant: 'travel_page_v1'
+        };
+        window.gtag('event', 'travel_quote_whatsapp', travelQuoteParameters);
+        window.gtag('event', 'generate_lead', {
+          lead_source: 'website',
+          contact_method: 'whatsapp',
+          product: 'Călătorie',
+          form_name: 'travel_page_v1'
         });
       }
 
@@ -367,6 +382,7 @@
       link.href = url;
       link.target = '_blank';
       link.rel = 'noopener noreferrer';
+      link.dataset.analyticsSkipContact = 'true';
       document.body.appendChild(link);
       link.click();
       link.remove();
@@ -399,7 +415,7 @@
       if (!window.__analyticsAllowed || typeof window.gtag !== 'function') return;
       var whatsapp = event.target.closest('a[href*="wa.me/"]');
       var phone = event.target.closest('a[href^="tel:"]');
-      if (whatsapp) window.gtag('event', 'whatsapp_click', getContactParameters(whatsapp, 'whatsapp'));
+      if (whatsapp && !whatsapp.dataset.analyticsSkipContact) window.gtag('event', 'whatsapp_click', getContactParameters(whatsapp, 'whatsapp'));
       if (phone) window.gtag('event', 'phone_click', getContactParameters(phone, 'phone'));
     }, true);
   }
