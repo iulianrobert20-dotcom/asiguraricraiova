@@ -373,6 +373,59 @@
     });
   }
 
+  function enableHomeInsuranceQuote() {
+    var form = document.getElementById('homeInsuranceQuoteForm');
+    if (!form) return;
+
+    var cover = document.getElementById('homeQuoteCover');
+    document.querySelectorAll('[data-home-cover]').forEach(function (link) {
+      link.addEventListener('click', function () {
+        var options = {
+          'PAD': 'Doar PAD',
+          'Facultativă': 'Asigurare facultativă',
+          'Nu sunt sigur(ă)': 'Nu sunt sigur(ă)'
+        };
+        cover.value = options[link.dataset.homeCover] || link.dataset.homeCover;
+      });
+    });
+
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+      var type = document.getElementById('homeQuoteType').value;
+      var location = document.getElementById('homeQuoteLocation').value.trim();
+      var year = document.getElementById('homeQuoteYear').value;
+      var area = document.getElementById('homeQuoteArea').value;
+      var lines = [
+        'Bună ziua! Doresc o ofertă pentru asigurarea locuinței.',
+        '',
+        'Interes: ' + cover.value,
+        'Tip locuință: ' + type,
+        'Localitate / județ: ' + location
+      ];
+      if (year) lines.push('Anul construcției: ' + year);
+      if (area) lines.push('Suprafață aproximativă: ' + area + ' m²');
+      lines.push('', 'Mesaj trimis din pagina Asigurare locuință AsigurăriCraiova.ro.');
+
+      if (window.__analyticsAllowed && typeof window.gtag === 'function') {
+        window.gtag('event', 'home_insurance_quote_whatsapp', {
+          event_category: 'Contact',
+          event_label: cover.value.slice(0, 60),
+          product: 'Locuință',
+          quote_variant: 'home_page_v1'
+        });
+      }
+
+      var link = document.createElement('a');
+      link.href = 'https://wa.me/40774171971?text=' + encodeURIComponent(lines.join('\n'));
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.dataset.analyticsSkipContact = 'true';
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+    });
+  }
+
   function trackContactClicks() {
     function getLinkLocation(link) {
       if (link.dataset.analyticsLocation) return link.dataset.analyticsLocation;
@@ -399,7 +452,7 @@
       if (!window.__analyticsAllowed || typeof window.gtag !== 'function') return;
       var whatsapp = event.target.closest('a[href*="wa.me/"]');
       var phone = event.target.closest('a[href^="tel:"]');
-      if (whatsapp) window.gtag('event', 'whatsapp_click', getContactParameters(whatsapp, 'whatsapp'));
+      if (whatsapp && !whatsapp.dataset.analyticsSkipContact) window.gtag('event', 'whatsapp_click', getContactParameters(whatsapp, 'whatsapp'));
       if (phone) window.gtag('event', 'phone_click', getContactParameters(phone, 'phone'));
     }, true);
   }
@@ -412,6 +465,7 @@
     enableHomeMenu();
     enableQuickQuote();
     enableTravelQuote();
+    enableHomeInsuranceQuote();
     addPrivacyControl();
     trackContactClicks();
 
