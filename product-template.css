@@ -1,0 +1,64 @@
+/* Visual adapter for the high-intent product pages.
+   It keeps existing URLs, copy and forms while moving legacy pages to the shared system. */
+@import url('/design-system.css');
+
+.ds-legacy-product { background: var(--ds-surface); color: var(--ds-ink); }
+.ds-legacy-product .ph {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: 76px 24px 88px;
+  background: linear-gradient(120deg, #08182e, #18365f);
+}
+.ds-legacy-product .ph::after {
+  position: absolute;
+  z-index: -1;
+  inset: auto -7% -180px auto;
+  width: 520px;
+  height: 520px;
+  border: 1px solid rgba(241, 218, 145, .18);
+  border-radius: 50%;
+  box-shadow: 0 0 0 55px rgba(241, 218, 145, .04), 0 0 0 110px rgba(241, 218, 145, .025);
+  content: "";
+}
+.ds-legacy-product .phi { max-width: 1180px; }
+.ds-legacy-product .ph h1 { max-width: 760px; font-family: Georgia, "Times New Roman", serif; font-size: clamp(2.55rem, 5vw, 4.35rem); letter-spacing: -.035em; }
+.ds-legacy-product .ph p { max-width: 650px; font-size: 1.03rem; }
+.ds-legacy-product .bc { margin-bottom: 18px; }
+.ds-legacy-product .cat { margin-bottom: 18px; }
+.ds-legacy-product .main { max-width: 1180px; padding: 0 24px 82px; }
+.ds-legacy-product .main > .lead,
+.ds-legacy-product .main > .grid:first-of-type { position: relative; z-index: 3; }
+.ds-legacy-product .main > .lead { max-width: 900px; margin: 0 auto 24px; padding: 28px 30px 0; font-size: 1rem; }
+.ds-legacy-product .main > .grid:first-of-type { margin-top: -44px; margin-bottom: 60px; gap: 1px; overflow: hidden; border-radius: var(--ds-radius); background: #dce4ed; box-shadow: var(--ds-shadow); }
+.ds-legacy-product .box { min-height: 100%; padding: 27px; border: 0; border-radius: 0; background: #fff; }
+.ds-legacy-product .box:first-child { border-left: 0; }
+.ds-legacy-product .main h2 { margin-top: 56px; color: var(--ds-navy-800); font-family: Georgia, "Times New Roman", serif; font-size: clamp(1.75rem, 3vw, 2.5rem); line-height: 1.18; }
+.ds-legacy-product .main h2.coverage-title { margin: 0 0 14px; font-family: "Segoe UI", Arial, sans-serif; font-size: 1rem; }
+.ds-legacy-product .main .body { max-width: 900px; }
+.ds-legacy-product .main .body p,
+.ds-legacy-product .main p.lead { color: var(--ds-muted); }
+.ds-legacy-product .factors { gap: 12px; }
+.ds-legacy-product .factors li { padding: 13px 15px; border: 1px solid var(--ds-line); border-radius: var(--ds-radius-sm); background: #fff; }
+.ds-legacy-product .steps li { padding: 20px 20px 20px 62px; border: 1px solid var(--ds-line); border-radius: var(--ds-radius-sm); background: #fff; }
+.ds-legacy-product .steps li::before { top: 18px; left: 18px; background: var(--ds-gold-500); }
+.ds-legacy-product .ins-box { padding: 30px; border: 1px solid var(--ds-line); border-radius: var(--ds-radius); background: var(--ds-cream); }
+.ds-legacy-product .faq details { border-color: var(--ds-line); border-radius: 12px; }
+.ds-legacy-product .faq summary { padding: 18px 50px 18px 20px; color: var(--ds-navy-800); }
+.ds-legacy-product .cta-box { margin-top: 62px; padding: 48px 32px; border-radius: var(--ds-radius-lg); background: var(--ds-navy-800); text-align: left; }
+.ds-legacy-product .cta-box h2 { margin-top: 0; color: #fff; }
+.ds-legacy-product .cta-row { justify-content: flex-start; }
+.ds-legacy-product .btn-wa,
+.ds-legacy-product .btn-g { min-height: 48px; align-items: center; }
+.ds-legacy-product .btn-g { display: inline-flex; }
+.ds-legacy-product .travel-quote,
+.ds-legacy-product .home-quote { border-radius: var(--ds-radius); box-shadow: var(--ds-shadow); }
+
+@media (max-width: 640px) {
+  .ds-legacy-product .ph { padding: 58px 20px 64px; }
+  .ds-legacy-product .main { padding: 0 20px 60px; }
+  .ds-legacy-product .main > .lead { padding: 22px 0 0; }
+  .ds-legacy-product .main > .grid:first-of-type { margin-top: -24px; margin-bottom: 40px; }
+  .ds-legacy-product .cta-box { padding: 35px 24px; text-align: center; }
+  .ds-legacy-product .cta-row { justify-content: center; }
+}
