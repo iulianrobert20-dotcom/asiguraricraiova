@@ -81,6 +81,79 @@
     document.body.appendChild(button);
   }
 
+  function installGlobalNavigation() {
+    var legacyHeader = document.querySelector('nav.snav, header.home-header');
+    if (!legacyHeader || document.querySelector('.global-site-header')) return;
+
+    var header = document.createElement('header');
+    header.className = 'global-site-header';
+    header.innerHTML =
+      '<nav class="global-site-nav" aria-label="Navigare principală">' +
+        '<div class="global-site-nav__inner">' +
+          '<a class="global-site-brand" href="/" aria-label="AsigurăriCraiova.ro — acasă">' +
+            '<span class="global-site-brand__mark" aria-hidden="true">AC</span>' +
+            '<span class="global-site-brand__copy"><strong>AsigurăriCraiova.ro</strong><small>Intermediar autorizat în asigurări</small></span>' +
+          '</a>' +
+          '<button class="global-site-menu-toggle" type="button" aria-expanded="false" aria-controls="globalSiteMenu"><span aria-hidden="true">☰</span><span class="sr-only">Deschide meniul</span></button>' +
+          '<div class="global-site-menu" id="globalSiteMenu">' +
+            '<div class="global-site-products">' +
+              '<button class="global-site-products__toggle" type="button" aria-expanded="false" aria-controls="globalProductMenu">Asigurări <span aria-hidden="true">▾</span></button>' +
+              '<div class="global-site-product-panel" id="globalProductMenu">' +
+                '<section><h2>Auto</h2><a href="/rca.html">RCA</a><a href="/rca-in-rate.html">RCA în rate</a><a href="/casco.html">CASCO</a><a href="/despagubiri-accidente.html">Sprijin la daună</a></section>' +
+                '<section><h2>Locuință &amp; familie</h2><a href="/locuinta.html">Locuință + PAD</a><a href="/sanatate.html">Sănătate</a><a href="/animale.html">Pet Love</a></section>' +
+                '<section><h2>Viață &amp; viitor</h2><a href="/viata.html">Asigurare de viață</a><a href="/asigurare-viata-karma-buna.html">Karma Bună</a><a href="/pensie.html">Pensie Pilon III</a><a href="/economisire.html">Economisire copii</a></section>' +
+                '<section><h2>Călătorii &amp; profesii</h2><a href="/calatorie.html">Călătorie</a><a href="/multitravel.html">MultiTravel</a><a href="/malpraxis.html">Malpraxis</a><a href="/firme.html">Asigurări pentru firme</a></section>' +
+                '<a class="global-site-product-panel__all" href="/asigurari.html">Vezi toate asigurările <span aria-hidden="true">→</span></a>' +
+              '</div>' +
+            '</div>' +
+            '<a href="/calculator-rca.html">Calculator RCA</a>' +
+            '<a href="/blog.html">Ghiduri &amp; Blog</a>' +
+            '<a href="/despre.html">Despre</a>' +
+            '<a class="global-site-cta" href="/#oferta-rapida">Cere ofertă</a>' +
+          '</div>' +
+        '</div>' +
+      '</nav>';
+    legacyHeader.replaceWith(header);
+
+    var menuToggle = header.querySelector('.global-site-menu-toggle');
+    var menu = header.querySelector('.global-site-menu');
+    var productsToggle = header.querySelector('.global-site-products__toggle');
+    var productPanel = header.querySelector('.global-site-product-panel');
+
+    function setProductsOpen(open) {
+      productPanel.classList.toggle('is-open', open);
+      productsToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+
+    function setMenuOpen(open) {
+      menu.classList.toggle('is-open', open);
+      menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      if (!open) setProductsOpen(false);
+    }
+
+    menuToggle.addEventListener('click', function () {
+      setMenuOpen(!menu.classList.contains('is-open'));
+    });
+    productsToggle.addEventListener('click', function () {
+      setProductsOpen(!productPanel.classList.contains('is-open'));
+    });
+    menu.addEventListener('click', function (event) {
+      if (event.target.closest('a')) setMenuOpen(false);
+    });
+    document.addEventListener('click', function (event) {
+      if (!header.contains(event.target)) {
+        setMenuOpen(false);
+      }
+    });
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') {
+        var menuWasOpen = menu.classList.contains('is-open');
+        setMenuOpen(false);
+        if (menuWasOpen) menuToggle.focus();
+      }
+    });
+  }
+
   function enhanceNavigation() {
     var menu = document.getElementById('snavMenu');
     var hamburger = document.getElementById('snavHam');
@@ -468,6 +541,7 @@
   }
 
   document.addEventListener('DOMContentLoaded', function () {
+    installGlobalNavigation();
     addSkipLink();
     enhanceNavigation();
     enhanceAccessibleNames();
