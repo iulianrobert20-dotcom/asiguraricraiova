@@ -174,6 +174,48 @@
     });
   }
 
+  function sendAnalyticsEvent(name, parameters) {
+    if (!window.__analyticsAllowed || typeof window.gtag !== 'function') return;
+    window.gtag('event', name, parameters);
+  }
+
+  function getContactLocation(element) {
+    if (element && element.dataset.analyticsLocation) return element.dataset.analyticsLocation;
+    if (element && element.closest('.home-hero, .ph, .product-hero')) return 'hero';
+    if (element && element.closest('.cta-box, .home-cta, .product-final-cta')) return 'final_cta';
+    if (element && element.closest('footer')) return 'footer';
+    if (element && element.classList.contains('fwa')) return 'floating_button';
+    if (element && element.closest('nav')) return 'navigation';
+    return 'content';
+  }
+
+  function getInsuranceProduct(element, fallback) {
+    if (element && element.dataset.analyticsProduct) return element.dataset.analyticsProduct.slice(0, 60);
+    if (fallback) return String(fallback).slice(0, 60);
+    var heading = document.querySelector('main h1, h1');
+    return heading ? heading.textContent.trim().slice(0, 60) : 'Nespecificat';
+  }
+
+  function getLeadParameters(method, element, details) {
+    var parameters = {
+      lead_method: method,
+      insurance_product: getInsuranceProduct(element, details && details.product),
+      lead_location: getContactLocation(element),
+      page_path: window.location.pathname
+    };
+    if (details && details.form_name) parameters.form_name = details.form_name;
+    return parameters;
+  }
+
+  window.asigurariAnalytics = {
+    trackLead: function (method, element, details) {
+      sendAnalyticsEvent('generate_lead', getLeadParameters(method, element, details || {}));
+    },
+    trackContactClick: function (method, element) {
+      sendAnalyticsEvent(method === 'whatsapp' ? 'contact_whatsapp_click' : 'contact_phone_click', getLeadParameters(method, element, {}));
+    }
+  };
+
   function enableQuickQuote() {
     var form = document.getElementById('quickQuoteForm');
     if (!form) return;
@@ -309,20 +351,17 @@
       if (details) lines.push('Alte detalii: ' + details);
       lines.push('', 'Mesaj trimis din formularul AsigurăriCraiova.ro.');
 
-      if (window.__analyticsAllowed && typeof window.gtag === 'function') {
-        window.gtag('event', 'quick_quote_whatsapp', {
-          event_category: 'Contact',
-          event_label: product.slice(0, 60),
-          product: product.slice(0, 60),
-          quote_variant: 'smart_assistant_v1'
-        });
-      }
+      window.asigurariAnalytics.trackLead('whatsapp_form', form, {
+        product: product,
+        form_name: 'quick_quote'
+      });
 
       var url = 'https://wa.me/40774171971?text=' + encodeURIComponent(lines.join('\n'));
       var link = document.createElement('a');
       link.href = url;
       link.target = '_blank';
       link.rel = 'noopener noreferrer';
+      link.dataset.analyticsSkipContact = 'true';
       document.body.appendChild(link);
       link.click();
       link.remove();
@@ -353,20 +392,17 @@
       if (details) lines.push('Detalii: ' + details);
       lines.push('', 'Mesaj trimis din formularul de călătorie AsigurăriCraiova.ro.');
 
-      if (window.__analyticsAllowed && typeof window.gtag === 'function') {
-        window.gtag('event', 'travel_quote_whatsapp', {
-          event_category: 'Contact',
-          event_label: 'Călătorie',
-          product: 'Călătorie',
-          quote_variant: 'travel_page_v1'
-        });
-      }
+      window.asigurariAnalytics.trackLead('whatsapp_form', form, {
+        product: 'Călătorie',
+        form_name: 'travel_quote'
+      });
 
       var url = 'https://wa.me/40774171971?text=' + encodeURIComponent(lines.join('\n'));
       var link = document.createElement('a');
       link.href = url;
       link.target = '_blank';
       link.rel = 'noopener noreferrer';
+      link.dataset.analyticsSkipContact = 'true';
       document.body.appendChild(link);
       link.click();
       link.remove();
@@ -406,14 +442,10 @@
       if (area) lines.push('Suprafață aproximativă: ' + area + ' m²');
       lines.push('', 'Mesaj trimis din pagina Asigurare locuință AsigurăriCraiova.ro.');
 
-      if (window.__analyticsAllowed && typeof window.gtag === 'function') {
-        window.gtag('event', 'home_insurance_quote_whatsapp', {
-          event_category: 'Contact',
-          event_label: cover.value.slice(0, 60),
-          product: 'Locuință',
-          quote_variant: 'home_page_v1'
-        });
-      }
+      window.asigurariAnalytics.trackLead('whatsapp_form', form, {
+        product: 'Locuință și PAD',
+        form_name: 'home_insurance_quote'
+      });
 
       var link = document.createElement('a');
       link.href = 'https://wa.me/40774171971?text=' + encodeURIComponent(lines.join('\n'));
@@ -427,33 +459,11 @@
   }
 
   function trackContactClicks() {
-    function getLinkLocation(link) {
-      if (link.dataset.analyticsLocation) return link.dataset.analyticsLocation;
-      if (link.closest('.home-hero, .ph')) return 'hero';
-      if (link.closest('.cta-box, .home-cta')) return 'final_cta';
-      if (link.closest('footer')) return 'footer';
-      if (link.classList.contains('fwa')) return 'floating_button';
-      if (link.closest('nav')) return 'navigation';
-      return 'content';
-    }
-
-    function getContactParameters(link, method) {
-      return {
-        event_category: 'Contact',
-        event_label: document.title.slice(0, 90),
-        contact_method: method,
-        link_location: getLinkLocation(link),
-        link_text: (link.textContent || link.getAttribute('aria-label') || '').trim().slice(0, 90),
-        page_path: window.location.pathname
-      };
-    }
-
     document.addEventListener('click', function (event) {
-      if (!window.__analyticsAllowed || typeof window.gtag !== 'function') return;
       var whatsapp = event.target.closest('a[href*="wa.me/"]');
       var phone = event.target.closest('a[href^="tel:"]');
-      if (whatsapp && !whatsapp.dataset.analyticsSkipContact) window.gtag('event', 'whatsapp_click', getContactParameters(whatsapp, 'whatsapp'));
-      if (phone) window.gtag('event', 'phone_click', getContactParameters(phone, 'phone'));
+      if (whatsapp && !whatsapp.dataset.analyticsSkipContact) window.asigurariAnalytics.trackContactClick('whatsapp', whatsapp);
+      if (phone) window.asigurariAnalytics.trackContactClick('phone', phone);
     }, true);
   }
 

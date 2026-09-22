@@ -334,7 +334,10 @@ document.getElementById('contactForm').addEventListener('submit', async function
     status.textContent = 'Cererea a fost trimisă. Te voi contacta în programul de lucru.';
     button.textContent = 'Cerere trimisă ✓';
     button.style.background = '#065f46';
-    if (typeof window.gtag === 'function') window.gtag('event', 'lead_contact_page', { event_category: 'Leads', event_label: 'Formular Contact' });
+    if (window.asigurariAnalytics) window.asigurariAnalytics.trackLead('formspree', form, {
+      product: document.getElementById('contact-produs').value || 'Consultanță',
+      form_name: 'contact'
+    });
     form.reset();
   } catch (error) {
     status.textContent = 'Cererea nu a putut fi trimisă. Folosește WhatsApp sau sună la 0774 171 971.';
