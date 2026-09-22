@@ -32,6 +32,7 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="stylesheet" href="/site.css">
 <script defer src="/site.js"></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","@id":"https://asiguraricraiova.ro/calculator-rca.html#application","name":"Calculator RCA 2026","applicationCategory":"FinanceApplication","operatingSystem":"Web","url":"https://asiguraricraiova.ro/calculator-rca.html","description":"Calculator orientativ pentru tariful de referință RCA și pragul BAAR, pe baza datelor introduse de utilizator.","provider":{"@id":"https://asiguraricraiova.ro/#business"},"offers":{"@type":"Offer","price":"0","priceCurrency":"RON"}},{"@type":"BreadcrumbList","@id":"https://asiguraricraiova.ro/calculator-rca.html#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Acasă","item":"https://asiguraricraiova.ro/"},{"@type":"ListItem","position":2,"name":"RCA","item":"https://asiguraricraiova.ro/rca.html"},{"@type":"ListItem","position":3,"name":"Calculator RCA","item":"https://asiguraricraiova.ro/calculator-rca.html"}]},{"@type":"FAQPage","@id":"https://asiguraricraiova.ro/calculator-rca.html#faq","mainEntity":[{"@type":"Question","name":"Calculatorul reprezintă o ofertă RCA?","acceptedAnswer":{"@type":"Answer","text":"Nu. Calculatorul oferă o estimare orientativă a tarifului de referință și a pragului BAAR. Prețul final este cel din oferta asigurătorului."}},{"@type":"Question","name":"Ce este pragul BAAR?","acceptedAnswer":{"@type":"Answer","text":"Pragul BAAR este utilizat în verificarea orientativă a situațiilor de risc ridicat. Eligibilitatea și documentele aplicabile sunt stabilite exclusiv de BAAR."}},{"@type":"Question","name":"Unde verific valabilitatea unei polițe RCA?","acceptedAnswer":{"@type":"Answer","text":"Valabilitatea poliței se verifică în baza oficială AIDA, administrată de BAAR, după numărul de înmatriculare sau seria VIN."}}]}]}</script>
 
 <style>
 :root{
@@ -354,6 +355,7 @@ footer strong{color:rgba(255,255,255,.75)}
 <!-- NAV -->
 <!-- HERO -->
 <div class="hero">
+  <p style="margin:0 auto 14px;max-width:600px;text-align:left;color:rgba(255,255,255,.64);font-size:.78rem"><a href="/" style="color:var(--gold)">Acasă</a> › <a href="/rca.html" style="color:var(--gold)">RCA</a> › Calculator RCA</p>
   <div class="hero-badge">🚗 Calculator Gratuit</div>
   <h1>Calculator <em>Asigurare Auto RCA 2026</em></h1>
   <p>Tarif de referință ASF • Verificare orientativă a pragului BAAR • Ofertă personalizată</p>
@@ -627,6 +629,13 @@ footer strong{color:rgba(255,255,255,.75)}
       </div>
     </div>
     <div class="alert alert-warn">⚠️ <div>BAAR NU emite polițe de asigurare — doar alocă un asigurător. Te ajut eu cu tot procesul! Sună la <strong>0774 171 971</strong>.</div></div>
+  </div>
+
+  <div class="card" id="faq">
+    <h3 style="font-size:1.1rem;color:var(--navy);margin-bottom:12px">Întrebări despre calculatorul RCA</h3>
+    <details style="padding:13px 0;border-top:1px solid #e8ecf3"><summary style="cursor:pointer;font-weight:700;color:var(--navy)">Calculatorul reprezintă o ofertă RCA?</summary><p style="margin:10px 0 0;color:var(--gray);font-size:.84rem;line-height:1.7">Nu. Calculatorul oferă o estimare orientativă a tarifului de referință și a pragului BAAR. Prețul final este cel din oferta asigurătorului.</p></details>
+    <details style="padding:13px 0;border-top:1px solid #e8ecf3"><summary style="cursor:pointer;font-weight:700;color:var(--navy)">Ce este pragul BAAR?</summary><p style="margin:10px 0 0;color:var(--gray);font-size:.84rem;line-height:1.7">Pragul BAAR este utilizat în verificarea orientativă a situațiilor de risc ridicat. Eligibilitatea și documentele aplicabile sunt stabilite exclusiv de BAAR.</p></details>
+    <details style="padding:13px 0;border-top:1px solid #e8ecf3;border-bottom:1px solid #e8ecf3"><summary style="cursor:pointer;font-weight:700;color:var(--navy)">Unde verific valabilitatea unei polițe RCA?</summary><p style="margin:10px 0 0;color:var(--gray);font-size:.84rem;line-height:1.7">Valabilitatea poliței se verifică în baza oficială AIDA, administrată de BAAR, după numărul de înmatriculare sau seria VIN.</p></details>
   </div>
 
 </div><!-- /main -->
@@ -971,7 +980,10 @@ async function submitLead() {
     if (res.ok) {
       btn.textContent = '✅ Trimis! Te contactez în programul de lucru.';
       btn.style.background = '#065f46';
-      if (typeof window.gtag === 'function') window.gtag('event','lead_calculator_rca',{event_category:'Leads',event_label:'Calculator RCA'});
+      if (window.asigurariAnalytics) window.asigurariAnalytics.trackLead('formspree', document.getElementById('leadForm') || btn, {
+        product: 'RCA',
+        form_name: 'rca_calculator'
+      });
     } else {
       throw new Error('err');
     }
