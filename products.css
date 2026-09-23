@@ -12,6 +12,10 @@
   color: #fff;
 }
 
+.professional-page .product-hero {
+  background: radial-gradient(circle at 85% 20%, rgba(214,184,92,.18), transparent 32%), linear-gradient(115deg, #0b1930, #193b61);
+}
+
 .product-hero__grid {
   display: grid;
   grid-template-columns: minmax(0, 1.25fr) minmax(300px, .75fr);

@@ -520,6 +520,46 @@
     });
   }
 
+  function enableProfessionalLiabilityQuote() {
+    var form = document.getElementById('professionalLiabilityQuoteForm');
+    if (!form) return;
+
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+      var activity = document.getElementById('professionalQuoteActivity').value.trim();
+      var client = document.getElementById('professionalQuoteClient').value;
+      var territory = document.getElementById('professionalQuoteTerritory').value;
+      var limit = document.getElementById('professionalQuoteLimit').value;
+      var history = document.getElementById('professionalQuoteHistory').value;
+      var details = document.getElementById('professionalQuoteDetails').value.trim();
+      var lines = [
+        'Bună ziua! Doresc o ofertă pentru asigurare de răspundere civilă profesională.',
+        '',
+        'Profesie și servicii: ' + activity,
+        'Clienți: ' + client,
+        'Teritoriul activității: ' + territory,
+        'Limită de răspundere: ' + limit,
+        'Pretenții sau daune anterioare: ' + history
+      ];
+      if (details) lines.push('Detalii: ' + details);
+      lines.push('', 'Cerere pregătită pe AsigurăriCraiova.ro/raspundere-civila-profesionala.html.');
+
+      window.asigurariAnalytics.trackLead('whatsapp_form', form, {
+        product: 'Răspundere civilă profesională',
+        form_name: 'professional_liability_quote'
+      });
+
+      var link = document.createElement('a');
+      link.href = 'https://wa.me/40774171971?text=' + encodeURIComponent(lines.join('\n'));
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.dataset.analyticsSkipContact = 'true';
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+    });
+  }
+
   function enableHomeInsuranceQuote() {
     var form = document.getElementById('homeInsuranceQuoteForm');
     if (!form) return;
@@ -588,6 +628,7 @@
     enableQuickQuote();
     enableTravelQuote();
     enableMultiTravelQuote();
+    enableProfessionalLiabilityQuote();
     enableHomeInsuranceQuote();
     addPrivacyControl();
     trackContactClicks();
