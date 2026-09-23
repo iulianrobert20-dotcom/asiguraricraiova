@@ -482,6 +482,44 @@
     });
   }
 
+  function enableMultiTravelQuote() {
+    var form = document.getElementById('multiTravelQuoteForm');
+    if (!form) return;
+
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+      var frequency = document.getElementById('multiTravelFrequency').value;
+      var duration = document.getElementById('multiTravelDuration').value;
+      var territory = document.getElementById('multiTravelTerritory').value;
+      var travellers = document.getElementById('multiTravelTravellers').value;
+      var details = document.getElementById('multiTravelDetails').value.trim();
+      var lines = [
+        'Bună ziua! Doresc o ofertă pentru asigurare MultiTravel.',
+        '',
+        'Număr aproximativ de călătorii într-un an: ' + frequency,
+        'Durata celei mai lungi călătorii: ' + duration,
+        'Destinații / zonă: ' + territory,
+        'Persoane asigurate: ' + travellers
+      ];
+      if (details) lines.push('Detalii: ' + details);
+      lines.push('', 'Cerere pregătită pe AsigurăriCraiova.ro/multitravel.html.');
+
+      window.asigurariAnalytics.trackLead('whatsapp_form', form, {
+        product: 'MultiTravel',
+        form_name: 'multitravel_quote'
+      });
+
+      var link = document.createElement('a');
+      link.href = 'https://wa.me/40774171971?text=' + encodeURIComponent(lines.join('\n'));
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.dataset.analyticsSkipContact = 'true';
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+    });
+  }
+
   function enableHomeInsuranceQuote() {
     var form = document.getElementById('homeInsuranceQuoteForm');
     if (!form) return;
@@ -549,6 +587,7 @@
     enableHomeMenu();
     enableQuickQuote();
     enableTravelQuote();
+    enableMultiTravelQuote();
     enableHomeInsuranceQuote();
     addPrivacyControl();
     trackContactClicks();
