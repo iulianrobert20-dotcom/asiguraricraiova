@@ -388,3 +388,13 @@ main a.btn-gold {
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }
+
+/* Practical buying guidance on individual insurance pages. */
+.content-detail { margin: 0 0 30px; padding: 26px 28px; border: 1px solid #e2e8f0; border-radius: 14px; background: #fff; color: #334155; }
+.content-detail h2 { margin: 0 0 12px; color: #0d1f3c; font-size: clamp(1.35rem, 2.5vw, 1.75rem); line-height: 1.25; }
+.content-detail h2:not(:first-child) { margin-top: 24px; }
+.content-detail p { margin: 0 0 14px; line-height: 1.75; }
+.content-detail ul { margin: 0 0 14px 1.25rem; padding: 0; }
+.content-detail li { margin: 0 0 8px; line-height: 1.65; }
+.content-detail a { font-weight: 700; text-decoration: underline; text-underline-offset: 2px; }
+@media (max-width: 600px) { .content-detail { padding: 22px 18px; } }
