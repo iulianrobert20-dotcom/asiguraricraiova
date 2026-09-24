@@ -13,6 +13,7 @@ Data: 24 septembrie 2026. Ramură: `codex/redesign-seo-cro-2026`.
 - Meniu comun pe paginile standard, cu acces rapid la șapte grupe și categoriile comerciale principale. Pagina pentru expați își păstrează antetul bilingv dedicat.
 - Bară fixă „Sună / WhatsApp” pe telefon. Subsol comun pentru navigare și contact, care păstrează sub el notele specifice calculatorului, articolelor și produselor. Homepage-ul își păstrează subsolul complet; pagina bilingvă pentru expați își păstrează subsolul în engleză/română.
 - Homepage: hero mai clar, șase categorii imediat după hero, formular rapid, RCA & BAAR, RCA în rate, patru produse dedicate și acces la pagina „Despre”. Nu au fost inventate recenzii, beneficii financiare sau randamente.
+- După comparația cu macheta, homepage-ul a primit o fotografie originală cu familie și consultant, compoziție desktop/mobil mai apropiată de referință, iconuri SVG coerente, carduri compacte și formular pe un rând la lățimi mari. Imaginile `hero-family-advisor-v1.webp` și `tool-rca-road-v1.webp` au fost generate cu instrumentul built-in imagegen și optimizate WebP; fără logo sau text în fotografie. Prompturile au cerut o scenă de consultanță în locuință, respectiv o mașină pe drum, cu spațiu pentru text HTML.
 - Evenimente noi de contact și navigare fără datele introduse de vizitator. Evenimentele vechi sunt păstrate pentru continuitate. Planul de configurare și avertismentul privind dublarea conversiilor sunt în [analytics-tracking.md](analytics-tracking.md).
 - Au fost schimbate doar versiunile fișierelor CSS/JS din paginile HTML pentru a evita încărcarea din cache a meniului vechi. Nu au fost schimbate URL-urile canonice, sitemap-ul sau redirecturile.
 
@@ -20,6 +21,7 @@ Data: 24 septembrie 2026. Ramură: `codex/redesign-seo-cro-2026`.
 
 - Validator local: 47 pagini canonice și 47 intrări sitemap, fără regresii critice.
 - Verificare manuală locală în browser la 1280 px și 390 px: antet, meniu, submeniu, hero, carduri, formular, bară mobilă și subsol RCA. Linkurile telefonice folosesc `tel:`; cele WhatsApp folosesc `wa.me`.
+- Corecția vizuală a fost verificată local la 1440, 768 și 390 px, plus control de overflow la 320, 375 și 430 px. Deschiderea directă cu `file://` nu poate încărca corect resursele cu căi absolute de site (`/site.css`, `/home.css`, `/imagini`); previzualizarea trebuie făcută printr-un server local sau după publicare.
 - Validarea GitHub Actions trebuie confirmată pe PR. Lighthouse înainte/după, Core Web Vitals reale, DebugView GA4 și toate cele șapte dimensiuni responsive cerute rămân de măsurat; nu există încă rezultate pe care să le raportăm ca trecute.
 
 ## Următoarea etapă

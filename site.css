@@ -167,7 +167,7 @@ main a.btn-gold {
 .global-site-header .global-site-nav {
   display: block;
   width: 100%;
-  min-height: 76px;
+  min-height: 64px;
   margin: 0;
   padding: 0;
   background: #fff;
@@ -178,9 +178,9 @@ main a.btn-gold {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 24px;
-  width: min(1280px, calc(100% - 40px));
-  min-height: 76px;
+  gap: 12px;
+  width: min(1400px, calc(100% - 32px));
+  min-height: 64px;
   margin: 0 auto;
 }
 
@@ -196,26 +196,26 @@ main a.btn-gold {
 
 .global-site-brand__mark {
   display: grid;
-  width: 42px;
-  height: 42px;
+  width: 32px;
+  height: 32px;
   place-items: center;
-  border: 2px solid #d7b653;
-  border-radius: 50%;
-  background: #102545;
-  color: #f5dc87;
+  border: 0;
+  border-radius: 5px;
+  background: #fff;
+  color: #102545;
   font-size: .86rem;
   font-weight: 800;
 }
 
 .global-site-brand__copy { display: grid; gap: 2px; }
-.global-site-brand__copy strong { font-family: Georgia, serif; font-size: 1.15rem; line-height: 1; }
-.global-site-brand__copy small { color: #9a7412; font-size: .55rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+.global-site-brand__copy strong { font-family: Arial, sans-serif; font-size: 1rem; line-height: 1; }
+.global-site-brand__copy small { display: none; }
 
 .global-site-menu {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 4px;
+  gap: 0;
 }
 
 .global-site-header .global-site-menu > a,
@@ -223,12 +223,12 @@ main a.btn-gold {
   display: inline-flex;
   align-items: center;
   min-height: 42px;
-  padding: 10px 12px;
+  padding: 10px 8px;
   border: 0;
   border-radius: 8px;
   background: transparent;
   color: #334155;
-  font: 700 .86rem/1.1 'DM Sans', Arial, sans-serif;
+  font: 700 .78rem/1.1 'DM Sans', Arial, sans-serif;
   cursor: pointer;
 }
 
@@ -300,7 +300,7 @@ main a.btn-gold {
 
 .global-site-menu-toggle { display: none; }
 
-@media (max-width: 1360px) {
+@media (max-width: 1120px) {
   .global-site-nav__inner { width: min(100% - 28px, 1180px); min-height: 66px; }
   .global-site-header .global-site-nav { min-height: 66px; }
   .global-site-brand__mark { width: 36px; height: 36px; font-size: .72rem; }
