@@ -99,17 +99,24 @@
             '<div class="global-site-products">' +
               '<button class="global-site-products__toggle" type="button" aria-expanded="false" aria-controls="globalProductMenu">Asigurări <span aria-hidden="true">▾</span></button>' +
               '<div class="global-site-product-panel" id="globalProductMenu">' +
-                '<section><h2>Auto</h2><a href="/rca.html">RCA</a><a href="/rca-in-rate.html">RCA în rate</a><a href="/casco.html">CASCO</a><a href="/despagubiri-accidente.html">Sprijin la daună</a></section>' +
-                '<section><h2>Locuință &amp; familie</h2><a href="/locuinta.html">Locuință + PAD</a><a href="/sanatate.html">Sănătate</a><a href="/animale.html">Pet Love</a></section>' +
-                '<section><h2>Viață &amp; viitor</h2><a href="/viata.html">Asigurare de viață</a><a href="/asigurare-viata-karma-buna.html">Karma Bună</a><a href="/pensie.html">Pensie Pilon III</a><a href="/economisire.html">Economisire copii</a></section>' +
-                '<section><h2>Călătorii &amp; profesii</h2><a href="/calatorie.html">Călătorie</a><a href="/multitravel.html">MultiTravel</a><a href="/malpraxis.html">Malpraxis</a><a href="/firme.html">Asigurări pentru firme</a></section>' +
+                '<section><h2>Auto</h2><a href="/rca.html">RCA, CASCO și opțiuni auto →</a></section>' +
+                '<section><h2>Locuință</h2><a href="/locuinta.html">Locuință și PAD →</a></section>' +
+                '<section><h2>Viață &amp; sănătate</h2><a href="/viata.html">Protecție pentru familie →</a></section>' +
+                '<section><h2>Călătorie</h2><a href="/calatorie.html">Călătorii și Storno →</a></section>' +
+                '<section><h2>Firme &amp; profesii</h2><a href="/firme.html">Soluții pentru firme →</a></section>' +
+                '<section><h2>Economisire</h2><a href="/unitlinked.html">Unit-linked și programe →</a></section>' +
+                '<section><h2>Produse speciale</h2><a href="/asigurari.html">Vezi catalogul complet →</a></section>' +
                 '<a class="global-site-product-panel__all" href="/asigurari.html">Vezi toate asigurările <span aria-hidden="true">→</span></a>' +
               '</div>' +
             '</div>' +
+            '<a href="/rca.html">RCA</a>' +
+            '<a href="/locuinta.html">Locuință</a>' +
+            '<a href="/viata.html">Viață &amp; sănătate</a>' +
+            '<a href="/calatorie.html">Călătorie</a>' +
             '<a href="/calculator-rca.html">Calculator RCA</a>' +
-            '<a href="/blog.html">Ghiduri &amp; Blog</a>' +
-            '<a href="/despre.html">Despre</a>' +
-            '<a class="global-site-cta" href="/#oferta-rapida">Cere ofertă</a>' +
+            '<a href="/contact.html">Contact</a>' +
+            '<a class="global-site-phone" href="tel:+40774171971" data-analytics-location="navigation">0774 171 971</a>' +
+            '<a class="global-site-cta" href="https://wa.me/40774171971" target="_blank" rel="noopener noreferrer" data-analytics-location="navigation">Cere ofertă pe WhatsApp</a>' +
           '</div>' +
         '</div>' +
       '</nav>';
@@ -152,6 +159,17 @@
         if (menuWasOpen) menuToggle.focus();
       }
     });
+  }
+
+  function installMobileContactBar() {
+    if (document.querySelector('.mobile-contact-bar')) return;
+    var bar = document.createElement('nav');
+    bar.className = 'mobile-contact-bar';
+    bar.setAttribute('aria-label', 'Contact rapid');
+    bar.innerHTML = '<a href="tel:+40774171971" data-analytics-location="mobile_bar">Sună</a>' +
+      '<a href="https://wa.me/40774171971" target="_blank" rel="noopener noreferrer" data-analytics-location="mobile_bar">WhatsApp</a>';
+    document.body.appendChild(bar);
+    document.body.classList.add('has-mobile-contact-bar');
   }
 
   function enhanceNavigation() {
@@ -285,7 +303,13 @@
       sendAnalyticsEvent('generate_lead', getLeadParameters(method, element, details || {}));
     },
     trackContactClick: function (method, element) {
-      sendAnalyticsEvent(method === 'whatsapp' ? 'contact_whatsapp_click' : 'contact_phone_click', getLeadParameters(method, element, {}));
+      var parameters = getLeadParameters(method, element, {});
+      sendAnalyticsEvent(method === 'whatsapp' ? 'contact_whatsapp_click' : 'contact_phone_click', parameters);
+      sendAnalyticsEvent(method === 'whatsapp' ? 'whatsapp_click' : 'phone_click', {
+        page_path: parameters.page_path,
+        product_category: parameters.insurance_product,
+        click_location: parameters.lead_location
+      });
     }
   };
 
@@ -294,98 +318,18 @@
     if (!form) return;
 
     var productSelect = document.getElementById('quoteProduct');
-    var assistant = document.getElementById('quoteAssistant');
-    var assistantIntro = document.getElementById('quoteAssistantIntro');
-    var assistantFields = document.getElementById('quoteAssistantFields');
-    var detailsField = document.getElementById('quoteDetails');
-    var presets = {
-      'RCA': {
-        intro: 'Pentru RCA, aceste răspunsuri mă ajută să pregătesc cererea și opțiunea de plată potrivită.',
-        placeholder: 'Ex.: marca și modelul, data expirării poliței actuale...',
-        fields: [
-          { id: 'quoteVehicle', label: 'Tip vehicul', message: 'Vehicul', options: ['Autoturism', 'Autoutilitară', 'Motocicletă / scuter', 'Alt tip'] },
-          { id: 'quotePayment', label: 'Cum vrei să plătești?', message: 'Plată preferată', options: ['Integral', 'În rate prin TBI Bank', 'În rate cu un card de credit', 'Vreau să aflu opțiunile'] }
-        ]
-      },
-      'Călătorie': {
-        intro: 'Pentru călătorie, destinația și numărul de persoane influențează ofertele care pot fi comparate.',
-        placeholder: 'Ex.: perioada călătoriei, vârstele, sporturi sau alte activități...',
-        fields: [
-          { id: 'quoteDestination', label: 'Destinația', message: 'Destinație', options: ['Europa', 'Turcia / Egipt', 'SUA / Canada', 'Lume întreagă', 'Încă nu este stabilită'] },
-          { id: 'quoteTravelers', label: 'Cine călătorește?', message: 'Călători', options: ['1 persoană', '2 persoane', 'Familie / 3+ persoane', 'Grup'] }
-        ]
-      },
-      'Locuință și PAD': {
-        intro: 'Pentru locuință, tipul proprietății și protecția dorită sunt suficiente pentru primul răspuns.',
-        placeholder: 'Ex.: localitatea, anul construcției sau ce bunuri vrei să protejezi...',
-        fields: [
-          { id: 'quoteHomeType', label: 'Tipul proprietății', message: 'Proprietate', options: ['Apartament', 'Casă', 'Casă de vacanță', 'Alt tip'] },
-          { id: 'quoteHomeCover', label: 'Ce dorești?', message: 'Protecție dorită', options: ['PAD obligatorie', 'Asigurare facultativă', 'PAD + facultativă', 'Vreau o recomandare'] }
-        ]
-      },
-      'Malpraxis': {
-        intro: 'Pentru malpraxis, profesia și situația cererii ajută la identificarea rapidă a unei polițe potrivite.',
-        placeholder: 'Ex.: specialitatea, suma asigurată cerută sau o condiție din contract...',
-        fields: [
-          { id: 'quoteProfession', label: 'Profesia', message: 'Profesie', options: ['Medic', 'Asistent medical', 'Medic stomatolog', 'Farmacist', 'Altă profesie'] },
-          { id: 'quoteMalpracticeNeed', label: 'Pentru ce ai nevoie?', message: 'Situație', options: ['Poliță nouă', 'Reînnoire', 'Angajare / contract', 'Vreau o recomandare'] }
-        ]
-      },
-      'Sănătate pentru expați': {
-        intro: 'Pentru expați, scopul și numărul persoanelor ajută la identificarea pachetului care trebuie verificat.',
-        placeholder: 'Ex.: vârsta, data de început și perioada pentru care ai nevoie de poliță...',
-        fields: [
-          { id: 'quoteExpatPurpose', label: 'Scopul asigurării', message: 'Scop', options: ['VISA / urgențe medicale', 'Permis de ședere / rezidență', 'Protecție medicală pe durata șederii', 'Vreau o recomandare'] },
-          { id: 'quoteExpatPeople', label: 'Pentru cine?', message: 'Persoane', options: ['1 persoană', 'Cuplu / familie', 'Mai mulți angajați', 'Studenți / grup'] }
-        ]
-      }
-    };
-
-    function renderAssistant(product) {
-      var preset = presets[product];
-      assistantFields.replaceChildren();
-      assistant.hidden = !preset;
-      detailsField.placeholder = preset ? preset.placeholder : 'Ex.: mașină nouă, apartament, destinația călătoriei...';
-      if (!preset) return;
-
-      assistantIntro.textContent = preset.intro;
-      preset.fields.forEach(function (field) {
-        var wrapper = document.createElement('div');
-        wrapper.className = 'quote-field';
-
-        var label = document.createElement('label');
-        label.htmlFor = field.id;
-        label.textContent = field.label;
-
-        var select = document.createElement('select');
-        select.id = field.id;
-        select.name = field.id;
-        select.required = true;
-        select.dataset.quoteExtra = '';
-        select.dataset.messageLabel = field.message;
-
-        var emptyOption = document.createElement('option');
-        emptyOption.value = '';
-        emptyOption.textContent = 'Alege';
-        select.appendChild(emptyOption);
-        field.options.forEach(function (optionText) {
-          var option = document.createElement('option');
-          option.textContent = optionText;
-          select.appendChild(option);
-        });
-
-        wrapper.appendChild(label);
-        wrapper.appendChild(select);
-        assistantFields.appendChild(wrapper);
-      });
-    }
+    var quoteStarted = false;
+    form.addEventListener('focusin', function () {
+      if (quoteStarted) return;
+      quoteStarted = true;
+      sendAnalyticsEvent('quick_quote_start', { page_path: window.location.pathname });
+    });
 
     productSelect.addEventListener('change', function () {
-      renderAssistant(productSelect.value);
       if (productSelect.value && window.__analyticsAllowed && typeof window.gtag === 'function') {
         window.gtag('event', 'quote_product_select', {
           product: productSelect.value.slice(0, 60),
-          quote_variant: 'smart_assistant_v1'
+          quote_variant: 'quick_quote_v2'
         });
       }
     });
@@ -401,7 +345,6 @@
     if (requestedProduct && requestedProducts[requestedProduct.toLowerCase()]) {
       productSelect.value = requestedProducts[requestedProduct.toLowerCase()];
     }
-    renderAssistant(productSelect.value);
 
     form.addEventListener('submit', function (event) {
       event.preventDefault();
@@ -418,15 +361,16 @@
         'Când am nevoie: ' + when
       ];
 
-      form.querySelectorAll('[data-quote-extra]').forEach(function (field) {
-        if (field.value) lines.push(field.dataset.messageLabel + ': ' + field.value);
-      });
       if (details) lines.push('Alte detalii: ' + details);
       lines.push('', 'Mesaj trimis din formularul AsigurăriCraiova.ro.');
 
       window.asigurariAnalytics.trackLead('whatsapp_form', form, {
         product: product,
         form_name: 'quick_quote'
+      });
+      sendAnalyticsEvent('quick_quote_whatsapp', {
+        page_path: window.location.pathname,
+        product_category: product.slice(0, 60)
       });
 
       var url = 'https://wa.me/40774171971?text=' + encodeURIComponent(lines.join('\n'));
@@ -615,11 +559,22 @@
       var phone = event.target.closest('a[href^="tel:"]');
       if (whatsapp && !whatsapp.dataset.analyticsSkipContact) window.asigurariAnalytics.trackContactClick('whatsapp', whatsapp);
       if (phone) window.asigurariAnalytics.trackContactClick('phone', phone);
+      if (whatsapp && !whatsapp.dataset.analyticsSkipContact && window.location.pathname === '/') {
+        sendAnalyticsEvent('home_offer_click', { page_path: '/', click_location: getContactLocation(whatsapp) });
+      }
+      var productLink = event.target.closest('.insurance-card, .home-feature-card');
+      if (productLink) {
+        sendAnalyticsEvent('product_page_click', {
+          page_path: window.location.pathname,
+          destination_path: new URL(productLink.href, window.location.origin).pathname
+        });
+      }
     }, true);
   }
 
   document.addEventListener('DOMContentLoaded', function () {
     installGlobalNavigation();
+    installMobileContactBar();
     addSkipLink();
     enhanceNavigation();
     enhanceAccessibleNames();
