@@ -172,6 +172,24 @@
     document.body.classList.add('has-mobile-contact-bar');
   }
 
+  function installGlobalFooter() {
+    var legacyFooter = document.querySelector('footer');
+    if (!legacyFooter || document.querySelector('.global-site-footer')) return;
+    if (legacyFooter.querySelector('.home-footer__grid') || legacyFooter.classList.contains('expat-footer')) return;
+
+    var footer = document.createElement('div');
+    footer.className = 'global-site-footer';
+    footer.innerHTML =
+      '<div class="global-site-footer__inner">' +
+        '<div class="global-site-footer__brand"><a href="/">AsigurăriCraiova.ro</a><p>Intermediere în asigurări prin Destine Broker. Discuți direct cu Robert Iulian Stoica.</p></div>' +
+        '<div><h2>Explorează</h2><a href="/asigurari.html">Asigurări</a><a href="/calculator-rca.html">Calculator RCA</a><a href="/blog.html">Blog</a><a href="/despre.html">Despre</a></div>' +
+        '<div><h2>Informații</h2><a href="/contact.html">Contact</a><a href="/gdpr.html">Confidențialitate</a><a href="/sitemap.xml">Sitemap</a></div>' +
+        '<div><h2>Contact direct</h2><a href="tel:+40774171971">0774 171 971</a><a href="mailto:contact@asiguraricraiova.ro">contact@asiguraricraiova.ro</a><p>L–V, 9:00–16:00 · Vizite la birou numai cu programare</p><a class="global-site-footer__cta" href="https://wa.me/40774171971" target="_blank" rel="noopener noreferrer">Cere ofertă pe WhatsApp</a></div>' +
+      '</div>';
+    legacyFooter.parentNode.insertBefore(footer, legacyFooter);
+    legacyFooter.classList.add('legacy-footer-note');
+  }
+
   function enhanceNavigation() {
     var menu = document.getElementById('snavMenu');
     var hamburger = document.getElementById('snavHam');
@@ -575,6 +593,7 @@
   document.addEventListener('DOMContentLoaded', function () {
     installGlobalNavigation();
     installMobileContactBar();
+    installGlobalFooter();
     addSkipLink();
     enhanceNavigation();
     enhanceAccessibleNames();

@@ -283,6 +283,21 @@ main a.btn-gold {
 
 .mobile-contact-bar { display: none; }
 
+.global-site-footer { padding: 52px 20px; background: #0c1d35; color: #d1d9e4; font: 400 .82rem/1.6 'DM Sans', Arial, sans-serif; }
+.global-site-footer__inner { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1.25fr; gap: 34px; width: min(1180px, 100%); margin: 0 auto; }
+.global-site-footer__inner > div { display: flex; align-items: flex-start; flex-direction: column; gap: 9px; }
+.global-site-footer__inner a { color: #e3e9f1; text-decoration: none; }
+.global-site-footer__inner a:hover,
+.global-site-footer__inner a:focus-visible { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
+.global-site-footer__brand > a { color: #fff; font: 700 1.3rem/1.2 Georgia, serif; }
+.global-site-footer__inner h2 { margin: 3px 0 6px; color: #fff; font: 800 .72rem/1.2 'DM Sans', Arial, sans-serif; letter-spacing: .08em; text-transform: uppercase; }
+.global-site-footer__inner p { margin: 0; max-width: 300px; color: #b7c4d5; font-size: .78rem; }
+.global-site-footer__inner a.global-site-footer__cta { display: inline-flex; align-items: center; min-height: 43px; margin-top: 8px; padding: 9px 13px; border-radius: 8px; background: #087a45; color: #fff; font-weight: 800; }
+.global-site-footer__inner a.global-site-footer__cta:hover { background: #06683a; text-decoration: none; }
+.legacy-footer-note { margin: 0 !important; padding: 16px 20px !important; border-top: 1px solid #314159; background: #071426 !important; color: #b7c4d5 !important; font-size: .7rem !important; line-height: 1.6 !important; text-align: center; }
+.legacy-footer-note a { color: #e3e9f1 !important; }
+.legacy-footer-note .home-footer__bottom { padding: 0; border: 0; }
+
 .global-site-menu-toggle { display: none; }
 
 @media (max-width: 1360px) {
@@ -339,6 +354,7 @@ main a.btn-gold {
 }
 
 @media (max-width: 900px) {
+  .global-site-footer__inner { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   body.has-mobile-contact-bar { padding-bottom: 72px; }
   .mobile-contact-bar {
     position: fixed;
@@ -362,6 +378,11 @@ main a.btn-gold {
   .has-mobile-contact-bar .home-whatsapp { display: none; }
   .has-mobile-contact-bar .cookie-consent { bottom: calc(72px + env(safe-area-inset-bottom)); }
   .has-mobile-contact-bar .cookie-settings { bottom: calc(76px + env(safe-area-inset-bottom)); }
+}
+
+@media (max-width: 600px) {
+  .global-site-footer__inner { grid-template-columns: 1fr; gap: 26px; }
+  .global-site-footer { padding: 40px 20px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
