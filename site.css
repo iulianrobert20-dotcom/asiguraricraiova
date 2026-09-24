@@ -388,3 +388,52 @@ main a.btn-gold {
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }
+
+/* Practical buying guidance on individual insurance pages. */
+.content-detail { margin: 0 0 30px; padding: 26px 28px; border: 1px solid #e2e8f0; border-radius: 14px; background: #fff; color: #334155; }
+.content-detail h2 { margin: 0 0 12px; color: #0d1f3c; font-size: clamp(1.35rem, 2.5vw, 1.75rem); line-height: 1.25; }
+.content-detail h2:not(:first-child) { margin-top: 24px; }
+.content-detail p { margin: 0 0 14px; line-height: 1.75; }
+.content-detail ul { margin: 0 0 14px 1.25rem; padding: 0; }
+.content-detail li { margin: 0 0 8px; line-height: 1.65; }
+.content-detail a { font-weight: 700; text-decoration: underline; text-underline-offset: 2px; }
+@media (max-width: 600px) { .content-detail { padding: 22px 18px; } }
+
+/* Photo-led service pages: use the same visual language as the homepage. */
+.ph.premium-hero {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  min-height: 480px;
+  padding: 64px 24px;
+  background-color: #0d1f3c;
+  background-image: linear-gradient(90deg, rgba(8, 25, 49, .96) 0%, rgba(8, 25, 49, .88) 38%, rgba(8, 25, 49, .35) 72%, rgba(8, 25, 49, .12) 100%), var(--premium-hero-image);
+  background-position: center;
+  background-size: cover;
+}
+.ph.premium-hero .phi { width: 100%; max-width: 1180px; margin: 0 auto; }
+.ph.premium-hero .bc { margin-bottom: 24px; color: rgba(255, 255, 255, .78); }
+.ph.premium-hero .bc a { color: rgba(255, 255, 255, .86); }
+.ph.premium-hero .cat { color: #ffe2a0; background: rgba(8, 25, 49, .6); }
+.ph.premium-hero h1 { max-width: 680px; margin-bottom: 15px; color: #fff; font-size: clamp(2.35rem, 5vw, 4rem); line-height: 1.06; text-wrap: balance; }
+.ph.premium-hero .premium-hero__lead { max-width: 610px; color: #fff; font-size: clamp(1.06rem, 1.8vw, 1.24rem); line-height: 1.55; }
+.ph.premium-hero .premium-hero__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
+.ph.premium-hero .premium-hero__actions a { display: inline-flex; align-items: center; justify-content: center; min-height: 46px; padding: 11px 19px; border-radius: 9px; font: 700 .9rem/1.3 'DM Sans', Arial, sans-serif; text-decoration: none; }
+.ph.premium-hero .premium-hero__actions a:first-child { background: #087a45; color: #fff; }
+.ph.premium-hero .premium-hero__actions a:last-child { border: 1px solid rgba(255, 255, 255, .85); background: rgba(8, 25, 49, .28); color: #fff; }
+.ph.premium-hero .premium-hero__actions a:hover { filter: brightness(1.12); }
+.ph.premium-hero .premium-hero__note { display: block; max-width: 620px; margin-top: 15px; color: rgba(255, 255, 255, .85); font-size: .82rem; }
+.ph.premium-hero .law { margin-top: 18px; }
+.main.premium-main { max-width: 1020px; }
+.main.premium-main .grid { gap: 18px; }
+.main.premium-main .box { border: 1px solid #e3e9f1; border-top: 4px solid #c9a84c; border-left: 1px solid #e3e9f1; border-radius: 14px; background: #fff; box-shadow: 0 8px 26px rgba(12, 34, 65, .06); }
+.main.premium-main .ins-box { border: 1px solid #e3e9f1; background: #f5f8fc; }
+.main.premium-main .cta-box { background: linear-gradient(120deg, #0d1f3c, #1d3b62); box-shadow: 0 12px 32px rgba(12, 34, 65, .13); }
+@media (max-width: 760px) {
+  .ph.premium-hero { min-height: 570px; align-items: flex-end; padding: 44px 22px; background-image: linear-gradient(0deg, rgba(8, 25, 49, .98) 0%, rgba(8, 25, 49, .9) 43%, rgba(8, 25, 49, .25) 100%), var(--premium-hero-image); background-position: 64% center; }
+  .ph.premium-hero h1 { font-size: clamp(2.2rem, 9vw, 3.2rem); }
+  .ph.premium-hero .premium-hero__actions { flex-direction: column; }
+  .ph.premium-hero .premium-hero__actions a { width: 100%; }
+  .main.premium-main .grid { grid-template-columns: 1fr; }
+}
