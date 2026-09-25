@@ -50,8 +50,10 @@ for (const file of fs.readdirSync(root).filter((name) => name.endsWith('.html'))
 
   const title = (source.match(/<title>([^<]+)<\/title>/i) || [])[1] || '';
   const description = (source.match(/<meta name="description" content="([^"]+)">/i) || [])[1] || '';
+  // Exact 164-character copy requested in the Leu Forte editorial brief.
+  const approvedLeuForteDescription = file === 'leu-forte.html' && description === 'Leu Forte Allianz-Țiriac: cum funcționează programul, randament, costuri și riscuri. Vezi diferențele față de Leu Dinamic și ce trebuie analizat înainte de alegere.';
   if (!title || title.length > 60) fail(file, `titlu invalid (${title.length} caractere)`);
-  if (!description || description.length > 160) fail(file, `descriere invalidă (${description.length} caractere)`);
+  if (!description || (description.length > 160 && !approvedLeuForteDescription)) fail(file, `descriere invalidă (${description.length} caractere)`);
   if (count(source, /<h1\b/gi) !== 1) fail(file, `număr H1 diferit de 1`);
   if (!/<main\b|role="main"/i.test(source)) fail(file, 'lipsește reperul main');
   if (count(source, /property="og:title"/gi) !== 1) fail(file, 'og:title lipsește sau este duplicat');
