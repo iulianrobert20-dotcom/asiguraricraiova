@@ -142,6 +142,8 @@ body textarea { font: inherit; }
 .home-hero h1 span { color: var(--home-navy); }
 .home-hero__lead { max-width: 650px; margin-bottom: 8px; color: #34445d; font-size: 1.15rem; line-height: 1.5; }
 .home-hero__products { margin-bottom: 28px; color: #3f4d62; font-size: .86rem; font-weight: 700; }
+.home-hero__links { color: #3f4d62; font-size: .86rem; margin-bottom: 18px; }
+.home-hero__links a { color: #705713; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
 .home-hero__actions { display: flex; flex-wrap: wrap; gap: 11px; margin-bottom: 28px; }
 
 .home-btn {

@@ -318,7 +318,14 @@
 
   window.asigurariAnalytics = {
     trackLead: function (method, element, details) {
-      sendAnalyticsEvent('generate_lead', getLeadParameters(method, element, details || {}));
+      var parameters = getLeadParameters(method, element, details || {});
+      sendAnalyticsEvent('generate_lead', parameters);
+      if (method === 'formspree') {
+        sendAnalyticsEvent('form_submit', parameters);
+        if (parameters.insurance_product.toLowerCase().includes('rca') || window.location.pathname.includes('rca')) {
+          sendAnalyticsEvent('rca_lead', parameters);
+        }
+      }
     },
     trackContactClick: function (method, element) {
       var parameters = getLeadParameters(method, element, {});
@@ -571,6 +578,39 @@
     });
   }
 
+  function enableRcaLeadForms() {
+    document.querySelectorAll('[data-rca-lead-form]').forEach(function (form) {
+      form.addEventListener('submit', async function (event) {
+        event.preventDefault();
+        if (!form.reportValidity()) return;
+
+        var button = form.querySelector('button[type="submit"]');
+        var status = form.querySelector('[data-rca-lead-status]');
+        button.disabled = true;
+        status.textContent = 'Cererea se trimite…';
+
+        try {
+          var response = await fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { Accept: 'application/json' }
+          });
+          if (!response.ok) throw new Error('Formspree error');
+          status.textContent = 'Cererea a fost trimisă. Te contactez în programul de lucru.';
+          form.reset();
+          window.asigurariAnalytics.trackLead('formspree', form, {
+            product: 'RCA',
+            form_name: 'rca_short_lead'
+          });
+        } catch (error) {
+          status.textContent = 'Cererea nu a putut fi trimisă. Scrie-mi pe WhatsApp sau sună la 0774 171 971.';
+        } finally {
+          button.disabled = false;
+        }
+      });
+    });
+  }
+
   function trackContactClicks() {
     document.addEventListener('click', function (event) {
       var whatsapp = event.target.closest('a[href*="wa.me/"]');
@@ -604,6 +644,7 @@
     enableMultiTravelQuote();
     enableProfessionalLiabilityQuote();
     enableHomeInsuranceQuote();
+    enableRcaLeadForms();
     addPrivacyControl();
     trackContactClicks();
 
