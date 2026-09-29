@@ -2,8 +2,8 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   <!-- Homepage + Calculator -->
-  <url><loc>https://asiguraricraiova.ro/</loc><lastmod>2026-09-26</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://asiguraricraiova.ro/asigurari.html</loc><lastmod>2026-09-13</lastmod><changefreq>monthly</changefreq><priority>0.95</priority></url>
+  <url><loc>https://asiguraricraiova.ro/</loc><lastmod>2026-09-29</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://asiguraricraiova.ro/asigurari.html</loc><lastmod>2026-09-29</lastmod><changefreq>monthly</changefreq><priority>0.95</priority></url>
   <url><loc>https://asiguraricraiova.ro/calculator-rca.html</loc><lastmod>2026-09-26</lastmod><changefreq>monthly</changefreq><priority>0.95</priority></url>
 
   <!-- Auto -->
@@ -54,8 +54,9 @@
 
   <!-- Informaționale -->
   <url><loc>https://asiguraricraiova.ro/despre.html</loc><lastmod>2026-09-11</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://asiguraricraiova.ro/alatura-te-echipei.html</loc><lastmod>2026-09-29</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
   <url><loc>https://asiguraricraiova.ro/contact.html</loc><lastmod>2026-09-14</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
-  <url><loc>https://asiguraricraiova.ro/gdpr.html</loc><lastmod>2026-08-04</lastmod><changefreq>yearly</changefreq><priority>0.50</priority></url>
+  <url><loc>https://asiguraricraiova.ro/gdpr.html</loc><lastmod>2026-09-29</lastmod><changefreq>yearly</changefreq><priority>0.50</priority></url>
 
   <!-- Blog -->
   <url><loc>https://asiguraricraiova.ro/blog.html</loc><lastmod>2026-09-02</lastmod><changefreq>weekly</changefreq><priority>0.82</priority></url>

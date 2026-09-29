@@ -84,6 +84,7 @@
   function installGlobalNavigation() {
     var legacyHeader = document.querySelector('nav.snav, header.home-header');
     if (!legacyHeader || document.querySelector('.global-site-header')) return;
+    var isRecruitPage = document.body.classList.contains('recruit-page');
 
     var header = document.createElement('header');
     header.className = 'global-site-header';
@@ -115,8 +116,11 @@
             '<a href="/calatorie.html">Călătorie</a>' +
             '<a href="/calculator-rca.html">Calculator RCA</a>' +
             '<a href="/contact.html">Contact</a>' +
+            '<a href="/alatura-te-echipei.html"' + (isRecruitPage ? ' aria-current="page"' : '') + '>Alătură-te echipei</a>' +
             '<a class="global-site-phone" href="tel:+40774171971" data-analytics-location="navigation">0774 171 971</a>' +
-            '<a class="global-site-cta" href="https://wa.me/40774171971" target="_blank" rel="noopener noreferrer" data-analytics-location="navigation">Cere ofertă pe WhatsApp</a>' +
+            (isRecruitPage
+              ? '<a class="global-site-cta" href="#aplica">Aplică acum</a>'
+              : '<a class="global-site-cta" href="https://wa.me/40774171971" target="_blank" rel="noopener noreferrer" data-analytics-location="navigation">Cere ofertă pe WhatsApp</a>') +
           '</div>' +
         '</div>' +
       '</nav>';
@@ -175,14 +179,14 @@
   function installGlobalFooter() {
     var legacyFooter = document.querySelector('footer');
     if (!legacyFooter || document.querySelector('.global-site-footer')) return;
-    if (legacyFooter.querySelector('.home-footer__grid') || legacyFooter.classList.contains('expat-footer')) return;
+    if (legacyFooter.querySelector('.home-footer__grid') || legacyFooter.classList.contains('expat-footer') || legacyFooter.classList.contains('recruit-footer')) return;
 
     var footer = document.createElement('div');
     footer.className = 'global-site-footer';
     footer.innerHTML =
       '<div class="global-site-footer__inner">' +
         '<div class="global-site-footer__brand"><a href="/">AsigurăriCraiova.ro</a><p>Intermediere în asigurări prin Destine Broker. Discuți direct cu Robert Iulian Stoica.</p></div>' +
-        '<div><h2>Explorează</h2><a href="/asigurari.html">Asigurări</a><a href="/calculator-rca.html">Calculator RCA</a><a href="/blog.html">Blog</a><a href="/despre.html">Despre</a></div>' +
+        '<div><h2>Explorează</h2><a href="/asigurari.html">Asigurări</a><a href="/calculator-rca.html">Calculator RCA</a><a href="/blog.html">Blog</a><a href="/despre.html">Despre</a><a href="/alatura-te-echipei.html">Alătură-te echipei</a></div>' +
         '<div><h2>Informații</h2><a href="/contact.html">Contact</a><a href="/gdpr.html">Confidențialitate</a><a href="/sitemap.xml">Sitemap</a></div>' +
         '<div><h2>Contact direct</h2><a href="tel:+40774171971">0774 171 971</a><a href="mailto:contact@asiguraricraiova.ro">contact@asiguraricraiova.ro</a><p>L–V, 9:00–16:00 · Vizite la birou numai cu programare</p><a class="global-site-footer__cta" href="https://wa.me/40774171971" target="_blank" rel="noopener noreferrer">Cere ofertă pe WhatsApp</a></div>' +
       '</div>';
