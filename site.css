@@ -391,9 +391,11 @@ main a.btn-gold {
   .mobile-contact-bar {
     position: fixed;
     z-index: 900;
+    top: auto;
     right: 0;
     bottom: 0;
     left: 0;
+    height: auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 8px;
