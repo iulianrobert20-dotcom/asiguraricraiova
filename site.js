@@ -36,6 +36,7 @@
     try { localStorage.setItem(CONSENT_KEY, value); } catch (error) { /* private mode */ }
     var banner = document.getElementById('cookie-consent');
     if (banner) banner.remove();
+    document.body.classList.remove('has-pending-cookie-consent');
     if (value === 'accepted') {
       loadAnalytics();
     } else {
@@ -56,14 +57,15 @@
     banner.setAttribute('aria-labelledby', 'cookie-title');
     banner.innerHTML =
       '<div class="cookie-consent__body">' +
-        '<h2 id="cookie-title">Preferințe de confidențialitate</h2>' +
-        '<p>Folosim cookie-uri Analytics numai cu acordul tău, pentru statistici anonimizate. Cookie-urile necesare funcționării site-ului nu pot fi dezactivate. <a href="/gdpr.html#cookies">Detalii</a></p>' +
+        '<h2 id="cookie-title">Preferințe cookies</h2>' +
+        '<p>Folosim cookie-uri Analytics doar cu acordul tău, pentru statistici. Cele necesare funcționării site-ului rămân active. <a href="/gdpr.html#cookies">Detalii</a></p>' +
       '</div>' +
       '<div class="cookie-consent__actions">' +
         '<button type="button" class="cookie-btn cookie-btn--secondary" data-consent="rejected">Refuz Analytics</button>' +
         '<button type="button" class="cookie-btn cookie-btn--primary" data-consent="accepted">Accept Analytics</button>' +
       '</div>';
     document.body.appendChild(banner);
+    document.body.classList.add('has-pending-cookie-consent');
     banner.querySelectorAll('[data-consent]').forEach(function (button) {
       button.addEventListener('click', function () { setConsent(button.dataset.consent); });
     });
