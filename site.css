@@ -267,13 +267,14 @@ main a.btn-gold {
 .global-site-products__toggle:hover,
 .global-site-products__toggle:focus-visible { background: #f1f5f9; color: #102545; }
 
-.global-site-products { position: relative; }
+.global-site-products { position: static; }
 .global-site-products__toggle span { margin-left: 6px; font-size: .75rem; }
 
 .global-site-product-panel {
   position: absolute;
-  top: calc(100% + 10px);
-  right: -130px;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
   display: none;
   grid-template-columns: repeat(4, minmax(150px, 1fr));
   gap: 20px;
@@ -368,6 +369,7 @@ main a.btn-gold {
   .global-site-header .global-site-cta { justify-content: center; margin: 12px 0 0; border: 0; border-radius: 8px; }
   .global-site-product-panel {
     position: static;
+    transform: none;
     width: 100%;
     margin: 2px 0 8px;
     padding: 14px;
