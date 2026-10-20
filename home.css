@@ -615,3 +615,8 @@ body textarea { font: inherit; }
 
 .homepage .home-feature-grid--tools .home-feature-card:nth-child(3){background:#f3f6f9}
 @media(min-width:621px) and (max-width:900px){.homepage .home-feature-grid--tools{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+.homepage .home-service-links { margin: 24px 0; padding: 22px; border: 1px solid var(--home-line); border-radius: 14px; background: #fff; }
+.homepage .home-service-links h3 { margin: 0 0 10px; color: var(--home-navy); font-size: 1.15rem; }
+.homepage .home-service-links p { margin: 10px 0 0; color: var(--home-muted); line-height: 1.7; }
+.homepage .home-service-links a { color: var(--home-navy); text-decoration: underline; text-underline-offset: 3px; }

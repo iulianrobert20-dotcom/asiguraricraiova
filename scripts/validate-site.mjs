@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import vm from 'node:vm';
 
 const root = path.resolve(import.meta.dirname, '..');
 const errors = [];
@@ -26,6 +27,7 @@ function localPathFromUrl(value) {
 const sitemap = fs.readFileSync(path.join(root, 'sitemap.xml'), 'utf8');
 const sitemapUrls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
 const sitemapLastmods = [...sitemap.matchAll(/<lastmod>([^<]+)<\/lastmod>/g)].map((match) => match[1]);
+if (new Set(sitemapUrls).size !== sitemapUrls.length) fail('sitemap.xml', 'conține URL-uri duplicate');
 const today = new Date().toISOString().slice(0, 10);
 if (sitemapLastmods.length !== sitemapUrls.length) {
   fail('sitemap.xml', 'fiecare URL trebuie să aibă lastmod');
@@ -47,6 +49,11 @@ for (const file of fs.readdirSync(root).filter((name) => name.endsWith('.html'))
     continue;
   }
   canonicalPages.push({ file, canonical });
+  const expectedCanonical = `https://asiguraricraiova.ro/${file === 'index.html' ? '' : file}`;
+  if (canonical !== expectedCanonical) fail(file, `canonical trebuie să indice ${expectedCanonical}`);
+  const robots = (source.match(/<meta\b[^>]*name="robots"[^>]*content="([^"]+)"/i) || [])[1] || '';
+  if (/\b(?:noindex|none)\b/i.test(robots)) fail(file, 'pagina canonică este exclusă de la indexare');
+  if (/<meta\b[^>]*http-equiv="refresh"/i.test(source)) fail(file, 'pagina canonică nu trebuie să redirecționeze');
 
   const title = (source.match(/<title>([^<]+)<\/title>/i) || [])[1] || '';
   const description = (source.match(/<meta name="description" content="([^"]+)">/i) || [])[1] || '';
@@ -87,6 +94,62 @@ for (const canonical of canonicalValues) {
 }
 for (const url of sitemapUrls) {
   if (!canonicalValues.includes(url)) fail('sitemap.xml', `URL fără canonical corespondent: ${url}`);
+}
+
+// Verificăm descoperirea prin linkuri HTML, fără executarea meniului JavaScript.
+const pagesByFile = new Map(canonicalPages.map((page) => [page.file, page]));
+const reachable = new Set();
+const queue = ['index.html'];
+while (queue.length) {
+  const file = queue.shift();
+  if (reachable.has(file) || !pagesByFile.has(file)) continue;
+  reachable.add(file);
+  const source = fs.readFileSync(path.join(root, file), 'utf8');
+  for (const match of source.matchAll(/<a\b[^>]*\bhref="([^"]+)"/gi)) {
+    const target = localPathFromUrl(match[1]);
+    if (pagesByFile.has(target) && !reachable.has(target)) queue.push(target);
+  }
+}
+for (const { file } of canonicalPages) {
+  if (!reachable.has(file)) fail(file, 'nu există un traseu de linkuri HTML din homepage');
+}
+
+// Aliasurile cunoscute din raportul 404 trebuie să funcționeze fără JavaScript.
+const legacyRedirects = new Map([
+  ['asigurare-locuinta-pad/index.html', '/locuinta.html'],
+  ['blog/pad-vs-asigurare-facultativa/index.html', '/blog-pad-locuinta.html'],
+  ['blog/asigurare-calatorie-schengen/index.html', '/calatorie.html']
+]);
+for (const [file, target] of legacyRedirects) {
+  const source = fs.readFileSync(path.join(root, file), 'utf8');
+  const refresh = (source.match(/http-equiv="refresh"\s+content="([^"]+)"/i) || [])[1];
+  const canonical = (source.match(/rel="canonical"\s+href="([^"]+)"/i) || [])[1];
+  if (refresh !== `0; url=${target}` || canonical !== `https://asiguraricraiova.ro${target}`) {
+    fail(file, 'redirectul instant și canonical trebuie să indice aceeași destinație finală');
+  }
+  if (/content="[^"]*\bnoindex\b/i.test(source)) fail(file, 'noindex intră în conflict cu semnalul de mutare permanentă');
+  if (!canonicalValues.includes(canonical)) fail(file, 'destinația redirectului nu este o pagină canonică');
+}
+
+// Un slash final nu trebuie să rupă compatibilitatea; adresele necunoscute rămân 404.
+const notFound = fs.readFileSync(path.join(root, '404.html'), 'utf8');
+const legacyScript = (notFound.match(/<script>([\s\S]*?)<\/script>/i) || [])[1];
+if (!legacyScript) {
+  fail('404.html', 'lipsește tratarea adreselor vechi');
+} else {
+  const aliases = [...legacyScript.matchAll(/'([^']+)'\s*:\s*'([^']+)'/g)];
+  if (new Set(aliases.map((match) => match[1])).size !== aliases.length) fail('404.html', 'aliasuri duplicate');
+  for (const [, alias, target] of aliases) {
+    if (!canonicalValues.includes(`https://asiguraricraiova.ro${target}`)) fail('404.html', `destinație necanonică: ${target}`);
+    for (const pathname of [alias, `${alias}/`]) {
+      let actual;
+      vm.runInNewContext(legacyScript, { window: { location: { pathname, replace(value) { actual = value; } } } });
+      if (actual !== target) fail('404.html', `redirect incorect pentru ${pathname}`);
+    }
+  }
+  let unexpectedRedirect;
+  vm.runInNewContext(legacyScript, { window: { location: { pathname: '/pagina-inexistenta-pentru-validare/', replace(value) { unexpectedRedirect = value; } } } });
+  if (unexpectedRedirect) fail('404.html', 'adresele necunoscute nu trebuie trimise către homepage');
 }
 
 const index = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
