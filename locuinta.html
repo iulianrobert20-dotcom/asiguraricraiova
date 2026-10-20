@@ -24,7 +24,7 @@
 <meta name="twitter:title" content="Asigurare Locuință Craiova | PAD și facultativă">
 <meta name="twitter:description" content="Cere ofertă pentru asigurare locuință în Craiova și Dolj: PAD obligatoriu și poliță facultativă pentru casă sau apartament.">
 <meta name="twitter:image" content="https://asiguraricraiova.ro/og-image.png">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data: https:; connect-src 'self' https://formspree.io https://*.google-analytics.com; frame-src https://www.google.com; object-src 'none'; base-uri 'self'; form-action 'self' https://formspree.io; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com; script-src-attr 'none'; style-src 'self'; style-src-attr 'none'; font-src 'self' data:; img-src 'self' data: https://www.googletagmanager.com https://*.google-analytics.com; connect-src 'self' https://www.googletagmanager.com https://*.google-analytics.com https://*.google.com; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="theme-color" content="#0d1f3c">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -33,6 +33,7 @@
 <link rel="preload" as="image" href="/locuinta-hero-family-v1.webp" fetchpriority="high">
 <link rel="stylesheet" href="/site.css?v=20260929-4">
 <link rel="stylesheet" href="/product-template.css">
+<link rel="stylesheet" href="/locuinta.css?v=20261020-1">
 <script defer src="/site.js?v=20260924-3"></script>
 
 <script type="application/ld+json">
@@ -114,148 +115,7 @@
   ]
 }
 </script>
-<style>
-:root{--navy:#0d1f3c;--navy2:#162d52;--gold:#c9a84c;--gold2:#e8c97a;--gray:#6b7280;--gray2:#f1f3f7;--cream:#f8f6f1;--green:#16a34a}
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'DM Sans',sans-serif;color:#1a2035;background:#fff;line-height:1.75}
-h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:700}
-a{color:var(--gold);text-decoration:none}
-a:hover{text-decoration:underline;color:var(--gold2)}
-/* NAV */
-nav{background:var(--navy);height:62px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;position:sticky;top:0;z-index:100;box-shadow:0 2px 16px rgba(0,0,0,.3)}
-.logo{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:700;color:#fff;text-decoration:none;line-height:1.1}
-.logo span{color:var(--gold);font-size:.6rem;display:block;letter-spacing:.1em;text-transform:uppercase;font-family:'DM Sans',sans-serif}
-.nav-right{display:flex;align-items:center;gap:6px;flex-wrap:nowrap;overflow-x:auto}
-.nav-right a{color:rgba(255,255,255,.8);font-size:.75rem;padding:5px 9px;border-radius:6px;white-space:nowrap;transition:.2s;text-decoration:none}
-.nav-right a:hover{color:#fff;background:rgba(255,255,255,.1);text-decoration:none}
-.nav-right a.cta{background:var(--gold);color:var(--navy)!important;font-weight:700;padding:7px 14px}
-/* HERO */
-.ph{position:relative;isolation:isolate;min-height:570px;display:flex;align-items:center;padding:70px 24px;background:#0d1f3c url('/locuinta-hero-family-v1.webp') center/cover no-repeat;color:#fff}
-.ph::before{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(7,20,40,.96) 0%,rgba(7,20,40,.87) 38%,rgba(7,20,40,.38) 68%,rgba(7,20,40,.12) 100%)}
-.phi{width:min(1120px,100%);margin:0 auto}
-.cat{display:inline-flex;align-items:center;gap:6px;background:rgba(201,168,76,.16);border:1px solid rgba(232,201,122,.4);color:#f1d990;font-size:.68rem;font-weight:700;padding:5px 11px;border-radius:100px;margin-bottom:17px;letter-spacing:.1em;text-transform:uppercase}
-.ph h1{max-width:650px;font-size:clamp(2.5rem,4.4vw,4.3rem);color:#fff;line-height:1.04;margin-bottom:19px;letter-spacing:-.025em}
-.ph p{max-width:580px;color:rgba(255,255,255,.8);font-size:1.02rem;line-height:1.7}
-.hero-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:28px}
-.hero-actions .btn-wa,.hero-actions .btn-g{padding:13px 20px;justify-content:center}
-.hero-actions .btn-g{display:inline-flex;background:#fff;color:var(--navy)}
-.hero-note{display:block;color:rgba(255,255,255,.65);font-size:.76rem;margin-top:16px}
-.law{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.82);font-size:.72rem;font-weight:600;padding:5px 12px;border-radius:6px;margin-top:18px}
-.bc{position:static;height:auto;display:block;padding:0;background:transparent;box-shadow:none;font-size:.73rem;color:rgba(255,255,255,.62);margin-bottom:16px}
-.bc a{color:rgba(255,255,255,.72)}
-/* MAIN */
-.main{max-width:900px;margin:0 auto;padding:40px 24px 60px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:32px}
-.box{background:var(--cream);border-left:4px solid var(--gold);border-radius:0 12px 12px 0;padding:22px}
-.box h4{font-family:'DM Sans',sans-serif;font-weight:700;font-size:.95rem;color:var(--navy);margin-bottom:12px}
-.box ul{list-style:none;padding:0}
-.box li{font-size:.87rem;color:var(--gray);padding:5px 0;border-bottom:1px solid rgba(0,0,0,.05);display:flex;align-items:flex-start;gap:8px;line-height:1.6}
-.box li::before{content:'✓';color:var(--gold);font-weight:700;flex-shrink:0;margin-top:1px}
-.box li.no::before{content:'✗';color:#dc2626}
-.ins-box{background:var(--gray2);border-radius:12px;padding:20px;margin-bottom:28px}
-.ins-box h4{font-family:'DM Sans',sans-serif;font-weight:600;font-size:.85rem;color:var(--navy);margin-bottom:10px}
-.ins-box p{font-size:.85rem;color:var(--gray)}
-.cta-box{background:linear-gradient(135deg,var(--navy),var(--navy2));border-radius:16px;padding:36px;text-align:center;margin-top:8px}
-.cta-box h2{font-size:1.8rem;color:#fff;margin-bottom:10px}
-.cta-box p{color:rgba(255,255,255,.65);font-size:.9rem;margin-bottom:22px}
-.cta-row{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
-.btn-wa{background:#25d366;color:#fff;font-weight:700;font-size:.9rem;padding:13px 24px;border-radius:8px;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
-.btn-wa:hover{background:#1da851;text-decoration:none;color:#fff}
-.btn-g{background:var(--gold);color:var(--navy);font-weight:700;font-size:.9rem;padding:13px 24px;border-radius:8px;text-decoration:none}
-.btn-g:hover{background:var(--gold2);text-decoration:none;color:var(--navy)}
-.lead{font-size:.98rem;color:#374151;margin-bottom:24px}
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:12px 0 30px}
-.step{background:var(--cream);border-radius:12px;padding:18px}
-.step strong{display:block;color:var(--navy);margin-bottom:6px}
-.step p{font-size:.84rem;color:var(--gray);line-height:1.55}
-.price-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:12px 0 10px}
-.price-card{border:1px solid #e5e7eb;border-radius:12px;padding:18px;background:#fff}
-.price-card strong{display:block;color:var(--navy);font-size:1.1rem}
-.price-card span{display:block;color:#047857;font-weight:700;font-size:1.25rem;margin:5px 0}
-.price-card p{font-size:.8rem;color:var(--gray);line-height:1.5}
-.note{font-size:.78rem;color:var(--gray);margin-bottom:26px}
-.decision-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:0 0 34px}
-.decision-card{border:1px solid #e2e8f0;border-radius:12px;padding:20px;background:#fff;box-shadow:0 4px 16px rgba(13,31,60,.05)}
-.decision-card h3{font-family:'Cormorant Garamond',serif;font-size:1.35rem;color:var(--navy);line-height:1.15;margin-bottom:8px}
-.decision-card p{font-size:.86rem;color:var(--gray);line-height:1.6;margin-bottom:15px}
-.decision-card a{display:inline-flex;align-items:center;color:#047857;font-size:.84rem;font-weight:700;text-decoration:none}
-.decision-card a:hover{color:#065f46;text-decoration:underline}
-.home-benefits{max-width:1050px;margin:-42px auto 38px;padding:0 24px;position:relative;z-index:2}
-.benefit-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;border-radius:15px;overflow:hidden;background:#dbe2ea;box-shadow:0 18px 40px rgba(13,31,60,.14)}
-.benefit-row article{padding:21px 19px;background:#fff}
-.benefit-row strong{display:block;margin:8px 0 4px;color:var(--navy);font-size:.87rem}
-.benefit-row p{color:var(--gray);font-size:.76rem;line-height:1.5}
-.benefit-icon{font-size:1.45rem}
-.home-quote{padding:34px;border:1px solid #dae3ee;border-radius:18px;background:linear-gradient(135deg,#f6f9fc,#fff);box-shadow:0 14px 35px rgba(13,31,60,.08);margin:0 0 38px}
-.home-quote__heading{display:flex;justify-content:space-between;gap:22px;align-items:end;margin-bottom:21px}
-.home-quote h2{font-size:1.9rem;color:var(--navy);line-height:1.12}
-.home-quote p{color:var(--gray);font-size:.85rem;max-width:530px}
-.home-quote form{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.home-quote label{display:grid;gap:6px;color:#334155;font-size:.76rem;font-weight:700}
-.home-quote select,.home-quote input{min-height:47px;padding:10px 11px;border:1px solid #ccd8e5;border-radius:8px;background:#fff;color:#1a2035;font:inherit;font-size:.88rem}
-.home-quote select:focus,.home-quote input:focus{outline:3px solid rgba(201,168,76,.25);border-color:#a8852c}
-.home-quote .home-quote__action{display:flex;align-items:end}
-.home-quote button{width:100%;border:0;cursor:pointer}
-.home-quote__note{grid-column:1/-1;margin:0!important;font-size:.74rem!important;color:#667085!important}
-.quote-checklist{background:#eff6ff;border-left:4px solid #2563eb;border-radius:0 12px 12px 0;padding:20px;margin:0 0 28px}
-.quote-checklist h2{font-size:1.45rem;color:#17365d;margin-bottom:8px}
-.quote-checklist p{font-size:.87rem;color:#334155;line-height:1.65}
-.quote-checklist ul{display:grid;grid-template-columns:repeat(2,1fr);gap:6px 20px;list-style:none;margin-top:12px;padding:0}
-.quote-checklist li{font-size:.84rem;color:#334155}
-.quote-checklist li::before{content:'✓';color:#047857;font-weight:700;margin-right:7px}
-.faq{margin-top:32px}
-.faq details{border:1px solid #e5e7eb;border-radius:10px;margin-bottom:9px;background:#fff}
-.faq summary{cursor:pointer;padding:14px 16px;font-weight:700;color:var(--navy)}
-.faq .answer{padding:0 16px 15px;color:#4b5563;font-size:.87rem;line-height:1.65}
-footer{background:#081629;color:rgba(255,255,255,.5);padding:28px 24px;text-align:center;font-size:.75rem;line-height:1.7}
-footer strong{color:rgba(255,255,255,.75)}
-footer a{color:var(--gold)}
-.fwa{position:fixed;bottom:24px;right:24px;background:linear-gradient(145deg,#25d366,#128c7e);width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 24px rgba(37,211,102,.5);text-decoration:none;z-index:200;animation:pulse 2s infinite}
-@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,.6)}70%{box-shadow:0 0 0 16px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
-@media(max-width:760px){.grid,.steps,.price-grid,.decision-grid,.quote-checklist ul,.benefit-row,.home-quote form{grid-template-columns:1fr}.ph{min-height:630px;padding-block:58px;background-position:63% center}.ph::before{background:linear-gradient(90deg,rgba(7,20,40,.94),rgba(7,20,40,.66))}.ph h1{font-size:2.55rem}.home-benefits{margin-top:-24px}.home-quote{padding:24px}.home-quote__heading{display:block}.home-quote__heading p{margin-top:10px}.nav-right{gap:3px}.hero-actions{align-items:stretch;flex-direction:column}.hero-actions a{width:100%}}
-</style>
 
-
-
-
-<style id="shared-nav-css">
-:root{--navy:#0d1f3c;--gold:#c9a84c;--gold2:#e8c97a}
-/* ── Shared Nav — iOS/Android/Windows compatible ── */
-.snav{background:var(--navy);position:sticky;top:0;z-index:1000;box-shadow:0 2px 16px rgba(0,0,0,.3);-webkit-tap-highlight-color:transparent}
-.snav-inner{max-width:1400px;margin:0 auto;padding:0 20px;height:62px;display:flex;align-items:center;justify-content:space-between;gap:16px}
-.snav-logo{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.15rem;font-weight:700;color:#fff;text-decoration:none;line-height:1.1;flex-shrink:0;-webkit-tap-highlight-color:transparent}
-.snav-logo span{color:var(--gold);font-size:.58rem;display:block;letter-spacing:.1em;text-transform:uppercase;font-family:'DM Sans',sans-serif}
-/* Desktop menu */
-.snav-menu{display:flex;align-items:center;gap:2px;list-style:none;padding:0;margin:0}
-.snav-menu > li{position:relative}
-.snav-menu > li > a{color:rgba(255,255,255,.82);font-size:.78rem;font-family:'DM Sans',sans-serif;padding:8px 10px;border-radius:6px;cursor:pointer;white-space:nowrap;display:block;text-decoration:none;transition:.2s;-webkit-tap-highlight-color:transparent;touch-action:manipulation;user-select:none;-webkit-user-select:none}
-.snav-menu > li > a:hover,.snav-menu > li > a:focus{color:#fff;background:rgba(255,255,255,.1);outline:none}
-.snav-menu > li > a.cta-nav{background:var(--gold);color:var(--navy)!important;font-weight:700;padding:8px 16px}
-.snav-menu > li > a.cta-nav:hover{background:var(--gold2)}
-.snav-menu > li > a.calc-nav{color:var(--gold)!important;font-weight:600}
-/* Dropdown desktop */
-.snav-drop{display:none;position:absolute;top:calc(100% + 4px);left:0;background:#fff;border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,.18);min-width:220px;padding:8px;z-index:2000;border:1px solid #e8ecf3}
-.snav-menu > li:hover .snav-drop{display:block}
-.snav-drop a{display:block;padding:8px 12px;font-size:.82rem;font-family:'DM Sans',sans-serif;color:#1a2035;border-radius:6px;text-decoration:none;transition:.15s;white-space:nowrap;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
-.snav-drop a:hover,.snav-drop a:active{background:#f1f3f7;color:var(--navy)}
-.snav-drop .dlbl{font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#9ca3af;padding:8px 12px 4px;display:block}
-/* Hamburger button */
-.snav-ham{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:10px;border:none;background:none;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
-.snav-ham span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:.3s;pointer-events:none}
-/* Mobile */
-@media(max-width:900px){
-  .snav-menu{display:none;position:fixed;top:62px;left:0;right:0;bottom:0;background:var(--navy);flex-direction:column;align-items:stretch;padding:12px 16px 32px;overflow-y:auto;gap:2px;-webkit-overflow-scrolling:touch}
-  .snav-menu.open{display:flex}
-  .snav-menu > li > a{padding:13px 16px;font-size:.92rem;border-bottom:1px solid rgba(255,255,255,.06)}
-  .snav-menu > li:last-child > a{border-bottom:none}
-  .snav-drop{display:none!important;position:static;box-shadow:none;border:none;background:rgba(255,255,255,.06);border-radius:8px;margin:4px 0 4px 12px;padding:4px}
-  .snav-menu > li.mob-open .snav-drop{display:block!important}
-  .snav-drop a{color:rgba(255,255,255,.82);padding:10px 12px;border-bottom:none;font-size:.88rem}
-  .snav-drop a:active{background:rgba(255,255,255,.1);color:#fff}
-  .snav-drop .dlbl{color:rgba(255,255,255,.35)}
-  .snav-ham{display:flex}
-}
-</style>
 </head>
 <body class="ds-page">
 <nav class="snav" id="snavMain">
@@ -318,59 +178,10 @@ footer a{color:var(--gold)}
     </button>
   </div>
 </nav>
-<script>
-(function(){
-  var ham = document.getElementById('snavHam');
-  var menu = document.getElementById('snavMenu');
-  if(!ham || !menu) return;
-
-  // Hamburger toggle
-  ham.addEventListener('click', function(e){
-    e.stopPropagation();
-    menu.classList.toggle('open');
-  });
-
-  // Mobile dropdown toggles — works on iOS, Android, Windows
-  var triggers = document.querySelectorAll('.drop-trigger');
-  triggers.forEach(function(trigger){
-    trigger.addEventListener('click', function(e){
-      if(window.innerWidth <= 900){
-        e.preventDefault();
-        e.stopPropagation();
-        var li = this.parentElement;
-        var isOpen = li.classList.contains('mob-open');
-        // Close all others
-        document.querySelectorAll('.snav-menu > li').forEach(function(l){ l.classList.remove('mob-open'); });
-        if(!isOpen) li.classList.add('mob-open');
-      }
-    });
-  });
-
-  // Close menu on nav link click (mobile)
-  document.querySelectorAll('.snav-menu a[href]:not(.drop-trigger)').forEach(function(a){
-    a.addEventListener('click', function(){
-      menu.classList.remove('open');
-      document.querySelectorAll('.snav-menu > li').forEach(function(l){ l.classList.remove('mob-open'); });
-    });
-  });
-
-  // Close menu when clicking outside
-  document.addEventListener('click', function(e){
-    if(!e.target.closest('.snav')){
-      menu.classList.remove('open');
-    }
-  });
-})();
-</script>
-
-
-
-
-
 
 <div class="ph">
   <div class="phi">
-    <nav class="bc" aria-label="Căi de navigare"><a href="/">Acasă</a> › <span style="color:var(--gold)">Asigurare Locuință + PAD</span></nav>
+    <nav class="bc" aria-label="Căi de navigare"><a href="/">Acasă</a> › <span class="bc-current">Asigurare Locuință + PAD</span></nav>
     <div class="cat">🏠 Locuință · PAD și facultativă</div>
     <h1>Asigurare locuință în Craiova – PAD și protecție facultativă</h1>
     <p>Protejează locul pe care îl numești acasă.</p>
@@ -454,7 +265,7 @@ footer a{color:var(--gold)}
 
   <section class="home-quote" id="oferta-locuinte" aria-labelledby="date-oferta">
     <div class="home-quote__heading">
-      <div><p class="cat" style="color:#856719;background:#fbf5e7;border-color:#ead9a5">CERERE ÎN 3 PAȘI</p><h2 id="date-oferta">Pregătește cererea pentru locuința ta</h2></div>
+      <div><p class="cat home-quote__eyebrow">CERERE ÎN 3 PAȘI</p><h2 id="date-oferta">Pregătește cererea pentru locuința ta</h2></div>
       <p>Completezi câteva detalii de bază. Cererea se deschide apoi în WhatsApp către mine; prețul și condițiile se confirmă numai în oferta asigurătorului.</p>
     </div>
     <form id="homeInsuranceQuoteForm">
@@ -506,8 +317,8 @@ footer a{color:var(--gold)}
     <p>Asirom CasaTa+PAD · Asirom Căminul+PAD · Axeria+PAD · Eurolife HomeProtect+PAD · Generali Eurocasa+PAD · Grawe Basic+PAD · Omniasig Amplus+PAD · Sig.Iduna Optim+PAD · Uniqa Unicasa+PAD</p>
     <p><small>Disponibilitatea și condițiile produselor se verifică la momentul solicitării ofertei.</small></p>
   </div>
-  <div style="background:#eff6ff;border-left:4px solid #2563eb;border-radius:0 12px 12px 0;padding:18px 20px;margin-bottom:20px;font-size:.87rem;color:#1e3a8a"><strong>🔎 Verificare PAD online:</strong> poți verifica polița în <a href="https://www.paidromania.ro/myPad/flow/" target="_blank" rel="noopener external" style="color:#1d4ed8;font-weight:700">platforma oficială PAID România</a>. Pentru explicații despre lege, acoperiri și sancțiuni, citește și <a href="/blog-pad-locuinta.html" style="color:#1d4ed8;font-weight:700">Ghid complet PAD: ce acoperă, cât costă și cum funcționează</a>.</div>
-  <div style="background:#fff7ed;border-left:4px solid #ea580c;border-radius:0 12px 12px 0;padding:18px 20px;margin-bottom:24px;font-size:.87rem;color:#7c2d12"><strong>⚠️ Sancțiuni pentru lipsa PAD:</strong> nerespectarea obligației de asigurare se poate sancționa cu amendă de la 100 la 500 lei, în condițiile legii. PAD oferă protecție numai pentru cele trei riscuri naturale prevăzute legal; pentru incendiu, avarii la instalații, furt sau bunurile din locuință este necesară o poliță facultativă care include riscurile dorite.</div>
+  <div class="home-pad-check"><strong>🔎 Verificare PAD online:</strong> poți verifica polița în <a href="https://www.paidromania.ro/myPad/flow/" target="_blank" rel="noopener external">platforma oficială PAID România</a>. Pentru explicații despre lege, acoperiri și sancțiuni, citește și <a href="/blog-pad-locuinta.html">Ghid complet PAD: ce acoperă, cât costă și cum funcționează</a>.</div>
+  <div class="home-pad-warning"><strong>⚠️ Sancțiuni pentru lipsa PAD:</strong> nerespectarea obligației de asigurare se poate sancționa cu amendă de la 100 la 500 lei, în condițiile legii. PAD oferă protecție numai pentru cele trei riscuri naturale prevăzute legal; pentru incendiu, avarii la instalații, furt sau bunurile din locuință este necesară o poliță facultativă care include riscurile dorite.</div>
 
   <section class="faq" aria-labelledby="faq-title">
     <h2 id="faq-title">Întrebări despre asigurarea locuinței</h2>
