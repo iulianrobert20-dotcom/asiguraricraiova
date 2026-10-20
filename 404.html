@@ -10,14 +10,11 @@
 <meta name="description" content="Pagina solicitată nu a fost găsită. Revino la pagina principală AsigurăriCraiova.ro sau contactează-ne.">
 <meta name="robots" content="noindex, follow">
 <script>
-  // GitHub Pages SPA redirect
-  // Salvează URL-ul curent și redirecționează la index.html
-  var path = window.location.pathname;
-  var search = window.location.search;
-  var hash = window.location.hash;
-  
-  // Map URL paths to page IDs
-  // Toate redirecturile directe catre paginile .html corecte
+  // Compatibilitate pentru adresele vechi pe găzduirea statică GitHub Pages.
+  // Un URL necunoscut păstrează răspunsul 404; nu îl trimitem către homepage.
+  var path = window.location.pathname.replace(/\/+$/, '') || '/';
+
+  // Destinațiile sunt pagini canonice existente, fără lanțuri între aliasuri.
   var directRedirects = {
     // URL-uri vechi SPA fara .html -> pagini standalone corecte
     '/rca': '/rca.html',
@@ -54,8 +51,6 @@
     '/asigurare-rca': '/rca.html',
     '/asigurare-malpraxis': '/malpraxis.html',
     '/asigurare-casco': '/casco.html',
-    '/asigurare-viata': '/viata.html',
-    '/asigurare-biciclete': '/bike.html',
     '/asigurare-pensie': '/pensie.html',
     '/rca-craiova': '/rca.html',
     '/malpraxis-craiova': '/malpraxis.html',
@@ -66,7 +61,7 @@
     '/pet-protect': '/animale.html'
   };
 
-  if (directRedirects[path]) {
+  if (Object.prototype.hasOwnProperty.call(directRedirects, path)) {
     window.location.replace(directRedirects[path]);
   }
 </script>
