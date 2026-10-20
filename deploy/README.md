@@ -15,6 +15,8 @@ La verificarea din 20.10.2026, domeniul folosea deja nameserverele Cloudflare `j
 
 În **Rules → Transform Rules → Modify Response Header** sau în pagina echivalentă din **Rules → Overview**, creează separat cele două reguli. Copiază `expression` din JSON în editorul de expresii, fără ghilimelele și escape-urile JSON. Pentru fiecare antet alege **Set static** și valoarea de mai jos. Păstrează regulile existente; verifică dacă o regulă ulterioară suprascrie aceleași antete.
 
+Condiția HTTPS folosește câmpul boolean [`ssl`](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/ssl/), care este adevărat când conexiunea clientului este criptată. `http.request.scheme` nu este un identificator acceptat aici. Parsarea locală a JSON-ului nu validează limbajul expresiilor: confirmă acceptarea expresiilor în editor/API înainte de activare.
+
 | Regulă | Domeniu de aplicare | Antete și valori |
 |---|---|---|
 | `asiguraricraiova_hsts_300` | HTTPS, apex și `www`, orice cale | `Strict-Transport-Security`: `max-age=300` |

@@ -3,7 +3,7 @@
     "ref": "asiguraricraiova_hsts_300",
     "description": "HSTS initial 300 seconds - HTTPS apex and www",
     "enabled": true,
-    "expression": "(http.request.scheme eq \"https\" and http.host in {\"asiguraricraiova.ro\" \"www.asiguraricraiova.ro\"})",
+    "expression": "(ssl and http.host in {\"asiguraricraiova.ro\" \"www.asiguraricraiova.ro\"})",
     "action": "rewrite",
     "action_parameters": {
       "headers": {
@@ -18,7 +18,7 @@
     "ref": "asiguraricraiova_locuinta_frame_protection",
     "description": "Block framing - locuinta page and extensionless alias",
     "enabled": true,
-    "expression": "(http.request.scheme eq \"https\" and http.host in {\"asiguraricraiova.ro\" \"www.asiguraricraiova.ro\"} and http.request.uri.path in {\"/locuinta.html\" \"/locuinta\"})",
+    "expression": "(ssl and http.host in {\"asiguraricraiova.ro\" \"www.asiguraricraiova.ro\"} and http.request.uri.path in {\"/locuinta.html\" \"/locuinta\"})",
     "action": "rewrite",
     "action_parameters": {
       "headers": {
