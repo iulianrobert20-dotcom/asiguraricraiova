@@ -7,7 +7,7 @@ La verificarea din 20.10.2026, domeniul folosea deja nameserverele Cloudflare `j
 ## Pregătire în Cloudflare
 
 1. Selectează zona `asiguraricraiova.ro`. Verifică în **SSL/TLS → Edge Certificates** că Universal SSL are certificat activ pentru apex și `www`.
-2. Folosește **SSL/TLS → Overview → Full (strict)**. Originea GitHub Pages are deja HTTPS valid. Păstrează **Enforce HTTPS** activ în GitHub Pages.
+2. Folosește **SSL/TLS → Overview → Full (strict)**. Originea GitHub Pages are deja HTTPS valid. Păstrează **Enforce HTTPS** activ în GitHub Pages. În **Edge Certificates**, setează **Minimum TLS Version: TLS 1.2** pentru conexiunile vizitatorilor; păstrează TLS 1.3 activ.
 3. În **DNS → Records**, activează **Proxied** numai pentru înregistrările web ale `asiguraricraiova.ro` și `www`. Păstrează destinațiile actuale către GitHub Pages. Nu modifica MX, înregistrările pentru email sau nameserverele.
 4. Verifică HTTPS pe apex și `www` înainte de activarea HSTS. Regulile Cloudflare pentru antete funcționează numai pentru trafic trecut prin proxy. Vezi [Proxy status](https://developers.cloudflare.com/dns/proxy-status/) și [Full (strict)](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/full-strict/).
 
