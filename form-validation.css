@@ -1,0 +1,18 @@
+.form-field-error {
+  display: block;
+  margin: .35rem 0 .65rem;
+  color: #a51c30;
+  font-size: .85rem;
+  font-weight: 600;
+  line-height: 1.45;
+}
+.form-field-error[hidden] { display: none; }
+.form-field-error--choice { grid-column: 1 / -1; }
+input[aria-invalid="true"], select[aria-invalid="true"], textarea[aria-invalid="true"],
+input[aria-invalid="true"]:focus, select[aria-invalid="true"]:focus, textarea[aria-invalid="true"]:focus {
+  border-color: #a51c30;
+  outline: 2px solid #a51c30;
+  outline-offset: 2px;
+}
+.catalog-quote .form-field-error { color: #ffb9c3; }
+#homeInsuranceQuoteForm, #karmaQuoteForm { align-items: start; }

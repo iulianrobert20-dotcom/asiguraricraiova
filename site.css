@@ -488,3 +488,20 @@ main a.btn-gold {
   .ph.premium-hero .premium-hero__actions a { width: 100%; }
   .main.premium-main .grid { grid-template-columns: 1fr; }
 }
+
+.whatsapp-quote-feedback { margin: 1rem 0 0; line-height: 1.6; }
+.whatsapp-quote-feedback .whatsapp-quote-retry {
+  display: inline-block;
+  margin: .35rem .25rem .35rem 0;
+  padding: .6rem .85rem;
+  border: 1px solid #176341;
+  border-radius: 6px;
+  background: #fff;
+  color: #145335;
+  font: 700 .9rem/1.3 Arial, sans-serif;
+  cursor: pointer;
+}
+.whatsapp-quote-feedback .whatsapp-quote-retry:focus-visible {
+  outline: 3px solid #176341;
+  outline-offset: 3px;
+}

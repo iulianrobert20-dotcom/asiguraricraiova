@@ -30,8 +30,8 @@
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="stylesheet" href="/site.css?v=20260929-4">
-<script defer src="/site.js?v=20260924-3"></script>
+<link rel="stylesheet" href="/site.css?v=20261021-1">
+<link rel="stylesheet" href="/form-validation.css?v=20261021-1"><script defer src="/form-validation.js?v=20261021-1"></script><script defer src="/site.js?v=20261021-1"></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","@id":"https://asiguraricraiova.ro/calculator-rca.html#application","name":"Calculator RCA 2026","applicationCategory":"FinanceApplication","operatingSystem":"Web","url":"https://asiguraricraiova.ro/calculator-rca.html","description":"Calculator orientativ pentru tariful de referință RCA și pragul BAAR, pe baza datelor introduse de utilizator.","provider":{"@id":"https://asiguraricraiova.ro/#business"},"offers":{"@type":"Offer","price":"0","priceCurrency":"RON"}},{"@type":"BreadcrumbList","@id":"https://asiguraricraiova.ro/calculator-rca.html#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Acasă","item":"https://asiguraricraiova.ro/"},{"@type":"ListItem","position":2,"name":"RCA","item":"https://asiguraricraiova.ro/rca.html"},{"@type":"ListItem","position":3,"name":"Calculator RCA","item":"https://asiguraricraiova.ro/calculator-rca.html"}]},{"@type":"FAQPage","@id":"https://asiguraricraiova.ro/calculator-rca.html#faq","mainEntity":[{"@type":"Question","name":"Calculatorul reprezintă o ofertă RCA?","acceptedAnswer":{"@type":"Answer","text":"Nu. Calculatorul oferă o estimare orientativă a tarifului de referință și a pragului BAAR. Prețul final este cel din oferta asigurătorului."}},{"@type":"Question","name":"Ce este pragul BAAR?","acceptedAnswer":{"@type":"Answer","text":"Pragul BAAR este utilizat în verificarea orientativă a situațiilor de risc ridicat. Eligibilitatea și documentele aplicabile sunt stabilite exclusiv de BAAR."}},{"@type":"Question","name":"Unde verific valabilitatea unei polițe RCA?","acceptedAnswer":{"@type":"Answer","text":"Valabilitatea poliței se verifică în baza oficială AIDA, administrată de BAAR, după numărul de înmatriculare sau seria VIN."}}]}]}</script>
 
 <style>
@@ -544,6 +544,7 @@ footer strong{color:rgba(255,255,255,.75)}
       <h2 class="card-title">Primești oferta în 30 minute</h2>
       <p class="card-sub">Robert Iulian Stoica te contactează personal cu oferta cea mai avantajoasă</p>
 
+      <form id="leadForm">
       <div class="frow">
         <div class="fg">
           <label for="fNume">Prenume și Nume <span class="req">*</span></label>
@@ -563,12 +564,13 @@ footer strong{color:rgba(255,255,255,.75)}
         <textarea id="fMsg" name="mesaj" placeholder="Scrie-ne orice detalii suplimentare..."></textarea>
       </div>
 
-      <div class="fg"><label style="display:flex;align-items:flex-start;gap:8px;font-weight:400"><input type="checkbox" id="fConsent" style="width:auto;margin-top:5px"> <span>Sunt de acord să fiu contactat în legătură cu această solicitare și am citit <a href="/gdpr.html">politica de confidențialitate</a>.</span></label></div>
+      <div class="fg"><label style="display:flex;align-items:flex-start;gap:8px;font-weight:400"><input type="checkbox" id="fConsent" required style="width:auto;margin-top:5px"> <span>Sunt de acord să fiu contactat în legătură cu această solicitare și am citit <a href="/gdpr.html">politica de confidențialitate</a>.</span></label></div>
 
       <div id="summaryBox" style="background:var(--cream);border-radius:var(--r);padding:16px;margin-bottom:20px;font-size:.82rem;line-height:1.7;color:var(--text)"></div>
 
-      <button class="btn-primary" id="submitBtn" onclick="submitLead()">Trimite cererea — Răspund în 30 min →</button>
+      <button class="btn-primary" id="submitBtn" type="submit">Trimite cererea — Răspund în 30 min →</button>
       <p class="gdpr-text">🔒 Datele tale sunt protejate conform GDPR. Ești contactat exclusiv de Robert Iulian Stoica — AsigurăriCraiova.ro</p>
+      </form>
 
       <div style="margin-top:20px;text-align:center">
         <p style="font-size:.8rem;color:var(--gray);margin-bottom:10px">Sau contactează-mă direct:</p>
@@ -937,6 +939,7 @@ function showStep(n) {
 function goStep1() { showStep(1); }
 
 async function submitLead() {
+  if (!document.getElementById('leadForm').reportValidity()) return;
   const nome = document.getElementById('fNume').value.trim();
   const tel = document.getElementById('fTel').value.trim();
   const consent = document.getElementById('fConsent').checked;
@@ -996,6 +999,10 @@ async function submitLead() {
 }
 
 // INIT
+document.getElementById('leadForm').addEventListener('submit', function (event) {
+  event.preventDefault();
+  submitLead();
+});
 buildBMScale();
 updateAgeField();
 showStep(1);

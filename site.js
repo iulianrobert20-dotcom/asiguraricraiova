@@ -296,73 +296,177 @@
 
   function getContactLocation(element) {
     if (element && element.dataset.analyticsLocation) return element.dataset.analyticsLocation;
-    if (element && element.closest('.home-hero, .ph, .product-hero')) return 'hero';
+    if (element && element.closest('.home-hero, .ph, .product-hero, .expat-hero, .recruit-hero')) return 'hero';
     if (element && element.closest('.cta-box, .home-cta, .product-final-cta')) return 'final_cta';
-    if (element && element.closest('footer')) return 'footer';
+    if (element && element.closest('footer, .global-site-footer')) return 'footer';
     if (element && element.classList.contains('fwa')) return 'floating_button';
     if (element && element.closest('nav')) return 'navigation';
     return 'content';
   }
 
+  // Fixed values prevent headings or free text from becoming Analytics parameters.
+  var products = {
+    consultanta: ['Consultanță', 'Nu știu — vreau o consultanță'],
+    rca: ['RCA'], casco: ['CASCO'], gap: ['GAP'],
+    locuinta: ['Locuință și PAD', 'Locuință + PAD (soluție coordonată)', 'Locuință Facultativă', 'PAD — Obligatoriu'],
+    calatorie: ['Călătorie', 'Travel — O singură călătorie'],
+    multitravel: ['MultiTravel', 'MultiTravel — Abonament anual'], storno: ['Storno'],
+    sanatate: ['Sănătate'], expati: ['Sănătate pentru expați'],
+    viata: ['Viață', 'Asigurare de Viață'], karma_buna: ['Karma Bună'],
+    accident: ['Accidente persoane', 'Accidente Persoane'], malpraxis: ['Malpraxis'],
+    civile: ['Civile și profesionale'],
+    raspundere_generala: ['Răspundere civilă generală', 'Civile Generale'],
+    raspundere_profesionala: ['Răspundere profesională', 'Răspundere civilă profesională', 'Civile Profesionale'],
+    raspundere_familie: ['Răspundere civilă familie', 'Civile Individuale & Familie'],
+    firme: ['Firme', 'IMM / Firmă', 'AMM / IMM / Firmă'],
+    transport: ['Transport CMR / ROTR'], cmr: ['CMR'], rotr: ['ROTR'],
+    fotovoltaice: ['Fotovoltaice', 'Panouri Fotovoltaice'], bike: ['Bicicletă', 'Biciclete'],
+    animale: ['Animale de companie'],
+    asistenta_rutiera: ['Asistență rutieră'], asistenta_domiciliu: ['Asistență la domiciliu'],
+    pensie: ['Pensie Pilon III', 'Pensie Privată Pilon III'], economisire: ['Economisire pentru copii', 'Economisire pentru Copii'],
+    unitlinked: ['Unit-linked', 'Unit-Linked'],
+    leu_forte: ['Leu Forte', 'Unit-linked – Leu Forte Allianz-Țiriac'],
+    leu_dinamic: ['Leu Dinamic', 'Unit-linked – Leu Dinamic Allianz-Țiriac'],
+    despagubiri: ['Despăgubiri accidente'], altul: ['Alt tip de asigurare']
+  };
+  var pageProducts = {
+    'rca.html': 'rca', 'rca-in-rate.html': 'rca', 'calculator-rca.html': 'rca',
+    'locuinta.html': 'locuinta', 'calatorie.html': 'calatorie', 'multitravel.html': 'multitravel',
+    'asigurare-sanatate-expati.html': 'expati', 'asigurare-viata-karma-buna.html': 'karma_buna',
+    'raspundere-civila-generala.html': 'raspundere_generala',
+    'raspundere-civila-profesionala.html': 'raspundere_profesionala',
+    'raspundere-civila-familie.html': 'raspundere_familie',
+    'asistenta-rutiera.html': 'asistenta_rutiera', 'asistenta-domiciliu.html': 'asistenta_domiciliu',
+    'leu-forte.html': 'leu_forte', 'leu-dinamic.html': 'leu_dinamic',
+    'imm.html': 'firme', 'despagubiri-accidente.html': 'despagubiri',
+    'blog-rca-craiova-2026.html': 'rca', 'blog-restituire-rca-rovinieta.html': 'rca',
+    'blog-pad-locuinta.html': 'locuinta', 'blog-pensie-pilon3.html': 'pensie',
+    'blog-animale-companie.html': 'animale', 'blog-viata-easy-life.html': 'viata'
+  };
+  var formNames = {
+    quickQuoteForm: 'quick_quote', travelQuoteForm: 'travel_quote', multiTravelQuoteForm: 'multitravel_quote',
+    professionalLiabilityQuoteForm: 'professional_liability_quote', homeInsuranceQuoteForm: 'home_insurance_quote',
+    contactForm: 'contact', expatLeadForm: 'expat_health', karmaQuoteForm: 'karma_buna', leadForm: 'rca_calculator'
+  };
+  var recentHandoffs = new WeakMap();
+
+  function productKey(value) {
+    if (!value) return null;
+    var text = String(value).trim().toLocaleLowerCase('ro');
+    return Object.keys(products).find(function (key) {
+      return key === text || products[key].some(function (label) { return label.toLocaleLowerCase('ro') === text; });
+    }) || null;
+  }
+
   function getInsuranceProduct(element, fallback) {
-    if (element && element.dataset.analyticsProduct) return element.dataset.analyticsProduct.slice(0, 60);
-    if (fallback) return String(fallback).slice(0, 60);
-    var heading = document.querySelector('main h1, h1');
-    return heading ? heading.textContent.trim().slice(0, 60) : 'Nespecificat';
+    var key = productKey(element && element.dataset.analyticsProduct) || productKey(fallback);
+    if (!key && element && element.closest('form')) {
+      var selection = element.closest('form').querySelector('#quoteProduct, #contact-produs');
+      key = productKey(selection && selection.value);
+    }
+    var filename = window.location.pathname.split('/').pop();
+    var pageProduct = Object.prototype.hasOwnProperty.call(pageProducts, filename) ? pageProducts[filename] : null;
+    key = key || pageProduct || productKey(filename.replace(/\.html$/, '')) || 'consultanta';
+    return { id: key, label: products[key][0] };
   }
 
   function getLeadParameters(method, element, details) {
+    var product = getInsuranceProduct(element, details && details.product);
+    var location = getContactLocation(element);
     var parameters = {
+      method: method,
       lead_method: method,
-      insurance_product: getInsuranceProduct(element, details && details.product),
-      lead_location: getContactLocation(element),
-      page_path: window.location.pathname
+      product_id: product.id,
+      insurance_product: product.label,
+      cta_location: location,
+      lead_location: location,
+      page_path: window.location.pathname,
+      measurement_version: '20261021'
     };
-    if (details && details.form_name) parameters.form_name = details.form_name;
+    var form = element && (element.tagName === 'FORM' ? element : element.closest('form'));
+    var name = form && (formNames[form.id] || (form.hasAttribute('data-rca-lead-form') && 'rca_short_lead'));
+    if (name) {
+      parameters.form_id = name;
+      parameters.form_name = name;
+    }
     return parameters;
+  }
+
+  function isRapidRepeat(cache, element) {
+    if (!element) return false;
+    var now = Date.now();
+    var last = cache.get(element);
+    if (last !== undefined && now - last < 1200) return true;
+    cache.set(element, now);
+    return false;
   }
 
   window.asigurariAnalytics = {
     trackLead: function (method, element, details) {
       var parameters = getLeadParameters(method, element, details || {});
-      sendAnalyticsEvent('generate_lead', parameters);
-      if (method === 'formspree') {
-        sendAnalyticsEvent('form_submit', parameters);
-        if (parameters.insurance_product.toLowerCase().includes('rca') || window.location.pathname.includes('rca')) {
-          sendAnalyticsEvent('rca_lead', parameters);
-        }
+      if (method === 'whatsapp_form') {
+        if (isRapidRepeat(recentHandoffs, element)) return false;
+        parameters.method = 'whatsapp';
+        sendAnalyticsEvent('whatsapp_handoff', parameters);
+        return true;
       }
+      // Callers invoke this only after a successful Formspree response.
+      if (method !== 'formspree') return false;
+      sendAnalyticsEvent('generate_lead', parameters);
+      return true;
     },
     trackContactClick: function (method, element) {
+      if (!['whatsapp', 'phone', 'email'].includes(method)) return;
       var parameters = getLeadParameters(method, element, {});
-      sendAnalyticsEvent(method === 'whatsapp' ? 'contact_whatsapp_click' : 'contact_phone_click', parameters);
-      sendAnalyticsEvent(method === 'whatsapp' ? 'whatsapp_click' : 'phone_click', {
-        page_path: parameters.page_path,
-        product_category: parameters.insurance_product,
-        click_location: parameters.lead_location
-      });
+      sendAnalyticsEvent('contact_click', parameters);
     }
   };
+
+  function openWhatsAppQuote(form, message, details) {
+    if (window.asigurariAnalytics.trackLead('whatsapp_form', form, details) === false) return;
+    var url = 'https://wa.me/40774171971?text=' + encodeURIComponent(message);
+    // A synthetic anchor could expose its free-text URL to automatic outbound tracking.
+    window.open(url, '_blank', 'noopener,noreferrer');
+    var feedback = form.querySelector('[data-whatsapp-feedback]');
+    if (!feedback) {
+      feedback = document.createElement('p');
+      feedback.setAttribute('data-whatsapp-feedback', '');
+      feedback.setAttribute('role', 'status');
+      feedback.setAttribute('aria-live', 'polite');
+      feedback.className = 'whatsapp-quote-feedback';
+      form.appendChild(feedback);
+    }
+    feedback.replaceChildren(document.createTextNode('Mesajul este pregătit. Continuă în WhatsApp și apasă Trimite. '));
+    var retry = document.createElement('button');
+    retry.type = 'button';
+    retry.className = 'whatsapp-quote-retry';
+    retry.textContent = 'Deschide WhatsApp';
+    retry.addEventListener('click', function () { window.open(url, '_blank', 'noopener,noreferrer'); });
+    feedback.appendChild(retry);
+    feedback.appendChild(document.createTextNode(' Dacă nu se deschide, sună la 0774 171 971.'));
+  }
+
+  window.asigurariQuotes = { openWhatsApp: openWhatsAppQuote };
+
+  function trackQuoteStarts() {
+    document.querySelectorAll('form').forEach(function (form) {
+      if (!formNames[form.id] && !form.hasAttribute('data-rca-lead-form')) return;
+      var started = false;
+      form.addEventListener('focusin', function () {
+        if (started || !window.__analyticsAllowed) return;
+        started = true;
+        sendAnalyticsEvent('quote_start', getLeadParameters('form', form, {}));
+      });
+    });
+  }
 
   function enableQuickQuote() {
     var form = document.getElementById('quickQuoteForm');
     if (!form) return;
 
     var productSelect = document.getElementById('quoteProduct');
-    var quoteStarted = false;
-    form.addEventListener('focusin', function () {
-      if (quoteStarted) return;
-      quoteStarted = true;
-      sendAnalyticsEvent('quick_quote_start', { page_path: window.location.pathname });
-    });
-
     productSelect.addEventListener('change', function () {
-      if (productSelect.value && window.__analyticsAllowed && typeof window.gtag === 'function') {
-        window.gtag('event', 'quote_product_select', {
-          product: productSelect.value.slice(0, 60),
-          quote_variant: 'quick_quote_v2'
-        });
-      }
+      if (productSelect.value) sendAnalyticsEvent('quote_product_select', getLeadParameters('form', form, { product: productSelect.value }));
     });
 
     var requestedProduct = new URLSearchParams(window.location.search).get('asigurare');
@@ -395,24 +499,10 @@
       if (details) lines.push('Alte detalii: ' + details);
       lines.push('', 'Mesaj trimis din formularul AsigurăriCraiova.ro.');
 
-      window.asigurariAnalytics.trackLead('whatsapp_form', form, {
+      openWhatsAppQuote(form, lines.join('\n'), {
         product: product,
         form_name: 'quick_quote'
       });
-      sendAnalyticsEvent('quick_quote_whatsapp', {
-        page_path: window.location.pathname,
-        product_category: product.slice(0, 60)
-      });
-
-      var url = 'https://wa.me/40774171971?text=' + encodeURIComponent(lines.join('\n'));
-      var link = document.createElement('a');
-      link.href = url;
-      link.target = '_blank';
-      link.rel = 'noopener noreferrer';
-      link.dataset.analyticsSkipContact = 'true';
-      document.body.appendChild(link);
-      link.click();
-      link.remove();
     });
   }
 
@@ -440,20 +530,10 @@
       if (details) lines.push('Detalii: ' + details);
       lines.push('', 'Mesaj trimis din formularul de călătorie AsigurăriCraiova.ro.');
 
-      window.asigurariAnalytics.trackLead('whatsapp_form', form, {
+      openWhatsAppQuote(form, lines.join('\n'), {
         product: 'Călătorie',
         form_name: 'travel_quote'
       });
-
-      var url = 'https://wa.me/40774171971?text=' + encodeURIComponent(lines.join('\n'));
-      var link = document.createElement('a');
-      link.href = url;
-      link.target = '_blank';
-      link.rel = 'noopener noreferrer';
-      link.dataset.analyticsSkipContact = 'true';
-      document.body.appendChild(link);
-      link.click();
-      link.remove();
     });
   }
 
@@ -479,19 +559,10 @@
       if (details) lines.push('Detalii: ' + details);
       lines.push('', 'Cerere pregătită pe AsigurăriCraiova.ro/multitravel.html.');
 
-      window.asigurariAnalytics.trackLead('whatsapp_form', form, {
+      openWhatsAppQuote(form, lines.join('\n'), {
         product: 'MultiTravel',
         form_name: 'multitravel_quote'
       });
-
-      var link = document.createElement('a');
-      link.href = 'https://wa.me/40774171971?text=' + encodeURIComponent(lines.join('\n'));
-      link.target = '_blank';
-      link.rel = 'noopener noreferrer';
-      link.dataset.analyticsSkipContact = 'true';
-      document.body.appendChild(link);
-      link.click();
-      link.remove();
     });
   }
 
@@ -519,19 +590,10 @@
       if (details) lines.push('Detalii: ' + details);
       lines.push('', 'Cerere pregătită pe AsigurăriCraiova.ro/raspundere-civila-profesionala.html.');
 
-      window.asigurariAnalytics.trackLead('whatsapp_form', form, {
+      openWhatsAppQuote(form, lines.join('\n'), {
         product: 'Răspundere civilă profesională',
         form_name: 'professional_liability_quote'
       });
-
-      var link = document.createElement('a');
-      link.href = 'https://wa.me/40774171971?text=' + encodeURIComponent(lines.join('\n'));
-      link.target = '_blank';
-      link.rel = 'noopener noreferrer';
-      link.dataset.analyticsSkipContact = 'true';
-      document.body.appendChild(link);
-      link.click();
-      link.remove();
     });
   }
 
@@ -568,27 +630,22 @@
       if (area) lines.push('Suprafață aproximativă: ' + area + ' m²');
       lines.push('', 'Mesaj trimis din pagina Asigurare locuință AsigurăriCraiova.ro.');
 
-      window.asigurariAnalytics.trackLead('whatsapp_form', form, {
+      openWhatsAppQuote(form, lines.join('\n'), {
         product: 'Locuință și PAD',
         form_name: 'home_insurance_quote'
       });
-
-      var link = document.createElement('a');
-      link.href = 'https://wa.me/40774171971?text=' + encodeURIComponent(lines.join('\n'));
-      link.target = '_blank';
-      link.rel = 'noopener noreferrer';
-      link.dataset.analyticsSkipContact = 'true';
-      document.body.appendChild(link);
-      link.click();
-      link.remove();
     });
   }
 
   function enableRcaLeadForms() {
     document.querySelectorAll('[data-rca-lead-form]').forEach(function (form) {
+      var inFlight = false;
+      var completed = false;
       form.addEventListener('submit', async function (event) {
         event.preventDefault();
+        if (inFlight || completed) return;
         if (!form.reportValidity()) return;
+        inFlight = true;
 
         var button = form.querySelector('button[type="submit"]');
         var status = form.querySelector('[data-rca-lead-status]');
@@ -602,7 +659,9 @@
             headers: { Accept: 'application/json' }
           });
           if (!response.ok) throw new Error('Formspree error');
+          completed = true;
           status.textContent = 'Cererea a fost trimisă. Te contactez în programul de lucru.';
+          button.textContent = 'Cerere trimisă ✓';
           form.reset();
           window.asigurariAnalytics.trackLead('formspree', form, {
             product: 'RCA',
@@ -611,7 +670,8 @@
         } catch (error) {
           status.textContent = 'Cererea nu a putut fi trimisă. Scrie-mi pe WhatsApp sau sună la 0774 171 971.';
         } finally {
-          button.disabled = false;
+          inFlight = false;
+          button.disabled = completed;
         }
       });
     });
@@ -619,13 +679,12 @@
 
   function trackContactClicks() {
     document.addEventListener('click', function (event) {
-      var whatsapp = event.target.closest('a[href*="wa.me/"]');
+      var whatsapp = event.target.closest('a[href^="https://wa.me/"]');
       var phone = event.target.closest('a[href^="tel:"]');
+      var email = event.target.closest('a[href^="mailto:"]');
       if (whatsapp && !whatsapp.dataset.analyticsSkipContact) window.asigurariAnalytics.trackContactClick('whatsapp', whatsapp);
       if (phone) window.asigurariAnalytics.trackContactClick('phone', phone);
-      if (whatsapp && !whatsapp.dataset.analyticsSkipContact && window.location.pathname === '/') {
-        sendAnalyticsEvent('home_offer_click', { page_path: '/', click_location: getContactLocation(whatsapp) });
-      }
+      if (email) window.asigurariAnalytics.trackContactClick('email', email);
       var productLink = event.target.closest('.insurance-card, .home-feature-card');
       if (productLink) {
         sendAnalyticsEvent('product_page_click', {
@@ -651,6 +710,7 @@
     enableProfessionalLiabilityQuote();
     enableHomeInsuranceQuote();
     enableRcaLeadForms();
+    trackQuoteStarts();
     addPrivacyControl();
     trackContactClicks();
 
