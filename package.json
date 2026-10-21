@@ -2,7 +2,9 @@
   "name": "asiguraricraiova",
   "private": true,
   "scripts": {
-    "test": "node --check site.js && node --check scripts/validate-site.mjs && node scripts/validate-site.mjs && node scripts/validate-locuinta-security.mjs"
+    "test": "node --check site.js && node --check form-validation.js && node --check scripts/validate-site.mjs && node scripts/validate-site.mjs && node scripts/validate-locuinta-security.mjs",
+    "test:forms": "node scripts/test-form-validation.cjs",
+    "test:analytics": "node scripts/test-analytics.cjs"
   },
   "engines": {
     "node": ">=20"
