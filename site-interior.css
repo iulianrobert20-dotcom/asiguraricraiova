@@ -39,6 +39,9 @@ body.site-unified {
 .site-unified .page-hero .law { margin-top: 18px; border-color: #cfdfed; background: #edf4fa; }
 .site-unified :is(.cat,.ds-badge,.home-quote__eyebrow) { border-color: #cfe1f2; background: #eaf3fc; color: #135eac !important; }
 .site-unified .page-hero :is(.hero-actions,.product-hero__actions,.home-hero__actions,.ds-actions,.recruit-actions) { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin: 22px 0 14px; }
+.site-unified .page-hero .ph-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin: 22px 0 14px; }
+.site-unified .page-hero .ph-actions > a { display: inline-flex; min-height: 44px; align-items: center; justify-content: center; padding: 12px 20px; border: 1px solid #9ebbd3; border-radius: 5px; background: #fff; color: #135eac !important; font: 700 14px/1.35 Arial,sans-serif; text-decoration: none; }
+.site-unified .page-hero .ph-actions > a.primary { background: #133b5b; border-color: #133b5b; color: #fff !important; }
 .site-unified .page-hero :is(.hero-points,.recruit-hero__notes) { margin-block: 16px; color: #375a7b; font-size: 14px; }
 .site-unified .page-hero__media { position: relative; align-self: stretch; min-width: 0; min-height: 320px; overflow: hidden; margin: 0; border: 1px solid #dce6ef; border-radius: 8px; background: #e6edf4; }
 .site-unified .page-hero__image { position: absolute; inset: 0; display: block; width: 100%; height: 100%; max-width: 100%; object-fit: cover; object-position: center; }

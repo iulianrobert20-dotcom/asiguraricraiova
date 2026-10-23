@@ -9,7 +9,7 @@ catch { ({ chromium } = require(process.env.PLAYWRIGHT_MODULE_PATH || path.join(
 const root = path.resolve(__dirname, '..');
 const origin = 'https://asiguraricraiova.ro';
 const themePath = '/site-interior.css';
-const themeVersion = '20261023-1';
+const themeVersion = '20261023-2';
 const output = process.env.DESIGN_EVIDENCE_DIR;
 const sitemap = fs.readFileSync(path.join(root, 'sitemap.xml'), 'utf8');
 const canonical = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(match => new URL(match[1]).pathname);
@@ -101,6 +101,48 @@ async function inspect(page, pathname, source, width) {
     function luminance(color) {
       return color.slice(0, 3).map(channel => { const v = channel / 255; return v <= .04045 ? v / 12.92 : ((v + .055) / 1.055) ** 2.4; }).reduce((sum, channel, index) => sum + channel * [.2126, .7152, .0722][index], 0);
     }
+    function over(front, back) {
+      const alpha = front[3] + back[3] * (1 - front[3]);
+      return alpha ? [...front.slice(0, 3).map((channel, index) => (channel * front[3] + back[index] * back[3] * (1 - front[3])) / alpha), alpha] : [0, 0, 0, 0];
+    }
+    // Resolve two painted pixels: text and its background. Flatten each nested
+    // background/opacity group from the text element up to the white canvas.
+    function paintedContrast(element) {
+      let foreground = rgba(getComputedStyle(element).color), background = [0, 0, 0, 0];
+      const layers = [];
+      for (let ancestor = element; ancestor; ancestor = ancestor.parentElement) {
+        const style = getComputedStyle(ancestor), color = rgba(style.backgroundColor), opacity = Number(style.opacity);
+        foreground = over(foreground, color); background = over(background, color);
+        foreground[3] *= opacity; background[3] *= opacity;
+        if (color[3] > 0 || opacity < 1) layers.push({ tag: ancestor.tagName, class: typeof ancestor.className === 'string' ? ancestor.className : '', color: style.backgroundColor, opacity });
+      }
+      foreground = over(foreground, [255, 255, 255, 1]); background = over(background, [255, 255, 255, 1]);
+      const a = luminance(foreground), b = luminance(background);
+      return { foreground, background, layers, ratio: (Math.max(a, b) + .05) / (Math.min(a, b) + .05) };
+    }
+    const heroLinkContrast = [];
+    for (const anchor of document.querySelectorAll('.page-hero__copy a[href]')) {
+      if (!visible(anchor)) continue;
+      const walker = document.createTreeWalker(anchor, NodeFilter.SHOW_TEXT), seen = new Set();
+      for (let node = walker.nextNode(); node; node = walker.nextNode()) {
+        const text = node.textContent.trim(), element = node.parentElement;
+        if (!/[\p{L}\p{N}]/u.test(text) || !visible(element) || element.closest('svg, [aria-hidden="true"], .sr-only, .visually-hidden')) continue;
+        let hidden = false;
+        for (let ancestor = element; ancestor; ancestor = ancestor.parentElement) {
+          const style = getComputedStyle(ancestor);
+          if (style.display === 'none' || style.visibility === 'hidden' || Number(style.opacity) === 0 || ancestor.hidden) { hidden = true; break; }
+        }
+        if (hidden) continue;
+        const range = document.createRange(); range.selectNodeContents(node);
+        if (![...range.getClientRects()].some(rect => rect.width > 0 && rect.height > 0)) continue;
+        const style = getComputedStyle(element), size = parseFloat(style.fontSize), weight = parseInt(style.fontWeight, 10) || (style.fontWeight === 'bold' ? 700 : 400);
+        const minimum = size >= 24 || (size >= 18.6667 && weight >= 700) ? 3 : 4.5;
+        const paint = paintedContrast(element), key = [text, style.color, size, weight, paint.ratio].join('|');
+        if (seen.has(key)) continue;
+        seen.add(key);
+        heroLinkContrast.push({ href: anchor.getAttribute('href'), class: anchor.className, text: text.slice(0, 120), color: style.color, fontSize: size, fontWeight: weight, minimum, ...paint });
+      }
+    }
     const metadata = hero ? [...hero.querySelectorAll('.art-meta span, .article-meta span, .hero-meta span, .ameta span, .meta span')].filter(visible).map(element => {
       let ancestor = element, background = [255, 255, 255, 1];
       while (ancestor) {
@@ -123,7 +165,7 @@ async function inspect(page, pathname, source, width) {
       source: nonhome ? { bodyUnified: doc.body.classList.contains('site-unified'), heroes: doc.querySelectorAll('.page-hero').length, images: sourceHero ? sourceHero.querySelectorAll('img').length : 0, h1Inside: Boolean(sourceHero && sourceHero.querySelector('h1')), caption: sourceHero && sourceHero.querySelector('figcaption')?.textContent.trim(), themeLast: Boolean(lastStyle && new URL(lastStyle.getAttribute('href') || '', location.origin).pathname === themePath) } : null,
       heroes: document.querySelectorAll(nonhome ? '.page-hero' : '.home-hero').length,
       h1: [...document.querySelectorAll('h1')].map(element => ({ text: element.textContent.trim(), visible: visible(element), insideHero: Boolean(hero && hero.contains(element)) })),
-      images, homeLinks, styles, primary, metadata, bounds, overflowElements,
+      images, homeLinks, styles, primary, metadata, heroLinkContrast, bounds, overflowElements,
       heroVisible: Boolean(hero && visible(hero)),
       caption: hero && hero.querySelector('figcaption')?.textContent.trim()
     };
@@ -135,6 +177,7 @@ function verify(record, pathname, width, javaScriptEnabled) {
   check(record.bounds.document <= width && record.bounds.body <= width, label + ': horizontal overflow ' + JSON.stringify(record.bounds) + ' ' + JSON.stringify(record.overflowElements));
   check(!record.primary.some(element => element.legacyGold), label + ': legacy gold in primary UI ' + JSON.stringify(record.primary.filter(element => element.legacyGold)));
   check(record.metadata.every(element => element.contrast >= 4.5), label + ': unreadable hero metadata ' + JSON.stringify(record.metadata.filter(element => element.contrast < 4.5)));
+  check(record.heroLinkContrast.every(link => link.ratio >= link.minimum), label + ': unreadable hero links ' + JSON.stringify(record.heroLinkContrast.filter(link => link.ratio < link.minimum)));
   if (pathname === '/') return;
   check(record.bodyUnified && record.source.bodyUnified, label + ': site-unified must exist in static source and rendered body');
   check(record.heroes === 1 && record.source.heroes === 1 && record.heroVisible, label + ': expected one static visible .page-hero');
