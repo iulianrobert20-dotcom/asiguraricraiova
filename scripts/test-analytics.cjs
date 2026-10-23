@@ -74,6 +74,11 @@ const aliases = ['whatsapp_click','phone_click','contact_whatsapp_click','contac
   contact.rec.result='Contact product preserved, one classified lead';await contact.context.close();
   const footer=await open('rca.html');await footer.page.locator('.global-site-footer__cta').click();ev=await footer.events();assert.equal(ev.filter(x=>x[1]==='contact_click').length,1);assert.equal(ev.find(x=>x[1]==='contact_click')[2].cta_location,'footer');
   footer.rec.result='one direct contact click, footer classified';await footer.context.close();
+  for(const file of ['gap.html','cmr.html','asigurare-sanatate-expati.html']){
+   const hero=await open(file);await hero.page.locator('.page-hero a[href*="wa.me"]').first().click();ev=await hero.events();
+   assert.equal(ev.filter(x=>x[1]==='contact_click').length,1);assert.equal(ev.find(x=>x[1]==='contact_click')[2].cta_location,'hero');
+   assert.equal(ev.filter(x=>x[1]==='generate_lead').length,0);hero.rec.result='photo hero retains contact location classification';await hero.context.close();
+  }
   for(const [file,expected] of [['blog-rca-craiova-2026.html','rca'],['blog-restituire-rca-rovinieta.html','rca'],['blog-pad-locuinta.html','locuinta'],['blog-pensie-pilon3.html','pensie']]){
    const article=await open(file);await article.page.locator('.mobile-contact-bar a[href^="https://wa.me/"]').click();ev=await article.events();assert.equal(ev.find(x=>x[1]==='contact_click')[2].product_id,expected);article.rec.result='article CTA product '+expected;await article.context.close();
   }

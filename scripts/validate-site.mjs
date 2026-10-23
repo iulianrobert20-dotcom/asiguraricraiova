@@ -125,6 +125,15 @@ for (const { file } of canonicalPages) {
   if (!/<a\b[^>]*\bdata-nav-home\b[^>]*>/i.test(pageSource)) fail(file, 'lipsește întoarcerea explicită Acasă fără JavaScript');
 }
 
+// Every interior template must retain the shared homepage-derived visual system.
+for (const file of [...canonicalPages.map(page => page.file).filter(file => file !== 'index.html'), '404.html']) {
+  const source = fs.readFileSync(path.join(root, file), 'utf8');
+  if (!/<body\b[^>]*class="[^"]*\bsite-unified\b/.test(source)) fail(file, 'lipsește tema vizuală comună');
+  if (!/<link\b[^>]*href="\/site-interior\.css\?v=[^"]+"/.test(source)) fail(file, 'lipsește stylesheet-ul comun pentru paginile interioare');
+  const photo = source.match(/<img\b[^>]*class="page-hero__image"[^>]*>/)?.[0] || '';
+  if (!/\balt="[^"]{8,}"/.test(photo) || !/\bwidth="[1-9]\d*"/.test(photo) || !/\bheight="[1-9]\d*"/.test(photo)) fail(file, 'lipsește fotografia introductivă accesibilă cu dimensiuni explicite');
+}
+
 // Aliasurile cunoscute din raportul 404 trebuie să funcționeze fără JavaScript.
 const legacyRedirects = new Map([
   ['asigurare-locuinta-pad/index.html', '/locuinta.html'],

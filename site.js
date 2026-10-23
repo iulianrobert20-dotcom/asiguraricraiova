@@ -119,11 +119,17 @@
   }
 
   function installGlobalNavigation() {
-    var legacyHeader = document.querySelector('nav.snav, header.home-header');
+    var legacyHeader = document.querySelector('nav.snav, header.home-header, header.expat-header');
     if (!legacyHeader || document.querySelector('.global-site-header')) return;
     if (document.body.classList.contains('home-redesign')) return;
     var isRecruitPage = document.body.classList.contains('recruit-page');
 
+    if (legacyHeader.classList.contains('expat-header')) {
+      var pageTools = document.createElement('div');
+      pageTools.className = 'site-page-tools';
+      while (legacyHeader.firstChild) pageTools.appendChild(legacyHeader.firstChild);
+      legacyHeader.insertAdjacentElement('afterend', pageTools);
+    }
     var header = document.createElement('header');
     header.className = 'global-site-header';
     header.innerHTML =
@@ -327,7 +333,7 @@
 
   function getContactLocation(element) {
     if (element && element.dataset.analyticsLocation) return element.dataset.analyticsLocation;
-    if (element && element.closest('.home-hero, .ph, .product-hero, .expat-hero, .recruit-hero')) return 'hero';
+    if (element && element.closest('.home-hero, .ph, .product-hero, .expat-hero, .recruit-hero, .page-hero, .page-hero__support')) return 'hero';
     if (element && element.closest('.cta-box, .home-cta, .product-final-cta')) return 'final_cta';
     if (element && element.closest('footer, .global-site-footer')) return 'footer';
     if (element && element.classList.contains('fwa')) return 'floating_button';
