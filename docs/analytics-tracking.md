@@ -19,7 +19,7 @@ O gardă locală de 1,2 secunde evită dublarea accidentală a pregătirii Whats
 
 Aplică [planul de migrare GA4](analytics-migration-2026-10-21.md) la publicare: un singur rezultat principal `generate_lead`; `contact_click` și `whatsapp_handoff` rămân microconversii separate. Nu crea reguli care clonează aceeași acțiune în mai multe key events. Setările administrative nu sunt schimbate de acest cod.
 
-RCA, Contact, Calculator și Expați folosesc același contract de succes Formspree. Formularul de recrutare păstrează rezultatul separat `recruitment_form_submit`, fără a fi asimilat unei solicitări de asigurare. Nu raporta deschiderea calculatorului ca ofertă ori poliță.
+RCA, Contact, Calculator și Expați folosesc același contract de succes Formspree. Din 23.10.2026, și formularul din homepage folosește Formspree: `form_id=quick_quote`, `method=formspree`, `cta_location=quick_quote`, iar `generate_lead` apare numai după acceptarea HTTP 2xx și cu acord Analytics. Numele, telefonul și data expirării nu sunt parametri Analytics. Formularul rapid din catalogul Asigurări păstrează continuarea WhatsApp (`whatsapp_handoff`); aceste două căi nu se însumează ca formulare acceptate. Formularul de recrutare păstrează rezultatul separat `recruitment_form_submit`, fără a fi asimilat unei solicitări de asigurare. Nu raporta deschiderea calculatorului ca ofertă ori poliță.
 
 Validare locală: `node scripts/test-analytics.cjs`, cu Playwright disponibil. `PLAYWRIGHT_MODULE_PATH` poate indica pachetul local, `PLAYWRIGHT_BROWSER_CHANNEL` browserul instalat (implicit msedge), iar `AUDIT_TEST_OUTPUT` directorul local de rezultate și capturi. Toate cererile externe sunt interceptate, iar Formspree 200/422 este simulat; nu folosi date reale de client.
 

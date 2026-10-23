@@ -620,3 +620,407 @@ body textarea { font: inherit; }
 .homepage .home-service-links h3 { margin: 0 0 10px; color: var(--home-navy); font-size: 1.15rem; }
 .homepage .home-service-links p { margin: 10px 0 0; color: var(--home-muted); line-height: 1.7; }
 .homepage .home-service-links a { color: var(--home-navy); text-decoration: underline; text-underline-offset: 3px; }
+
+/* Approved homepage, 23 October 2026. Other pages retain the shared rules above. */
+.homepage [hidden] { display: none !important; }
+.homepage.home-redesign {
+  --home-navy: #092b50;
+  --home-blue: #0867c4;
+  --home-ink: #102a4f;
+  --home-muted: #49627e;
+  --home-line: #d9e4ef;
+  --home-green: #087a45;
+  background: #fff;
+  color: var(--home-ink);
+  font-family: Arial, "Segoe UI", sans-serif;
+  font-size: 16px;
+  line-height: 1.45;
+}
+.homepage.home-redesign *, .homepage.home-redesign *::before, .homepage.home-redesign *::after { box-sizing: border-box; }
+.homepage.home-redesign h1, .homepage.home-redesign h2, .homepage.home-redesign h3 { margin-top: 0; color: #072a50; font-family: Arial, "Segoe UI", sans-serif; font-weight: 750; letter-spacing: -.035em; line-height: 1.14; }
+.homepage.home-redesign p, .homepage.home-redesign figure { margin-top: 0; }
+.homepage.home-redesign a { color: inherit; }
+.homepage.home-redesign a:hover { text-underline-offset: 3px; }
+.homepage.home-redesign button, .homepage.home-redesign input, .homepage.home-redesign select { font: inherit; }
+.homepage.home-redesign button { cursor: pointer; }
+.homepage.home-redesign .home-container { width: min(1280px, calc(100% - 64px)); margin-inline: auto; }
+.homepage.home-redesign .home-icon { display: inline-block; width: 22px; height: 22px; flex: 0 0 auto; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; vertical-align: middle; }
+.homepage.home-redesign .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+.homepage.home-redesign #asigurari, .homepage.home-redesign #cum-functioneaza, .homepage.home-redesign #intrebari, .homepage.home-redesign #oferta-rapida { scroll-margin-top: 155px; }
+.homepage.home-redesign .home-header { position: relative; z-index: 800; background: #fff; box-shadow: 0 1px 0 var(--home-line); }
+.homepage.home-redesign .home-utility { background: #123858; color: #fff; font-size: 12px; }
+.homepage.home-redesign .home-utility__inner { display: flex; min-height: 34px; justify-content: space-between; align-items: center; gap: 16px; }
+.homepage.home-redesign .home-utility__location, .homepage.home-redesign .home-utility__contacts, .homepage.home-redesign .home-utility__contacts > * { display: flex; align-items: center; gap: 7px; }
+.homepage.home-redesign .home-utility__contacts { gap: 24px; }
+.homepage.home-redesign .home-utility a { min-height: 34px; color: #fff; font-weight: 600; text-decoration: none; }
+.homepage.home-redesign .home-utility .home-icon { width: 15px; height: 15px; }
+.homepage.home-redesign .home-utility__whatsapp .home-icon { color: #53d38d; }
+.homepage.home-redesign .home-navbar { position: relative; display: flex; min-height: 80px; align-items: center; justify-content: space-between; gap: 24px; background: #fff; }
+.homepage.home-redesign .home-logo { display: inline-flex; min-width: 0; align-items: center; gap: 11px; text-decoration: none; }
+.homepage.home-redesign .home-logo__image { display: block; width: 62px; height: 62px; flex: 0 0 62px; object-fit: cover; border-radius: 50%; }
+.homepage.home-redesign .home-logo__copy { display: block; min-width: 0; }
+.homepage.home-redesign .home-logo__copy strong { display: block; color: #082853; font: 750 24px/1.1 Arial, sans-serif; letter-spacing: -.045em; }
+.homepage.home-redesign .home-logo__copy strong span { color: #116cbd; }
+.homepage.home-redesign .home-logo__copy small { display: block; margin-top: 4px; color: #37516f; font-size: 12px; line-height: 1.2; }
+.homepage.home-redesign .home-menu { display: flex; align-items: center; gap: 8px; }
+.homepage.home-redesign .home-menu > a { display: inline-flex; min-height: 44px; align-items: center; padding: 10px 12px; border-radius: 0; color: #123250; font-size: 14px; font-weight: 600; white-space: nowrap; text-decoration: none; }
+.homepage.home-redesign .home-menu > a:hover { background: #eef5fb; }
+.homepage.home-redesign .home-menu > .home-menu__active { box-shadow: inset 0 -2px #0b6ac3; }
+.homepage.home-redesign .home-header__actions { display: none; }
+.homepage.home-redesign .home-menu-toggle, .homepage.home-redesign .home-header__whatsapp { display: none; }
+.homepage.home-redesign .home-credentials { padding: 0 0 10px; color: #466991; font-size: 11px; text-align: right; }
+.homepage.home-redesign .home-credentials a { display: inline-block; color: #2364a1; text-decoration: underline; text-underline-offset: 2px; }
+.homepage.home-redesign .home-credentials span { margin-inline: 3px; }
+
+.homepage.home-redesign .home-hero { position: relative; overflow: hidden; background: #f7f9fb; }
+.homepage.home-redesign .home-hero::after { display: none; }
+.homepage.home-redesign .home-hero__grid { position: relative; isolation: isolate; display: grid; min-height: 590px; grid-template-columns: minmax(0, 1fr) 350px; align-items: center; gap: 30px; padding-block: 24px; }
+.homepage.home-redesign .home-hero__grid::before { position: absolute; z-index: -1; inset: 0 -32px; background: linear-gradient(90deg, #fff 0%, rgba(255,255,255,.99) 24%, rgba(255,255,255,.88) 36%, rgba(255,255,255,.12) 57%, rgba(255,255,255,0) 73%, rgba(255,255,255,.6) 100%); content: ""; pointer-events: none; }
+.homepage.home-redesign .home-hero__copy { position: relative; z-index: 1; width: 100%; max-width: 660px; padding-block: 22px; }
+.homepage.home-redesign .home-hero .home-eyebrow { margin: 0 0 16px; color: #0666bf; font-size: 12px; font-weight: 750; letter-spacing: .09em; text-transform: uppercase; }
+.homepage.home-redesign .home-hero h1 { max-width: 660px; margin: 0 0 18px; color: #05264e; font-size: clamp(40px, 3.5vw, 50px); line-height: 1.06; letter-spacing: -.045em; }
+.homepage.home-redesign .home-hero__lead { max-width: 560px; margin: 0 0 24px; color: #143453; font-size: 19px; line-height: 1.45; }
+.homepage.home-redesign .home-hero__actions { display: flex; flex-wrap: nowrap; justify-content: flex-start; gap: 12px; margin: 0 0 22px; }
+.homepage.home-redesign .home-btn { display: inline-flex; min-height: 48px; align-items: center; justify-content: center; gap: 10px; padding: 12px 24px; border: 1px solid transparent; border-radius: 5px; font-size: 16px; font-weight: 700; line-height: 1.2; text-decoration: none; box-shadow: none; transition: background .16s ease, box-shadow .16s ease; }
+.homepage.home-redesign .home-btn:hover { transform: none; }
+.homepage.home-redesign .home-btn--primary { background: #123a5a; color: #fff; box-shadow: 0 3px 7px rgba(12,42,68,.12); }
+.homepage.home-redesign .home-btn--primary:hover { background: #082a48; }
+.homepage.home-redesign .home-btn--whatsapp { border-color: #087a45; background: #fff; color: #087a45; }
+.homepage.home-redesign .home-btn--whatsapp:hover { background: #effaf3; }
+.homepage.home-redesign .home-btn--whatsapp .home-icon { width: 24px; height: 24px; }
+.homepage.home-redesign .home-proof-list { position: static; display: flex; min-height: 0; flex-wrap: wrap; justify-content: flex-start; gap: 12px 22px; margin: 0; padding: 0; border-radius: 0; background: transparent; list-style: none; color: #284e73; font-size: 12px; font-weight: 500; }
+.homepage.home-redesign .home-proof-list li { display: flex; align-items: center; gap: 8px; text-align: left; line-height: 1.3; }
+.homepage.home-redesign .home-proof-list .home-icon { width: 19px; height: 19px; padding: 0; border-radius: 0; background: transparent; color: #096fc9; stroke-width: 2.5; }
+.homepage.home-redesign .home-hero__photo { position: absolute; z-index: -2; top: 0; right: 180px; bottom: 0; left: 25%; margin: 0; }
+.homepage.home-redesign .home-hero__photo picture, .homepage.home-redesign .home-hero__photo img { display: block; width: 100%; height: 100%; }
+.homepage.home-redesign .home-hero__photo img { object-fit: cover; object-position: right center; }
+.homepage.home-redesign figcaption { position: absolute; right: 10px; bottom: 9px; padding: 3px 6px; border-radius: 3px; background: rgba(8,25,43,.7); color: #fff; font-size: 10px; line-height: 1.3; }
+.homepage.home-redesign .home-hero__photo figcaption { right: 200px; }
+.homepage.home-redesign .quote-panel { position: relative; z-index: 2; width: 100%; max-width: none; margin: 0; padding: 20px; border: 1px solid #dce4ec; border-radius: 7px; background: #fff; box-shadow: 0 8px 23px rgba(23,54,86,.12); }
+.homepage.home-redesign .quote-panel h2 { margin: 0 0 4px; font-size: 25px; }
+.homepage.home-redesign .quote-panel .quote-panel__intro { margin: 0 0 15px; color: #46678b; font-size: 12px; line-height: 1.4; }
+.homepage.home-redesign .quote-form { display: grid; grid-template-columns: minmax(0, 1fr); align-items: start; gap: 10px; }
+.homepage.home-redesign .quote-field { display: grid; min-width: 0; gap: 4px; }
+.homepage.home-redesign .quote-field label { color: #264b70; font-size: 12px; font-weight: 600; line-height: 1.35; }
+.homepage.home-redesign .quote-field label span { color: #577397; font-size: 11px; font-weight: 400; }
+.homepage.home-redesign .quote-field input, .homepage.home-redesign .quote-field select { display: block; width: 100%; min-width: 0; min-height: 44px; height: 44px; padding: 9px 10px; border: 1px solid #c9d8e8; border-radius: 4px; background: #fff; color: #173756; font-size: 16px; line-height: 1.2; }
+.homepage.home-redesign .quote-field select { padding-right: 28px; }
+.homepage.home-redesign .quote-field input:focus, .homepage.home-redesign .quote-field select:focus { border-color: #116fc1; box-shadow: 0 0 0 3px rgba(17,111,193,.12); }
+.homepage.home-redesign .quote-consent { display: grid; min-height: 44px; grid-template-columns: 20px minmax(0,1fr); align-items: start; gap: 8px; margin: 2px 0 0; color: #42648a; font-size: 11px; line-height: 1.45; }
+.homepage.home-redesign .quote-consent input { width: 18px; height: 18px; margin: 2px 0 0; accent-color: #116fc1; }
+.homepage.home-redesign .quote-consent a { color: #135eac; font-weight: 500; text-decoration: underline; text-underline-offset: 2px; }
+.homepage.home-redesign .quote-form > .home-btn { width: 100%; min-height: 46px; padding-inline: 15px; }
+.homepage.home-redesign .quote-form button:disabled { cursor: default; opacity: .75; }
+.homepage.home-redesign .quote-form__note { margin: 0; color: #5a6d86; font-size: 10px; line-height: 1.45; text-align: center; }
+.homepage.home-redesign .quote-status { margin: 0; color: #1c5c47; font-size: 12px; font-weight: 600; line-height: 1.45; }
+.homepage.home-redesign .quote-status:empty { display: none; }
+.homepage.home-redesign [data-home-lead-state="error"] .quote-status { color: #a51c30; }
+
+.homepage.home-redesign .home-partners { border-bottom: 1px solid #e6edf4; background: #fff; }
+.homepage.home-redesign .home-partners__inner { display: flex; min-height: 84px; align-items: center; justify-content: space-between; gap: 22px; padding-block: 15px; }
+.homepage.home-redesign .home-partners__inner > p { flex: 0 0 143px; margin: 0; color: #49678b; font-size: 12px; line-height: 1.45; }
+.homepage.home-redesign .home-partners__names { display: flex; min-width: 0; flex: 1; align-items: center; justify-content: space-between; gap: 16px; margin: 0; padding: 0; list-style: none; }
+.homepage.home-redesign .home-partners__names li { white-space: nowrap; font-size: 18px; font-weight: 750; letter-spacing: -.04em; }
+.homepage.home-redesign .partner-allianz { color: #073d91; }
+.homepage.home-redesign .partner-groupama { color: #08704c; }
+.homepage.home-redesign .home-partners__names .partner-generali { color: #af1a24; font-family: Georgia, serif; font-weight: 700; letter-spacing: -.05em; }
+.homepage.home-redesign .partner-omniasig { color: #087839; }
+.homepage.home-redesign .partner-eurolife { color: #123ca2; }
+.homepage.home-redesign .home-partners__inner > small { max-width: 190px; color: #5b7290; font-size: 10px; line-height: 1.4; }
+.homepage.home-redesign .home-products { padding: 28px 0 22px; background: #f5f8fc; }
+.homepage.home-redesign #asigurari { padding-block: 28px 22px; }
+.homepage.home-redesign .home-section-heading { display: flex; align-items: center; gap: 22px; margin-bottom: 18px; }
+.homepage.home-redesign .home-section-heading h2 { margin: 0; font-size: 29px; }
+.homepage.home-redesign .home-segments { display: inline-flex; min-width: 280px; padding: 3px; border-radius: 24px; background: #e5edf5; }
+.homepage.home-redesign .home-segments button { min-height: 44px; flex: 1; padding: 9px 18px; border: 0; border-radius: 22px; background: transparent; color: #173c65; font-size: 13px; font-weight: 700; white-space: nowrap; }
+.homepage.home-redesign .home-segments button[aria-pressed="true"] { background: #174770; color: #fff; box-shadow: 0 2px 4px rgba(22,55,83,.12); }
+.homepage.home-redesign .home-products__all { display: inline-flex; min-height: 44px; align-items: center; gap: 6px; margin-left: auto; color: #075eb1; font-size: 13px; font-weight: 700; text-decoration: none; }
+.homepage.home-redesign .home-products__all:hover { text-decoration: underline; }
+.homepage.home-redesign .insurance-grid { display: grid; grid-template-columns: repeat(5, minmax(0,1fr)); gap: 12px; }
+.homepage.home-redesign .insurance-grid--business { grid-template-columns: repeat(4, minmax(0,1fr)); }
+.homepage.home-redesign .insurance-card { display: flex; min-width: 0; min-height: 144px; flex-direction: row; align-items: flex-start; gap: 13px; padding: 19px 15px; border: 1px solid #dce6f1; border-radius: 5px; background: #fff; box-shadow: 0 2px 4px rgba(20,52,83,.02); text-align: left; text-decoration: none; }
+.homepage.home-redesign .insurance-card:hover { transform: none; border-color: #7caed8; box-shadow: 0 5px 15px rgba(28,72,110,.08); }
+.homepage.home-redesign .insurance-card > .home-icon { width: 39px; height: 39px; color: #0969c4; stroke-width: 1.45; }
+.homepage.home-redesign .insurance-card__body { display: flex; min-width: 0; height: 100%; flex-direction: column; align-items: flex-start; }
+.homepage.home-redesign .insurance-card h3 { margin: 0 0 5px; font-size: 16px; line-height: 1.25; letter-spacing: -.025em; }
+.homepage.home-redesign .insurance-card p { display: block; flex: 1; margin: 0 0 9px; color: #587398; font-size: 12px; line-height: 1.4; }
+.homepage.home-redesign .insurance-card__link { color: #075dac; font-size: 12px; font-weight: 600; line-height: 1.4; text-decoration: underline; text-underline-offset: 3px; }
+.homepage.home-redesign .home-products__extra { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; margin: 13px 0 0; color: #5e7590; font-size: 12px; }
+.homepage.home-redesign .home-products__extra a { display: inline-flex; min-height: 28px; align-items: center; color: #135f9e; text-decoration: underline; text-underline-offset: 3px; }
+.homepage.home-redesign .home-products__extra > span { padding-block: 5px; }
+
+.homepage.home-redesign .home-advisor { padding: 24px 0; background: #edf4fa; }
+.homepage.home-redesign .home-advisor__grid { display: grid; grid-template-columns: minmax(0,1.2fr) minmax(0,1fr) minmax(160px,.6fr); align-items: center; gap: 36px; }
+.homepage.home-redesign .home-advisor h2 { margin: 0 0 4px; font-size: 28px; }
+.homepage.home-redesign .home-advisor h3 { margin: 0 0 8px; font-size: 22px; }
+.homepage.home-redesign .home-advisor p { max-width: 430px; margin: 5px 0; color: #264e75; font-size: 14px; line-height: 1.45; }
+.homepage.home-redesign .home-advisor .home-advisor__credential { margin-top: 12px; font-size: 12px; }
+.homepage.home-redesign .home-text-link { display: inline-flex; min-height: 36px; align-items: center; gap: 6px; color: #075cad; font-size: 13px; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.homepage.home-redesign .home-advisor__photo { position: relative; overflow: hidden; margin: 0; border-radius: 6px; }
+.homepage.home-redesign .home-advisor__photo img { display: block; width: 100%; height: 200px; object-fit: cover; object-position: center; }
+.homepage.home-redesign .home-google-link { display: flex; min-height: 70px; align-items: center; justify-content: center; gap: 15px; color: #075cad; font-size: 13px; font-weight: 600; line-height: 1.45; text-decoration: underline; text-underline-offset: 3px; }
+.homepage.home-redesign .home-google-link__mark { display: grid; width: 70px; height: 70px; flex: 0 0 70px; place-items: center; border-radius: 50%; background: #fff; color: #286dc1; font: 750 48px/1 Arial, sans-serif; text-decoration: none; }
+.homepage.home-redesign .home-process { padding: 30px 0; background: #fff; }
+.homepage.home-redesign .home-process > .home-container { display: grid; grid-template-columns: 285px minmax(0,1fr); align-items: center; gap: 28px; }
+.homepage.home-redesign .home-process h2 { margin: 0; font-size: 25px; }
+.homepage.home-redesign .process-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 25px; margin: 0; padding: 0; list-style: none; }
+.homepage.home-redesign .process-grid li { position: relative; display: flex; align-items: center; gap: 13px; }
+.homepage.home-redesign .process-grid li:not(:last-child)::after { position: absolute; top: 23px; right: -17px; width: 12px; height: 1px; background: #bfd4e6; content: ""; }
+.homepage.home-redesign .process-number { display: grid; width: 48px; height: 48px; flex: 0 0 48px; place-items: center; border-radius: 50%; background: linear-gradient(135deg,#0b83df,#0759ad); color: #fff; font-size: 23px; }
+.homepage.home-redesign .process-grid h3 { margin: 0 0 4px; font-size: 15px; line-height: 1.25; }
+.homepage.home-redesign .process-grid p { margin: 0; color: #587397; font-size: 12px; line-height: 1.4; }
+.homepage.home-redesign .home-questions { padding: 8px 0 32px; }
+.homepage.home-redesign .home-questions__grid { display: grid; grid-template-columns: minmax(0,1.15fr) minmax(0,1fr); align-items: start; gap: 42px; }
+.homepage.home-redesign .home-questions h2 { margin: 0 0 14px; font-size: 25px; }
+.homepage.home-redesign .faq-list { display: grid; gap: 7px; }
+.homepage.home-redesign .faq-list details { margin: 0; overflow: hidden; border: 1px solid #dce6ef; border-radius: 4px; background: #fff; }
+.homepage.home-redesign .faq-list summary { display: flex; min-height: 46px; align-items: center; justify-content: space-between; gap: 12px; padding: 11px 14px; color: #224768; font-size: 13px; font-weight: 500; line-height: 1.4; list-style: none; cursor: pointer; }
+.homepage.home-redesign .faq-list summary::-webkit-details-marker { display: none; }
+.homepage.home-redesign .faq-list summary::after { display: none; }
+.homepage.home-redesign .faq-list summary .home-icon { width: 16px; height: 16px; color: #347ab4; }
+.homepage.home-redesign .faq-list details[open] summary .home-icon { transform: rotate(180deg); }
+.homepage.home-redesign .faq-list details p { margin: 0; padding: 0 14px 16px; color: #49617b; font-size: 14px; line-height: 1.6; }
+.homepage.home-redesign .home-renewal { padding-top: 38px; }
+.homepage.home-redesign .home-renewal__card { display: flex; min-height: 139px; align-items: center; gap: 23px; padding: 22px 26px; border-radius: 6px; background: #edf5fc; }
+.homepage.home-redesign .home-renewal__card > .home-icon { width: 65px; height: 65px; color: #076ac1; stroke-width: 1.5; }
+.homepage.home-redesign .home-renewal h2 { margin: 0 0 8px; font-size: 23px; }
+.homepage.home-redesign .home-renewal p { margin: 0 0 5px; color: #375f85; font-size: 13px; }
+.homepage.home-redesign .home-renewal .home-guides { margin: 12px 0 0; color: #60758d; font-size: 12px; line-height: 1.6; }
+.homepage.home-redesign .home-guides a { color: #165f9e; text-decoration: underline; text-underline-offset: 3px; }
+
+.homepage.home-redesign .home-footer { padding: 24px 0; background: #133b5b; color: #fff; }
+.homepage.home-redesign .home-footer__grid { display: grid; grid-template-columns: minmax(0,.9fr) minmax(0,1.1fr) minmax(0,1fr); align-items: start; gap: 24px; }
+.homepage.home-redesign .home-footer .home-logo__image { width: 55px; height: 55px; flex-basis: 55px; }
+.homepage.home-redesign .home-footer .home-logo__copy strong { color: #fff; font-size: 21px; }
+.homepage.home-redesign .home-footer .home-logo__copy strong span { color: #fff; }
+.homepage.home-redesign .home-footer .home-logo__copy small { color: #d4e4f3; font-size: 11px; }
+.homepage.home-redesign .home-footer__brand > p { margin: 10px 0 0; color: #d6e4f0; font-size: 11px; }
+.homepage.home-redesign .home-footer__contact { display: grid; gap: 6px; padding-left: 20px; border-left: 1px solid #5c7791; font-size: 11px; font-style: normal; }
+.homepage.home-redesign .home-footer__contact > * { display: flex; min-width: 0; align-items: flex-start; gap: 8px; color: #edf3f9; text-decoration: none; }
+.homepage.home-redesign .home-footer__contact .home-icon { width: 14px; height: 14px; }
+.homepage.home-redesign .home-footer__info { text-align: right; }
+.homepage.home-redesign .home-footer__info nav { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 6px 12px; }
+.homepage.home-redesign .home-footer__info a, .homepage.home-redesign .home-footer__info button { padding: 0; border: 0; background: none; color: #e2eef8; font-size: 11px; text-decoration: underline; text-underline-offset: 2px; }
+.homepage.home-redesign .home-footer__info p { margin: 9px 0 0; color: #d0e0ed; font-size: 11px; }
+.homepage.home-redesign .home-footer__info .home-footer__copyright { font-size: 10px; }
+.homepage.home-redesign .cookie-settings { position: static; display: block; min-height: 44px; margin: 0; padding: 10px 20px; border: 0; border-radius: 0; background: #fff; color: #315576; font: 600 12px/1.4 Arial,sans-serif; }
+.homepage.home-redesign .cookie-consent { position: fixed; z-index: 9999; right: 0; bottom: 0; left: 0; display: grid; width: 100%; max-width: none; max-height: 80dvh; grid-template-columns: minmax(0,1fr) auto; align-items: center; gap: 12px 28px; margin: 0; padding: 13px max(32px,calc((100vw - 1280px)/2)); overflow-y: auto; border: 0; border-top: 1px solid #cfdde9; border-radius: 0; background: #fff; color: #173b60; box-shadow: 0 -3px 20px rgba(10,42,70,.1); font-family: Arial,sans-serif; }
+.homepage.home-redesign .cookie-consent__body { max-width: 760px; }
+.homepage.home-redesign .cookie-consent h2 { margin: 0 0 3px; color: #183b5d; font-size: 13px; letter-spacing: 0; }
+.homepage.home-redesign .cookie-consent p { margin: 0; color: #4b6480; font-size: 11px; line-height: 1.45; }
+.homepage.home-redesign .cookie-consent a { color: #165f9e; text-decoration: underline; }
+.homepage.home-redesign .cookie-consent__actions { display: flex; flex-wrap: nowrap; gap: 8px; }
+.homepage.home-redesign .cookie-btn { min-height: 44px; padding: 10px 15px; border: 1px solid #9db3c8; border-radius: 4px; background: #fff; color: #234b71; font: 600 12px/1.2 Arial,sans-serif; }
+.homepage.home-redesign .cookie-btn--primary { border-color: #123b5c; background: #123b5c; color: #fff; }
+.homepage.home-redesign .cookie-btn:hover { box-shadow: inset 0 0 0 1px currentColor; }
+.homepage.home-redesign #home-cookie-options { grid-column: 1 / -1; grid-row: 2; padding: 14px 0 3px; border-top: 1px solid #dce6ef; }
+.homepage.home-redesign #home-cookie-options > p { margin-bottom: 7px; }
+.homepage.home-redesign #home-cookie-options label { display: flex; min-height: 44px; align-items: center; gap: 9px; color: #244d72; font-size: 13px; }
+.homepage.home-redesign #home-cookie-analytics { width: 18px; height: 18px; accent-color: #0867c4; }
+.homepage.home-redesign #home-cookie-options .cookie-btn { margin-top: 6px; }
+
+@media (min-width: 901px) and (max-width: 1120px) {
+  .homepage.home-redesign .home-container { width: calc(100% - 40px); }
+  .homepage.home-redesign .home-logo__copy strong { font-size: 21px; }
+  .homepage.home-redesign .home-menu { gap: 1px; }
+  .homepage.home-redesign .home-menu > a { padding-inline: 9px; font-size: 13px; }
+  .homepage.home-redesign .home-hero__grid { grid-template-columns: minmax(0,1fr) 330px; gap: 20px; }
+  .homepage.home-redesign .home-hero h1 { font-size: 40px; }
+  .homepage.home-redesign .home-hero__lead { max-width: 460px; font-size: 17px; }
+  .homepage.home-redesign .home-partners__inner { gap: 18px; }
+  .homepage.home-redesign .home-partners__inner > p { flex-basis: 115px; }
+  .homepage.home-redesign .home-partners__inner > small { max-width: 145px; }
+  .homepage.home-redesign .home-partners__names { flex-wrap: wrap; justify-content: center; gap: 8px 19px; }
+  .homepage.home-redesign .home-partners__names li { font-size: 16px; }
+  .homepage.home-redesign .insurance-card { flex-direction: column; gap: 10px; padding: 16px 12px; }
+  .homepage.home-redesign .home-advisor__grid { grid-template-columns: 1fr 1fr; gap: 25px; }
+  .homepage.home-redesign .home-google-link { grid-column: 1 / -1; justify-content: flex-start; }
+  .homepage.home-redesign .home-process > .home-container { grid-template-columns: 1fr; gap: 18px; }
+  .homepage.home-redesign .home-footer__grid { grid-template-columns: 1fr 1fr; }
+  .homepage.home-redesign .home-footer__info { grid-column: 1 / -1; text-align: left; }
+  .homepage.home-redesign .home-footer__info nav { justify-content: flex-start; }
+}
+
+@media (max-width: 900px) {
+  .homepage.home-redesign .home-container { width: calc(100% - 40px); }
+  .homepage.home-redesign .home-utility__inner { min-height: 44px; }
+  .homepage.home-redesign .home-utility__location, .homepage.home-redesign .home-utility__whatsapp { display: none; }
+  .homepage.home-redesign .home-utility__contacts { width: 100%; justify-content: space-between; gap: 12px; font-size: 11px; }
+  .homepage.home-redesign .home-utility a { min-height: 44px; }
+  .homepage.home-redesign .home-navbar { min-height: 75px; gap: 8px; }
+  .homepage.home-redesign .home-logo { gap: 8px; }
+  .homepage.home-redesign .home-logo__image { width: 51px; height: 51px; flex-basis: 51px; }
+  .homepage.home-redesign .home-logo__copy strong { font-size: 22px; }
+  .homepage.home-redesign .home-logo__copy small { margin-top: 3px; font-size: 11px; }
+  .homepage.home-redesign .home-header__actions { display: flex; align-items: center; gap: 5px; }
+  .homepage.home-redesign .home-menu-toggle, .homepage.home-redesign .home-header__whatsapp { display: inline-flex; width: 44px; height: 44px; align-items: center; justify-content: center; padding: 8px; border: 0; border-radius: 4px; background: #fff; color: #164777; }
+  .homepage.home-redesign .home-header__whatsapp { color: #087a45; }
+  .homepage.home-redesign .home-header__actions .home-icon { width: 27px; height: 27px; }
+  .homepage.home-redesign .home-menu { position: absolute; z-index: 850; top: 100%; right: 0; left: 0; display: none; align-items: stretch; gap: 0; padding: 8px; border: 1px solid #d9e5ef; border-radius: 0 0 7px 7px; background: #fff; box-shadow: 0 12px 20px rgba(16,43,70,.12); }
+  .homepage.home-redesign .home-menu.is-open { display: grid; }
+  .homepage.home-redesign .home-menu > a { min-height: 48px; padding: 12px; border-bottom: 1px solid #edf2f7; font-size: 15px; }
+  .homepage.home-redesign .home-menu > .home-menu__active { box-shadow: none; color: #075eac; }
+  .homepage.home-redesign .home-credentials { padding: 0 0 9px; font-size: 10px; text-align: left; }
+  .homepage.home-redesign .home-hero { overflow: visible; background: #fff; }
+  .homepage.home-redesign .home-hero__grid { display: grid; min-height: 0; grid-template-columns: minmax(0,1fr); gap: 0; padding: 0 0 24px; }
+  .homepage.home-redesign .home-hero__grid::before { display: none; }
+  .homepage.home-redesign .home-hero__copy { max-width: 650px; margin: 0 auto; padding: 24px 0 18px; }
+  .homepage.home-redesign .home-hero .home-eyebrow { margin-bottom: 9px; font-size: 11px; letter-spacing: .07em; }
+  .homepage.home-redesign .home-hero h1 { max-width: none; margin-bottom: 12px; font-size: clamp(30px,5.4vw,44px); line-height: 1.08; }
+  .homepage.home-redesign .home-hero__lead { max-width: none; margin-bottom: 17px; font-size: 16px; line-height: 1.45; }
+  .homepage.home-redesign .home-hero__actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px; }
+  .homepage.home-redesign .home-hero__actions .home-btn { min-height: 46px; padding-inline: 14px; font-size: 15px; }
+  .homepage.home-redesign .home-proof-list { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; font-size: 11px; }
+  .homepage.home-redesign .home-proof-list li { display: flex; gap: 6px; text-align: left; }
+  .homepage.home-redesign .home-proof-list .home-icon { width: 18px; height: 18px; }
+  .homepage.home-redesign .home-hero__photo { position: relative; z-index: 0; inset: auto; width: 100%; height: 285px; margin: 0; overflow: hidden; border-radius: 5px 5px 0 0; }
+  .homepage.home-redesign .home-hero__photo img { object-position: center 42%; }
+  .homepage.home-redesign .home-hero__photo figcaption { right: 9px; bottom: 9px; }
+  .homepage.home-redesign .quote-panel { width: 100%; max-width: none; padding: 24px; border-radius: 0 0 7px 7px; }
+  .homepage.home-redesign .quote-panel h2 { font-size: 26px; }
+  .homepage.home-redesign .quote-panel .quote-panel__intro { margin-bottom: 18px; font-size: 14px; }
+  .homepage.home-redesign .quote-form { gap: 14px; }
+  .homepage.home-redesign .quote-field { gap: 6px; }
+  .homepage.home-redesign .quote-field label { font-size: 13px; }
+  .homepage.home-redesign .quote-field label span { font-size: 12px; }
+  .homepage.home-redesign .quote-field input, .homepage.home-redesign .quote-field select { min-height: 48px; height: 48px; font-size: 16px; }
+  .homepage.home-redesign .quote-consent { min-height: 44px; font-size: 12px; }
+  .homepage.home-redesign .quote-form > .home-btn { min-height: 48px; }
+  .homepage.home-redesign .quote-form__note { font-size: 11px; }
+  .homepage.home-redesign .home-partners__inner { display: grid; min-height: 0; grid-template-columns: minmax(0,1fr); gap: 11px; padding-block: 18px; }
+  .homepage.home-redesign .home-partners__inner > p { font-size: 11px; }
+  .homepage.home-redesign .home-partners__inner > p br { display: none; }
+  .homepage.home-redesign .home-partners__names { flex-wrap: wrap; justify-content: flex-start; gap: 10px 26px; }
+  .homepage.home-redesign .home-partners__names li { font-size: 18px; }
+  .homepage.home-redesign .home-partners__inner > small { max-width: none; font-size: 10px; }
+  .homepage.home-redesign .home-products, .homepage.home-redesign #asigurari { padding-block: 24px; }
+  .homepage.home-redesign .home-section-heading { flex-wrap: wrap; gap: 14px; margin-bottom: 16px; }
+  .homepage.home-redesign .home-section-heading h2 { width: 100%; font-size: 28px; }
+  .homepage.home-redesign .home-segments { min-width: 260px; }
+  .homepage.home-redesign .home-products__all { margin-left: auto; }
+  .homepage.home-redesign .insurance-grid, .homepage.home-redesign .insurance-grid--business { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px; }
+  .homepage.home-redesign #personal-products .insurance-card:last-child { grid-column: 1 / -1; }
+  .homepage.home-redesign .insurance-card { min-height: 125px; gap: 14px; padding: 18px; }
+  .homepage.home-redesign .insurance-card h3 { font-size: 17px; }
+  .homepage.home-redesign .insurance-card p, .homepage.home-redesign .insurance-card__link { font-size: 13px; }
+  .homepage.home-redesign .home-products__extra { justify-content: flex-start; gap: 7px; margin-top: 15px; }
+  .homepage.home-redesign .home-products__extra a { min-height: 36px; }
+  .homepage.home-redesign .home-products__extra > span { padding-block: 9px; }
+  .homepage.home-redesign .home-advisor { padding-block: 26px; }
+  .homepage.home-redesign .home-advisor__grid { grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 22px; }
+  .homepage.home-redesign .home-advisor h2 { font-size: 26px; }
+  .homepage.home-redesign .home-advisor h3 { font-size: 21px; }
+  .homepage.home-redesign .home-advisor__photo img { height: 230px; }
+  .homepage.home-redesign .home-google-link { grid-column: 1 / -1; justify-content: flex-start; min-height: 60px; }
+  .homepage.home-redesign .home-google-link__mark { width: 60px; height: 60px; flex-basis: 60px; font-size: 42px; }
+  .homepage.home-redesign .home-process { padding-block: 28px; }
+  .homepage.home-redesign .home-process > .home-container { grid-template-columns: 1fr; gap: 20px; }
+  .homepage.home-redesign .home-process h2 { font-size: 26px; }
+  .homepage.home-redesign .process-grid { gap: 20px; }
+  .homepage.home-redesign .process-grid li { align-items: flex-start; gap: 10px; }
+  .homepage.home-redesign .process-number { width: 40px; height: 40px; flex-basis: 40px; font-size: 20px; }
+  .homepage.home-redesign .process-grid h3 { font-size: 14px; }
+  .homepage.home-redesign .home-questions__grid { grid-template-columns: minmax(0,1fr); gap: 22px; }
+  .homepage.home-redesign .home-questions h2 { font-size: 26px; }
+  .homepage.home-redesign .faq-list summary { min-height: 50px; font-size: 14px; }
+  .homepage.home-redesign .home-renewal { padding-top: 0; }
+  .homepage.home-redesign .home-renewal__card { min-height: 145px; }
+  .homepage.home-redesign .home-renewal h2 { font-size: 24px; }
+  .homepage.home-redesign .home-footer { padding-block: 28px; }
+  .homepage.home-redesign .home-footer__grid { grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 22px; }
+  .homepage.home-redesign .home-footer__brand { grid-column: auto; }
+  .homepage.home-redesign .home-footer__contact { padding-left: 0; border-left: 0; font-size: 12px; }
+  .homepage.home-redesign .home-footer__info { grid-column: 1 / -1; text-align: left; }
+  .homepage.home-redesign .home-footer__info nav { justify-content: flex-start; gap: 0 16px; }
+  .homepage.home-redesign .home-footer__info a, .homepage.home-redesign .home-footer__info button { display: inline-flex; min-height: 44px; align-items: center; font-size: 12px; }
+  .homepage.home-redesign .home-footer__info p { font-size: 12px; }
+  .homepage.home-redesign .home-footer__info .home-footer__copyright { font-size: 11px; }
+  .homepage.home-redesign .mobile-contact-bar { gap: 8px; padding: 7px 14px max(7px, env(safe-area-inset-bottom)); }
+  .homepage.home-redesign .mobile-contact-bar a { min-height: 46px; border-radius: 5px; font-family: Arial,sans-serif; font-size: 15px; }
+  .homepage.home-redesign .mobile-contact-bar a:first-child { color: #123b5c; }
+  .homepage.home-redesign .mobile-contact-bar a:last-child { color: #fff; }
+  .homepage.home-redesign .cookie-consent, .homepage.home-redesign.has-mobile-contact-bar.has-pending-cookie-consent .cookie-consent { right: 0; bottom: 0; left: 0; grid-template-columns: minmax(0,1fr); gap: 12px; padding: 16px 20px max(16px, env(safe-area-inset-bottom)); }
+  .homepage.home-redesign .cookie-consent h2 { font-size: 14px; }
+  .homepage.home-redesign .cookie-consent p { font-size: 12px; }
+  .homepage.home-redesign .cookie-consent__actions { display: grid; grid-template-columns: minmax(0,1fr) auto minmax(0,1fr); gap: 7px; }
+  .homepage.home-redesign .cookie-btn { min-height: 46px; padding: 10px 12px; font-size: 12px; }
+  .homepage.home-redesign #home-cookie-options { grid-column: 1; grid-row: 2; }
+}
+
+@media (max-width: 520px) {
+  .homepage.home-redesign .home-container { width: calc(100% - 28px); }
+  .homepage.home-redesign .home-navbar { min-height: 68px; }
+  .homepage.home-redesign .home-logo { gap: 6px; }
+  .homepage.home-redesign .home-logo__image { width: 45px; height: 45px; flex-basis: 45px; }
+  .homepage.home-redesign .home-logo__copy strong { font-size: 19px; }
+  .homepage.home-redesign .home-logo__copy small { font-size: 10px; }
+  .homepage.home-redesign .home-header__actions { gap: 0; }
+  .homepage.home-redesign .home-credentials { font-size: 10px; }
+  .homepage.home-redesign .home-hero__copy { padding-top: 20px; }
+  .homepage.home-redesign .home-hero .home-eyebrow { font-size: 10px; }
+  .homepage.home-redesign .home-hero h1 { font-size: clamp(28px,7.8vw,36px); }
+  .homepage.home-redesign .home-hero__lead { font-size: 15px; }
+  .homepage.home-redesign .home-hero__actions { gap: 8px; }
+  .homepage.home-redesign .home-hero__actions .home-btn { padding-inline: 9px; font-size: 14px; }
+  .homepage.home-redesign .home-proof-list { gap: 8px; font-size: 11px; }
+  .homepage.home-redesign .home-hero__photo { height: 250px; }
+  .homepage.home-redesign .quote-panel { padding: 21px 18px; }
+  .homepage.home-redesign .quote-panel h2 { font-size: 25px; }
+  .homepage.home-redesign .quote-panel .quote-panel__intro { font-size: 13px; }
+  .homepage.home-redesign .home-partners__names { gap: 10px 22px; }
+  .homepage.home-redesign .home-partners__names li { font-size: 17px; }
+  .homepage.home-redesign .home-section-heading { gap: 10px; }
+  .homepage.home-redesign .home-section-heading h2 { font-size: 26px; }
+  .homepage.home-redesign .home-segments { width: 100%; min-width: 0; }
+  .homepage.home-redesign .home-segments button { min-height: 44px; }
+  .homepage.home-redesign .home-products__all { min-height: 36px; margin: 0; font-size: 12px; }
+  .homepage.home-redesign .insurance-grid, .homepage.home-redesign .insurance-grid--business { gap: 9px; }
+  .homepage.home-redesign .insurance-card { min-height: 142px; flex-direction: column; gap: 9px; padding: 15px 12px; }
+  .homepage.home-redesign .insurance-card > .home-icon { width: 33px; height: 33px; }
+  .homepage.home-redesign .insurance-card h3 { font-size: 15px; }
+  .homepage.home-redesign .insurance-card p, .homepage.home-redesign .insurance-card__link { font-size: 12px; }
+  .homepage.home-redesign #personal-products .insurance-card:last-child { min-height: 105px; flex-direction: row; align-items: center; gap: 15px; }
+  .homepage.home-redesign .home-products__extra { gap: 0 7px; font-size: 11px; }
+  .homepage.home-redesign .home-advisor__grid { grid-template-columns: minmax(0,1fr); gap: 20px; }
+  .homepage.home-redesign .home-advisor__photo img { height: 235px; }
+  .homepage.home-redesign .home-google-link { grid-column: auto; }
+  .homepage.home-redesign .home-process h2, .homepage.home-redesign .home-questions h2 { font-size: 25px; }
+  .homepage.home-redesign .process-grid { grid-template-columns: minmax(0,1fr); gap: 20px; }
+  .homepage.home-redesign .process-grid li { align-items: center; gap: 15px; }
+  .homepage.home-redesign .process-grid li:not(:last-child)::after { top: 46px; right: auto; left: 21px; width: 1px; height: 14px; }
+  .homepage.home-redesign .process-number { width: 44px; height: 44px; flex-basis: 44px; }
+  .homepage.home-redesign .process-grid h3 { font-size: 16px; }
+  .homepage.home-redesign .process-grid p { font-size: 13px; }
+  .homepage.home-redesign .home-renewal__card { gap: 14px; padding: 20px 16px; }
+  .homepage.home-redesign .home-renewal__card > .home-icon { width: 47px; height: 47px; }
+  .homepage.home-redesign .home-renewal h2 { font-size: 22px; }
+  .homepage.home-redesign .home-footer__grid { grid-template-columns: minmax(0,1fr); gap: 22px; }
+  .homepage.home-redesign .home-footer__brand, .homepage.home-redesign .home-footer__info { grid-column: auto; }
+  .homepage.home-redesign .home-footer .home-logo__copy strong { font-size: 22px; }
+  .homepage.home-redesign .home-footer__contact { gap: 12px; }
+  .homepage.home-redesign .cookie-consent, .homepage.home-redesign.has-mobile-contact-bar.has-pending-cookie-consent .cookie-consent { padding-inline: 14px; }
+  .homepage.home-redesign .cookie-btn { padding-inline: 9px; font-size: 11px; }
+}
+
+@media (max-width: 359px) {
+  .homepage.home-redesign .home-logo__copy strong { font-size: 16px; }
+  .homepage.home-redesign .home-logo__image { width: 39px; height: 39px; flex-basis: 39px; }
+  .homepage.home-redesign .home-header__actions .home-icon { width: 24px; height: 24px; }
+  .homepage.home-redesign .home-credentials { font-size: 10px; }
+  .homepage.home-redesign .home-hero h1 { font-size: 28px; }
+  .homepage.home-redesign .home-hero__lead { font-size: 14px; }
+  .homepage.home-redesign .home-proof-list { font-size: 11px; }
+  .homepage.home-redesign .quote-panel { padding-inline: 14px; }
+  .homepage.home-redesign .home-hero__photo { height: 225px; }
+  .homepage.home-redesign .home-partners__names { gap: 10px 18px; }
+  .homepage.home-redesign .home-partners__names li { font-size: 16px; }
+  .homepage.home-redesign .insurance-card { padding: 13px 10px; }
+  .homepage.home-redesign .insurance-card h3 { font-size: 14px; }
+  .homepage.home-redesign .insurance-card p, .homepage.home-redesign .insurance-card__link { font-size: 12px; }
+  .homepage.home-redesign .cookie-consent__actions { gap: 5px; }
+  .homepage.home-redesign .cookie-btn { padding-inline: 6px; font-size: 10px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .homepage.home-redesign .home-btn, .homepage.home-redesign .insurance-card { transition: none; }
+}
