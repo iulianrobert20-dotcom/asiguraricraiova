@@ -6,7 +6,8 @@
     "test:forms": "node scripts/test-form-validation.cjs",
     "test:analytics": "node scripts/test-analytics.cjs",
     "test:homepage": "node scripts/test-homepage.cjs",
-    "test:navigation": "node scripts/test-navigation.cjs"
+    "test:navigation": "node scripts/test-navigation.cjs",
+    "test:design": "node scripts/test-design.cjs"
   },
   "engines": {
     "node": ">=20"

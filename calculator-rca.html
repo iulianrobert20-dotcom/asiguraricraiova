@@ -26,12 +26,12 @@
 <meta name="twitter:image" content="https://asiguraricraiova.ro/og-image.png">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data: https:; connect-src 'self' https://formspree.io https://*.google-analytics.com; frame-src https://www.google.com; object-src 'none'; base-uri 'self'; form-action 'self' https://formspree.io; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<meta name="theme-color" content="#0d1f3c">
+<meta name="theme-color" content="#133b5b">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="stylesheet" href="/site.css?v=20261023-2">
-<link rel="stylesheet" href="/form-validation.css?v=20261021-1"><script defer src="/form-validation.js?v=20261021-1"></script><script defer src="/site.js?v=20261023-2"></script>
+<link rel="stylesheet" href="/site.css?v=20261023-3">
+<link rel="stylesheet" href="/form-validation.css?v=20261021-1"><script defer src="/form-validation.js?v=20261021-1"></script><script defer src="/site.js?v=20261023-3"></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","@id":"https://asiguraricraiova.ro/calculator-rca.html#application","name":"Calculator RCA 2026","applicationCategory":"FinanceApplication","operatingSystem":"Web","url":"https://asiguraricraiova.ro/calculator-rca.html","description":"Calculator orientativ pentru tariful de referință RCA și pragul BAAR, pe baza datelor introduse de utilizator.","provider":{"@id":"https://asiguraricraiova.ro/#business"},"offers":{"@type":"Offer","price":"0","priceCurrency":"RON"}},{"@type":"BreadcrumbList","@id":"https://asiguraricraiova.ro/calculator-rca.html#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Acasă","item":"https://asiguraricraiova.ro/"},{"@type":"ListItem","position":2,"name":"RCA","item":"https://asiguraricraiova.ro/rca.html"},{"@type":"ListItem","position":3,"name":"Calculator RCA","item":"https://asiguraricraiova.ro/calculator-rca.html"}]},{"@type":"FAQPage","@id":"https://asiguraricraiova.ro/calculator-rca.html#faq","mainEntity":[{"@type":"Question","name":"Calculatorul reprezintă o ofertă RCA?","acceptedAnswer":{"@type":"Answer","text":"Nu. Calculatorul oferă o estimare orientativă a tarifului de referință și a pragului BAAR. Prețul final este cel din oferta asigurătorului."}},{"@type":"Question","name":"Ce este pragul BAAR?","acceptedAnswer":{"@type":"Answer","text":"Pragul BAAR este utilizat în verificarea orientativă a situațiilor de risc ridicat. Eligibilitatea și documentele aplicabile sunt stabilite exclusiv de BAAR."}},{"@type":"Question","name":"Unde verific valabilitatea unei polițe RCA?","acceptedAnswer":{"@type":"Answer","text":"Valabilitatea poliței se verifică în baza oficială AIDA, administrată de BAAR, după numărul de înmatriculare sau seria VIN."}}]}]}</script>
 
 <style>
@@ -239,8 +239,9 @@ footer strong{color:rgba(255,255,255,.75)}
   .snav-ham{display:flex}
 }
 </style>
+<link rel="stylesheet" href="/site-interior.css?v=20261023-1">
 </head>
-<body>
+<body class="site-unified">
 <nav class="snav" id="snavMain">
   <div class="snav-inner">
     <a href="/" class="snav-logo">AsigurăriCraiova.ro<span>Intermediar Autorizat ISF</span></a>
@@ -354,14 +355,12 @@ footer strong{color:rgba(255,255,255,.75)}
 
 <!-- NAV -->
 <!-- HERO -->
-<div class="hero">
-  <p style="margin:0 auto 14px;max-width:600px;text-align:left;color:rgba(255,255,255,.64);font-size:.78rem"><a href="/" style="color:var(--gold)">Acasă</a> › <a href="/rca.html" style="color:var(--gold)">RCA</a> › Calculator RCA</p>
+<section class="page-hero" aria-labelledby="page-title"><div class="page-hero__inner"><div class="page-hero__copy"><p style="margin:0 auto 14px;max-width:600px;text-align:left;color:rgba(255,255,255,.64);font-size:.78rem"><a href="/" style="color:var(--gold)">Acasă</a> › <a href="/rca.html" style="color:var(--gold)">RCA</a> › Calculator RCA</p>
   <div class="hero-badge">🚗 Calculator Gratuit</div>
-  <h1>Calculator <em>Asigurare Auto RCA 2026</em></h1>
+  <h1 id="page-title">Calculator <em>Asigurare Auto RCA 2026</em></h1>
   <p>Tarif de referință ASF • Verificare orientativă a pragului BAAR • Ofertă personalizată</p>
   <p>Prețul RCA este prea mare pentru plata integrală? <a href="/rca-in-rate.html" style="color:var(--gold);font-weight:700">Vezi opțiunile de plată în rate</a>.</p>
-  <div class="asf-badge">📊 Date din tabelul oficial ASF aplicabil din 30 mai 2026</div>
-</div>
+  <div class="asf-badge">📊 Date din tabelul oficial ASF aplicabil din 30 mai 2026</div></div><figure class="page-hero__media"><img class="page-hero__image" src="/tool-rca-road-v1.webp" alt="Autoturism pe un drum, pentru ghidul de asigurări auto" width="1672" height="941" fetchpriority="high" decoding="async"><figcaption>Fotografie ilustrativă</figcaption></figure></div></section>
 
 <!-- MAIN -->
 <div class="main" role="main">
@@ -460,15 +459,15 @@ footer strong{color:rgba(255,255,255,.75)}
       <!-- BONUS MALUS VISUAL -->
       <div class="bm-section">
         <div class="bm-title">🏆 Clasa Bonus-Malus — selectează clasa ta <span class="req">*</span></div>
-        
+
         <div class="bm-scale" id="bmScale"></div>
-        
+
         <div class="bm-legend">
           <span>🟢 Reducere maximă (B8)</span>
           <span>🟡 Standard (B0)</span>
           <span>🔴 Majorare maximă 80% (M8)</span>
         </div>
-        
+
         <div class="bm-desc" id="bmDesc"></div>
         <input type="hidden" id="bmValue" value="">
         <div class="field-error" id="e-bm">Selectează clasa bonus-malus</div>
@@ -487,7 +486,7 @@ footer strong{color:rgba(255,255,255,.75)}
     <div class="card">
       <div class="info-pill">📊 Tarif de referință calculat</div>
       <h2 class="card-title">Rezultatul tău ASF</h2>
-      
+
       <div class="tarif-box" id="tarifBox"></div>
 
       <div style="margin:20px 0;padding-top:4px">
@@ -763,7 +762,7 @@ function getTarif() {
     const zonaKey = zona === 'bif' ? 'bif' : 'rest';
     return TARIFE.pj[zonaKey][0][kw] || 2000;
   }
-  
+
   const zonaKey = zona === 'bif' ? 'bif' : 'rest';
   return TARIFE.pf[zonaKey][varsta][kw];
 }
@@ -796,7 +795,7 @@ function validate1() {
 
 function goStep2() {
   if (!validate1()) return;
-  
+
   tarifBase = getTarif();
   const bm = BM_DATA[selectedBM];
   tarifCuBM = Math.round(tarifBase * bm.coef);
@@ -844,7 +843,7 @@ function goStep3() {
   const o2 = parseFloat(document.getElementById('o2').value)||0;
   const o3 = parseFloat(document.getElementById('o3').value)||0;
   const paarPrag = Math.round(tarifCuBM * 1.36);
-  
+
   let html = '';
 
   if (o1 > 0 && o2 > 0 && o3 > 0) {
@@ -919,7 +918,7 @@ function goStep4() {
   summary += `${kw.options[kw.selectedIndex].text} · ${varsta.options[varsta.selectedIndex]?.text||''}<br>`;
   summary += `Clasa BM: ${BM_DATA[selectedBM].id} · Tarif ref. cu BM: ${tarifCuBM.toLocaleString('ro-RO')} lei`;
   if (o1 && o2 && o3) summary += `<br>Oferte primite: ${parseFloat(o1).toLocaleString('ro-RO')} / ${parseFloat(o2).toLocaleString('ro-RO')} / ${parseFloat(o3).toLocaleString('ro-RO')} lei`;
-  
+
   document.getElementById('summaryBox').innerHTML = summary;
   showStep(4);
 }
