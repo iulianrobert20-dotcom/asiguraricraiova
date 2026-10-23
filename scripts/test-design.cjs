@@ -9,7 +9,7 @@ catch { ({ chromium } = require(process.env.PLAYWRIGHT_MODULE_PATH || path.join(
 const root = path.resolve(__dirname, '..');
 const origin = 'https://asiguraricraiova.ro';
 const themePath = '/site-interior.css';
-const themeVersion = '20261023-2';
+const themeVersion = '20261023-3';
 const output = process.env.DESIGN_EVIDENCE_DIR;
 const sitemap = fs.readFileSync(path.join(root, 'sitemap.xml'), 'utf8');
 const canonical = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(match => new URL(match[1]).pathname);
@@ -121,7 +121,7 @@ async function inspect(page, pathname, source, width) {
       return { foreground, background, layers, ratio: (Math.max(a, b) + .05) / (Math.min(a, b) + .05) };
     }
     const heroLinkContrast = [];
-    for (const anchor of document.querySelectorAll('.page-hero__copy a[href]')) {
+    for (const anchor of document.querySelectorAll('.page-hero a[href]')) {
       if (!visible(anchor)) continue;
       const walker = document.createTreeWalker(anchor, NodeFilter.SHOW_TEXT), seen = new Set();
       for (let node = walker.nextNode(); node; node = walker.nextNode()) {
@@ -156,6 +156,15 @@ async function inspect(page, pathname, source, width) {
       return { text: element.textContent.trim().slice(0, 90), color: getComputedStyle(element).color, background, contrast: (Math.max(a, b) + .05) / (Math.min(a, b) + .05) };
     }) : [];
     const bounds = { viewport: width, document: document.documentElement.scrollWidth, body: document.body.scrollWidth };
+    const imageVisibility = images.length ? (() => {
+      const image = hero.querySelector('img'), rect = image.getBoundingClientRect();
+      const clip = { left: Math.max(0, rect.left), right: Math.min(innerWidth, rect.right), top: Math.max(0, rect.top), bottom: Math.min(innerHeight, rect.bottom) };
+      const viewportArea = Math.max(0, clip.right - clip.left) * Math.max(0, clip.bottom - clip.top);
+      const contact = document.querySelector('.mobile-contact-bar');
+      const contactRect = contact && visible(contact) ? contact.getBoundingClientRect() : null;
+      const coveredArea = contactRect ? Math.max(0, Math.min(clip.right, contactRect.right) - Math.max(clip.left, contactRect.left)) * Math.max(0, Math.min(clip.bottom, contactRect.bottom) - Math.max(clip.top, contactRect.top)) : 0;
+      return { top: rect.top, bottom: rect.bottom, width: rect.width, height: rect.height, viewportArea, fixedContactCoveredArea: coveredArea, unobstructedInitialViewportFraction: rect.width * rect.height ? Math.max(0, viewportArea - coveredArea) / (rect.width * rect.height) : 0, scrollY };
+    })() : null;
     const overflowElements = bounds.document > width || bounds.body > width ? [...document.body.querySelectorAll('*')].map(element => {
       const rect = element.getBoundingClientRect();
       return { tag: element.tagName, class: typeof element.className === 'string' ? element.className : '', right: rect.right, width: rect.width };
@@ -165,7 +174,7 @@ async function inspect(page, pathname, source, width) {
       source: nonhome ? { bodyUnified: doc.body.classList.contains('site-unified'), heroes: doc.querySelectorAll('.page-hero').length, images: sourceHero ? sourceHero.querySelectorAll('img').length : 0, h1Inside: Boolean(sourceHero && sourceHero.querySelector('h1')), caption: sourceHero && sourceHero.querySelector('figcaption')?.textContent.trim(), themeLast: Boolean(lastStyle && new URL(lastStyle.getAttribute('href') || '', location.origin).pathname === themePath) } : null,
       heroes: document.querySelectorAll(nonhome ? '.page-hero' : '.home-hero').length,
       h1: [...document.querySelectorAll('h1')].map(element => ({ text: element.textContent.trim(), visible: visible(element), insideHero: Boolean(hero && hero.contains(element)) })),
-      images, homeLinks, styles, primary, metadata, heroLinkContrast, bounds, overflowElements,
+      images, imageVisibility, homeLinks, styles, primary, metadata, heroLinkContrast, bounds, overflowElements,
       heroVisible: Boolean(hero && visible(hero)),
       caption: hero && hero.querySelector('figcaption')?.textContent.trim()
     };
@@ -197,6 +206,9 @@ function verify(record, pathname, width, javaScriptEnabled) {
   const theme = record.styles.find(style => new URL(style.href).pathname === themePath);
   check(Boolean(theme && theme.loaded && new URL(theme.href).searchParams.get('v') === themeVersion), label + ': common theme stylesheet missing, unloaded or wrong version');
   check(record.source.themeLast, label + ': common theme must be the final stylesheet in head');
+  if (pathname === '/asigurare-sanatate-expati.html' && width <= 390) {
+    check(record.imageVisibility && record.imageVisibility.scrollY === 0 && record.imageVisibility.unobstructedInitialViewportFraction >= .5, label + ': Expat photograph must be at least 50% visible in the initial mobile viewport, excluding the fixed contact bar ' + JSON.stringify(record.imageVisibility));
+  }
 }
 async function expatControls(page, width) {
   const record = { width, languages: [], plans: [] };
