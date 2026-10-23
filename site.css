@@ -505,3 +505,14 @@ main a.btn-gold {
   outline: 3px solid #176341;
   outline-offset: 3px;
 }
+
+/* The supplied brand, shared with the redesigned homepage. */
+.global-site-brand__logo { display: block; flex: 0 0 auto; width: 48px; height: 48px; border-radius: 50%; background: #fff; object-fit: cover; }
+.global-site-brand__copy strong { color: #102b4c; }
+.global-site-brand__copy small { display: block; color: #526780; font-size: .66rem; line-height: 1.2; }
+.global-site-footer__brand > a { display: inline-flex; align-items: center; gap: 10px; }
+.global-site-footer__logo { display: block; flex: 0 0 auto; width: 48px; height: 48px; border-radius: 50%; background: #fff; }
+@media (max-width: 460px) {
+  .global-site-brand__logo { width: 40px; height: 40px; }
+  .global-site-brand__copy strong { font-size: .95rem; }
+}

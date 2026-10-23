@@ -124,7 +124,9 @@ async function noDelivery(h, expectedPosts = 0) {
       const select = page.locator('form select[required]').first();
       if (await select.count()) {
         const value = await select.inputValue();
-        await select.selectOption(''); await submit(page); await noDelivery(h);
+        if (await select.locator('option[value=""]').count()) await select.selectOption('');
+        else await select.evaluate(e => { e.value = ''; e.dispatchEvent(new Event('change', { bubbles: true })); });
+        await submit(page); await noDelivery(h);
         assert.equal(await select.evaluate(e => e.validity.valueMissing), true, file + ': preserve native select validation');
         await select.selectOption(value);
       }
@@ -155,7 +157,7 @@ async function noDelivery(h, expectedPosts = 0) {
       await submit(page);
       await page.waitForTimeout(120);
       const handoffs = await page.evaluate(() => window.__handoffs);
-      if (['rca.html', 'rca-in-rate.html', 'contact.html', 'asigurare-sanatate-expati.html', 'alatura-te-echipei.html', 'calculator-rca.html'].includes(file)) {
+      if (['index.html', 'rca.html', 'rca-in-rate.html', 'contact.html', 'asigurare-sanatate-expati.html', 'alatura-te-echipei.html', 'calculator-rca.html'].includes(file)) {
         assert.equal(h.posts.length, 1, file + ': valid form reaches simulated processor once');
         assert.deepEqual(await page.locator('form').evaluate(f => [...f.querySelectorAll('input,textarea,select')].map(e => [e.id || e.name, e.value])), valuesBefore, file + ': processor error keeps all values');
       } else {

@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   <!-- Homepage + Calculator -->
-  <url><loc>https://asiguraricraiova.ro/</loc><lastmod>2026-10-21</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://asiguraricraiova.ro/</loc><lastmod>2026-10-23</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
   <url><loc>https://asiguraricraiova.ro/asigurari.html</loc><lastmod>2026-10-21</lastmod><changefreq>monthly</changefreq><priority>0.95</priority></url>
   <url><loc>https://asiguraricraiova.ro/calculator-rca.html</loc><lastmod>2026-10-21</lastmod><changefreq>monthly</changefreq><priority>0.95</priority></url>
 
@@ -53,7 +53,7 @@
   <url><loc>https://asiguraricraiova.ro/firme.html</loc><lastmod>2026-08-04</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
 
   <!-- Informaționale -->
-  <url><loc>https://asiguraricraiova.ro/despre.html</loc><lastmod>2026-10-20</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://asiguraricraiova.ro/despre.html</loc><lastmod>2026-10-23</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
   <url><loc>https://asiguraricraiova.ro/alatura-te-echipei.html</loc><lastmod>2026-10-21</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
   <url><loc>https://asiguraricraiova.ro/contact.html</loc><lastmod>2026-10-21</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
   <url><loc>https://asiguraricraiova.ro/gdpr.html</loc><lastmod>2026-09-29</lastmod><changefreq>yearly</changefreq><priority>0.50</priority></url>

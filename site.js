@@ -35,6 +35,7 @@
   function setConsent(value) {
     try { localStorage.setItem(CONSENT_KEY, value); } catch (error) { /* private mode */ }
     var banner = document.getElementById('cookie-consent');
+    var returnFocus = banner && banner.__homeReturnFocus;
     if (banner) banner.remove();
     document.body.classList.remove('has-pending-cookie-consent');
     if (value === 'accepted') {
@@ -45,23 +46,33 @@
         window.gtag('consent', 'update', { analytics_storage: 'denied' });
       }
     }
+    if (returnFocus && returnFocus.isConnected && returnFocus !== document.body) returnFocus.focus();
   }
 
   function showConsent() {
     if (document.getElementById('cookie-consent')) return;
+    var homePreferences = document.body.classList.contains('home-redesign');
     var banner = document.createElement('section');
+    if (homePreferences) banner.__homeReturnFocus = document.activeElement;
     banner.id = 'cookie-consent';
     banner.className = 'cookie-consent';
     banner.setAttribute('role', 'dialog');
-    banner.setAttribute('aria-modal', 'true');
+    banner.setAttribute('aria-modal', homePreferences ? 'false' : 'true');
     banner.setAttribute('aria-labelledby', 'cookie-title');
     banner.innerHTML =
       '<div class="cookie-consent__body">' +
         '<h2 id="cookie-title">Preferințe cookies</h2>' +
         '<p>Folosim cookie-uri Analytics doar cu acordul tău, pentru statistici. Cele necesare funcționării site-ului rămân active. <a href="/gdpr.html#cookies">Detalii</a></p>' +
       '</div>' +
+      (homePreferences ?
+        '<div class="home-cookie-options" id="home-cookie-options" hidden>' +
+          '<p>Cookie-uri necesare: mereu active pentru funcționarea site-ului.</p>' +
+          '<label for="home-cookie-analytics"><input id="home-cookie-analytics" type="checkbox"> Permite Analytics pentru statistici opționale</label>' +
+          '<button type="button" class="cookie-btn cookie-btn--secondary" data-home-cookie-save>Salvează preferințele</button>' +
+        '</div>' : '') +
       '<div class="cookie-consent__actions">' +
         '<button type="button" class="cookie-btn cookie-btn--secondary" data-consent="rejected">Refuz Analytics</button>' +
+        (homePreferences ? '<button type="button" class="cookie-btn home-cookie-settings" aria-expanded="false" aria-controls="home-cookie-options">Setări</button>' : '') +
         '<button type="button" class="cookie-btn cookie-btn--primary" data-consent="accepted">Accept Analytics</button>' +
       '</div>';
     document.body.appendChild(banner);
@@ -69,7 +80,31 @@
     banner.querySelectorAll('[data-consent]').forEach(function (button) {
       button.addEventListener('click', function () { setConsent(button.dataset.consent); });
     });
-    banner.querySelector('[data-consent="rejected"]').focus();
+    if (homePreferences) {
+      var settings = banner.querySelector('.home-cookie-settings');
+      var options = banner.querySelector('#home-cookie-options');
+      var analytics = banner.querySelector('#home-cookie-analytics');
+      analytics.checked = getConsent() === 'accepted';
+      settings.addEventListener('click', function () {
+        var open = options.hidden;
+        options.hidden = !open;
+        settings.setAttribute('aria-expanded', String(open));
+        if (open) analytics.focus();
+      });
+      banner.querySelector('[data-home-cookie-save]').addEventListener('click', function () {
+        setConsent(analytics.checked ? 'accepted' : 'rejected');
+      });
+      banner.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape' && !options.hidden) {
+          options.hidden = true;
+          settings.setAttribute('aria-expanded', 'false');
+          settings.focus();
+        }
+      });
+    }
+    if (!homePreferences || (banner.__homeReturnFocus && banner.__homeReturnFocus !== document.body)) {
+      banner.querySelector('[data-consent="rejected"]').focus();
+    }
   }
 
   function addPrivacyControl() {
@@ -86,6 +121,7 @@
   function installGlobalNavigation() {
     var legacyHeader = document.querySelector('nav.snav, header.home-header');
     if (!legacyHeader || document.querySelector('.global-site-header')) return;
+    if (document.body.classList.contains('home-redesign')) return;
     var isRecruitPage = document.body.classList.contains('recruit-page');
 
     var header = document.createElement('header');
@@ -94,8 +130,8 @@
       '<nav class="global-site-nav" aria-label="Navigare principală">' +
         '<div class="global-site-nav__inner">' +
           '<a class="global-site-brand" href="/" aria-label="AsigurăriCraiova.ro — acasă">' +
-            '<span class="global-site-brand__mark" aria-hidden="true">AC</span>' +
-            '<span class="global-site-brand__copy"><strong>AsigurăriCraiova.ro</strong><small>Intermediar autorizat în asigurări</small></span>' +
+            '<img class="global-site-brand__logo" src="/brand-logo.webp" alt="" width="48" height="48">' +
+            '<span class="global-site-brand__copy"><strong>asiguraricraiova.ro</strong><small>Prin Destine Broker</small></span>' +
           '</a>' +
           '<button class="global-site-menu-toggle" type="button" aria-expanded="false" aria-controls="globalSiteMenu"><span aria-hidden="true">☰</span><span class="sr-only">Deschide meniul</span></button>' +
           '<div class="global-site-menu" id="globalSiteMenu">' +
@@ -181,13 +217,14 @@
   function installGlobalFooter() {
     var legacyFooter = document.querySelector('footer');
     if (!legacyFooter || document.querySelector('.global-site-footer')) return;
+    if (legacyFooter.classList.contains('home-footer') && document.body.classList.contains('home-redesign')) return;
     if (legacyFooter.querySelector('.home-footer__grid') || legacyFooter.classList.contains('expat-footer') || legacyFooter.classList.contains('recruit-footer')) return;
 
     var footer = document.createElement('div');
     footer.className = 'global-site-footer';
     footer.innerHTML =
       '<div class="global-site-footer__inner">' +
-        '<div class="global-site-footer__brand"><a href="/">AsigurăriCraiova.ro</a><p>Intermediere în asigurări prin Destine Broker. Discuți direct cu Robert Iulian Stoica.</p></div>' +
+        '<div class="global-site-footer__brand"><a href="/"><img class="global-site-footer__logo" src="/brand-logo.webp" alt="" width="48" height="48"><span>asiguraricraiova.ro</span></a><p>Intermediere în asigurări prin Destine Broker. Discuți direct cu Robert Iulian Stoica.</p></div>' +
         '<div><h2>Explorează</h2><a href="/asigurari.html">Asigurări</a><a href="/calculator-rca.html">Calculator RCA</a><a href="/blog.html">Blog</a><a href="/despre.html">Despre</a><a href="/alatura-te-echipei.html">Alătură-te echipei</a></div>' +
         '<div><h2>Informații</h2><a href="/contact.html">Contact</a><a href="/gdpr.html">Confidențialitate</a><a href="/sitemap.xml">Sitemap</a></div>' +
         '<div><h2>Contact direct</h2><a href="tel:+40774171971">0774 171 971</a><a href="mailto:contact@asiguraricraiova.ro">contact@asiguraricraiova.ro</a><p>L–V, 9:00–16:00 · Vizite la birou numai cu programare</p><a class="global-site-footer__cta" href="https://wa.me/40774171971" target="_blank" rel="noopener noreferrer">Cere ofertă pe WhatsApp</a></div>' +
@@ -264,6 +301,7 @@
   }
 
   function enableHomeMenu() {
+    if (document.body.classList.contains('home-redesign')) return;
     var toggle = document.querySelector('[data-home-menu-toggle], .home-menu-toggle');
     var menu = document.querySelector('[data-home-menu], .home-menu');
     if (!toggle || !menu) return;
@@ -480,6 +518,8 @@
     if (requestedProduct && requestedProducts[requestedProduct.toLowerCase()]) {
       productSelect.value = requestedProducts[requestedProduct.toLowerCase()];
     }
+
+    if (form.hasAttribute('data-home-lead-form')) return;
 
     form.addEventListener('submit', function (event) {
       event.preventDefault();
