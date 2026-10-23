@@ -135,26 +135,19 @@
           '</a>' +
           '<button class="global-site-menu-toggle" type="button" aria-expanded="false" aria-controls="globalSiteMenu"><span aria-hidden="true">☰</span><span class="sr-only">Deschide meniul</span></button>' +
           '<div class="global-site-menu" id="globalSiteMenu">' +
+            '<a href="/" data-nav-home>Acasă</a>' +
             '<div class="global-site-products">' +
               '<button class="global-site-products__toggle" type="button" aria-expanded="false" aria-controls="globalProductMenu">Asigurări <span aria-hidden="true">▾</span></button>' +
               '<div class="global-site-product-panel" id="globalProductMenu">' +
-                '<section><h2>Auto</h2><a href="/rca.html">RCA, CASCO și opțiuni auto →</a></section>' +
-                '<section><h2>Locuință</h2><a href="/locuinta.html">Locuință și PAD →</a></section>' +
-                '<section><h2>Viață &amp; sănătate</h2><a href="/viata.html">Protecție pentru familie →</a></section>' +
-                '<section><h2>Călătorie</h2><a href="/calatorie.html">Călătorii și Storno →</a></section>' +
-                '<section><h2>Firme &amp; profesii</h2><a href="/firme.html">Soluții pentru firme →</a></section>' +
-                '<section><h2>Economisire</h2><a href="/unitlinked.html">Unit-linked și programe →</a></section>' +
-                '<section><h2>Produse speciale</h2><a href="/asigurari.html">Vezi catalogul complet →</a></section>' +
+                "<section><h2>Auto și mobilitate</h2><a href=\"/rca.html\">RCA</a><a href=\"/rca-in-rate.html\">RCA în rate</a><a href=\"/casco.html\">CASCO</a><a href=\"/asistenta-rutiera.html\">Asistență rutieră</a><a href=\"/gap.html\">GAP</a><a href=\"/bike.html\">Biciclete și trotinete</a><a href=\"/calculator-rca.html\">Calculator RCA și BAAR</a><a href=\"/despagubiri-accidente.html\">Despăgubiri după accident</a></section><section><h2>Călătorii</h2><a href=\"/calatorie.html\">Asigurare de călătorie</a><a href=\"/multitravel.html\">MultiTravel</a><a href=\"/storno.html\">Storno</a></section><section><h2>Casă și bunuri</h2><a href=\"/locuinta.html\">Locuință și PAD</a><a href=\"/asistenta-domiciliu.html\">Asistență la domiciliu</a><a href=\"/fotovoltaice.html\">Panouri fotovoltaice</a><a href=\"/animale.html\">Animale de companie</a></section><section><h2>Viață și sănătate</h2><a href=\"/viata.html\">Asigurare de viață</a><a href=\"/asigurare-viata-karma-buna.html\">Karma Bună</a><a href=\"/sanatate.html\">Asigurare de sănătate</a><a href=\"/asigurare-sanatate-expati.html\">Sănătate pentru expați</a><a href=\"/accident.html\">Accidente persoane</a><a href=\"/raspundere-civila-familie.html\">Răspundere individuală și familie</a></section><section><h2>Firme și profesii</h2><a href=\"/firme.html\">Asigurări pentru firme</a><a href=\"/imm.html\">AMM / IMM</a><a href=\"/malpraxis.html\">Malpraxis</a><a href=\"/civile.html\">Răspunderi civile</a><a href=\"/raspundere-civila-generala.html\">Răspundere civilă generală</a><a href=\"/raspundere-civila-profesionala.html\">Răspundere profesională</a><a href=\"/transport.html\">Asigurări de transport</a><a href=\"/cmr.html\">CMR</a><a href=\"/rotr.html\">ROTR</a></section><section><h2>Viitor financiar</h2><a href=\"/pensie.html\">Pensie Pilon III</a><a href=\"/economisire.html\">Economisire pentru copii</a><a href=\"/unitlinked.html\">Unit-Linked: costuri și riscuri</a><a href=\"/leu-forte.html\">Leu Forte</a><a href=\"/leu-dinamic.html\">Leu Dinamic</a></section>" +
                 '<a class="global-site-product-panel__all" href="/asigurari.html">Vezi toate asigurările <span aria-hidden="true">→</span></a>' +
               '</div>' +
             '</div>' +
-            '<a href="/rca.html">RCA</a>' +
-            '<a href="/locuinta.html">Locuință</a>' +
-            '<a href="/viata.html">Viață &amp; sănătate</a>' +
-            '<a href="/calatorie.html">Călătorie</a>' +
+            '<a href="/firme.html">Firme</a>' +
             '<a href="/calculator-rca.html">Calculator RCA</a>' +
+            '<a href="/blog.html">Ghiduri</a>' +
+            '<a href="/despre.html">Despre mine</a>' +
             '<a href="/contact.html">Contact</a>' +
-            '<a href="/alatura-te-echipei.html"' + (isRecruitPage ? ' aria-current="page"' : '') + '>Alătură-te echipei</a>' +
             '<a class="global-site-phone" href="tel:+40774171971" data-analytics-location="navigation">0774 171 971</a>' +
             (isRecruitPage
               ? '<a class="global-site-cta" href="#aplica">Aplică acum</a>'

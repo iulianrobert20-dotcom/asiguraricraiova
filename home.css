@@ -1024,3 +1024,34 @@ body textarea { font: inherit; }
 @media (prefers-reduced-motion: reduce) {
   .homepage.home-redesign .home-btn, .homepage.home-redesign .insurance-card { transition: none; }
 }
+
+/* Complete portfolio remains available without crowding the primary product row. */
+.homepage.home-redesign .home-directory { margin-top: 22px; border: 1px solid #d6e3ef; border-radius: 8px; background: #fff; scroll-margin-top: 20px; }
+.homepage.home-redesign .home-directory > summary { display: flex; min-height: 76px; align-items: center; justify-content: space-between; gap: 20px; padding: 17px 22px; color: #103c66; list-style: none; cursor: pointer; }
+.homepage.home-redesign .home-directory > summary::-webkit-details-marker { display: none; }
+.homepage.home-redesign .home-directory summary strong { display: block; font-size: 17px; }
+.homepage.home-redesign .home-directory summary small { display: block; margin-top: 5px; color: #4c6680; font-size: 13px; }
+.homepage.home-redesign .home-directory__toggle { display: grid; width: 32px; height: 32px; flex: 0 0 auto; place-items: center; border-radius: 50%; background: #edf5fd; color: #0969bd; font-size: 24px; transition: transform .15s ease; }
+.homepage.home-redesign .home-directory[open] .home-directory__toggle { transform: rotate(45deg); }
+.homepage.home-redesign .home-directory__groups { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 24px 36px; padding: 24px; border-top: 1px solid #e1eaf3; }
+.homepage.home-redesign .home-directory h3 { margin: 0 0 10px; font-size: 16px; letter-spacing: -.02em; }
+.homepage.home-redesign .home-directory ul { margin: 0; padding: 0; list-style: none; }
+.homepage.home-redesign .home-directory li a { display: inline-flex; align-items: center; min-height: 36px; padding-block: 7px; color: #235d91; font-size: 14px; line-height: 1.4; text-decoration: underline; text-underline-offset: 3px; }
+.homepage.home-redesign .home-directory a:hover { color: #083c70; }
+.homepage.home-redesign .home-directory__resources { padding: 22px 24px; border-top: 1px solid #e1eaf3; background: #f7faff; }
+.homepage.home-redesign .home-directory__resources ul { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 0 24px; }
+.homepage.home-redesign .home-directory__resources > a { display: inline-flex; min-height: 44px; align-items: center; color: #235d91; font-size: 14px; text-decoration: underline; }
+.homepage.home-redesign .home-menu { gap: 3px; }
+.homepage.home-redesign .home-menu > a { padding-inline: 10px; }
+@media (max-width: 900px) {
+  .homepage.home-redesign .home-directory__groups { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 24px; padding: 20px; }
+  .homepage.home-redesign .home-directory__resources ul { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .homepage.home-redesign .home-directory li a { min-height: 44px; }
+}
+@media (max-width: 540px) {
+  .homepage.home-redesign .home-directory > summary { padding: 17px; gap: 12px; }
+  .homepage.home-redesign .home-directory summary strong { font-size: 16px; }
+  .homepage.home-redesign .home-directory summary small { font-size: 12px; line-height: 1.45; }
+  .homepage.home-redesign .home-directory__groups, .homepage.home-redesign .home-directory__resources ul { grid-template-columns: minmax(0,1fr); }
+  .homepage.home-redesign .home-directory__resources { padding: 20px; }
+}

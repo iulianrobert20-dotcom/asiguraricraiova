@@ -114,6 +114,17 @@ for (const { file } of canonicalPages) {
   if (!reachable.has(file)) fail(file, 'nu există un traseu de linkuri HTML din homepage');
 }
 
+// A reachable page can still disappear from the homepage after a redesign.
+// Require a direct HTML link for every canonical destination and an explicit return.
+const homepageSource = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
+const homepageDestinations = new Set([...homepageSource.matchAll(/<a\b[^>]*\bhref="([^"]+)"/gi)].map(match => localPathFromUrl(match[1])).filter(Boolean));
+for (const { file } of canonicalPages) {
+  if (file === 'index.html') continue;
+  if (!homepageDestinations.has(file)) fail(file, 'lipsește legătura directă din homepage');
+  const pageSource = fs.readFileSync(path.join(root, file), 'utf8');
+  if (!/<a\b[^>]*\bdata-nav-home\b[^>]*>/i.test(pageSource)) fail(file, 'lipsește întoarcerea explicită Acasă fără JavaScript');
+}
+
 // Aliasurile cunoscute din raportul 404 trebuie să funcționeze fără JavaScript.
 const legacyRedirects = new Map([
   ['asigurare-locuinta-pad/index.html', '/locuinta.html'],
