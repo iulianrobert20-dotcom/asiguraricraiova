@@ -63,7 +63,7 @@ body.site-unified {
 .site-unified :is(.box,.product-callout,.life-transparency) { border-left-color: #0b6fc4; }
 .site-unified :is(.life-callout,.product-callout,.product-note,.ins-box,.factors li,.steps li,.notice,.note,.warning,.life-transparency) { background: #edf4fa; color: #375a7b; }
 .site-unified .rca-lead { border-color: #d9e4ef; border-radius: 8px; background: #edf4fa; }
-.site-unified .highlight { border-left-color: #0b6fc4; background: #edf4fa; color: #375a7b; }
+.site-unified :is(.highlight,.teal-box) { border-left-color: #0b6fc4; background: #edf4fa; color: #375a7b; }
 .site-unified :is(.product-summary,.life-card--featured,.recruit-card--insurance) { border-color: #b5d3ed; box-shadow: 0 4px 18px rgba(20,52,83,.06); }
 .site-unified :is(.product-card__icon,.life-card__icon,.recruit-card__icon) { background-color: #edf4fa; color: #0b6fc4; }
 .site-unified .main :is(p,li), .site-unified .product-card p { line-height: 1.7; }
