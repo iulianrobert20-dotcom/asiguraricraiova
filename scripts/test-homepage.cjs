@@ -47,8 +47,9 @@ async function open(browser, options = {}) {
       if (link) event.preventDefault();
     }, true);
     if (fastTimeout) {
+      window.__testFastTimeout = true;
       const timer = window.setTimeout.bind(window);
-      window.setTimeout = (callback, delay, ...args) => timer(callback, delay === 15000 ? 25 : delay, ...args);
+      window.setTimeout = (callback, delay, ...args) => timer(callback, window.__testFastTimeout && delay === 15000 ? 25 : delay, ...args);
     }
   }, { choice: options.choice === undefined ? 'accepted' : options.choice, fastTimeout: options.mode === 'timeout' });
   const page = await context.newPage();
@@ -190,6 +191,7 @@ function checkEvents(events, expectedLeads) {
       assert.equal(await failure.page.locator('#quickQuoteForm button[type="submit"]').isDisabled(), false);
       checkEvents(await failure.events(), 0);
       failure.transport.mode = 'normal'; failure.transport.status = 200;
+      if (mode === 'timeout') await failure.page.evaluate(() => { window.__testFastTimeout = false; });
       await submit(failure.page); await waitState(failure.page, 'success');
       assert.equal(failure.record.posts.length, 2); checkEvents(await failure.events(), 1);
       await failure.context.close();
