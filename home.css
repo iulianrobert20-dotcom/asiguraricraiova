@@ -1055,3 +1055,159 @@ body textarea { font: inherit; }
   .homepage.home-redesign .home-directory__groups, .homepage.home-redesign .home-directory__resources ul { grid-template-columns: minmax(0,1fr); }
   .homepage.home-redesign .home-directory__resources { padding: 20px; }
 }
+
+/* Homepage photo cards: the shared catalog and product cards keep their styles. */
+.homepage.home-redesign .home-products--photos > .home-container {
+  width: min(1280px, calc(100% - 64px));
+}
+.homepage.home-redesign .home-products--photos .insurance-grid {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-auto-rows: 1fr;
+  gap: 14px;
+  align-items: stretch;
+}
+.homepage.home-redesign .home-products--photos .insurance-grid--business {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.homepage.home-redesign .home-products--photos .insurance-card {
+  display: flex;
+  min-width: 0;
+  min-height: 0;
+  height: 100%;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0;
+  overflow: hidden;
+  padding: 0;
+  border: 1px solid #d7e5f1;
+  border-radius: 7px;
+  background: #fff;
+  box-shadow: 0 3px 10px rgba(15, 58, 96, .035);
+  color: #102a4f;
+  text-align: left;
+  text-decoration: none;
+}
+.homepage.home-redesign .home-products--photos .insurance-card:hover {
+  border-color: #6aa2d2;
+  box-shadow: 0 5px 16px rgba(15, 58, 96, .09);
+  transform: none;
+}
+.homepage.home-redesign .home-products--photos .insurance-card:focus-visible {
+  outline-color: #0867c4 !important;
+}
+.homepage.home-redesign .home-products--photos .insurance-card__media {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  flex: 0 0 auto;
+  overflow: hidden;
+  border-bottom: 1px solid #e2ebf3;
+  background: #edf4fb;
+}
+.homepage.home-redesign .home-products--photos .insurance-card__photo {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.homepage.home-redesign .home-products--photos .insurance-card__body {
+  display: flex;
+  min-width: 0;
+  min-height: 174px;
+  height: auto;
+  flex: 1 1 auto;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 16px 17px 17px;
+}
+.homepage.home-redesign .home-products--photos .insurance-card h3 {
+  margin: 0 0 7px;
+  color: #092b50;
+  font-size: 18px;
+  line-height: 1.25;
+  letter-spacing: -.025em;
+}
+.homepage.home-redesign .home-products--photos .insurance-card p {
+  display: block;
+  flex: 0 0 auto;
+  margin: 0;
+  color: #526e90;
+  font-size: 14px;
+  line-height: 1.45;
+}
+.homepage.home-redesign .home-products--photos .insurance-card__link {
+  display: inline-block;
+  margin-top: auto;
+  padding-top: 16px;
+  color: #0867c4;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.homepage.home-redesign .home-products--photos #personal-products .insurance-card:last-child {
+  grid-column: auto;
+  min-height: 0;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0;
+}
+.homepage.home-redesign .home-products--photos .home-products__photo-note {
+  margin: 11px 0 0;
+  color: #526982;
+  font-size: 12px;
+  line-height: 1.4;
+  text-align: right;
+}
+@media (max-width: 1100px) {
+  .homepage.home-redesign .home-products--photos > .home-container {
+    width: calc(100% - 40px);
+  }
+  .homepage.home-redesign .home-products--photos .insurance-grid,
+  .homepage.home-redesign .home-products--photos .insurance-grid--business {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 520px) {
+  .homepage.home-redesign .home-products--photos > .home-container {
+    width: calc(100% - 28px);
+  }
+  .homepage.home-redesign .home-products--photos .insurance-grid,
+  .homepage.home-redesign .home-products--photos .insurance-grid--business {
+    gap: 12px;
+  }
+  .homepage.home-redesign .home-products--photos .insurance-card__body {
+    min-height: 174px;
+    padding: 13px 12px 14px;
+  }
+  .homepage.home-redesign .home-products--photos .insurance-card h3 {
+    font-size: 16px;
+  }
+  .homepage.home-redesign .home-products--photos .insurance-card p,
+  .homepage.home-redesign .home-products--photos .insurance-card__link {
+    font-size: 13px;
+  }
+  .homepage.home-redesign .home-products--photos .insurance-card__link {
+    padding-top: 14px;
+  }
+}
+@media (max-width: 359px) {
+  .homepage.home-redesign .home-products--photos .insurance-grid,
+  .homepage.home-redesign .home-products--photos .insurance-grid--business {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .homepage.home-redesign .home-products--photos .insurance-card__body {
+    min-height: 156px;
+    padding: 16px;
+  }
+  .homepage.home-redesign .home-products--photos .insurance-card h3 {
+    font-size: 18px;
+  }
+  .homepage.home-redesign .home-products--photos .insurance-card p,
+  .homepage.home-redesign .home-products--photos .insurance-card__link {
+    font-size: 14px;
+  }
+}
