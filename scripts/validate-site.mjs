@@ -176,7 +176,9 @@ const index = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
 if (/page-despre|function showPage/i.test(index)) fail('index.html', 'conține încă paginile SPA ascunse');
 if (!/<form\b[^>]*id="quickQuoteForm"/i.test(index)) fail('index.html', 'formularul rapid de ofertă lipsește');
 if (!/id="quoteConsent"[^>]*required/i.test(index)) fail('index.html', 'acordul pentru trimiterea cererii rapide lipsește');
-if (count(index, /class="insurance-card"/g) < 6) fail('index.html', 'alegerile principale de asigurare sunt incomplete');
+const insuranceCardCount = [...index.matchAll(/<a\b[^>]*\bclass="([^"]*)"/g)]
+  .filter(([, classes]) => classes.split(/\s+/).includes('insurance-card')).length;
+if (insuranceCardCount < 6) fail('index.html', 'alegerile principale de asigurare sunt incomplete');
 if (/SearchAction|"sameAs"\s*:\s*\[\]|"geo"\s*:/i.test(index)) fail('index.html', 'schema conține semnale nevalidate sau nefuncționale');
 
 const calculator = fs.readFileSync(path.join(root, 'calculator-rca.html'), 'utf8');
