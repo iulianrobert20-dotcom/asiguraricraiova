@@ -33,7 +33,8 @@
 <link rel="stylesheet" href="/site.css?v=20261023-3">
 <link rel="stylesheet" href="/product-template.css">
 <link rel="stylesheet" href="/locuinta.css?v=20261020-1">
-<link rel="stylesheet" href="/form-validation.css?v=20261021-1"><script defer src="/form-validation.js?v=20261021-1"></script><script defer src="/site.js?v=20261023-3"></script>
+<link rel="stylesheet" href="/form-validation.css?v=20261021-1"><script defer src="/form-validation.js?v=20261021-1"></script><script defer src="/site.js?v=20261103-1"></script>
+<script defer src="/myhome.js?v=20261103-1"></script>
 
 <script type="application/ld+json">
 {
@@ -116,8 +117,9 @@
 </script>
 
 <link rel="stylesheet" href="/site-interior.css?v=20261023-3">
+<link rel="stylesheet" href="/locuinta-myhome.css?v=20261103-1">
 </head>
-<body class="ds-page site-unified">
+<body class="ds-page site-unified locuinta-myhome-page">
 <nav class="snav" id="snavMain">
   <div class="snav-inner">
     <a href="/" class="snav-logo">AsigurăriCraiova.ro<span>Intermediar Autorizat ISF</span></a>
@@ -203,6 +205,32 @@
 <div class="main" role="main">
   <p class="lead">Ai nevoie de <strong>PAD în Craiova</strong>, de o <strong>asigurare facultativă pentru apartament</strong> sau de protecție pentru o <strong>casă în Dolj</strong>? Îți prezint opțiunile disponibile prin partenerii din portofoliu și acoperirile care contează pentru locuința ta.</p>
 
+  <section class="locuinta-myhome-promo" id="oferta-my-home" aria-label="Oferta Allianz-Țiriac My Home" data-myhome-campaign data-myhome-teaser>
+    <div class="locuinta-myhome-promo__active" data-myhome-active>
+      <figure class="locuinta-myhome-promo__media">
+        <img src="/images/home-cards/locuinta-640.webp" srcset="/images/home-cards/locuinta-320.webp 320w, /images/home-cards/locuinta-640.webp 640w, /images/home-cards/locuinta-960.webp 960w" sizes="(max-width: 700px) calc(100vw - 64px), (max-width: 1312px) calc((100vw - 100px) * .4), 470px" alt="" width="960" height="600" loading="lazy" decoding="async">
+        <figcaption>Fotografie ilustrativă</figcaption>
+      </figure>
+      <div class="locuinta-myhome-promo__copy">
+        <div class="locuinta-myhome-promo__meta">
+          <p class="locuinta-myhome-promo__brand">Allianz-Țiriac · My Home</p>
+          <p class="locuinta-myhome-promo__period"><time datetime="2026-09-01">1 septembrie</time>–<time datetime="2026-11-30">30 noiembrie 2026</time></p>
+        </div>
+        <h2>Asigurarea My Home, cu PAD gratuit</h2>
+        <p>Cumperi asigurarea facultativă My Home și poți beneficia de PAD gratuit pentru un an, dacă îndeplinești condițiile campaniei.</p>
+        <a class="locuinta-myhome-promo__button" href="/allianz-tiriac-my-home-pad.html" data-myhome-promo-link data-analytics-product="locuinta">Vezi oferta și condițiile <span aria-hidden="true">→</span></a>
+        <p class="locuinta-myhome-promo__details">Detalii, eligibilitate și cerere de ofertă pe pagina My Home.</p>
+        <p class="locuinta-myhome-promo__note">Gratuitatea privește PAD. Asigurarea My Home se achită. Disponibilitatea și eligibilitatea se confirmă la ofertare.</p>
+      </div>
+    </div>
+    <div class="locuinta-myhome-promo__expired" data-myhome-expired hidden>
+      <p class="locuinta-myhome-promo__brand">Allianz-Țiriac · My Home</p>
+      <h2>Asigurarea de locuință My Home</h2>
+      <p>Campania PAD gratuit din perioada 1 septembrie–30 noiembrie 2026 s-a încheiat. Poți solicita informații despre produs și condițiile disponibile la momentul ofertării.</p>
+      <a class="locuinta-myhome-promo__button" href="/allianz-tiriac-my-home-pad.html" data-analytics-product="locuinta">Vezi asigurarea My Home <span aria-hidden="true">→</span></a>
+    </div>
+  </section>
+
   <section aria-labelledby="alege-protectia">
     <h2 id="alege-protectia">Ce vrei să asiguri?</h2>
     <div class="decision-grid">
@@ -224,7 +252,41 @@
     </div>
   </section>
 
-  <section aria-labelledby="asigurare-locuinta-craiova">
+  <h2>Cât costă polița PAD în 2026?</h2>
+  <div class="price-grid">
+    <div class="price-card"><strong>Locuință tip A</strong><span>130 lei / an</span><p>Construcție cu structură de rezistență din beton armat, metal ori lemn sau cu pereți exteriori din materiale tratate termic ori chimic.</p></div>
+    <div class="price-card"><strong>Locuință tip B</strong><span>50 lei / an</span><p>Construcție cu pereți exteriori din cărămidă nearsă sau din alte materiale netratate termic ori chimic.</p></div>
+  </div>
+  <p class="note">Sumele asigurate prin PAD sunt 100.000 lei pentru tip A și 50.000 lei pentru tip B. Tarifele sunt stabilite pentru PAD și nu reprezintă prețul unei polițe facultative. Oferta My Home se aplică separat, în condițiile campaniei.</p>
+
+  <section class="home-quote" id="oferta-locuinte" aria-labelledby="date-oferta">
+    <div class="home-quote__heading">
+      <div><p class="cat home-quote__eyebrow">CERERE ÎN 3 PAȘI</p><h2 id="date-oferta">Pregătește cererea pentru locuința ta</h2></div>
+      <p>Completezi câteva detalii de bază. Cererea se deschide apoi în WhatsApp către mine; prețul și condițiile se confirmă numai în oferta asigurătorului.</p>
+    </div>
+    <form id="homeInsuranceQuoteForm">
+      <label>Ce te interesează?
+        <select id="homeQuoteCover" required><option value="">Alege</option><option>Doar PAD</option><option>Asigurare facultativă</option><option>PAD + asigurare facultativă</option><option>Nu sunt sigur(ă)</option></select>
+      </label>
+      <label>Tipul locuinței
+        <select id="homeQuoteType" required><option value="">Alege</option><option>Apartament</option><option>Casă</option><option>Casă de vacanță</option><option>Alt tip</option></select>
+      </label>
+      <label>Localitate / județ
+        <input id="homeQuoteLocation" type="text" autocomplete="address-level2" placeholder="Ex.: Craiova, Dolj" required>
+      </label>
+      <label>Anul construcției (opțional)
+        <input id="homeQuoteYear" type="number" min="1800" max="2026" placeholder="Ex.: 2012">
+      </label>
+      <label>Suprafața aproximativă (m², opțional)
+        <input id="homeQuoteArea" type="number" step="0.1" min="1" max="5000" placeholder="Ex.: 68">
+      </label>
+      <div class="home-quote__action"><button class="btn-wa" type="submit">Continuă pe WhatsApp</button></div>
+      <p class="home-quote__note">Prin continuare, datele introduse vor fi folosite pentru pregătirea solicitării de ofertă. Nu introduce CNP, serie CI sau alte date sensibile în acest formular. <a href="/gdpr.html">Politica de confidențialitate</a></p>
+      <p class="home-quote__note">Nu cere CNP, acte sau adresa completă aici. Acestea se comunică numai dacă sunt necesare pentru oferta aleasă.</p>
+    </form>
+  </section>
+
+  <section class="home-editorial" aria-labelledby="asigurare-locuinta-craiova">
     <h2 id="asigurare-locuinta-craiova">Asigurare pentru apartament sau casă în Craiova</h2>
     <p>Dacă ai un apartament sau o casă în Craiova ori în județul Dolj, protecția locuinței poate avea două componente: polița PAD obligatorie și asigurarea facultativă.</p>
     <p>PAD acoperă riscurile naturale prevăzute de lege — cutremur, inundație ca fenomen natural și alunecare de teren — în limitele stabilite pentru acest tip de poliță.</p>
@@ -252,40 +314,6 @@
         <a class="btn-wa" href="#oferta-locuinte">Cere ofertă pentru asigurarea locuinței</a>
       </article>
     </div>
-  </section>
-
-  <h2>Cât costă polița PAD în 2026?</h2>
-  <div class="price-grid">
-    <div class="price-card"><strong>Locuință tip A</strong><span>130 lei / an</span><p>Construcție cu structură de rezistență din beton armat, metal ori lemn sau cu pereți exteriori din materiale tratate termic ori chimic.</p></div>
-    <div class="price-card"><strong>Locuință tip B</strong><span>50 lei / an</span><p>Construcție cu pereți exteriori din cărămidă nearsă sau din alte materiale netratate termic ori chimic.</p></div>
-  </div>
-  <p class="note">Sumele asigurate prin PAD sunt 100.000 lei pentru tip A și 50.000 lei pentru tip B. Tarifele sunt stabilite pentru PAD și nu reprezintă prețul unei polițe facultative.</p>
-
-  <section class="home-quote" id="oferta-locuinte" aria-labelledby="date-oferta">
-    <div class="home-quote__heading">
-      <div><p class="cat home-quote__eyebrow">CERERE ÎN 3 PAȘI</p><h2 id="date-oferta">Pregătește cererea pentru locuința ta</h2></div>
-      <p>Completezi câteva detalii de bază. Cererea se deschide apoi în WhatsApp către mine; prețul și condițiile se confirmă numai în oferta asigurătorului.</p>
-    </div>
-    <form id="homeInsuranceQuoteForm">
-      <label>Ce te interesează?
-        <select id="homeQuoteCover" required><option value="">Alege</option><option>Doar PAD</option><option>Asigurare facultativă</option><option>PAD + asigurare facultativă</option><option>Nu sunt sigur(ă)</option></select>
-      </label>
-      <label>Tipul locuinței
-        <select id="homeQuoteType" required><option value="">Alege</option><option>Apartament</option><option>Casă</option><option>Casă de vacanță</option><option>Alt tip</option></select>
-      </label>
-      <label>Localitate / județ
-        <input id="homeQuoteLocation" type="text" autocomplete="address-level2" placeholder="Ex.: Craiova, Dolj" required>
-      </label>
-      <label>Anul construcției (opțional)
-        <input id="homeQuoteYear" type="number" min="1800" max="2026" placeholder="Ex.: 2012">
-      </label>
-      <label>Suprafața aproximativă (m², opțional)
-        <input id="homeQuoteArea" type="number" step="0.1" min="1" max="5000" placeholder="Ex.: 68">
-      </label>
-      <div class="home-quote__action"><button class="btn-wa" type="submit">Continuă pe WhatsApp</button></div>
-      <p class="home-quote__note">Prin continuare, datele introduse vor fi folosite pentru pregătirea solicitării de ofertă. Nu introduce CNP, serie CI sau alte date sensibile în acest formular. <a href="/gdpr.html">Politica de confidențialitate</a></p>
-      <p class="home-quote__note">Nu cere CNP, acte sau adresa completă aici. Acestea se comunică numai dacă sunt necesare pentru oferta aleasă.</p>
-    </form>
   </section>
 
   <div class="grid">

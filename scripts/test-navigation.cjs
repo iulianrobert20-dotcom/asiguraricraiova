@@ -214,8 +214,9 @@ async function withoutJavaScript(browser, width) {
 }
 
 (async () => {
-  assert.equal(canonical.length, 48, 'Sitemap scope changed: review this navigation regression test');
-  assert.equal(products.length, 35, 'Product directory scope changed: review classification (catalog linked separately)');
+  assert.equal(canonical.length, 49, 'Sitemap scope changed: review this navigation regression test');
+  assert.equal(products.length, 36, 'Product directory scope changed: review classification (catalog linked separately)');
+  assert(products.includes('/allianz-tiriac-my-home-pad.html'), 'My Home is a product page and must be discoverable in both product directories');
   if (output) fs.mkdirSync(output, { recursive: true });
   const browser = await chromium.launch({ channel: process.env.PLAYWRIGHT_BROWSER_CHANNEL || 'msedge', headless: true });
   try {
@@ -226,5 +227,5 @@ async function withoutJavaScript(browser, width) {
     if (output) fs.writeFileSync(path.join(output, 'navigation-results.json'), JSON.stringify(report, null, 2));
   }
   assert.deepEqual(report.failures, [], 'Navigation regressions:\n' + report.failures.join('\n'));
-  console.log('Navigation checks passed: 48 canonical pages + 404, 35 product links plus catalog, desktop/mobile click-through, static no-JS home links, long dropdown and overflow at 320/390/1024/1440. All network intercepted.');
+  console.log('Navigation checks passed: 49 canonical pages + 404, 36 product links plus catalog, desktop/mobile click-through, static no-JS home links, long dropdown and overflow at 320/390/1024/1440. All network intercepted.');
 })().catch(error => { console.error(error); process.exitCode = 1; });
