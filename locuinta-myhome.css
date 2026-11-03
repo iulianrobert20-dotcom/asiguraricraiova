@@ -1,0 +1,484 @@
+/* Locuință page: the approved My Home integration, scoped to this page. */
+body.locuinta-myhome-page {
+  background: #f7faff;
+}
+
+.locuinta-myhome-page .main {
+  max-width: 1280px;
+  padding: 26px 24px 64px;
+  background: transparent;
+}
+
+.locuinta-myhome-page .page-hero {
+  padding-block: 34px 30px;
+  border-bottom: 0;
+}
+
+.locuinta-myhome-page .page-hero__inner {
+  gap: 36px;
+}
+
+.locuinta-myhome-page .page-hero__media {
+  min-height: 380px;
+}
+
+.locuinta-myhome-page .page-hero .law {
+  margin-top: 12px;
+}
+
+.locuinta-myhome-page .home-benefits {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.locuinta-myhome-page .benefit-row {
+  border: 1px solid #d7e4f0;
+  border-radius: 12px;
+  background: #d7e4f0;
+  box-shadow: 0 4px 15px rgba(20,52,83,.04);
+}
+
+.locuinta-myhome-page .benefit-row article {
+  min-width: 0;
+  padding: 18px 22px;
+}
+
+.locuinta-myhome-page .benefit-row strong {
+  font-size: .9rem;
+}
+
+.locuinta-myhome-page .benefit-row p {
+  font-size: .8rem;
+}
+
+.locuinta-myhome-page .lead {
+  max-width: none;
+  margin: 0 0 24px;
+  color: #334e6b;
+}
+
+.locuinta-myhome-page .main > section > h2,
+.locuinta-myhome-page .main > h2 {
+  margin: 30px 0 14px;
+}
+
+.locuinta-myhome-page .locuinta-myhome-promo {
+  margin: 0 0 24px;
+  padding: 18px;
+  border: 1px solid #bbd8f1;
+  border-radius: 14px;
+  background: linear-gradient(110deg,#f4f9ff,#e9f4ff);
+  box-shadow: 0 5px 20px rgba(20,70,115,.04);
+}
+
+.locuinta-myhome-page .locuinta-myhome-promo__active {
+  display: grid;
+  grid-template-columns: minmax(0,.8fr) minmax(0,1fr);
+  align-items: center;
+  gap: 30px;
+}
+
+.locuinta-myhome-page .locuinta-myhome-promo [hidden] {
+  display: none !important;
+}
+
+.locuinta-myhome-page .locuinta-myhome-promo__media {
+  position: relative;
+  align-self: stretch;
+  min-width: 0;
+  min-height: 290px;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #dae8f4;
+}
+
+.locuinta-myhome-page .locuinta-myhome-promo__media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.locuinta-myhome-page .locuinta-myhome-promo__media figcaption {
+  position: absolute;
+  right: 9px;
+  bottom: 9px;
+  max-width: calc(100% - 18px);
+  padding: 3px 7px;
+  border-radius: 4px;
+  background: rgba(8,25,43,.8);
+  color: #fff;
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+.locuinta-myhome-page .locuinta-myhome-promo__copy {
+  min-width: 0;
+  padding: 5px 5px 5px 0;
+}
+
+.locuinta-myhome-page .locuinta-myhome-promo__meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px 18px;
+  margin-bottom: 13px;
+}
+
+.locuinta-myhome-page .locuinta-myhome-promo__brand {
+  margin: 0;
+  color: #123b5b;
+  font-size: .82rem;
+  font-weight: 750;
+  text-transform: uppercase;
+  letter-spacing: .015em;
+}
+
+.locuinta-myhome-page .locuinta-myhome-promo__period {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0 3px;
+  margin: 0;
+  padding: 5px 10px;
+  border-radius: 8px;
+  background: #d8edff;
+  color: #135eac;
+  font-size: .75rem;
+  font-weight: 700;
+}
+
+.locuinta-myhome-page .locuinta-myhome-promo h2 {
+  margin: 0 0 11px;
+  color: #102a4f;
+  font-size: clamp(1.55rem,2.1vw,2rem);
+  line-height: 1.18;
+}
+
+.locuinta-myhome-page .locuinta-myhome-promo__copy > p {
+  margin: 0 0 15px;
+  font-size: .96rem;
+  line-height: 1.6;
+}
+
+.locuinta-myhome-page .locuinta-myhome-promo a.locuinta-myhome-promo__button {
+  display: inline-flex;
+  min-height: 46px;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: 0 0 12px;
+  padding: 12px 22px;
+  border: 1px solid #133b5b;
+  border-radius: 7px;
+  background: #133b5b;
+  color: #fff;
+  font-size: .95rem;
+  font-weight: 700;
+  line-height: 1.35;
+  text-align: center;
+  text-decoration: none;
+}
+
+.locuinta-myhome-page .locuinta-myhome-promo a.locuinta-myhome-promo__button:hover {
+  background: #174f7b;
+  border-color: #174f7b;
+  text-decoration: none;
+}
+
+.locuinta-myhome-page .locuinta-myhome-promo__button span {
+  font-size: 1.4rem;
+  line-height: 1;
+}
+
+.locuinta-myhome-page .locuinta-myhome-promo__copy > .locuinta-myhome-promo__details,
+.locuinta-myhome-page .locuinta-myhome-promo__copy > .locuinta-myhome-promo__note {
+  margin: 0 0 6px;
+  color: #375a7b;
+  font-size: .8rem;
+  line-height: 1.5;
+}
+
+.locuinta-myhome-page .locuinta-myhome-promo__expired {
+  padding: 10px;
+}
+
+.locuinta-myhome-page .locuinta-myhome-promo__expired p:not(.locuinta-myhome-promo__brand) {
+  margin: 12px 0 18px;
+}
+
+.locuinta-myhome-page .decision-grid {
+  margin-bottom: 24px;
+  gap: 18px;
+}
+
+.locuinta-myhome-page .decision-card {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  padding: 21px;
+  border-color: #d3e2f0;
+  border-radius: 11px;
+}
+
+.locuinta-myhome-page .decision-card h3 {
+  font-family: Arial,"Segoe UI",sans-serif;
+  font-size: 1.06rem;
+}
+
+.locuinta-myhome-page .decision-card p {
+  flex: 1;
+  margin-bottom: 12px;
+  color: #49627e;
+  font-size: .86rem;
+}
+
+.locuinta-myhome-page .decision-card a {
+  min-height: 44px;
+  align-self: flex-start;
+  color: #135eac;
+  font-size: .92rem;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.locuinta-myhome-page .price-grid {
+  gap: 18px;
+}
+
+.locuinta-myhome-page .price-card {
+  min-width: 0;
+  padding: 16px 20px;
+  border-color: #d3e2f0;
+  border-radius: 11px;
+}
+
+.locuinta-myhome-page .price-card strong,
+.locuinta-myhome-page .price-card span {
+  display: inline;
+  color: #102a4f;
+  font-size: 1.05rem;
+}
+
+.locuinta-myhome-page .price-card span::before {
+  content: " — ";
+}
+
+.locuinta-myhome-page .price-card p {
+  margin: 7px 0 0;
+  font-size: .78rem;
+}
+
+.locuinta-myhome-page .main > .note {
+  margin: 10px 0 24px;
+  padding: 0;
+  background: transparent;
+  font-size: .78rem;
+}
+
+.locuinta-myhome-page .home-quote {
+  padding: 24px;
+  margin: 0 0 38px;
+  border-color: #c7dff4;
+  border-radius: 12px;
+  background: #edf6ff;
+  box-shadow: none;
+  scroll-margin-top: 90px;
+}
+
+.locuinta-myhome-page .home-quote__heading {
+  display: block;
+  margin-bottom: 18px;
+}
+
+.locuinta-myhome-page .home-quote__eyebrow {
+  display: none;
+}
+
+.locuinta-myhome-page .home-quote h2 {
+  margin: 0 0 7px;
+  font-size: clamp(1.4rem,2.1vw,1.8rem);
+}
+
+.locuinta-myhome-page .home-quote__heading > p {
+  max-width: none;
+  line-height: 1.6;
+}
+
+.locuinta-myhome-page .home-quote form {
+  grid-template-columns: repeat(5,minmax(0,1fr));
+  gap: 14px;
+}
+
+.locuinta-myhome-page .home-quote label {
+  min-width: 0;
+  grid-template-rows: auto 46px;
+  font-size: .76rem;
+}
+
+.locuinta-myhome-page .home-quote :is(input,select) {
+  width: 100%;
+  min-width: 0;
+  min-height: 46px;
+  padding-inline: 10px;
+  font-size: .88rem;
+}
+
+.locuinta-myhome-page .home-quote .home-quote__action {
+  grid-column: 1 / span 2;
+}
+
+.locuinta-myhome-page .home-quote button[type="submit"] {
+  background: #087a45 !important;
+  border-color: #087a45;
+}
+
+.locuinta-myhome-page .home-quote button[type="submit"]:hover {
+  background: #076437 !important;
+  border-color: #076437;
+}
+
+.locuinta-myhome-page .home-quote__note {
+  max-width: none;
+  font-size: .74rem !important;
+}
+
+.locuinta-myhome-page .home-editorial {
+  margin-bottom: 34px;
+}
+
+.locuinta-myhome-page .home-editorial > p {
+  margin-bottom: 14px;
+}
+
+.locuinta-myhome-page .home-editorial .grid {
+  margin-top: 24px;
+}
+
+.locuinta-myhome-page .faq summary {
+  min-height: 48px;
+}
+
+@media (max-width: 1050px) {
+  .locuinta-myhome-page .locuinta-myhome-promo__active {
+    grid-template-columns: minmax(0,.85fr) minmax(0,1fr);
+    gap: 22px;
+  }
+
+  .locuinta-myhome-page .home-quote form {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+  }
+
+  .locuinta-myhome-page .home-quote .home-quote__action {
+    grid-column: auto;
+  }
+}
+
+@media (max-width: 900px) {
+  .locuinta-myhome-page .page-hero__inner {
+    width: min(720px,calc(100% - 40px));
+    gap: 24px;
+  }
+
+  .locuinta-myhome-page .page-hero__media {
+    min-height: 0;
+  }
+
+  .locuinta-myhome-page .benefit-row {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+  }
+
+  .locuinta-myhome-page .benefit-row article {
+    padding: 16px 18px;
+  }
+}
+
+@media (max-width: 700px) {
+  .locuinta-myhome-page .main,
+  .locuinta-myhome-page .home-benefits {
+    padding-inline: 16px;
+  }
+
+  .locuinta-myhome-page .page-hero__inner {
+    width: calc(100% - 32px);
+  }
+
+  .locuinta-myhome-page .locuinta-myhome-promo {
+    padding: 14px;
+    border-radius: 12px;
+  }
+
+  .locuinta-myhome-page .locuinta-myhome-promo__active {
+    grid-template-columns: minmax(0,1fr);
+    gap: 20px;
+  }
+
+  .locuinta-myhome-page .locuinta-myhome-promo__media {
+    min-height: 0;
+    aspect-ratio: 16 / 10;
+  }
+
+  .locuinta-myhome-page .locuinta-myhome-promo__copy {
+    padding: 0 3px 3px;
+  }
+
+  .locuinta-myhome-page .locuinta-myhome-promo__meta {
+    gap: 9px;
+  }
+
+  .locuinta-myhome-page .locuinta-myhome-promo h2 {
+    font-size: 1.65rem;
+  }
+
+  .locuinta-myhome-page .locuinta-myhome-promo a.locuinta-myhome-promo__button {
+    width: 100%;
+    padding-inline: 14px;
+  }
+
+  .locuinta-myhome-page .decision-grid {
+    grid-template-columns: minmax(0,1fr);
+    gap: 12px;
+  }
+
+  .locuinta-myhome-page .decision-card {
+    padding: 19px;
+  }
+
+  .locuinta-myhome-page .home-quote {
+    padding: 20px 16px;
+  }
+
+  .locuinta-myhome-page .home-editorial .grid {
+    grid-template-columns: minmax(0,1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .locuinta-myhome-page .benefit-row {
+    grid-template-columns: minmax(0,1fr);
+  }
+
+  .locuinta-myhome-page .benefit-row article {
+    padding: 13px 17px;
+  }
+
+  .locuinta-myhome-page .benefit-row strong {
+    display: inline;
+    margin-left: 8px;
+  }
+
+  .locuinta-myhome-page .benefit-row p {
+    margin-top: 3px;
+  }
+
+  .locuinta-myhome-page .home-quote form {
+    grid-template-columns: minmax(0,1fr);
+  }
+
+  .locuinta-myhome-page .home-quote .home-quote__action {
+    grid-column: 1;
+  }
+}

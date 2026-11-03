@@ -2,12 +2,13 @@
   "name": "asiguraricraiova",
   "private": true,
   "scripts": {
-    "test": "node --check site.js && node --check homepage.js && node --check form-validation.js && node --check scripts/validate-site.mjs && node scripts/validate-site.mjs && node scripts/validate-locuinta-security.mjs",
+    "test": "node --check site.js && node --check homepage.js && node --check form-validation.js && node --check myhome.js && node --check scripts/validate-site.mjs && node scripts/validate-site.mjs && node scripts/validate-locuinta-security.mjs",
     "test:forms": "node scripts/test-form-validation.cjs",
     "test:analytics": "node scripts/test-analytics.cjs",
     "test:homepage": "node scripts/test-homepage.cjs",
     "test:navigation": "node scripts/test-navigation.cjs",
-    "test:design": "node scripts/test-design.cjs"
+    "test:design": "node scripts/test-design.cjs",
+    "test:myhome": "node scripts/test-myhome.cjs"
   },
   "engines": {
     "node": ">=20"
