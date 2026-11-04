@@ -1038,6 +1038,22 @@ body textarea { font: inherit; }
 .homepage.home-redesign .home-directory ul { margin: 0; padding: 0; list-style: none; }
 .homepage.home-redesign .home-directory li a { display: inline-flex; align-items: center; min-height: 36px; padding-block: 7px; color: #235d91; font-size: 14px; line-height: 1.4; text-decoration: underline; text-underline-offset: 3px; }
 .homepage.home-redesign .home-directory a:hover { color: #083c70; }
+.homepage.home-redesign .home-menu > .home-menu__calculator { border-radius: 5px; background: #eaf3fc; color: #075eb1; }
+.homepage.home-redesign .home-menu > .home-menu__calculator:hover { background: #dcecff; }
+.homepage.home-redesign .home-calculator-strip { border-top: 1px solid #d6e5f3; border-bottom: 1px solid #d6e5f3; background: #edf5fd; }
+.homepage.home-redesign .home-calculator-shortcut { display: flex; min-height: 64px; align-items: center; gap: 14px; padding: 10px 0; color: #103c66; text-decoration: none; }
+.homepage.home-redesign .home-calculator-shortcut > .home-icon { width: 30px; height: 30px; color: #0969bd; }
+.homepage.home-redesign .home-calculator-shortcut > span { min-width: 0; }
+.homepage.home-redesign .home-calculator-shortcut strong { display: block; font-size: 17px; line-height: 1.35; }
+.homepage.home-redesign .home-calculator-shortcut small { display: block; margin-top: 3px; color: #375a7b; font-size: 13px; line-height: 1.45; }
+.homepage.home-redesign .home-calculator-shortcut > .home-calculator-shortcut__arrow { width: 23px; height: 23px; margin-left: auto; }
+.homepage.home-redesign .home-calculator-shortcut:hover strong { color: #075eb1; text-decoration: underline; text-underline-offset: 3px; }
+.homepage.home-redesign .home-calculator-shortcut:focus-visible { outline: 3px solid #0b6fc4; outline-offset: -3px; }
+@media (max-width: 520px) {
+  .homepage.home-redesign .home-calculator-shortcut { min-height: 70px; gap: 10px; }
+  .homepage.home-redesign .home-calculator-shortcut strong { font-size: 16px; }
+  .homepage.home-redesign .home-calculator-shortcut small { font-size: 12px; }
+}
 .homepage.home-redesign .home-directory__resources { padding: 22px 24px; border-top: 1px solid #e1eaf3; background: #f7faff; }
 .homepage.home-redesign .home-directory__resources ul { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 0 24px; }
 .homepage.home-redesign .home-directory__resources > a { display: inline-flex; min-height: 44px; align-items: center; color: #235d91; font-size: 14px; text-decoration: underline; }
