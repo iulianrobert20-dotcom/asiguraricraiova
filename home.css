@@ -1040,7 +1040,7 @@ body textarea { font: inherit; }
 .homepage.home-redesign .home-directory a:hover { color: #083c70; }
 .homepage.home-redesign .home-menu > .home-menu__calculator { border-radius: 5px; background: #eaf3fc; color: #075eb1; }
 .homepage.home-redesign .home-menu > .home-menu__calculator:hover { background: #dcecff; }
-.homepage.home-redesign .home-calculator-strip { border-top: 1px solid #d6e5f3; border-bottom: 1px solid #d6e5f3; background: #edf5fd; }
+.homepage.home-redesign .home-calculator-strip { margin-top: 20px; padding-inline: 22px; border: 1px solid #d6e5f3; border-radius: 8px; background: #edf5fd; scroll-margin-top: 20px; }
 .homepage.home-redesign .home-calculator-shortcut { display: flex; min-height: 64px; align-items: center; gap: 14px; padding: 10px 0; color: #103c66; text-decoration: none; }
 .homepage.home-redesign .home-calculator-shortcut > .home-icon { width: 30px; height: 30px; color: #0969bd; }
 .homepage.home-redesign .home-calculator-shortcut > span { min-width: 0; }
@@ -1050,6 +1050,7 @@ body textarea { font: inherit; }
 .homepage.home-redesign .home-calculator-shortcut:hover strong { color: #075eb1; text-decoration: underline; text-underline-offset: 3px; }
 .homepage.home-redesign .home-calculator-shortcut:focus-visible { outline: 3px solid #0b6fc4; outline-offset: -3px; }
 @media (max-width: 520px) {
+  .homepage.home-redesign .home-calculator-strip { padding-inline: 16px; }
   .homepage.home-redesign .home-calculator-shortcut { min-height: 70px; gap: 10px; }
   .homepage.home-redesign .home-calculator-shortcut strong { font-size: 16px; }
   .homepage.home-redesign .home-calculator-shortcut small { font-size: 12px; }
