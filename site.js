@@ -57,7 +57,7 @@
     banner.id = 'cookie-consent';
     banner.className = 'cookie-consent';
     banner.setAttribute('role', 'dialog');
-    banner.setAttribute('aria-modal', homePreferences ? 'false' : 'true');
+    banner.setAttribute('aria-modal', 'false');
     banner.setAttribute('aria-labelledby', 'cookie-title');
     banner.innerHTML =
       '<div class="cookie-consent__body">' +
